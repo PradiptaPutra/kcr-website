@@ -74,7 +74,7 @@ const Home: React.FC = () => {
       </SEO>
 
       {/* 1. HERO */}
-      <section className="relative h-screen w-full overflow-hidden bg-[#1a1c19] flex items-center justify-center">
+      <section className="relative h-[100dvh] w-full overflow-hidden bg-[#1a1c19] flex items-center justify-center">
         <motion.div 
           key={heroIndex}
           initial={{ scale: 1.05, opacity: 0 }}

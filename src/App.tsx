@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Analytics } from "@vercel/analytics/react";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -15,35 +14,7 @@ import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import './index.css';
 
-const PageWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-const AnimatedRoutes = () => {
-  const location = useLocation();
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-        <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
-        <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
-        <Route path="/catalog" element={<PageWrapper><Catalog /></PageWrapper>} />
-        <Route path="/portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
-        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-      </Routes>
-    </AnimatePresence>
-  );
-};
-
+// Removing AnimatePresence and PageWrapper to fix mobile blinking/glitching issues
 const App: React.FC = () => {
   return (
     <HelmetProvider>
@@ -53,7 +24,14 @@ const App: React.FC = () => {
         <div className="flex flex-col min-h-screen relative bg-[#F5F5F0]">
           <Navbar />
           <main className="flex-grow">
-            <AnimatedRoutes />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
           </main>
           <Footer />
           <Analytics />

@@ -12,10 +12,17 @@
   }
 body {
   @apply bg-[#F5F5F0] text-[#2A2C2B] font-sans font-normal antialiased overflow-x-hidden relative;
-  text-rendering: optimizeSpeed; /* Focus on performance */
+  text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
   line-height: 1.7;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Flicker Fix for Hardware Acceleration */
+* {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Tactile Surface Grain - DISABLED ON MOBILE for performance */
@@ -66,7 +73,11 @@ body {
   }
 
   .silent-hover {
-    @apply transition-all duration-500 hover:text-brand;
+    @apply transition-all duration-500;
+  }
+  .silent-hover:hover {
+    color: #8B5E3C;
+    opacity: 1;
   }
 
   /* Optimized Borders */
