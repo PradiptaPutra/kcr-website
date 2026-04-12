@@ -6,56 +6,85 @@ import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 
 const Catalog: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<'all' | 'prefab' | 'shotcrete' | 'chemicals' | 'furniture'>('all');
+  const [mainPillar, setMainPillar] = useState<'infrastructure' | 'interior'>('infrastructure');
+  const [activeSection, setActiveSection] = useState<string>('all');
   const [expandedSeries, setExpandedSeries] = useState<string | null>(null);
 
   const fadeInUp = {
     initial: { y: 20, opacity: 0 },
     whileInView: { y: 0, opacity: 1 },
     viewport: { once: true },
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } // Using ease-out from skill doc
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
   };
 
   const images = kcrData.images.catalog;
-
   const tabTransition = { type: "spring", stiffness: 500, damping: 35 };
+
+  const infrastructureCategories = [
+    { id: 'all', l: 'Semua Struktur' },
+    { id: 'prefab', l: 'Prefabrikasi', img: images.prefab, c: 'Light Steel Frame System' },
+    { id: 'shotcrete', l: 'Shotcrete', img: images.shotcrete, c: 'Beton Semprot Spesialis' },
+    { id: 'chemicals', l: 'Kimia Konstruksi', img: images.chemicals, c: 'Technical Floor & Repair' },
+  ];
+
+  const interiorCategories = [
+    { id: 'all', l: 'Semua Interior' },
+    { id: 'furniture', l: 'Executive Desks', img: images.furniture, c: 'Executive Office Systems' },
+    { id: 'workstation', l: 'Workstations', img: 'https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg', c: 'Team Performance Systems' },
+    { id: 'meeting', l: 'Meeting Tables', img: 'https://images.pexels.com/photos/4985341/pexels-photo-4985341.jpeg', c: 'Boardroom Solutions' },
+    { id: 'hospitality', l: 'Hospitality', img: 'https://images.pexels.com/photos/29383009/pexels-photo-29383009.jpeg', c: 'Dining & Bed Series' },
+  ];
+
+  const categories = mainPillar === 'infrastructure' ? infrastructureCategories : interiorCategories;
+
+  const handlePillarChange = (pillar: 'infrastructure' | 'interior') => {
+    setMainPillar(pillar);
+    setActiveSection('all');
+  };
 
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-40 pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
-        title="Produk & Layanan Kami"
-        description="Jelajahi berbagai layanan dan produk unggulan dari PT. KARYA CIPTA RAHARJA, mulai dari konstruksi hingga furnitur kantor berkualitas."
-        keywords="Sistem Prefabrikasi, Shotcrete, Kimia Konstruksi, Furnitur Kantor, Katalog Solusi Konstruksi"
+        title="Katalog Solusi Terpadu | Struktur & Interior"
+        description="Jelajahi katalog lengkap PT. KARYA CIPTA RAHARJA. Dari sistem prefabrikasi dan shotcrete hingga furnitur kantor eksekutif dan workstation modern."
+        keywords="Sistem Prefabrikasi, Shotcrete, Furnitur Kantor, Workstation, Meeting Table, Katalog Konstruksi Indonesia"
         canonicalUrl="/catalog"
-        aeoAnswer="Katalog solusi konstruksi PT. KARYA CIPTA RAHARJA menyediakan teknologi infrastruktur terintegrasi meliputi Sistem Bangunan Prefabrikasi, aplikasi Spesialis Shotcrete, produk kimia konstruksi (Technical Floor & Repair), hingga Executive Office Furniture. Solusi kami dirancang untuk mendukung efisiensi pengerjaan dan durabilitas maksimal bagi proyek BUMN maupun swasta."
       />
       
       <section className="framer-container mb-24">
         <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#1a1c19]/10 pl-10">
-          <span className="framer-label text-brand mb-10 block">01 / PRODUK & LAYANAN</span>
-          <h1 className="framer-h1">Pilihan Solusi <br/><span className="italic text-brand font-serif">Terbaik untuk Proyek Anda.</span></h1>
+          <span className="framer-label text-brand mb-10 block">01 / KATALOG TERPADU</span>
+          <h1 className="framer-h1">Solusi <span className="italic text-brand font-serif">Struktural</span> & <br/>Interior Berkualitas.</h1>
         </motion.div>
       </section>
 
-      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/80 backdrop-blur-xl border-y-[0.5px] border-[#1a1c19]/5 mb-20">
+      <section className="framer-container mb-12">
+        <div className="flex gap-4 border-b border-[#1a1c19]/5">
+          <button 
+            onClick={() => handlePillarChange('infrastructure')}
+            className={`pb-6 px-4 text-sm uppercase tracking-widest font-bold transition-all relative ${mainPillar === 'infrastructure' ? 'text-brand' : 'text-[#1a1c19]/30 hover:text-[#1a1c19]/60'}`}
+          >
+            Struktur & Infrastruktur
+            {mainPillar === 'infrastructure' && <motion.div layoutId="pillar-line" className="absolute bottom-0 left-0 w-full h-1 bg-brand" />}
+          </button>
+          <button 
+            onClick={() => handlePillarChange('interior')}
+            className={`pb-6 px-4 text-sm uppercase tracking-widest font-bold transition-all relative ${mainPillar === 'interior' ? 'text-brand' : 'text-[#1a1c19]/30 hover:text-[#1a1c19]/60'}`}
+          >
+            Interior & Furniture
+            {mainPillar === 'interior' && <motion.div layoutId="pillar-line" className="absolute bottom-0 left-0 w-full h-1 bg-brand" />}
+          </button>
+        </div>
+      </section>
+
+      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/80 backdrop-blur-xl border-b border-[#1a1c19]/5 mb-20">
         <div className="framer-container py-5 flex flex-wrap gap-x-10 gap-y-3">
-          {[
-            { id: 'all', l: 'Semua' },
-            { id: 'prefab', l: 'Prefabrikasi' },
-            { id: 'shotcrete', l: 'Shotcrete' },
-            { id: 'chemicals', l: 'Kimia' },
-            { id: 'furniture', l: 'Executive Desks' },
-            { id: 'workstation', l: 'Workstations' },
-            { id: 'meeting', l: 'Meeting Tables' },
-            { id: 'hospitality', l: 'Hospitality' },
-          ].map((t) => (
+          {categories.map((t) => (
             <motion.button 
               key={t.id} 
-              onClick={() => setActiveSection(t.id as any)} 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={tabTransition}
-              className={`framer-label relative pb-2 transition-opacity duration-200 ${activeSection === t.id ? 'opacity-100 font-bold' : 'opacity-30 hover:opacity-60'}`}
+              onClick={() => setActiveSection(t.id)} 
+              whileHover={{ x: 2 }}
+              className={`framer-label relative pb-2 transition-opacity duration-200 ${activeSection === t.id ? 'opacity-100 font-bold' : 'opacity-30 hover:opacity-100'}`}
             >
               {t.l}
               {activeSection === t.id && (
@@ -73,44 +102,35 @@ const Catalog: React.FC = () => {
       <AnimatePresence mode="wait">
         {activeSection === 'all' && (
           <motion.section 
-            key="all" 
+            key={`${mainPillar}-all`}
             initial={{ opacity: 0, y: 10 }} 
             animate={{ opacity: 1, y: 0 }} 
             exit={{ opacity: 0, y: -10 }} 
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} 
             className="framer-container"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { id: 'prefab', l: 'Prefabrikasi', img: images.prefab, c: 'Light Steel Frame System' },
-                { id: 'shotcrete', l: 'Shotcrete', img: images.shotcrete, c: 'Beton Semprot Spesialis' },
-                { id: 'chemicals', l: 'Kimia Konstruksi', img: images.chemicals, c: 'Technical Floor & Repair' },
-                { id: 'furniture', l: 'Produk Furnitur', img: images.furniture, c: 'Executive Office Systems' },
-              ].map((card) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+              {categories.slice(1).map((card) => (
                 <motion.button 
                   key={card.id} 
-                  onClick={() => setActiveSection(card.id as any)} 
-                  whileHover={{ y: -8 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  className="text-left group flex flex-col gap-6"
+                  onClick={() => setActiveSection(card.id)} 
+                  whileHover={{ y: -10 }}
+                  className="text-left group"
                 >
-                  <div className="bg-[#e5e5e0] aspect-[4/5] overflow-hidden rounded-[4px]">
+                  <div className="aspect-[16/10] overflow-hidden rounded-[8px] mb-8 bg-[#e5e5e0]">
                     <motion.img 
                       src={card.img} 
                       className="w-full h-full object-cover" 
                       whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.8 }}
                       alt={card.l} 
                     />
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <h2 className="font-serif text-[24px] text-[#1a1c19]">{card.l}</h2>
-                    <p className="framer-body !text-[12px] opacity-40">{card.c}</p>
-                    <div className="flex items-center gap-2 group-hover:text-brand transition-colors">
-                      <ArrowRight weight="light" size={24} className="text-brand opacity-50 group-hover:opacity-100 transition-opacity" />
-                      <span className="text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">Explore</span>
-                    </div>
+                  <span className="framer-label text-brand mb-4 block">Sub-Kategori</span>
+                  <h2 className="font-serif text-[28px] text-[#1a1c19] mb-2">{card.l}</h2>
+                  <p className="framer-body !text-[14px] opacity-50 mb-6">{card.c}</p>
+                  <div className="flex items-center gap-3 text-brand">
+                    <span className="text-[11px] uppercase tracking-tighter font-bold">Lihat Detail</span>
+                    <ArrowRight weight="bold" size={16} />
                   </div>
                 </motion.button>
               ))}
@@ -121,101 +141,61 @@ const Catalog: React.FC = () => {
         {activeSection === 'furniture' && (
           <motion.section 
             key="furniture" 
-            initial={{ opacity: 0, x: 20 }} 
-            animate={{ opacity: 1, x: 0 }} 
-            exit={{ opacity: 0, x: -20 }} 
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} 
+            initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
             className="framer-container"
           >
-            <div className="space-y-32">
-              <div>
-                <motion.h3 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.3 }}
-                  className="framer-label mb-12 framer-border-struct !border-x-0 !border-t-0 pb-6"
-                >
-                  Executive Series
-                </motion.h3>
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-                  <div className="lg:col-span-4 space-y-6">
-                    {kcrData.products.executiveDesks.map((s) => (
-                      <motion.div 
-                        layout
-                        key={s.series} 
-                        className={`p-8 border-[0.5px] rounded-[12px] cursor-pointer relative overflow-hidden transition-colors duration-300 ${expandedSeries === s.series ? 'bg-white border-brand' : 'bg-white/50 border-[#1a1c19]/10 hover:border-brand/40'}`} 
-                        onClick={() => setExpandedSeries(expandedSeries === s.series ? null : s.series)}
-                      >
-                        <div className="flex justify-between items-center relative z-10">
-                          <span className="font-serif text-[24px]">{s.series}</span>
-                          <motion.div
-                            animate={{ rotate: expandedSeries === s.series ? 180 : 0 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                          >
-                            {expandedSeries === s.series ? <Minus weight="light" /> : <Plus weight="light" />}
-                          </motion.div>
-                        </div>
-                        <AnimatePresence>
-                          {expandedSeries === s.series && (
-                            <motion.div 
-                              initial={{ height: 0, opacity: 0 }} 
-                              animate={{ height: 'auto', opacity: 1 }} 
-                              exit={{ height: 0, opacity: 0 }} 
-                              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                              className="overflow-hidden relative z-10"
-                            >
-                              <div className="mt-8 space-y-4">
-                                <p className="text-[12px] opacity-60 mb-6">{s.description}</p>
-                                {s.models.map(m => (
-                                  <motion.div 
-                                    key={m.name} 
-                                    initial={{ x: -10, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    className="framer-body !text-[13px] border-t-[0.5px] border-[#1a1c19]/5 pt-4"
-                                  >
-                                    <p className="font-medium text-[#1a1c19] mb-1">{m.name}</p>
-                                    <p>Dim: {m.dim}</p>
-                                  </motion.div>
-                                ))}
-                                <div className="mt-6 pt-4 border-t border-brand/10">
-                                  <p className="text-[10px] uppercase font-bold text-brand mb-2">Features</p>
-                                  <div className="flex flex-wrap gap-2">
-                                    {s.accessories.map(a => (
-                                      <motion.span 
-                                        key={a} 
-                                        whileHover={{ scale: 1.05 }}
-                                        className="text-[10px] bg-brand/5 px-2 py-1 rounded"
-                                      >
-                                        {a}
-                                      </motion.span>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+              <div className="lg:col-span-4 space-y-6">
+                <div className="mb-12">
+                  <h3 className="framer-h2 !text-[32px] mb-4">Executive Desks</h3>
+                  <p className="framer-body !text-sm opacity-60">Sistem meja kerja eksekutif yang memadukan prestise dengan kenyamanan ergonomis maksimal.</p>
+                </div>
+                {kcrData.products.executiveDesks.map((s) => (
+                  <motion.div 
+                    layout
+                    key={s.series} 
+                    className={`p-8 border-[0.5px] rounded-[16px] cursor-pointer transition-all duration-500 ${expandedSeries === s.series ? 'bg-white border-brand shadow-xl' : 'bg-white/40 border-[#1a1c19]/10 hover:border-brand/40'}`} 
+                    onClick={() => setExpandedSeries(expandedSeries === s.series ? null : s.series)}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="font-serif text-[22px] tracking-tight">{s.series}</span>
+                      <motion.div animate={{ rotate: expandedSeries === s.series ? 180 : 0 }}>
+                        {expandedSeries === s.series ? <Minus weight="light" /> : <Plus weight="light" />}
                       </motion.div>
-                    ))}
-                  </div>
-                  <div className="lg:col-span-8 grid grid-cols-2 gap-8 items-start">
-                    <motion.div 
-                      layout
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="bg-[#e5e5e0] aspect-[4/5] rounded-[4px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
-                    >
-                      <img src={images.furniture} className="w-full h-full object-cover" alt="Furniture 1" />
-                    </motion.div>
-                    <motion.div 
-                      layout
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.1 }}
-                      className="bg-[#e5e5e0] aspect-[4/5] rounded-[4px] overflow-hidden mt-16 shadow-sm hover:shadow-xl transition-shadow duration-500"
-                    >
-                      <img src="https://images.pexels.com/photos/4985341/pexels-photo-4985341.jpeg" className="w-full h-full object-cover" alt="Furniture 2" />
-                    </motion.div>
-                  </div>
+                    </div>
+                    <AnimatePresence>
+                      {expandedSeries === s.series && (
+                        <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                          <div className="mt-8 space-y-6">
+                            <p className="text-[13px] leading-relaxed opacity-70">{s.description}</p>
+                            <div className="grid grid-cols-1 gap-4">
+                              {s.models.map(m => (
+                                <div key={m.name} className="p-4 bg-[#F5F5F0] rounded-lg">
+                                  <p className="font-bold text-[12px] uppercase text-[#1a1c19] mb-1">{m.name}</p>
+                                  <p className="text-[11px] opacity-50">Dimensi: {m.dim}</p>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="pt-4 border-t border-[#1a1c19]/5">
+                              <p className="text-[10px] uppercase font-bold text-brand mb-3">Fitur Utama</p>
+                              <div className="flex flex-wrap gap-2">
+                                {s.accessories.map(a => <span key={a} className="text-[9px] bg-brand/10 text-brand px-3 py-1.5 rounded-full font-bold">{a}</span>)}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="lg:col-span-8 space-y-12">
+                <div className="bg-[#e5e5e0] aspect-video rounded-[12px] overflow-hidden shadow-2xl">
+                  <img src={images.furniture} className="w-full h-full object-cover" alt="Executive Furniture" />
+                </div>
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="bg-[#e5e5e0] aspect-square rounded-[12px] overflow-hidden"><img src="https://images.pexels.com/photos/4985341/pexels-photo-4985341.jpeg" className="w-full h-full object-cover" alt="Detail 1" /></div>
+                  <div className="bg-[#e5e5e0] aspect-square rounded-[12px] overflow-hidden"><img src="https://images.pexels.com/photos/7046155/pexels-photo-7046155.jpeg" className="w-full h-full object-cover" alt="Detail 2" /></div>
                 </div>
               </div>
             </div>
@@ -225,34 +205,36 @@ const Catalog: React.FC = () => {
         {activeSection === 'workstation' && (
           <motion.section 
             key="workstation" 
-            initial={{ opacity: 0, x: 20 }} 
-            animate={{ opacity: 1, x: 0 }} 
-            exit={{ opacity: 0, x: -20 }} 
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
             className="framer-container"
           >
-             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-               {kcrData.products.workstations.map((s, idx) => (
-                  <motion.div 
-                    key={s.series} 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1, type: "spring", stiffness: 300, damping: 25 }}
-                    whileHover={{ y: -5 }}
-                    className="bg-white p-10 border border-[#1a1c19]/5 rounded-[12px] shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <span className="framer-label text-brand mb-4 block">{s.series}</span>
-                    <p className="framer-body !text-[14px] mb-8">{s.description}</p>
-                    <div className="space-y-4">
-                       {s.models.map(m => (
-                         <div key={m.name} className="flex justify-between text-[13px] border-b border-[#1a1c19]/5 pb-2">
-                            <span className="font-medium">{m.name}</span>
+             <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+                <div className="lg:col-span-4 space-y-8">
+                   <h3 className="framer-h2 !text-[32px]">Workstation Systems</h3>
+                   <p className="framer-body !text-sm opacity-60 leading-relaxed">Koleksi modular yang dirancang untuk mendukung kolaborasi tim tanpa batas, efisiensi ruang, dan manajemen kabel yang rapi.</p>
+                   <Link to="/contact" className="framer-btn !py-4 !px-8 inline-block">Konsultasi Layout Kantor</Link>
+                </div>
+                <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {kcrData.products.workstations.map((s, idx) => (
+                    <motion.div 
+                      key={s.series} 
+                      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }}
+                      className="bg-white p-10 border border-[#1a1c19]/5 rounded-[20px] shadow-sm hover:shadow-xl transition-all group"
+                    >
+                      <span className="framer-label text-brand mb-6 block">Koleksi 0{idx+1}</span>
+                      <h4 className="font-serif text-[24px] mb-4 group-hover:text-brand transition-colors">{s.series}</h4>
+                      <p className="text-[13px] opacity-50 mb-8 leading-relaxed">{s.description}</p>
+                      <div className="space-y-3">
+                        {s.models.map(m => (
+                          <div key={m.name} className="flex justify-between items-center py-3 border-b border-[#1a1c19]/5 text-[12px]">
+                            <span className="font-bold">{m.name}</span>
                             <span className="opacity-40">{m.dim || m.capacity}</span>
-                         </div>
-                       ))}
-                    </div>
-                  </motion.div>
-               ))}
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
              </div>
           </motion.section>
         )}
@@ -260,33 +242,32 @@ const Catalog: React.FC = () => {
         {activeSection === 'meeting' && (
           <motion.section 
             key="meeting" 
-            initial={{ opacity: 0, scale: 0.98 }} 
-            animate={{ opacity: 1, scale: 1 }} 
-            exit={{ opacity: 0, scale: 0.98 }} 
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} 
+            initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }}
             className="framer-container"
           >
-             <div className="max-w-4xl mx-auto space-y-12">
-               {kcrData.products.meetingTables.map((s) => (
-                 <motion.div 
-                  key={s.series} 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  className="bg-[#1a1c19] text-white p-16 rounded-[12px]"
-                 >
-                    <h2 className="font-serif text-[32px] mb-12 border-b border-white/10 pb-6">{s.series}</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                       {s.models.map(m => (
-                         <div key={m.name} className="space-y-4">
-                            <h3 className="text-brand uppercase tracking-widest text-[12px]">{m.name}</h3>
-                            <p className="text-[20px] font-serif">{m.dim}</p>
-                            <p className="text-white/40 text-[13px]">{m.capacity || m.finishes}</p>
-                         </div>
-                       ))}
-                    </div>
-                 </motion.div>
-               ))}
+             <div className="bg-[#1a1c19] text-white p-12 md:p-24 rounded-[32px] overflow-hidden relative">
+                <div className="relative z-10 max-w-3xl">
+                  <span className="framer-label text-brand mb-8 block">THE BOARDROOM</span>
+                  <h3 className="framer-h1 !text-[48px] text-white mb-12">Meeting Tables <span className="italic font-serif text-brand">Collection.</span></h3>
+                  
+                  <div className="space-y-16">
+                    {kcrData.products.meetingTables.map((s) => (
+                      <div key={s.series}>
+                        <h4 className="framer-label !text-white/30 mb-8 border-b border-white/10 pb-4">{s.series}</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                          {s.models.map(m => (
+                            <div key={m.name} className="group">
+                              <p className="text-brand uppercase tracking-widest text-[10px] font-bold mb-4">{m.name}</p>
+                              <p className="text-[24px] font-serif mb-2">{m.dim}</p>
+                              <p className="text-white/40 text-[12px]">{m.capacity || m.finishes}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="absolute -bottom-10 -right-10 text-[20vw] font-serif opacity-[0.03] pointer-events-none select-none">FERMI</div>
              </div>
           </motion.section>
         )}
@@ -294,88 +275,75 @@ const Catalog: React.FC = () => {
         {activeSection === 'hospitality' && (
           <motion.section 
             key="hospitality" 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0, y: -20 }} 
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="framer-container"
           >
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                {kcrData.products.hospitality.map(s => (
-                  <motion.div 
-                    key={s.series} 
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    className="bg-white p-12 border border-[#1a1c19]/5 rounded-[12px] shadow-sm"
-                  >
-                    <h3 className="font-serif text-[28px] mb-8">{s.series}</h3>
-                    <div className="space-y-6">
-                      {s.models.map(m => (
-                        <div key={m.name} className="flex flex-col gap-2">
-                          <span className="font-medium text-[#1a1c19]">{m.name}</span>
-                          <span className="text-[13px] opacity-40">{m.dim}</span>
-                        </div>
-                      ))}
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+                {kcrData.products.hospitality.map((s, idx) => (
+                  <div key={s.series} className="flex flex-col gap-10">
+                    <div className="aspect-[16/10] bg-[#e5e5e0] rounded-[16px] overflow-hidden">
+                      <img 
+                        src={idx === 0 ? 'https://images.pexels.com/photos/29383009/pexels-photo-29383009.jpeg' : 'https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg'} 
+                        className="w-full h-full object-cover" 
+                        alt={s.series} 
+                      />
                     </div>
-                  </motion.div>
+                    <div>
+                      <h3 className="font-serif text-[32px] mb-6">{s.series}</h3>
+                      <div className="grid grid-cols-1 gap-4">
+                        {s.models.map(m => (
+                          <div key={m.name} className="flex justify-between items-baseline p-6 border border-[#1a1c19]/5 rounded-xl bg-white/50">
+                            <span className="font-bold text-[14px] uppercase">{m.name}</span>
+                            <span className="text-[12px] opacity-40">{m.dim}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 ))}
              </div>
-             <motion.div 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="mt-20 p-12 border-t border-[#1a1c19]/10"
-             >
-                <p className="framer-label mb-8">Additional Products</p>
-                <div className="flex flex-wrap gap-4">
+             <div className="p-12 border-t border-[#1a1c19]/10 bg-white/30 rounded-[24px]">
+                <p className="framer-label mb-10 text-center">Produk Pelengkap Lainnya</p>
+                <div className="flex flex-wrap justify-center gap-4">
                    {kcrData.products.additional.items.map(i => (
                      <motion.span 
                         key={i} 
-                        whileHover={{ scale: 1.1, backgroundColor: '#3d443a' }}
-                        className="px-6 py-3 bg-[#1a1c19] text-white rounded-full text-[12px] cursor-default transition-colors"
+                        whileHover={{ scale: 1.05, backgroundColor: '#1a1c19', color: '#fff' }}
+                        className="px-10 py-4 border border-[#1a1c19]/10 rounded-full text-[12px] font-bold transition-colors cursor-default"
                       >
                         {i}
                       </motion.span>
                    ))}
                 </div>
-             </motion.div>
+             </div>
           </motion.section>
         )}
 
         {(activeSection === 'prefab' || activeSection === 'shotcrete' || activeSection === 'chemicals') && (
           <motion.section 
             key="other" 
-            initial={{ opacity: 0, scale: 0.95 }} 
-            animate={{ opacity: 1, scale: 1 }} 
-            exit={{ opacity: 0, scale: 0.95 }} 
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} 
+            initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.98 }}
             className="framer-container"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <motion.div 
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="bg-[#e5e5e0] aspect-[16/10] rounded-[4px] overflow-hidden"
-              >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+              <div className="bg-[#e5e5e0] aspect-[16/10] rounded-[16px] overflow-hidden shadow-2xl">
                 <motion.img 
                   src={images[activeSection as keyof typeof images]} 
                   className="w-full h-full object-cover" 
                   whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 1.5 }}
                   alt="Solution" 
                 />
-              </motion.div>
-              <motion.div 
-                initial={{ x: 20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="space-y-10"
-              >
-                <h2 className="font-serif text-[40px] text-[#1a1c19] leading-tight">Spesialis <br/><span className="italic font-serif text-brand">{activeSection.toUpperCase()}</span></h2>
-                <p className="framer-body">Layanan teknis kami mencakup solusi komprehensif untuk infrastruktur modern dengan durabilitas material maksimal.</p>
-                <Link to="/contact" className="framer-btn inline-block">Minta Penawaran Teknik</Link>
-              </motion.div>
+              </div>
+              <div className="space-y-10">
+                <span className="framer-label text-brand">Spesialisasi Teknis</span>
+                <h2 className="font-serif text-[48px] text-[#1a1c19] leading-[1.1]">Spesialis <br/><span className="italic font-serif text-brand uppercase">{activeSection}</span></h2>
+                <p className="framer-body !text-[18px] opacity-70 leading-relaxed">Kami menghadirkan solusi teknis kelas dunia yang telah teruji untuk infrastruktur vital nasional, menjamin durabilitas jangka panjang dan keamanan struktural.</p>
+                <div className="flex flex-col gap-6">
+                  <Link to="/contact" className="framer-btn !py-5 !px-12 inline-block">Minta Penawaran Teknik</Link>
+                  <p className="text-[11px] opacity-40 italic">* Layanan tersedia untuk seluruh wilayah Indonesia.</p>
+                </div>
+              </div>
             </div>
           </motion.section>
         )}
