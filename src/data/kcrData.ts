@@ -51,20 +51,20 @@ export const kcrData = {
   // CENTRALIZED & VERIFIED IMAGES (Guaranteed No 404)
   images: {
     hero: [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000", // Skyscraper
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=2000", // Modern Concrete
-      "https://images.unsplash.com/photo-1518005020251-58296437f38d?auto=format&fit=crop&q=80&w=2000"  // Site
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000", // Skyscraper BUMN
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=2000", // Modern Architecture
+      "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=2000"  // Site Construction
     ],
     catalog: {
-      prefab: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200", // Steel Structure
-      shotcrete: "https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200", // Construction work
-      chemicals: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=1200", // Industrial Floor
-      furniture: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"  // Executive Office
+      prefab: "https://cdn.pixabay.com/photo/2014/10/01/22/01/house-469036_1280.jpg", // Steel Frame/Construction Site
+      shotcrete: "https://cdn.pixabay.com/photo/2016/11/19/11/33/footpath-1838767_1280.jpg", // Tunnel/Shotcrete
+      chemicals: "https://cdn.pixabay.com/photo/2015/07/28/14/11/milling-864433_1280.jpg", // Industrial Technical
+      furniture: "https://images.pexels.com/photos/28715052/pexels-photo-28715052.jpeg"  // Executive Office Pexels
     },
     portfolio: [
       { id: '01', year: '2023', category: 'Industrial', title: 'Logistics Warehouse', client: 'Sektor Swasta', img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" },
-      { id: '02', year: '2022', category: 'Shotcrete', title: 'Slope Stabilization', client: 'Proyek Nasional', img: "https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?auto=format&fit=crop&q=80&w=1200" },
-      { id: '03', year: '2023', category: 'Interior', title: 'Executive Office', client: 'BUMN Financial', img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" }
+      { id: '02', year: '2022', category: 'Shotcrete', title: 'Slope Stabilization', client: 'Proyek Nasional', img: "https://images.unsplash.com/photo-1541913051-111440a1386e?auto=format&fit=crop&q=80&w=1200" },
+      { id: '03', year: '2023', category: 'Interior', title: 'Executive Office', client: 'BUMN Financial', img: "https://images.pexels.com/photos/7046155/pexels-photo-7046155.jpeg" }
     ]
   },
   contact: {

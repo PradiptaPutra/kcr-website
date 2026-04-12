@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
 
             <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="aspect-[4/3] bg-[#e5e5e0] rounded-[8px] overflow-hidden hidden lg:block">
               <img 
-                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=1200" 
+                src="https://images.pexels.com/photos/6794929/pexels-photo-6794929.jpeg" 
                 className="w-full h-full object-cover opacity-80" 
                 alt="Studio"
               />

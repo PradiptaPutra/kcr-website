@@ -107,7 +107,7 @@ const Catalog: React.FC = () => {
                   </div>
                   <div className="lg:col-span-8 grid grid-cols-2 gap-8">
                     <div className="bg-[#e5e5e0] aspect-[4/5] rounded-[4px] overflow-hidden"><img src={images.furniture} className="w-full h-full object-cover" alt="Furniture 1" /></div>
-                    <div className="bg-[#e5e5e0] aspect-[4/5] rounded-[4px] overflow-hidden mt-16"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" alt="Furniture 2" /></div>
+                    <div className="bg-[#e5e5e0] aspect-[4/5] rounded-[4px] overflow-hidden mt-16"><img src="https://images.pexels.com/photos/4985341/pexels-photo-4985341.jpeg" className="w-full h-full object-cover" alt="Furniture 2" /></div>
                   </div>
                 </div>
               </div>

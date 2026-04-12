@@ -11,10 +11,10 @@ const Portfolio: React.FC = () => {
   const projects = [
     { client: 'SEKTOR SWASTA', project: 'Shotcrete & Fondasi Dalam', year: '2023', category: 'INDUSTRIAL', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200' },
     { client: 'MITRA BUMN', project: 'Konstruksi Gedung Bertingkat', year: '2022', category: 'INFRASTRUKTUR', img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200' },
-    { client: 'PUSAT KOMERSIAL', project: 'Sistem Bangunan Prefabrikasi', year: '2023', category: 'KOMERSIAL', img: 'https://images.unsplash.com/photo-1518005020251-58296437f38d?auto=format&fit=crop&q=80&w=1200' },
-    { client: 'KOMPLEKS RESIDENSIAL', project: 'Perumahan Light Steel Frame', year: '2022', category: 'RESIDENSIAL', img: 'https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?auto=format&fit=crop&q=80&w=1200' },
-    { client: 'GUDANG INDUSTRIAL', project: 'Floor Hardening & Pelapisan Epoksi', year: '2023', category: 'INDUSTRIAL', img: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ec4?auto=format&fit=crop&q=80&w=1200' },
-    { client: 'PERUSAHAAN NEGARA', project: 'Perbaikan Struktural & Waterproofing', year: '2021', category: 'INFRASTRUKTUR', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200' },
+    { client: 'PUSAT KOMERSIAL', project: 'Sistem Bangunan Prefabrikasi', year: '2023', category: 'KOMERSIAL', img: 'https://cdn.pixabay.com/photo/2014/10/01/22/01/house-469036_1280.jpg' },
+    { client: 'KOMPLEKS RESIDENSIAL', project: 'Perumahan Light Steel Frame', year: '2022', category: 'RESIDENSIAL', img: 'https://images.unsplash.com/photo-1541913051-111440a1386e?auto=format&fit=crop&q=80&w=1200' },
+    { client: 'GUDANG INDUSTRIAL', project: 'Floor Hardening & Pelapisan Epoksi', year: '2023', category: 'INDUSTRIAL', img: 'https://cdn.pixabay.com/photo/2015/07/28/14/11/milling-864433_1280.jpg' },
+    { client: 'PERUSAHAAN NEGARA', project: 'Perbaikan Struktural & Waterproofing', year: '2021', category: 'INFRASTRUKTUR', img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200' },
   ];
 
   const filteredProjects = activeCategory === 'SEMUA'

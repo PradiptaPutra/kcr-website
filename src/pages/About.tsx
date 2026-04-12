@@ -42,7 +42,7 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <motion.div {...fadeInUp} className="lg:col-span-6 relative">
             <div className="aspect-[4/5] bg-[#1a1c19] overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover" alt="Origins" />
+              <img src="https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg" className="w-full h-full object-cover" alt="Origins" />
             </div>
           </motion.div>
           <motion.div {...fadeInUp} transition={{ delay: 0.2, duration: 1 }} className="lg:col-span-6">
@@ -71,7 +71,7 @@ const About: React.FC = () => {
               <p className="framer-body !text-white/50 max-w-sm">{kcrData.company.vision}</p>
             </motion.div>
             <motion.div {...fadeInUp} className="aspect-video bg-black overflow-hidden border-[0.5px] border-white/10 lg:ml-auto w-full">
-               <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover opacity-60" alt="Vision" />
+               <img src="https://images.pexels.com/photos/6615233/pexels-photo-6615233.jpeg" className="w-full h-full object-cover opacity-60" alt="Vision" />
             </motion.div>
           </div>
 
