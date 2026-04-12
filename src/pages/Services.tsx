@@ -33,7 +33,7 @@ const Services: React.FC = () => {
       {/* Grid of Main Services */}
       <section className="framer-container mb-20 md:mb-40">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-...          {kcrData.services.map((service, idx) => (
+          {kcrData.services.map((service, idx) => (
             <motion.article 
               key={service.id} 
               {...fadeInUp}

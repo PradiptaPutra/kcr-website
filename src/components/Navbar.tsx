@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { List, X, MagnifyingGlass, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SearchModal from './SearchModal';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -18,7 +20,7 @@ const Navbar: React.FC = () => {
   useEffect(() => setIsOpen(false), [location.pathname]);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen || isSearchOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -26,7 +28,7 @@ const Navbar: React.FC = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen]);
+  }, [isOpen, isSearchOpen]);
 
   const links = [
     { n: 'Produk', p: '/catalog' },
@@ -68,8 +70,9 @@ const Navbar: React.FC = () => {
           </div>
           <div className={`hidden lg:flex items-center gap-8 ${textColor}`}>
             <button 
-              className="opacity-40 transition-opacity"
+              className="opacity-40 hover:opacity-100 transition-opacity"
               aria-label="Search"
+              onClick={() => setIsSearchOpen(true)}
             >
               <MagnifyingGlass weight="light" size={20} />
             </button>
@@ -84,6 +87,9 @@ const Navbar: React.FC = () => {
           </button>
         </div>
       </nav>
+
+      {/* Global Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -120,12 +126,16 @@ const Navbar: React.FC = () => {
               <div className="mt-8 flex flex-col gap-8">
                 <div>
                   <span className="framer-label opacity-20 mb-4 block tracking-[0.6em] text-[10px]">Pencarian</span>
-                  <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="Cari produk atau layanan..."
-                      className="w-full bg-transparent border-b border-[#1a1c19]/10 py-3 text-[15px] focus:outline-none focus:border-[#1a1c19]/40 transition-all font-sans"
-                    />
+                  <div 
+                    className="relative cursor-text"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsSearchOpen(true);
+                    }}
+                  >
+                    <div className="w-full bg-transparent border-b border-[#1a1c19]/10 py-3 text-[15px] opacity-40 font-sans">
+                      Cari produk atau layanan...
+                    </div>
                     <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20" size={20} />
                   </div>
                 </div>
