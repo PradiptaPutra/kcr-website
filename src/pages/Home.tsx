@@ -119,7 +119,7 @@ const Home: React.FC = () => {
               Kami memahami bahwa setiap proyek konstruksi adalah investasi besar yang menuntut keamanan tanpa celah dan ketepatan waktu.
             </p>
             <p className="framer-body mb-10">
-              Sebagai **Spesialis Shotcrete Indonesia**, KCR tidak hanya sekadar membangun, tetapi memberikan solusi perkuatan struktur yang telah teruji pada Proyek Strategis Nasional. Kami menggabungkan metode konvensional yang rapi dengan inovasi sistem prefabrikasi untuk efisiensi maksimal.
+              Sebagai <strong className="text-brand">Spesialis Shotcrete Indonesia</strong>, KCR tidak hanya sekadar membangun, tetapi memberikan solusi perkuatan struktur yang telah teruji pada Proyek Strategis Nasional. Kami menggabungkan metode konvensional yang rapi dengan inovasi sistem prefabrikasi untuk efisiensi maksimal.
             </p>
             <Link to="/about" className="framer-label group flex items-center gap-4 hover:text-brand transition-all !opacity-100">
               Pelajari Standar Kualitas Kami <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
