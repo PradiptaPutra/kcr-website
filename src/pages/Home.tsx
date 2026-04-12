@@ -27,7 +27,7 @@ const Home: React.FC = () => {
       />
 
       {/* 1. HERO */}
-      <section className="relative h-screen w-full overflow-hidden bg-[#1a1c19] flex items-center justify-center">
+      <section className="relative h-screen w-full overflow-hidden bg-[#1a1c19] flex flex-col items-center">
         <motion.div 
           key={heroIndex}
           initial={{ scale: 1.05, opacity: 0 }}
@@ -39,7 +39,11 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </motion.div>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl">
+        {/* Vertical Spacer for Fixed Navbar */}
+        <div className="h-[72px] w-full shrink-0" />
+
+        {/* Main Content - Pushed to center of remaining space */}
+        <div className="relative z-10 text-center px-6 max-w-5xl flex-1 flex flex-col justify-center items-center">
            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 0.5 }} className="framer-label text-white mb-8 block tracking-[0.8em]">EST. 2006</motion.span>
            <h1 className="framer-h1 text-white mb-8">
              <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="block">Bangun Tanpa <span className="italic font-serif">Kompromi</span>,</motion.span>
@@ -58,10 +62,10 @@ const Home: React.FC = () => {
            </motion.div>
         </div>
 
-        {/* Trust Indicators - Authority & Social Proof */}
-        <div className="absolute bottom-32 left-0 w-full z-20 hidden md:block">
+        {/* Trust Indicators - Authority & Social Proof at the very bottom */}
+        <div className="relative z-20 w-full hidden md:block pb-12 shrink-0">
           <div className="framer-container">
-            <div className="grid grid-cols-3 gap-12 border-t border-white/10 pt-12">
+            <div className="grid grid-cols-3 gap-12 border-t border-white/10 pt-10">
               <div className="text-center">
                 <span className="block text-white text-3xl font-serif mb-2">17+</span>
                 <span className="text-white/40 uppercase tracking-widest text-xs">Tahun Pengalaman</span>
@@ -78,20 +82,21 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-12 right-12 z-20 flex items-center gap-8">
+        {/* Navigation Buttons - Moved to sides for better accessibility and zero overlap */}
+        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 flex justify-between px-8 pointer-events-none">
           <button 
             onClick={() => setHeroIndex(prev => (prev === 0 ? kcrData.images.hero.length - 1 : prev - 1))} 
-            className="text-white/40 hover:text-white transition-all"
+            className="text-white/20 hover:text-white transition-all pointer-events-auto p-4"
             aria-label="Previous Hero Image"
           >
-            <CaretLeft weight="light" size={24} />
+            <CaretLeft weight="light" size={32} />
           </button>
           <button 
             onClick={() => setHeroIndex(prev => (prev === kcrData.images.hero.length - 1 ? 0 : prev + 1))} 
-            className="text-white/40 hover:text-white transition-all"
+            className="text-white/20 hover:text-white transition-all pointer-events-auto p-4"
             aria-label="Next Hero Image"
           >
-            <CaretRight weight="light" size={24} />
+            <CaretRight weight="light" size={32} />
           </button>
         </div>
       </section>
