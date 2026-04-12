@@ -93,36 +93,6 @@ const Services: React.FC = () => {
           ))}
         </div>
       </section>
-
-      {/* CTA: REDESIGNED FOR BETTER INTEGRATION */}
-      <section className="py-40 bg-white border-t-[0.5px] border-[#1a1c19]/10 relative overflow-hidden">
-        <div className="framer-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <motion.div {...fadeInUp} className="lg:col-span-7">
-              <span className="framer-label text-brand mb-10 block tracking-[0.6em]">04 / Engagement</span>
-              <h2 className="framer-h1 !text-[42px] md:!text-[56px] leading-[1.1]">
-                Siap mengejawantahkan <br/>
-                <span className="italic font-serif text-brand">visi teknis</span> Anda?
-              </h2>
-            </motion.div>
-            
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:col-span-4 lg:col-start-9 flex flex-col gap-8">
-              <p className="framer-body !text-[16px]">
-                Konsultasikan kebutuhan RAB dan spesifikasi material proyek Anda bersama tim ahli kami untuk hasil yang saksama dan terukur.
-              </p>
-              <Link to="/contact" className="framer-btn group self-start">
-                <span>Hubungi Tim Teknis</span>
-                <ArrowRight weight="light" size={18} className="ml-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Decorative Watermark to connect the design */}
-        <div className="absolute -bottom-10 -right-10 font-serif text-[20vw] opacity-[0.02] pointer-events-none select-none whitespace-nowrap">
-          COLLABORATE
-        </div>
-      </section>
     </div>
   );
 };
