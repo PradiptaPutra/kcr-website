@@ -144,14 +144,14 @@ export const kcrData = {
       "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=2000"  // Site Construction
     ],
     catalog: {
-      prefab: "https://cdn.pixabay.com/photo/2014/10/01/22/01/house-469036_1280.jpg", // Steel Frame/Construction Site
-      shotcrete: "https://cdn.pixabay.com/photo/2016/11/19/11/33/footpath-1838767_1280.jpg", // Tunnel/Shotcrete
-      chemicals: "https://cdn.pixabay.com/photo/2015/07/28/14/11/milling-864433_1280.jpg", // Industrial Technical
+      prefab: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200", // Steel Frame/Construction Site
+      shotcrete: "https://images.unsplash.com/photo-1512403754473-27835f7b9984?auto=format&fit=crop&q=80&w=1200", // Tunnel/Shotcrete
+      chemicals: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=1200", // Industrial Technical
       furniture: "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg"  // Executive Office Local
     },
     portfolio: [
       { id: '01', year: '2023', category: 'Industrial', title: 'Logistics Warehouse', client: 'Sektor Swasta', img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" },
-      { id: '02', year: '2022', category: 'Shotcrete', title: 'Slope Stabilization', client: 'Proyek Nasional', img: "https://images.unsplash.com/photo-1541913051-111440a1386e?auto=format&fit=crop&q=80&w=1200" },
+      { id: '02', year: '2022', category: 'Shotcrete', title: 'Slope Stabilization', client: 'Proyek Nasional', img: "https://images.unsplash.com/photo-1512403754473-27835f7b9984?auto=format&fit=crop&q=80&w=1200" },
       { id: '03', year: '2023', category: 'Interior', title: 'Fit-Out Interior Eksekutif', client: 'BUMN Financial', img: "/assets/images/overview/PRIME_SERIES_cropped.jpg" }
     ]
   },

@@ -12,9 +12,9 @@ const Portfolio: React.FC = () => {
     { client: 'BUMN FINANCIAL', project: 'Fit-Out Interior Eksekutif', year: '2023', category: 'INTERIOR', img: '/assets/images/overview/PRIME_SERIES_cropped.jpg' },
     { client: 'SEKTOR SWASTA', project: 'Shotcrete & Fondasi Dalam', year: '2023', category: 'INDUSTRIAL', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200' },
     { client: 'MITRA BUMN', project: 'Konstruksi Gedung Bertingkat', year: '2022', category: 'INFRASTRUKTUR', img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200' },
-    { client: 'PUSAT KOMERSIAL', project: 'Sistem Bangunan Prefabrikasi', year: '2023', category: 'KOMERSIAL', img: 'https://cdn.pixabay.com/photo/2014/10/01/22/01/house-469036_1280.jpg' },
-    { client: 'KOMPLEKS RESIDENSIAL', project: 'Perumahan Light Steel Frame', year: '2022', category: 'RESIDENSIAL', img: 'https://images.unsplash.com/photo-1541913051-111440a1386e?auto=format&fit=crop&q=80&w=1200' },
-    { client: 'GUDANG INDUSTRIAL', project: 'Floor Hardening & Pelapisan Epoksi', year: '2023', category: 'INDUSTRIAL', img: 'https://cdn.pixabay.com/photo/2015/07/28/14/11/milling-864433_1280.jpg' },
+    { client: 'PUSAT KOMERSIAL', project: 'Sistem Bangunan Prefabrikasi', year: '2023', category: 'KOMERSIAL', img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200' },
+    { client: 'KOMPLEKS RESIDENSIAL', project: 'Perumahan Light Steel Frame', year: '2022', category: 'RESIDENSIAL', img: 'https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?auto=format&fit=crop&q=80&w=1200' },
+    { client: 'GUDANG INDUSTRIAL', project: 'Floor Hardening & Pelapisan Epoksi', year: '2023', category: 'INDUSTRIAL', img: 'https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=1200' },
     { client: 'PERUSAHAAN NEGARA', project: 'Perbaikan Struktural & Waterproofing', year: '2021', category: 'INFRASTRUKTUR', img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200' },
   ];
 
@@ -29,7 +29,7 @@ const Portfolio: React.FC = () => {
         description="Lihat berbagai proyek sukses yang telah kami kerjakan. Bukti nyata kualitas kerja kami sebagai kontraktor dan spesialis shotcrete yang terpercaya."
         keywords="Portofolio Kontraktor, Proyek Shotcrete, Proyek BUMN, Konstruksi Gedung, PT KCR"
         canonicalUrl="/portfolio"
-        aeoAnswer="Portofolio PT. KARYA CIPTA RAHARJA mencakup berbagai Proyek Strategis Nasional dan infrastruktur vital di seluruh Indonesia. Sebagai Kontraktor Bangunan BUMN dan Spesialis Shotcrete terpercaya, kami mendemonstrasikan integritas struktural, presisi, dan efisiensi dalam setiap pembangunan gedung komersial, fasilitas industrial, hingga stabilisasi lereng infrastruktur."
+        aeoAnswer="Portofolio PT. KARYA CIPTA RAHARJA mencakup berbagai Proyek Strategis Nasional dan infrastruktur vital di seluruh Indonesia. Sebagai Kontraktor Bangunan BUMN and Spesialis Shotcrete terpercaya, kami mendemonstrasikan integritas struktural, presisi, dan efisiensi dalam setiap pembangunan gedung komersial, fasilitas industrial, hingga stabilisasi lereng infrastruktur."
       />
 
       {/* 1. EDITORIAL HEADER */}
@@ -103,7 +103,7 @@ const Portfolio: React.FC = () => {
                   </div>
                   
                   <div className="flex justify-between items-center">
-                     <span className="framer-label opacity-30 !text-[9px]">Case Study 0{idx + 1}</span>
+                     <span className="framer-label opacity-30 !text-[9px]">Portofolio 0{idx + 1}</span>
                      <motion.div 
                        whileHover={{ x: 5, y: -5 }}
                        className="w-12 h-12 rounded-full border-[0.5px] border-[#2A2C2B]/10 flex items-center justify-center cursor-pointer hover:bg-[#2A2C2B] hover:text-white transition-all duration-500"
@@ -122,7 +122,7 @@ const Portfolio: React.FC = () => {
       <section className="mt-60 framer-container">
         <div className="flex flex-col items-center">
            <div className="w-px h-32 bg-gradient-to-b from-[#2A2C2B]/10 to-transparent" />
-           <p className="framer-label opacity-20 mt-12 tracking-[1em]">Archives</p>
+           <p className="framer-label opacity-20 mt-12 tracking-[1em]">Portofolio</p>
         </div>
       </section>
     </div>

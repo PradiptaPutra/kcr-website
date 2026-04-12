@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { CaretRight, CaretLeft, ArrowUpRight } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
+import ProductCard from '../components/ProductCard';
 
 const Home: React.FC = () => {
   const [heroIndex, setHeroIndex] = useState(0);
@@ -265,30 +266,23 @@ const Home: React.FC = () => {
       {/* 6. ARCHIVES - Proof of Competence */}
       <section className="py-32 bg-[#2A2C2B] text-[#F5F5F0]">
         <div className="framer-container">
-          <motion.div {...fadeInUp} className="mb-24 flex justify-between items-end border-b border-white/10 pb-10">
+          <motion.div {...fadeInUp} className="mb-24 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-10 gap-6">
             <h2 className="framer-h1 !text-[42px] text-white">Bukti Nyata Karya Kami</h2>
-            <span className="framer-label !text-white/40">2021 — 2024</span>
+            <Link to="/portfolio" className="framer-label !text-white hover:text-brand transition-all flex items-center gap-3">
+              Lihat Semua Proyek <CaretRight weight="bold" />
+            </Link>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-20">
-            {kcrData.images.portfolio.map((p) => (
-              <motion.article 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {kcrData.images.portfolio.map((p, idx) => (
+              <ProductCard 
                 key={p.id}
-                {...fadeInUp}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center group"
-              >
-                <div className="lg:col-span-7 overflow-hidden rounded-[8px]">
-                  <img src={p.img} alt={`KCR Project Archive: ${p.title} - ${p.category}`} className="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
-                </div>
-                <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-6">
-                  <span className="framer-label !text-[#F5F5F0] !opacity-100">{p.year} / {p.category}</span>
-                  <h3 className="font-serif text-[32px] leading-tight text-white">{p.title}</h3>
-                  <p className="framer-body !text-white/50">{p.client}</p>
-                  <Link to="/portfolio" className="framer-label !text-white hover:text-brand transition-all flex items-center gap-3">
-                    Detail Proyek <CaretRight weight="bold" />
-                  </Link>
-                </div>
-              </motion.article>
+                series={p.title}
+                img={p.img}
+                description={p.client}
+                label={`${p.year} / ${p.category}`}
+                index={idx}
+              />
             ))}
           </div>
         </div>
