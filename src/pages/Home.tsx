@@ -39,17 +39,43 @@ const Home: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </motion.div>
 
-        <div className="relative z-10 text-center px-6">
+        <div className="relative z-10 text-center px-6 max-w-5xl">
            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 0.5 }} className="framer-label text-white mb-8 block tracking-[0.8em]">EST. 2006</motion.span>
-           <h1 className="framer-h1 text-white mb-12">
-             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="block">Kualitas <span className="italic font-serif">Terbaik</span></motion.span>
-             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 0.8 }} transition={{ delay: 0.9 }} className="block font-serif italic text-white/80">untuk Proyek Anda.</motion.span>
+           <h1 className="framer-h1 text-white mb-8">
+             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="block">Bangun Tanpa <span className="italic font-serif">Kompromi</span>,</motion.span>
+             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 0.8 }} transition={{ delay: 0.9 }} className="block font-serif italic text-white/80">Presisi Tanpa Henti.</motion.span>
            </h1>
-           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
-             <Link to="/portfolio" className="framer-btn !border-white/40 !text-white hover:!bg-white hover:!text-[#2A2C2B]">
-               Lihat Proyek Kami
+           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} className="text-white/60 text-lg mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+             Mitra Kontraktor & Spesialis Shotcrete terpercaya dengan pengalaman 17+ tahun dalam membangun infrastruktur dan Proyek Strategis Nasional.
+           </motion.p>
+           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="flex flex-col sm:flex-row items-center justify-center gap-6">
+             <Link to="/contact" className="framer-btn !bg-brand !text-white border-none hover:scale-105 transition-transform px-10">
+               Konsultasi Proyek Gratis
+             </Link>
+             <Link to="/portfolio" className="framer-btn !border-white/40 !text-white hover:!bg-white hover:!text-[#2A2C2B] px-10">
+               Lihat Portofolio Kami
              </Link>
            </motion.div>
+        </div>
+
+        {/* Trust Indicators - Authority & Social Proof */}
+        <div className="absolute bottom-32 left-0 w-full z-20 hidden md:block">
+          <div className="framer-container">
+            <div className="grid grid-cols-3 gap-12 border-t border-white/10 pt-12">
+              <div className="text-center">
+                <span className="block text-white text-3xl font-serif mb-2">17+</span>
+                <span className="text-white/40 uppercase tracking-widest text-xs">Tahun Pengalaman</span>
+              </div>
+              <div className="text-center">
+                <span className="block text-white text-3xl font-serif mb-2">100+</span>
+                <span className="text-white/40 uppercase tracking-widest text-xs">Proyek Selesai</span>
+              </div>
+              <div className="text-center">
+                <span className="block text-white text-3xl font-serif mb-2">BUMN</span>
+                <span className="text-white/40 uppercase tracking-widest text-xs">Mitra Terpercaya</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="absolute bottom-12 right-12 z-20 flex items-center gap-8">
@@ -70,66 +96,172 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. NARRATIVE - Softer Contrast */}
+      {/* 2. NARRATIVE - Jobs to Be Done & Authority */}
       <section className="py-32 framer-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <motion.div {...fadeInUp} className="lg:col-span-5 border-l-2 border-brand pl-10 py-2">
-            <span className="framer-label text-brand mb-8 block">01 / TENTANG KAMI</span>
+            <span className="framer-label text-brand mb-8 block">01 / MENGAPA KAMI</span>
             <h2 className="framer-h2 leading-tight text-[#2A2C2B]">
-              Membangun dengan <br/> 
-              <span className="italic text-brand font-serif text-[1.1em]">sepenuh hati.</span>
+              Keahlian Teknis untuk <br/> 
+              <span className="italic text-brand font-serif text-[1.1em]">Struktur Masa Depan.</span>
             </h2>
           </motion.div>
           
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:col-span-6 lg:col-start-7">
-            <p className="framer-body !text-[18px] mb-10 text-[#2A2C2B]/90">
-              {kcrData.company.description}
+            <p className="framer-body !text-[18px] mb-10 text-[#2A2C2B] font-medium">
+              Kami memahami bahwa setiap proyek konstruksi adalah investasi besar yang menuntut keamanan tanpa celah dan ketepatan waktu.
             </p>
-            <p className="framer-body mb-12">
-              {kcrData.company.introduction}
+            <p className="framer-body mb-10">
+              Sebagai **Spesialis Shotcrete Indonesia**, KCR tidak hanya sekadar membangun, tetapi memberikan solusi perkuatan struktur yang telah teruji pada Proyek Strategis Nasional. Kami menggabungkan metode konvensional yang rapi dengan inovasi sistem prefabrikasi untuk efisiensi maksimal.
             </p>
             <Link to="/about" className="framer-label group flex items-center gap-4 hover:text-brand transition-all !opacity-100">
-              Kenali Kami Lebih Dekat <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
+              Pelajari Standar Kualitas Kami <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* 3. SOLUTIONS - More User Friendly Grid */}
+      {/* 3. SOLUTIONS - Benefits Oriented (JTBD) */}
       <section className="py-32 framer-container border-t border-[#2A2C2B]/5">
         <motion.div {...fadeInUp} className="mb-20">
-          <span className="framer-label text-brand mb-6 block">02 / LAYANAN</span>
-          <h2 className="framer-h2 text-[#2A2C2B]">Keahlian Kami</h2>
+          <span className="framer-label text-brand mb-6 block">02 / SOLUSI</span>
+          <h2 className="framer-h2 text-[#2A2C2B]">Fokus Pada Hasil & Keamanan</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {kcrData.services.map((s, idx) => (
-            <motion.div 
-              key={s.id}
-              {...fadeInUp}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
-            >
-              <div className="flex justify-between items-start">
-                <span className="framer-label text-brand !opacity-100">0{idx + 1}</span>
-                <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
-                  <ArrowUpRight weight="light" size={20} />
-                </div>
+          <motion.div 
+            {...fadeInUp}
+            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
+          >
+            <div className="flex justify-between items-start">
+              <span className="framer-label text-brand !opacity-100">01</span>
+              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                <ArrowUpRight weight="light" size={20} />
               </div>
-              <div className="flex flex-col gap-4">
-                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">{s.title}</h3>
-                <p className="framer-body !text-[15px] opacity-80">{s.description}</p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Manajemen Proyek Terpadu</h3>
+              <p className="framer-body !text-[15px] opacity-80">Dari tahap perencanaan hingga serah terima, kami memastikan kontrol kualitas yang ketat sehingga proyek Anda selesai tepat waktu tanpa pembengkakan biaya.</p>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            {...fadeInUp}
+            transition={{ delay: 0.1 }}
+            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
+          >
+            <div className="flex justify-between items-start">
+              <span className="framer-label text-brand !opacity-100">02</span>
+              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                <ArrowUpRight weight="light" size={20} />
               </div>
-            </motion.div>
-          ))}
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Proteksi Lereng & Infrastruktur</h3>
+              <p className="framer-body !text-[15px] opacity-80">Spesialisasi Shotcrete kami memberikan keamanan ekstra pada area rawan longsor dan dinding terowongan dengan aplikasi beton semprot yang presisi.</p>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            {...fadeInUp}
+            transition={{ delay: 0.2 }}
+            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
+          >
+            <div className="flex justify-between items-start">
+              <span className="framer-label text-brand !opacity-100">03</span>
+              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                <ArrowUpRight weight="light" size={20} />
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Konstruksi Prefab Modern</h3>
+              <p className="framer-body !text-[15px] opacity-80">Percepat waktu pembangunan hingga 40% dengan sistem rangka baja ringan prefabrikasi yang akurat dan efisien untuk berbagai jenis bangunan.</p>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            {...fadeInUp}
+            transition={{ delay: 0.3 }}
+            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
+          >
+            <div className="flex justify-between items-start">
+              <span className="framer-label text-brand !opacity-100">04</span>
+              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                <ArrowUpRight weight="light" size={20} />
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Fit-Out Interior Eksekutif</h3>
+              <p className="framer-body !text-[15px] opacity-80">Menciptakan ruang kerja yang produktif dengan furnitur custom berkualitas tinggi yang mencerminkan prestise dan profesionalisme perusahaan Anda.</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 4. ARCHIVES - Clearer Visibility */}
+      {/* 4. STRATEGIC ADVANTAGES - Authority & Loss Aversion */}
+      <section className="py-32 bg-white relative overflow-hidden">
+        <div className="framer-container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <motion.div {...fadeInUp} className="lg:col-span-6">
+              <span className="framer-label text-brand mb-8 block tracking-[0.6em]">KEUNGGULAN STRATEGIS</span>
+              <h2 className="framer-h2 mb-12 text-[#2A2C2B]">Mengapa Proyek Besar <br/><span className="italic font-serif text-brand">Mempercayakan KCR?</span></h2>
+              <div className="space-y-10">
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">1</div>
+                  <div>
+                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Zero Delay Management</h3>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Kami menggunakan sistem manajemen lapangan yang rapi untuk menghindari hambatan operasional yang sering kali menyebabkan pembengkakan biaya pada proyek konstruksi.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">2</div>
+                  <div>
+                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Sertifikasi & Standar Nasional</h3>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Kepatuhan ketat terhadap standar teknis dan K3, memastikan setiap struktur yang kami bangun memiliki daya tahan jangka panjang dan keamanan maksimal.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">3</div>
+                  <div>
+                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Teknologi Shotcrete Teruji</h3>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Sebagai spesialis, kami memiliki peralatan dan tim ahli yang mampu menangani medan tersulit sekalipun, mulai dari lereng curam hingga terowongan.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="lg:col-span-5 lg:col-start-8">
+              <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl group">
+                <img src={kcrData.images.hero[2]} alt="KCR Field Operation" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-brand/20 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/90 backdrop-blur-md rounded-xl">
+                  <p className="framer-body !text-brand italic font-serif text-lg mb-2">"Keamanan bukan sekadar opsi, melainkan pondasi utama dari setiap jengkal beton yang kami aplikasikan."</p>
+                  <p className="framer-label !text-[#2A2C2B] !opacity-100">— Tim Teknis KCR</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. TRUSTED BY - Social Proof */}
+      <section className="py-24 border-y border-[#2A2C2B]/5 bg-[#F5F5F0]/50">
+        <div className="framer-container text-center">
+          <span className="framer-label text-[#2A2C2B]/40 mb-12 block tracking-[0.4em]">DIPERCAYA OLEH MITRA STRATEGIS</span>
+          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 hover:opacity-100 transition-opacity duration-500 grayscale">
+             {/* Generic Placeholders representing BUMN/Swasta for Social Proof */}
+             <div className="font-serif text-2xl tracking-tighter">BUMN <span className="text-brand">Karya</span></div>
+             <div className="font-serif text-2xl tracking-tighter">Sektor <span className="text-brand">Energi</span></div>
+             <div className="font-serif text-2xl tracking-tighter">Industri <span className="text-brand">Nasional</span></div>
+             <div className="font-serif text-2xl tracking-tighter">Swasta <span className="text-brand">Logistik</span></div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. ARCHIVES - Proof of Competence */}
       <section className="py-32 bg-[#2A2C2B] text-[#F5F5F0]">
         <div className="framer-container">
           <motion.div {...fadeInUp} className="mb-24 flex justify-between items-end border-b border-white/10 pb-10">
-            <h2 className="framer-h1 !text-[42px] text-white">Karya Kami</h2>
+            <h2 className="framer-h1 !text-[42px] text-white">Bukti Nyata Karya Kami</h2>
             <span className="framer-label !text-white/40">2021 — 2024</span>
           </motion.div>
 
@@ -148,7 +280,7 @@ const Home: React.FC = () => {
                   <h3 className="font-serif text-[32px] leading-tight text-white">{p.title}</h3>
                   <p className="framer-body !text-white/50">{p.client}</p>
                   <Link to="/portfolio" className="framer-label !text-white hover:text-brand transition-all flex items-center gap-3">
-                    Lihat Detail Proyek <CaretRight weight="bold" />
+                    Detail Proyek <CaretRight weight="bold" />
                   </Link>
                 </div>
               </motion.article>
@@ -157,14 +289,22 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA */}
+      {/* 5. CTA - Reciprocity & Loss Aversion */}
       <section className="py-40 framer-container text-center relative overflow-hidden">
         <motion.div {...fadeInUp}>
-          <span className="framer-label text-brand mb-8 block tracking-[0.8em]">KOLABORASI</span>
-          <h2 className="framer-h1 mb-16 text-[#2A2C2B]">Mari mulai <span className="italic font-serif text-brand">proyek Anda</span> bersama kami.</h2>
-          <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white hover:!bg-brand border-none">
-            Konsultasi Gratis Sekarang
-          </Link>
+          <span className="framer-label text-brand mb-8 block tracking-[0.8em]">KONSULTASI</span>
+          <h2 className="framer-h1 mb-8 text-[#2A2C2B]">Jangan Biarkan Proyek Anda <span className="italic font-serif text-brand">Terhambat.</span></h2>
+          <p className="framer-body max-w-2xl mx-auto mb-16 text-[#2A2C2B]/70">
+            Dapatkan analisis teknis dan konsultasi anggaran awal gratis dari tim ahli kami untuk memastikan proyek Anda berjalan efisien sejak hari pertama.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white hover:!bg-brand border-none px-12">
+              Mulai Konsultasi Gratis
+            </Link>
+            <a href="mailto:info@karyaciptaraharja.com" className="framer-label hover:text-brand transition-all flex items-center gap-2">
+              Atau kirim email penawaran <CaretRight weight="bold" />
+            </a>
+          </div>
         </motion.div>
       </section>
     </div>
