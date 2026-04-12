@@ -33,20 +33,98 @@ export const kcrData = {
     executiveDesks: [
       {
         series: "INCORE SERIES",
+        description: "Personal executive and standalone desk suitable for corporate or personal activities.",
         models: [
-          { name: "Incore IST 01 - 24", dim: "240 x 240 x 75" },
-          { name: "Incore IST 02 - 24", dim: "270 x 240 x 75" }
-        ]
+          { name: "Standalone Standard", dim: "140 x 70 x 75" },
+          { name: "IST 01 Line", dim: "160x160x75 to 240x240x75" },
+          { name: "IST 02 Line", dim: "190x160x75 to 270x240x75" }
+        ],
+        accessories: ["Valo CRB 01 storage", "Electrical grommets", "Pop-up power sockets"]
+      },
+      {
+        series: "PRIME SERIES",
+        description: "Elegant, modern, and firm design with integrated ergonomics and clean electrical management.",
+        models: [
+          { name: "Prime Compact", dim: "180x86x75 to 260x86x75" },
+          { name: "Prime Extent / Solid", dim: "180x200x75 to 260x200x75" }
+        ],
+        accessories: ["Hidden cable management", "Pop-up power sockets", "Valo CRB 02"]
+      },
+      {
+        series: "LUNA SERIES",
+        description: "Versatile executive desks and meeting tables with high-end aesthetics.",
+        models: [
+          { name: "Luna FST Executive", dim: "160x200x75 to 200x200x75" },
+          { name: "Luna Meeting Table", dim: "Lengths: 280, 300, 360" }
+        ],
+        accessories: ["Valo CRB 03"]
+      },
+      {
+        series: "NOVA SERIES",
+        description: "Sleek professional desk systems for modern office environments.",
+        models: [
+          { name: "Nova FST Desk", dim: "160x200x75 to 200x200x75" },
+          { name: "Nova Meeting Table", dim: "Lengths: 240, 280, 300" }
+        ],
+        accessories: ["Valo CRB 04"]
       }
     ],
     workstations: [
       {
         series: "MODERNA SERIES",
+        description: "Integrated character to maximize team performance with organized storage.",
         models: [
-          { name: "Moderna MSA", capacity: "4,6,8 Px" }
+          { name: "Base MS 1/2/3", dim: "240 x 120 x 75" },
+          { name: "MSA/MSB/MSC", capacity: "4, 6, 8 Persons" }
+        ],
+        accessories: ["Mobile drawers MD-01/02/03", "Pop-up power"]
+      },
+      {
+        series: "FORMA SERIES",
+        description: "Modular design offering high configuration flexibility for practical office storage.",
+        models: [
+          { name: "FWA (1 Px)", dim: "120 x 60 x 75" },
+          { name: "FWB/FWC/FWD", capacity: "2, 4, 6, 8 Persons" }
+        ],
+        accessories: ["Fixed drawers FX-01/FD-03", "Vertical wire managers"]
+      },
+      {
+        series: "LAMINA SERIES",
+        description: "Uniformity for office staff with customizable storage and cable management.",
+        models: [
+          { name: "Lamina Compact", dim: "140x70x75 / 160x70x75" },
+          { name: "Lamina Extent", dim: "140x150x75 / 160x170x75" }
+        ],
+        accessories: ["Compact/Extent drawers", "Electrical grommets"]
+      }
+    ],
+    meetingTables: [
+      {
+        series: "FERMI SERIES",
+        models: [
+          { name: "Fermi ST (Meeting)", dim: "240x120x75 to 500x180x75", capacity: "6-16 Persons" },
+          { name: "Fermi RMT (Round)", dim: "120 x 120 x 75", finishes: "Laminate / Solid Wood" }
         ]
       }
-    ]
+    ],
+    hospitality: [
+      {
+        series: "BARA DINING",
+        models: [
+          { name: "Bara 01/02/03", capacity: "4, 6, 8 Persons", dim: "160x100 to 220x120" }
+        ]
+      },
+      {
+        series: "COSMO BED",
+        models: [
+          { name: "Queen/King/Super King", dim: "Widths: 168, 188, 208" }
+        ],
+        accessories: ["Bedheads CBV/CBS", "Side drawers CSD 01/02/03"]
+      }
+    ],
+    additional: {
+      items: ["Multi Purpose Desks (MST)", "Hardwood Doors (DT)", "Dining Chairs (KM)", "Coffee Tables (Bohr)"]
+    }
   },
   // CENTRALIZED & VERIFIED IMAGES (Guaranteed No 404)
   images: {

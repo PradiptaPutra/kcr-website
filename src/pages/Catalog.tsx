@@ -42,7 +42,10 @@ const Catalog: React.FC = () => {
             { id: 'prefab', l: 'Prefabrikasi' },
             { id: 'shotcrete', l: 'Shotcrete' },
             { id: 'chemicals', l: 'Kimia' },
-            { id: 'furniture', l: 'Produk Furnitur' },
+            { id: 'furniture', l: 'Executive Desks' },
+            { id: 'workstation', l: 'Workstations' },
+            { id: 'meeting', l: 'Meeting Tables' },
+            { id: 'hospitality', l: 'Hospitality' },
           ].map((t) => (
             <button key={t.id} onClick={() => setActiveSection(t.id as any)} className={`framer-label transition-all duration-500 relative pb-2 ${activeSection === t.id ? 'opacity-100 font-bold' : 'opacity-30 hover:opacity-100'}`}>
               {t.l}
@@ -92,12 +95,19 @@ const Catalog: React.FC = () => {
                           {expandedSeries === s.series && (
                             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                               <div className="mt-8 space-y-4">
+                                <p className="text-[12px] opacity-60 mb-6">{s.description}</p>
                                 {s.models.map(m => (
                                   <div key={m.name} className="framer-body !text-[13px] border-t-[0.5px] border-[#1a1c19]/5 pt-4">
                                     <p className="font-medium text-[#1a1c19] mb-1">{m.name}</p>
-                                    <p>Dim: {m.dim} cm</p>
+                                    <p>Dim: {m.dim}</p>
                                   </div>
                                 ))}
+                                <div className="mt-6 pt-4 border-t border-brand/10">
+                                  <p className="text-[10px] uppercase font-bold text-brand mb-2">Features</p>
+                                  <div className="flex flex-wrap gap-2">
+                                    {s.accessories.map(a => <span key={a} className="text-[10px] bg-brand/5 px-2 py-1">{a}</span>)}
+                                  </div>
+                                </div>
                               </div>
                             </motion.div>
                           )}
@@ -112,6 +122,76 @@ const Catalog: React.FC = () => {
                 </div>
               </div>
             </div>
+          </motion.section>
+        )}
+
+        {activeSection === 'workstation' && (
+          <motion.section key="workstation" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="framer-container">
+             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+               {kcrData.products.workstations.map((s) => (
+                  <div key={s.series} className="bg-white p-10 border border-[#1a1c19]/5 rounded-[12px]">
+                    <span className="framer-label text-brand mb-4 block">{s.series}</span>
+                    <p className="framer-body !text-[14px] mb-8">{s.description}</p>
+                    <div className="space-y-4">
+                       {s.models.map(m => (
+                         <div key={m.name} className="flex justify-between text-[13px] border-b border-[#1a1c19]/5 pb-2">
+                            <span className="font-medium">{m.name}</span>
+                            <span className="opacity-40">{m.dim || m.capacity}</span>
+                         </div>
+                       ))}
+                    </div>
+                  </div>
+               ))}
+             </div>
+          </motion.section>
+        )}
+
+        {activeSection === 'meeting' && (
+          <motion.section key="meeting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="framer-container">
+             <div className="max-w-4xl mx-auto space-y-12">
+               {kcrData.products.meetingTables.map((s) => (
+                 <div key={s.series} className="bg-[#1a1c19] text-white p-16 rounded-[12px]">
+                    <h2 className="font-serif text-[32px] mb-12 border-b border-white/10 pb-6">{s.series}</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                       {s.models.map(m => (
+                         <div key={m.name} className="space-y-4">
+                            <h3 className="text-brand uppercase tracking-widest text-[12px]">{m.name}</h3>
+                            <p className="text-[20px] font-serif">{m.dim}</p>
+                            <p className="text-white/40 text-[13px]">{m.capacity || m.finishes}</p>
+                         </div>
+                       ))}
+                    </div>
+                 </div>
+               ))}
+             </div>
+          </motion.section>
+        )}
+
+        {activeSection === 'hospitality' && (
+          <motion.section key="hospitality" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="framer-container">
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                {kcrData.products.hospitality.map(s => (
+                  <div key={s.series} className="bg-white p-12 border border-[#1a1c19]/5 rounded-[12px]">
+                    <h3 className="font-serif text-[28px] mb-8">{s.series}</h3>
+                    <div className="space-y-6">
+                      {s.models.map(m => (
+                        <div key={m.name} className="flex flex-col gap-2">
+                          <span className="font-medium text-[#1a1c19]">{m.name}</span>
+                          <span className="text-[13px] opacity-40">{m.dim}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+             </div>
+             <div className="mt-20 p-12 border-t border-[#1a1c19]/10">
+                <p className="framer-label mb-8">Additional Products</p>
+                <div className="flex flex-wrap gap-4">
+                   {kcrData.products.additional.items.map(i => (
+                     <span key={i} className="px-6 py-3 bg-[#1a1c19] text-white rounded-full text-[12px]">{i}</span>
+                   ))}
+                </div>
+             </div>
           </motion.section>
         )}
 
