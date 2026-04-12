@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { CaretRight, CaretLeft, ArrowUpRight } from '@phosphor-icons/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CaretRight, CaretLeft, ArrowUpRight, X } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
 
 const Home: React.FC = () => {
   const [heroIndex, setHeroIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   const fadeInUp = {
     initial: { y: 20, opacity: 0 },
@@ -237,9 +238,14 @@ const Home: React.FC = () => {
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="lg:col-span-5 lg:col-start-8">
               <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl group">
-                <img src={kcrData.images.hero[2]} alt="KCR Field Operation" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-brand/20 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/90 backdrop-blur-md rounded-xl">
+                <img 
+                  src={kcrData.images.hero[2]} 
+                  alt="KCR Field Operation" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" 
+                  onClick={() => setSelectedImage(kcrData.images.hero[2])}
+                />
+                <div className="absolute inset-0 bg-brand/20 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/90 backdrop-blur-md rounded-xl pointer-events-none">
                   <p className="framer-body !text-brand italic font-serif text-lg mb-2">"Keamanan bukan sekadar opsi, melainkan pondasi utama dari setiap jengkal beton yang kami aplikasikan."</p>
                   <p className="framer-label !text-[#2A2C2B] !opacity-100">— Tim Teknis KCR</p>
                 </div>
@@ -282,6 +288,7 @@ const Home: React.FC = () => {
                 description={p.client}
                 label={`${p.year} / ${p.category}`}
                 index={idx}
+                onImageClick={setSelectedImage}
               />
             ))}
           </div>
@@ -306,6 +313,31 @@ const Home: React.FC = () => {
           </div>
         </motion.div>
       </section>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8 cursor-zoom-out backdrop-blur-sm"
+          >
+            <button className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors" onClick={() => setSelectedImage(null)}>
+              <X weight="light" size={32} />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              src={selectedImage}
+              alt="Enlarged Detail"
+              className="max-w-full max-h-full object-contain shadow-2xl"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

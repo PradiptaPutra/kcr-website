@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRight, X } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
@@ -9,6 +9,7 @@ import PageHeader from '../components/PageHeader';
 const Catalog: React.FC = () => {
   const [mainPillar, setMainPillar] = useState<'infrastructure' | 'interior'>('infrastructure');
   const [activeSection, setActiveSection] = useState<string>('all');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = kcrData.images.catalog;
   const tabTransition = { type: "spring", stiffness: 500, damping: 35 } as any;
@@ -112,15 +113,15 @@ const Catalog: React.FC = () => {
                   <div className="aspect-[16/10] overflow-hidden rounded-[8px] mb-8 bg-[#e5e5e0]">
                     <motion.img 
                       src={card.img} 
-                      className="w-full h-full object-cover" 
-                      whileHover={{ scale: 1.05 }}
+                      className="w-full h-full object-cover cursor-zoom-in" 
                       transition={{ duration: 0.8 }}
                       alt={card.l} 
+                      onClick={(e) => { e.stopPropagation(); setSelectedImage(card.img || null); }}
                     />
                   </div>
                   <span className="framer-label text-brand mb-4 block">Sub-Kategori</span>
                   <h2 className="font-serif text-[28px] text-[#1a1c19] mb-2">{card.l}</h2>
-                  <p className="framer-body !text-[14px] opacity-50 mb-6">{card.c}</p>
+                  <p className="framer-body !text-[14px] text-[#1a1c19]/70 mb-6">{card.c}</p>
                   <div className="flex items-center gap-3 text-brand">
                     <span className="text-[11px] uppercase tracking-tighter font-bold">Lihat Detail</span>
                     <ArrowRight weight="bold" size={16} />
@@ -144,6 +145,7 @@ const Catalog: React.FC = () => {
                   {...s}
                   label="Executive Collection"
                   index={idx}
+                  onImageClick={setSelectedImage}
                 />
               ))}
             </div>
@@ -163,6 +165,7 @@ const Catalog: React.FC = () => {
                   {...s}
                   label="Team Performance"
                   index={idx}
+                  onImageClick={setSelectedImage}
                 />
               ))}
             </div>
@@ -182,6 +185,7 @@ const Catalog: React.FC = () => {
                   {...s}
                   label="Boardroom Solutions"
                   index={idx}
+                  onImageClick={setSelectedImage}
                 />
               ))}
             </div>
@@ -201,6 +205,7 @@ const Catalog: React.FC = () => {
                   {...s}
                   label="Hospitality Series"
                   index={idx}
+                  onImageClick={setSelectedImage}
                 />
               ))}
             </div>
@@ -220,9 +225,35 @@ const Catalog: React.FC = () => {
                 description="Kami menghadirkan solusi teknis kelas dunia yang telah teruji untuk infrastruktur vital nasional, menjamin durabilitas jangka panjang dan keamanan struktural."
                 label="Spesialisasi Teknis"
                 layout="row"
+                onImageClick={setSelectedImage}
               />
             </div>
           </motion.section>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8 cursor-zoom-out backdrop-blur-sm"
+          >
+            <button className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors" onClick={() => setSelectedImage(null)}>
+              <X weight="light" size={32} />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              src={selectedImage}
+              alt="Enlarged Detail"
+              className="max-w-full max-h-full object-contain shadow-2xl"
+            />
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

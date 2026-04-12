@@ -44,7 +44,7 @@ const Portfolio: React.FC = () => {
         <div className="framer-container py-5 flex flex-wrap items-center gap-x-10 gap-y-3">
           <button 
             onClick={() => setActiveCategory('SEMUA')}
-            className={`framer-label transition-all duration-500 relative pb-1 ${activeCategory === 'SEMUA' ? 'opacity-100 text-[#2A2C2B]' : 'opacity-40 hover:opacity-100'}`}
+            className={`framer-label transition-all duration-500 relative pb-1 ${activeCategory === 'SEMUA' ? 'opacity-100 text-[#2A2C2B]' : 'opacity-60 hover:opacity-100'}`}
           >
             Semua ({projects.length})
             {activeCategory === 'SEMUA' && <motion.div layoutId="underline" className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand" />}
@@ -53,7 +53,7 @@ const Portfolio: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`framer-label transition-all duration-500 relative pb-1 ${activeCategory === cat ? 'opacity-100 text-[#2A2C2B]' : 'opacity-40 hover:opacity-100'}`}
+              className={`framer-label transition-all duration-500 relative pb-1 ${activeCategory === cat ? 'opacity-100 text-[#2A2C2B]' : 'opacity-60 hover:opacity-100'}`}
             >
               {cat}
               {activeCategory === cat && <motion.div layoutId="underline" className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand" />}
