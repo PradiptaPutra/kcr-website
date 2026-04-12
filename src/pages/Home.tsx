@@ -18,12 +18,12 @@ const Home: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0]">
       <SEO 
-        title="Kontraktor Bangunan & Spesialis Shotcrete Indonesia"
-        description="PT. KARYA CIPTA RAHARJA (KCR) adalah Kontraktor Bangunan BUMN dan Spesialis Shotcrete Indonesia. Kami menghadirkan solusi konstruksi presisi, sistem prefabrikasi modern, dan manajemen teknis saksama sejak 2006."
-        keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Kontraktor BUMN, Shotcrete Indonesia, Prefab Building System, Konstruksi Indonesia"
+        title="Kontraktor Bangunan & Spesialis Shotcrete Terpercaya"
+        description="PT. KARYA CIPTA RAHARJA (KCR) adalah kontraktor andalan dan Spesialis Shotcrete Indonesia. Kami memberikan solusi bangunan presisi, sistem prefab modern, dan manajemen yang rapi sejak 2006."
+        keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Kontraktor Terpercaya, Shotcrete Indonesia, Bangunan Prefab"
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
-        aeoAnswer="PT. KARYA CIPTA RAHARJA (KCR) adalah Kontraktor Bangunan BUMN dan Spesialis Shotcrete Indonesia terpercaya sejak 2006. Kami menyediakan solusi konstruksi infrastruktur vital, sistem prefabrikasi baja ringan modern, serta manajemen teknis presisi tinggi untuk Proyek Strategis Nasional, memastikan integritas struktural dan efisiensi waktu pada setiap eksekusi proyek nasional."
+        aeoAnswer="PT. KARYA CIPTA RAHARJA (KCR) adalah kontraktor dan Spesialis Shotcrete terpercaya sejak 2006. Kami menyediakan layanan lengkap untuk infrastruktur, bangunan prefabrikasi baja ringan, serta manajemen lapangan yang rapi, memastikan setiap proyek selesai tepat waktu dengan kualitas terbaik."
       />
 
       {/* 1. HERO */}
@@ -42,8 +42,8 @@ const Home: React.FC = () => {
         <div className="relative z-10 text-center px-6">
            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 0.5 }} className="framer-label text-white mb-8 block tracking-[0.8em]">EST. 2006</motion.span>
            <h1 className="framer-h1 text-white mb-12">
-             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="block">Integritas <span className="italic font-serif">Struktural</span></motion.span>
-             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 0.8 }} transition={{ delay: 0.9 }} className="block font-serif italic text-white/80">di Setiap Proyek.</motion.span>
+             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="block">Kualitas <span className="italic font-serif">Terbaik</span></motion.span>
+             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 0.8 }} transition={{ delay: 0.9 }} className="block font-serif italic text-white/80">untuk Proyek Anda.</motion.span>
            </h1>
            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
              <Link to="/portfolio" className="framer-btn !border-white/40 !text-white hover:!bg-white hover:!text-[#2A2C2B]">
@@ -74,10 +74,10 @@ const Home: React.FC = () => {
       <section className="py-32 framer-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <motion.div {...fadeInUp} className="lg:col-span-5 border-l-2 border-brand pl-10 py-2">
-            <span className="framer-label text-brand mb-8 block">01 / FILOSOFI</span>
+            <span className="framer-label text-brand mb-8 block">01 / TENTANG KAMI</span>
             <h2 className="framer-h2 leading-tight text-[#2A2C2B]">
-              Standar baru dalam <br/> 
-              <span className="italic text-brand font-serif text-[1.1em]">eksekusi teknis.</span>
+              Membangun dengan <br/> 
+              <span className="italic text-brand font-serif text-[1.1em]">sepenuh hati.</span>
             </h2>
           </motion.div>
           
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
               {kcrData.company.introduction}
             </p>
             <Link to="/about" className="framer-label group flex items-center gap-4 hover:text-brand transition-all !opacity-100">
-              Tentang Kami <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
+              Kenali Kami Lebih Dekat <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </motion.div>
         </div>
@@ -99,7 +99,7 @@ const Home: React.FC = () => {
       <section className="py-32 framer-container border-t border-[#2A2C2B]/5">
         <motion.div {...fadeInUp} className="mb-20">
           <span className="framer-label text-brand mb-6 block">02 / LAYANAN</span>
-          <h2 className="framer-h2 text-[#2A2C2B]">Spesialisasi Kami</h2>
+          <h2 className="framer-h2 text-[#2A2C2B]">Keahlian Kami</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -129,7 +129,7 @@ const Home: React.FC = () => {
       <section className="py-32 bg-[#2A2C2B] text-[#F5F5F0]">
         <div className="framer-container">
           <motion.div {...fadeInUp} className="mb-24 flex justify-between items-end border-b border-white/10 pb-10">
-            <h2 className="framer-h1 !text-[42px] text-white">Selected Projects</h2>
+            <h2 className="framer-h1 !text-[42px] text-white">Karya Kami</h2>
             <span className="framer-label !text-white/40">2021 — 2024</span>
           </motion.div>
 
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
                   <h3 className="font-serif text-[32px] leading-tight text-white">{p.title}</h3>
                   <p className="framer-body !text-white/50">{p.client}</p>
                   <Link to="/portfolio" className="framer-label !text-white hover:text-brand transition-all flex items-center gap-3">
-                    View Case Study <CaretRight weight="bold" />
+                    Lihat Detail Proyek <CaretRight weight="bold" />
                   </Link>
                 </div>
               </motion.article>
@@ -161,9 +161,9 @@ const Home: React.FC = () => {
       <section className="py-40 framer-container text-center relative overflow-hidden">
         <motion.div {...fadeInUp}>
           <span className="framer-label text-brand mb-8 block tracking-[0.8em]">KOLABORASI</span>
-          <h2 className="framer-h1 mb-16 text-[#2A2C2B]">Mari membangun <span className="italic font-serif text-brand">legacy</span> bersama.</h2>
+          <h2 className="framer-h1 mb-16 text-[#2A2C2B]">Mari mulai <span className="italic font-serif text-brand">proyek Anda</span> bersama kami.</h2>
           <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white hover:!bg-brand border-none">
-            Hubungi Tim Ahli Kami
+            Konsultasi Gratis Sekarang
           </Link>
         </motion.div>
       </section>

@@ -26,12 +26,12 @@ const Services: React.FC = () => {
       {/* Header */}
       <section className="framer-container mb-32">
         <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#1a1c19]/10 pl-10">
-          <span className="framer-label text-brand mb-10 block">03 / Solusi</span>
+          <span className="framer-label text-brand mb-10 block">03 / LAYANAN KAMI</span>
           <h1 className="framer-h1 mb-10">
-            Spesialis Shotcrete Indonesia <br/><span className="italic text-brand font-serif">& Kontraktor Bangunan BUMN.</span>
+            Solusi Konstruksi & <br/><span className="italic text-brand font-serif">Shotcrete Terpercaya.</span>
           </h1>
           <p className="framer-body max-w-2xl">
-            Menghadirkan layanan teknis komprehensif sebagai kontraktor bangunan BUMN dan spesialis shotcrete Indonesia untuk stabilitas infrastruktur serta pembangunan gedung strategis dengan standar durabilitas tinggi.
+            Kami menawarkan layanan konstruksi lengkap, mulai dari spesialis beton semprot (shotcrete) untuk memperkuat infrastruktur hingga pembangunan gedung secara keseluruhan dengan standar keamanan tertinggi.
           </p>
         </motion.div>
       </section>
@@ -65,16 +65,16 @@ const Services: React.FC = () => {
       {/* Methodology */}
       <section className="framer-container mb-40">
         <motion.div {...fadeInUp} className="mb-20 framer-border !border-x-0 !border-t-0 pb-12">
-          <span className="framer-label text-brand mb-8 block">Metodologi</span>
-          <h2 className="framer-h2 text-[#1a1c19]">Prosedur Kontraktor Bangunan BUMN & Shotcrete</h2>
+          <span className="framer-label text-brand mb-8 block">CARA KAMI BEKERJA</span>
+          <h2 className="framer-h2 text-[#1a1c19]">Tahapan Kerja yang Jelas dan Terukur</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { icon: <Strategy weight="light" size={40} />, t: 'Konsultasi', c: 'Analisis kebutuhan teknis dan penyusunan RAB proyek yang transparan.', m: 'Analisis' },
-            { icon: <HardHat weight="light" size={40} />, t: 'Eksekusi', c: 'Pelaksanaan pengerjaan spesialis dengan pengawasan teknis ketat.', m: 'Penerapan' },
-            { icon: <Ruler weight="light" size={40} />, t: 'Fabrikasi', c: 'Integrasi sistem bangunan prefabrikasi untuk efisiensi waktu maksimal.', m: 'Sistem' },
-            { icon: <ShieldCheck weight="light" size={40} />, t: 'Penyerahan', c: 'Pemeriksaan standar kualitas akhir sebelum serah terima proyek.', m: 'Kualitas' }
+            { icon: <Strategy weight="light" size={40} />, t: 'Konsultasi', c: 'Berdiskusi untuk memahami kebutuhan proyek Anda dan menyusun anggaran yang transparan.', m: 'Analisis' },
+            { icon: <HardHat weight="light" size={40} />, t: 'Eksekusi', c: 'Pengerjaan di lapangan diawasi dengan ketat untuk menjamin keamanan dan kualitas.', m: 'Penerapan' },
+            { icon: <Ruler weight="light" size={40} />, t: 'Fabrikasi', c: 'Memanfaatkan sistem prefabrikasi agar pekerjaan lebih cepat selesai.', m: 'Sistem' },
+            { icon: <ShieldCheck weight="light" size={40} />, t: 'Penyerahan', c: 'Pengecekan akhir secara menyeluruh sebelum hasil diserahkan kepada Anda.', m: 'Kualitas' }
           ].map((step, idx) => (
             <motion.div 
               key={step.t} 

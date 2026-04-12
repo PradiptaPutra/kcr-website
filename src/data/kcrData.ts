@@ -1,32 +1,32 @@
 export const kcrData = {
   company: {
     name: "PT. KARYA CIPTA RAHARJA",
-    tagline: "Kontraktor Bangunan BUMN & Spesialis Shotcrete Indonesia",
-    description: "Sejak 2006, PT. KARYA CIPTA RAHARJA telah mendedikasikan diri sebagai Kontraktor Bangunan BUMN dan Spesialis Shotcrete Indonesia dengan keahlian teknis serta integritas material tinggi. Kami mengukuhkan standar kualitas yang tak kenal kompromi sebagai mitra tepercaya bagi proyek infrastruktur vital di Indonesia.",
-    introduction: "Reputasi kami ditempa melalui eksekusi presisi pada berbagai Proyek Strategis Nasional (PSN). Sebagai Kontraktor Bangunan BUMN yang berpengalaman, filosofi kami sederhana: menghadirkan solusi konstruksi yang tak hanya kokoh secara struktural, namun juga efisien secara substansial melalui manajemen teknis yang saksama.",
-    specialization: "KCR mengejawantahkan inovasi melalui layanan Spesialis Shotcrete Indonesia dan sistem bangunan prefabrikasi (Prefab Building) berbasis Rangka Baja Ringan—sebuah evolusi dalam kecepatan, presisi, dan estetika konstruksi industrial modern.",
-    vision: "Visi kami adalah menjadi pionir solusi konstruksi terintegrasi yang mendefinisikan ulang standar 'Building Contractor' melalui sinergi produk unggulan dan dedikasi teknis sebagai mitra utama BUMN."
+    tagline: "Mitra Konstruksi & Spesialis Shotcrete Terpercaya",
+    description: "Sejak tahun 2006, PT. KARYA CIPTA RAHARJA hadir sebagai kontraktor andalan untuk berbagai proyek BUMN dan swasta. Kami bangga dikenal sebagai Spesialis Shotcrete Indonesia yang selalu mengutamakan kualitas, keamanan, dan hasil kerja rapi dalam setiap proyek infrastruktur.",
+    introduction: "Pengalaman panjang kami terbukti lewat berbagai keterlibatan dalam Proyek Strategis Nasional (PSN). Filosofi kami sangat sederhana: membangun struktur yang kuat, aman, dan efisien. Kami memastikan setiap pekerjaan selesai tepat waktu dengan kualitas yang bisa diandalkan.",
+    specialization: "Selain ahli dalam aplikasi beton semprot (Shotcrete), KCR juga berinovasi dengan sistem bangunan prefabrikasi baja ringan. Solusi ini kami hadirkan untuk menjawab kebutuhan konstruksi modern yang menuntut kecepatan dan kepraktisan tanpa mengorbankan kekuatan.",
+    vision: "Visi kami adalah menjadi kontraktor pilihan utama yang memberikan solusi konstruksi menyeluruh—mulai dari pengerjaan struktur bangunan, spesialisasi teknis, hingga penyediaan interior dan furnitur berkualitas untuk berbagai skala proyek."
   },
   services: [
     {
       id: "building-contractor",
-      title: "KONTRAKTOR BANGUNAN BUMN",
-      description: "Manajemen konstruksi komprehensif sebagai kontraktor bangunan BUMN yang memadukan ketelitian arsitektural dengan integritas struktural tingkat tinggi pada proyek skala nasional."
+      title: "KONTRAKTOR BANGUNAN",
+      description: "Layanan kontraktor menyeluruh untuk berbagai jenis bangunan. Kami menangani proyek dari tahap awal hingga selesai dengan standar kualitas yang ketat, memastikan bangunan Anda berdiri kokoh."
     },
     {
       id: "shotcrete-specialist",
-      title: "SPESIALIS SHOTCRETE INDONESIA",
-      description: "Layanan spesialis aplikasi beton semprot (Shotcrete) di Indonesia untuk stabilitas lereng, terowongan, dan perkuatan infrastruktur dengan durabilitas jangka panjang berstandar internasional."
+      title: "SPESIALIS SHOTCRETE",
+      description: "Solusi perkuatan struktur menggunakan teknik beton semprot (Shotcrete). Sangat efektif untuk menstabilkan lereng, dinding terowongan, dan infrastruktur lain agar kuat dan aman dari longsor."
     },
     {
       id: "prefab-building",
-      title: "PREFAB BUILDING SYSTEM",
-      description: "Transformasi ruang melalui sistem prefabrikasi baja ringan yang mengedepankan efisiensi waktu tanpa mereduksi kualitas."
+      title: "SISTEM PREFABRIKASI",
+      description: "Membangun jauh lebih cepat dengan sistem rangka baja ringan prefabrikasi. Ini adalah solusi cerdas untuk menghemat waktu pengerjaan di lapangan dengan hasil yang tetap presisi."
     },
     {
       id: "interior-fitout",
-      title: "INTERIOR & FURNITURE",
-      description: "Pengerjaan interior kelas atas dan furnitur kustom yang dirancang untuk merefleksikan prestise ruang komersial dan eksekutif."
+      title: "INTERIOR & FURNITUR",
+      description: "Kami tidak hanya membangun struktur, tapi juga mengisi ruang Anda dengan interior dan furnitur berkualitas tinggi, dirancang khusus untuk kenyamanan dan keindahan kantor Anda."
     }
   ],
   products: {

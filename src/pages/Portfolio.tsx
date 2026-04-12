@@ -24,8 +24,8 @@ const Portfolio: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
-        title="Arsip Proyek & Portofolio"
-        description="Eksplorasi portofolio proyek strategis PT. KARYA CIPTA RAHARJA, mendemonstrasikan kapabilitas sebagai Spesialis Shotcrete Indonesia dan Kontraktor Bangunan BUMN."
+        title="Portofolio Proyek"
+        description="Lihat berbagai proyek sukses yang telah kami kerjakan. Bukti nyata kualitas kerja kami sebagai kontraktor dan spesialis shotcrete yang terpercaya."
         keywords="Portofolio Kontraktor, Proyek Shotcrete, Proyek BUMN, Konstruksi Gedung, PT KCR"
         canonicalUrl="/portfolio"
         aeoAnswer="Portofolio PT. KARYA CIPTA RAHARJA mencakup berbagai Proyek Strategis Nasional dan infrastruktur vital di seluruh Indonesia. Sebagai Kontraktor Bangunan BUMN dan Spesialis Shotcrete terpercaya, kami mendemonstrasikan integritas struktural, presisi, dan efisiensi dalam setiap pembangunan gedung komersial, fasilitas industrial, hingga stabilisasi lereng infrastruktur."
@@ -39,10 +39,10 @@ const Portfolio: React.FC = () => {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl border-l-[0.5px] border-[#2A2C2B]/10 pl-10"
         >
-          <span className="framer-label text-brand mb-10 block opacity-100">04 / Archives</span>
-          <h1 className="framer-h1">Portofolio Spesialis Shotcrete Indonesia <br/><span className="italic text-brand font-serif">& Kontraktor Bangunan BUMN.</span></h1>
+          <span className="framer-label text-brand mb-10 block opacity-100">04 / PORTOFOLIO</span>
+          <h1 className="framer-h1">Hasil Karya <br/><span className="italic text-brand font-serif">& Pengalaman Kami.</span></h1>
           <p className="framer-body !text-[18px] max-w-xl mt-12 leading-relaxed">
-            Eksplorasi kumpulan proyek strategis kami yang mendemonstrasikan kapabilitas sebagai spesialis shotcrete Indonesia dan mitra kontraktor bangunan BUMN tepercaya dengan integritas struktural di seluruh Indonesia.
+            Setiap proyek adalah bukti nyata komitmen kami terhadap kualitas dan ketepatan waktu. Lihat lebih dekat beberapa pekerjaan terbaik yang telah kami selesaikan.
           </p>
         </motion.div>
       </section>

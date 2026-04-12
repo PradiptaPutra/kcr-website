@@ -27,12 +27,12 @@ const About: React.FC = () => {
       {/* Header */}
       <section className="framer-container mb-32">
         <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#1a1c19]/10 pl-10">
-          <span className="framer-label text-brand mb-10 block">01 / Warisan</span>
+          <span className="framer-label text-brand mb-10 block">01 / PERJALANAN KAMI</span>
           <h1 className="framer-h1 mb-10">
-            Fondasi yang <br/><span className="italic text-brand font-serif">Telah Teruji.</span>
+            Pengalaman yang <br/><span className="italic text-brand font-serif">Berbicara.</span>
           </h1>
           <p className="framer-body max-w-2xl">
-            Didirikan pada 2006, melayani infrastruktur nasional dengan presisi teknis dan efisiensi material yang teruji.
+            Sejak 2006, kami telah menjadi bagian dari pembangunan infrastruktur penting di Indonesia dengan komitmen penuh pada hasil kerja yang berkualitas.
           </p>
         </motion.div>
       </section>
@@ -48,7 +48,7 @@ const About: React.FC = () => {
           <motion.div {...fadeInUp} transition={{ delay: 0.2, duration: 1 }} className="lg:col-span-6">
             <span className="framer-label opacity-30 mb-8 block framer-border pb-4">Sejarah Kami</span>
             <h2 className="framer-h2 mb-10">
-              Pionir Teknologi <br/><span className="italic text-brand font-serif">Konstruksi Modern.</span>
+              Terus Berinovasi <br/><span className="italic text-brand font-serif">untuk Hasil Terbaik.</span>
             </h2>
             <div className="space-y-8 framer-body max-w-md">
               <p>{kcrData.company.description}</p>
@@ -64,9 +64,9 @@ const About: React.FC = () => {
         <div className="framer-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
             <motion.div {...fadeInUp}>
-              <span className="framer-label text-brand mb-12 block">Visi Strategis</span>
+              <span className="framer-label text-brand mb-12 block">FOKUS KAMI</span>
               <h2 className="framer-h1 text-white mb-10">
-                Solusi untuk <br/><span className="italic text-brand font-serif">Masa Depan.</span>
+                Membangun untuk <br/><span className="italic text-brand font-serif">Jangka Panjang.</span>
               </h2>
               <p className="framer-body !text-white/50 max-w-sm">{kcrData.company.vision}</p>
             </motion.div>
@@ -94,9 +94,9 @@ const About: React.FC = () => {
       <section className="py-40 framer-container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
            {[ 
-             { icon: <HardHat weight="light" size={40} />, t: 'Ekselerasi', d: 'Kecepatan progres hingga 50% lebih cepat dengan metode fabrikasi.' },
-             { icon: <CompassTool weight="light" size={40} />, t: 'Presisi', d: 'Aplikasi kimia konstruksi untuk durabilitas bangunan jangka panjang.' },
-             { icon: <Buildings weight="light" size={40} />, t: 'Inovasi', d: 'Penerapan Light Steel Frame untuk solusi bangunan modern & efisien.' }
+             { icon: <HardHat weight="light" size={40} />, t: 'Ekselerasi', d: 'Kerja lebih cepat dan rapi berkat sistem prefabrikasi modern.' },
+             { icon: <CompassTool weight="light" size={40} />, t: 'Presisi', d: 'Penggunaan material terbaik untuk memastikan bangunan kuat dan awet.' },
+             { icon: <Buildings weight="light" size={40} />, t: 'Inovasi', d: 'Menggunakan baja ringan berkualitas untuk struktur bangunan yang aman dan hemat biaya.' }
            ].map((i, idx) => (
              <motion.div 
                key={i.t} 

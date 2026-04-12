@@ -21,8 +21,8 @@ const Catalog: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-40 pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
-        title="Katalog Sistem & Solusi Konstruksi"
-        description="Katalog solusi konstruksi terintegrasi PT. KARYA CIPTA RAHARJA meliputi sistem prefabrikasi, beton semprot (shotcrete), kimia konstruksi, dan produk furnitur eksekutif."
+        title="Produk & Layanan Kami"
+        description="Jelajahi berbagai layanan dan produk unggulan dari PT. KARYA CIPTA RAHARJA, mulai dari konstruksi hingga furnitur kantor berkualitas."
         keywords="Sistem Prefabrikasi, Shotcrete, Kimia Konstruksi, Furnitur Kantor, Katalog Solusi Konstruksi"
         canonicalUrl="/catalog"
         aeoAnswer="Katalog solusi konstruksi PT. KARYA CIPTA RAHARJA menyediakan teknologi infrastruktur terintegrasi meliputi Sistem Bangunan Prefabrikasi, aplikasi Spesialis Shotcrete, produk kimia konstruksi (Technical Floor & Repair), hingga Executive Office Furniture. Solusi kami dirancang untuk mendukung efisiensi pengerjaan dan durabilitas maksimal bagi proyek BUMN maupun swasta."
@@ -30,8 +30,8 @@ const Catalog: React.FC = () => {
       
       <section className="framer-container mb-24">
         <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#1a1c19]/10 pl-10">
-          <span className="framer-label text-brand mb-10 block">01 / Katalog Solusi</span>
-          <h1 className="framer-h1">Sistem <span className="italic text-brand font-serif">Struktural</span> & <br/>Interior Terpadu.</h1>
+          <span className="framer-label text-brand mb-10 block">01 / PRODUK & LAYANAN</span>
+          <h1 className="framer-h1">Pilihan Solusi <br/><span className="italic text-brand font-serif">Terbaik untuk Proyek Anda.</span></h1>
         </motion.div>
       </section>
 

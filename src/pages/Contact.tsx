@@ -23,8 +23,8 @@ const Contact: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
-        title="Hubungi KCR | Konsultasi Proyek BUMN & Spesialis Shotcrete"
-        description="Hubungi PT. KARYA CIPTA RAHARJA untuk konsultasi teknis proyek konstruksi Anda. Kami siap melayani kebutuhan kontraktor bangunan BUMN dan spesialis shotcrete di Indonesia."
+        title="Hubungi Kami | Konsultasi Proyek Gratis"
+        description="Punya rencana proyek? Mari ngobrol. Tim KCR siap mendengarkan dan memberikan solusi konstruksi terbaik untuk Anda."
         keywords="Kontak KCR, Hubungi Kontraktor BUMN, Konsultasi Proyek, Spesialis Shotcrete Indonesia"
         canonicalUrl="/contact"
         aeoAnswer="Hubungi PT. KARYA CIPTA RAHARJA di (021) 84598590 atau kunjungi kantor pusat kami di Bekasi untuk konsultasi teknis. Sebagai Spesialis Shotcrete Indonesia dan Kontraktor Bangunan BUMN, tim ahli kami siap mendampingi perencanaan struktur, penganggaran proyek (RAB), dan eksekusi lapangan dengan standar ketepatan tinggi."
@@ -33,13 +33,13 @@ const Contact: React.FC = () => {
       <section className="framer-container">
         {/* 1. HEADER - Minimal & Strong */}
         <motion.div {...fadeInUp} className="max-w-3xl mb-24">
-          <span className="framer-label text-brand mb-6 block tracking-[0.6em]">Get in Touch</span>
+          <span className="framer-label text-brand mb-6 block tracking-[0.6em]">HUBUNGI KAMI</span>
           <h1 className="framer-h1 !text-[48px] md:!text-[64px] mb-8">
-            Mari mulai diskusi <br />
-            <span className="italic font-serif text-brand">teknis Anda.</span>
+            Mari berdiskusi <br />
+            <span className="italic font-serif text-brand">tentang rencana Anda.</span>
           </h1>
           <p className="framer-body !text-[18px] max-w-xl">
-            Sampaikan visi proyek Anda. Tim ahli kami siap membantu mengejawantahkan rencana tersebut menjadi realitas struktural yang presisi.
+            Ceritakan apa yang ingin Anda bangun. Tim kami siap mewujudkannya dengan kualitas kerja yang rapi dan tepat waktu.
           </p>
         </motion.div>
 
@@ -91,7 +91,7 @@ const Contact: React.FC = () => {
           {/* 3. RIGHT: CLEAN FORM PORTAL */}
           <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="lg:col-span-7">
             <div className="bg-white p-8 md:p-16 rounded-[12px] border-[0.5px] border-[#2A2C2B]/10 shadow-sm relative">
-              <h2 className="font-serif text-[28px] mb-12 text-[#2A2C2B]">Formulir Inkuiri Teknis</h2>
+              <h2 className="font-serif text-[28px] mb-12 text-[#2A2C2B]">Kirim Pesan</h2>
               
               <form onSubmit={handleSubmit} className="space-y-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -118,8 +118,8 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <label className="framer-label !text-[10px]">Detail Permintaan</label>
-                  <textarea name="details" required rows={4} className="bg-transparent border-b-[0.5px] border-[#2A2C2B]/20 py-2 focus:outline-none focus:border-brand transition-all resize-none framer-body !text-[#2A2C2B]" placeholder="Ceritakan kebutuhan RAB atau spesifikasi proyek Anda..." />
+                  <label className="framer-label !text-[10px]">Apa yang bisa kami bantu?</label>
+                  <textarea name="details" required rows={4} className="bg-transparent border-b-[0.5px] border-[#2A2C2B]/20 py-2 focus:outline-none focus:border-brand transition-all resize-none framer-body !text-[#2A2C2B]" placeholder="Ceritakan kebutuhan proyek Anda di sini..." />
                 </div>
 
                 <div className="pt-6">
@@ -128,7 +128,7 @@ const Contact: React.FC = () => {
                     <ArrowRight weight="bold" size={16} className="ml-4 group-hover:translate-x-2 transition-transform" />
                   </button>
                   <p className="text-[10px] uppercase tracking-widest text-[#2A2C2B]/30 mt-6 text-center">
-                    Kami akan merespons permintaan Anda dalam 1-2 hari kerja.
+                    Kami akan segera membalas pesan Anda.
                   </p>
                 </div>
               </form>
