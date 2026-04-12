@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { HardHat, ShieldCheck, Buildings, CompassTool, ArrowDownRight, ArrowRight } from '@phosphor-icons/react';
+import { Buildings, HardHat, CompassTool, ShieldCheck, Ruler, Strategy, ArrowDownRight } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
+import PageHeader from '../components/PageHeader';
 
 const Services: React.FC = () => {
   const fadeInUp = {
@@ -14,55 +14,51 @@ const Services: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-40 selection:bg-[#2A2C2B] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-24 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
-        title="Layanan & Spesialisasi"
-        description="Layanan PT. KARYA CIPTA RAHARJA mencakup kontraktor bangunan BUMN, spesialis shotcrete Indonesia, sistem prefabrikasi baja ringan, serta interior fit-out eksekutif."
-        keywords="Spesialis Shotcrete Indonesia, Kontraktor Bangunan BUMN, Prefab Building System, Interior Fitout"
+        title="Layanan Spesialis Shotcrete & Kontraktor BUMN"
+        description="Layanan PT. KARYA CIPTA RAHARJA mencakup kontraktor bangunan BUMN, spesialis shotcrete untuk stabilitas lereng and terowongan, sistem prefabrikasi baja ringan, serta interior fit-out eksekutif."
+        keywords="Spesialis Shotcrete Indonesia, Kontraktor Bangunan BUMN, Prefab Building System, Interior Fitout, Stabilitas Lereng, Konstruksi Terowongan"
         canonicalUrl="/services"
       />
 
-      <section className="framer-container mb-32">
-        <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#2A2C2B]/10 pl-10">
-          <span className="framer-label text-brand mb-10 block">03 / Solusi Utama</span>
-          <h1 className="framer-h1 mb-10">
-            Spesialis Shotcrete Indonesia <br/><span className="italic text-brand font-serif">& Kontraktor Bangunan BUMN.</span>
-          </h1>
-          <p className="framer-body max-w-2xl">
-            Menghadirkan layanan teknis komprehensif sebagai kontraktor bangunan BUMN dan spesialis shotcrete Indonesia untuk stabilitas infrastruktur serta pembangunan gedung strategis dengan standar durabilitas tinggi.
-          </p>
-        </motion.div>
-      </section>
+      <PageHeader 
+        label="03 / LAYANAN TEKNIK"
+        title="Solusi Terpadu"
+        subtitle="Struktur & Kimia Konstruksi."
+        description="Menghadirkan keahlian teknis tingkat tinggi untuk pembangunan infrastruktur and perkuatan struktur dengan standar kualitas nasional."
+      />
 
-      {/* Grid of Main Services */}
+      {/* 1. MAIN SERVICES GRID */}
       <section className="framer-container mb-40">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {kcrData.services.map((service, idx) => (
             <motion.article 
               key={service.id} 
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 1 }}
-              className="group bg-white border-[0.5px] border-[#2A2C2B]/10 p-10 flex flex-col gap-6 hover:border-brand transition-all duration-700 rounded-[12px]"
+              {...fadeInUp}
+              transition={{ delay: idx * 0.1, duration: 0.8 }}
+              className="group bg-white border border-[#1a1c19]/10 p-10 flex flex-col gap-8 hover:border-brand transition-all duration-700 rounded-2xl shadow-sm hover:shadow-2xl"
             >
-              <div className="flex justify-between items-center border-b-[0.5px] border-[#2A2C2B]/5 pb-6">
-                <span className="text-[12px] font-serif italic text-[#2A2C2B]/30">0{idx + 1}</span>
-                <ArrowDownRight weight="light" size={24} className="text-[#2A2C2B]/20 group-hover:text-brand transition-colors duration-500" />
+              <div className="flex justify-between items-start">
+                <div className="text-brand opacity-40 group-hover:opacity-100 transition-opacity">
+                  {idx === 0 && <Buildings weight="light" size={48} />}
+                  {idx === 1 && <HardHat weight="light" size={48} />}
+                  {idx === 2 && <ShieldCheck weight="light" size={48} />}
+                  {idx === 3 && <CompassTool weight="light" size={48} />}
+                  {idx === 4 && <Ruler weight="light" size={48} />}
+                  {idx === 5 && <Strategy weight="light" size={48} />}
+                </div>
+                <ArrowDownRight size={24} className="text-[#1a1c19]/10 group-hover:text-brand transition-all" />
               </div>
-              <div className="text-brand opacity-40 group-hover:opacity-100 transition-opacity">
-                {idx === 0 && <Buildings weight="light" size={40} />}
-                {idx === 1 && <HardHat weight="light" size={40} />}
-                {idx === 2 && <ShieldCheck weight="light" size={40} />}
-                {idx === 3 && <CompassTool weight="light" size={40} />}
+              <div className="space-y-4">
+                <h3 className="font-serif text-[26px] tracking-tight text-[#2A2C2B] uppercase">{service.title}</h3>
+                <p className="framer-body !text-sm leading-relaxed">{service.description}</p>
               </div>
-              <h3 className="font-serif text-[22px] text-[#2A2C2B] uppercase tracking-tight">{service.title}</h3>
-              <p className="framer-body !text-[14px]">{service.description}</p>
               
               {service.subItems && (
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-[#1a1c19]/5">
                   {service.subItems.map(item => (
-                    <span key={item} className="text-[9px] bg-[#F5F5F0] text-brand px-3 py-1.5 rounded-full font-bold uppercase tracking-wider">{item}</span>
+                    <span key={item} className="text-[10px] bg-[#F5F5F0] text-brand px-3 py-1.5 rounded-full font-bold uppercase tracking-wider">{item}</span>
                   ))}
                 </div>
               )}
@@ -71,13 +67,13 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Engineering Capabilities */}
-      <section className="bg-[#2A2C2B] py-40 text-[#F5F5F0] overflow-hidden relative">
+      {/* 2. ENGINEERING AUTHORITY */}
+      <section className="bg-[#2A2C2B] py-24 md:py-48 text-white overflow-hidden relative">
         <div className="framer-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
-            <div className="lg:col-span-6">
-              <span className="framer-label text-brand mb-8 block">ENGINEERING AUTHORITY</span>
-              <h2 className="framer-h1 text-white mb-12">Presisi Mesin <br/><span className="italic text-brand font-serif">Integritas Manusia.</span></h2>
+            <div className="lg:col-span-6 space-y-12">
+              <span className="framer-label text-brand block tracking-[0.6em]">ENGINEERING & MANUFACTURING</span>
+              <h2 className="framer-h1 text-white !text-[48px] md:!text-[64px]">Presisi Mesin <br/><span className="italic text-brand font-serif">Kualitas Manusia.</span></h2>
               <div className="space-y-12">
                 {kcrData.capabilities.map((item, i) => (
                   <motion.div 
@@ -88,9 +84,9 @@ const Services: React.FC = () => {
                     transition={{ delay: i * 0.2 }}
                     className="flex gap-8"
                   >
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-brand font-serif italic text-xl shrink-0">{i+1}</div>
-                    <div>
-                      <h4 className="font-serif text-2xl mb-4 text-white uppercase">{item.title}</h4>
+                    <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-brand font-serif italic text-2xl shrink-0">{i+1}</div>
+                    <div className="space-y-2">
+                      <h4 className="font-serif text-2xl uppercase tracking-tight">{item.title}</h4>
                       <p className="framer-body !text-white/40">{item.description}</p>
                     </div>
                   </motion.div>
@@ -98,40 +94,15 @@ const Services: React.FC = () => {
               </div>
             </div>
             <div className="lg:col-span-5 lg:col-start-8">
-              <div className="aspect-[4/5] bg-white/5 rounded-[8px] overflow-hidden relative group">
-                <img src={kcrData.capabilities[0].img} className="w-full h-full object-cover opacity-60" alt="Capability" loading="lazy" />
-                <div className="absolute inset-0 bg-brand/10 mix-blend-multiply" />
+              <div className="aspect-[4/5] bg-white/5 rounded-3xl overflow-hidden relative group shadow-2xl border border-white/10">
+                <img src={kcrData.capabilities[0].img} className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-[2s]" alt="CNC Capability" />
+                <div className="absolute inset-0 bg-brand/20 mix-blend-multiply" />
+                <div className="absolute bottom-10 left-10 right-10 p-10 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl">
+                   <p className="framer-body !text-white italic text-lg leading-relaxed">"Integrasi teknologi CNC memastikan setiap detail furnitur and komponen prefabrikasi memiliki akurasi milimeter."</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA: INTEGRATED ENDING */}
-      <section className="py-48 bg-white border-t-[0.5px] border-[#2A2C2B]/10 relative overflow-hidden">
-        <div className="framer-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <motion.div {...fadeInUp} className="lg:col-span-7">
-              <span className="framer-label text-brand mb-10 block tracking-[0.6em]">04 / Engagement</span>
-              <h2 className="framer-h1 !text-[42px] md:!text-[56px] leading-[1.1]">
-                Siap mengejawantahkan <br/>
-                <span className="italic font-serif text-brand">visi teknis</span> Anda?
-              </h2>
-            </motion.div>
-            
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:col-span-4 lg:col-start-9 flex flex-col gap-8">
-              <p className="framer-body !text-[16px]">
-                Konsultasikan kebutuhan RAB dan spesifikasi material proyek Anda bersama tim ahli kami untuk hasil yang saksama dan terukur.
-              </p>
-              <Link to="/contact" className="framer-btn group self-start">
-                <span>Hubungi Tim Teknis</span>
-                <ArrowRight weight="light" size={18} className="ml-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-        <div className="absolute -bottom-10 -right-10 font-serif text-[20vw] opacity-[0.02] pointer-events-none select-none whitespace-nowrap text-[#2A2C2B]">
-          COLLABORATE
         </div>
       </section>
     </div>

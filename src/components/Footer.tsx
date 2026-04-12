@@ -31,8 +31,8 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-6">
             <p className="framer-label text-brand !text-[10px]">Terhubung</p>
             <ul className="flex flex-col gap-3 font-sans font-normal text-[13px] opacity-50">
-              <li><a href="#" aria-label="Follow us on Instagram" className="flex items-center gap-2 silent-hover"><InstagramLogo weight="light" size={16} /> Instagram</a></li>
-              <li><a href="#" aria-label="Follow us on LinkedIn" className="flex items-center gap-2 silent-hover"><LinkedinLogo weight="light" size={16} /> LinkedIn</a></li>
+              <li><a href="#" className="flex items-center gap-2 silent-hover"><InstagramLogo weight="light" size={16} /> Instagram</a></li>
+              <li><a href="#" className="flex items-center gap-2 silent-hover"><LinkedinLogo weight="light" size={16} /> LinkedIn</a></li>
             </ul>
           </div>
 
