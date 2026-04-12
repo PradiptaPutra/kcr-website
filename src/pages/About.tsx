@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Buildings, HardHat, CompassTool } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
+import PageHeader from '../components/PageHeader';
 
 const About: React.FC = () => {
   const fadeInUp = {
@@ -13,28 +14,21 @@ const About: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-40 pb-32 selection:bg-[#1a1c19] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
         title="Tentang Kami | Pionir Teknologi Konstruksi Modern"
-        description="Pelajari sejarah PT. KARYA CIPTA RAHARJA sejak 2006 sebagai pionir teknologi konstruksi modern, Spesialis Shotcrete Indonesia, dan Kontraktor Bangunan BUMN terpercaya."
+        description="Pelajari sejarah PT. KARYA CIPTA RAHARJA sejak 2006 sebagai pionir teknologi konstruksi modern, Spesialis Shotcrete Indonesia, and Kontraktor Bangunan BUMN terpercaya."
         keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Sejarah KCR, Profil PT KCR, Konstruksi Modern Indonesia"
         canonicalUrl="/about"
         ogImage="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop"
-        aeoAnswer="Didirikan pada tahun 2006, PT. KARYA CIPTA RAHARJA adalah pionir teknologi konstruksi modern di Indonesia. Sebagai Kontraktor Bangunan BUMN dan Spesialis Shotcrete Indonesia yang tersertifikasi, kami berkomitmen pada inovasi sistem prefabrikasi dan integritas material untuk mendefinisikan ulang standar efisiensi serta ketahanan struktural pada infrastruktur vital nasional."
       />
 
-      {/* Header */}
-      <section className="framer-container mb-32">
-        <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#1a1c19]/10 pl-10">
-          <span className="framer-label text-brand mb-10 block">01 / PERJALANAN KAMI</span>
-          <h1 className="framer-h1 mb-10">
-            Pengalaman yang <br/><span className="italic text-brand font-serif">Berbicara.</span>
-          </h1>
-          <p className="framer-body max-w-2xl">
-            Sejak 2006, kami telah menjadi bagian dari pembangunan infrastruktur penting di Indonesia dengan komitmen penuh pada hasil kerja yang berkualitas.
-          </p>
-        </motion.div>
-      </section>
+      <PageHeader 
+        label="02 / PROFIL PERUSAHAAN"
+        title="Pengalaman yang"
+        subtitle="Berbicara."
+        description="Sejak 2006, kami telah menjadi bagian dari pembangunan infrastruktur penting di Indonesia dengan komitmen penuh pada hasil kerja yang berkualitas."
+      />
 
       {/* Origins */}
       <section className="framer-container mb-40">
@@ -93,21 +87,19 @@ const About: React.FC = () => {
       <section className="py-40 framer-container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
            {[ 
-             { icon: <HardHat weight="light" size={40} />, t: 'Ekselerasi', d: 'Kerja lebih cepat dan rapi berkat sistem prefabrikasi modern.' },
-             { icon: <CompassTool weight="light" size={40} />, t: 'Presisi', d: 'Penggunaan material terbaik untuk memastikan bangunan kuat dan awet.' },
-             { icon: <Buildings weight="light" size={40} />, t: 'Inovasi', d: 'Menggunakan baja ringan berkualitas untuk struktur bangunan yang aman dan hemat biaya.' }
+             { icon: <HardHat weight="light" size={40} />, t: 'Ekselerasi', d: 'Kerja lebih cepat and rapi berkat sistem prefabrikasi modern.' },
+             { icon: <CompassTool weight="light" size={40} />, t: 'Presisi', d: 'Penggunaan material terbaik untuk memastikan bangunan kuat and awet.' },
+             { icon: <Buildings weight="light" size={40} />, t: 'Inovasi', d: 'Menggunakan baja ringan berkualitas untuk struktur bangunan yang aman and hemat biaya.' }
            ].map((i, idx) => (
              <motion.div 
-               key={i.t} 
-               initial={{ opacity: 0, y: 40 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: idx * 0.2, duration: 1 }}
-               className="flex flex-col gap-8"
+               key={idx}
+               {...fadeInUp}
+               transition={{ delay: idx * 0.1, duration: 1 }}
+               className="flex flex-col gap-6"
              >
                 <div className="text-brand">{i.icon}</div>
-                <h3 className="font-serif text-[24px] text-[#1a1c19]">{i.t}</h3>
-                <p className="framer-body">{i.d}</p>
+                <h3 className="font-serif text-2xl">{i.t}</h3>
+                <p className="framer-body !text-sm">{i.d}</p>
              </motion.div>
            ))}
         </div>
@@ -115,4 +107,5 @@ const About: React.FC = () => {
     </div>
   );
 };
+
 export default About;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, MapPin, Phone, Envelope, CheckCircle, Sparkle } from '@phosphor-icons/react';
+import { ArrowRight, ArrowLeft, MapPin, Phone, Envelope, CheckCircle } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
+import PageHeader from '../components/PageHeader';
 
 const Contact: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -15,7 +16,6 @@ const Contact: React.FC = () => {
   });
 
   const totalSteps = 3;
-  const progress = (step / totalSteps) * 100;
 
   const fadeInUp = {
     initial: { y: 20, opacity: 0 },
@@ -35,59 +35,31 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate a polished sending state for "Tactile Feedback" and "Peak-End Rule"
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
     const subject = encodeURIComponent(`Inquiry: ${formData.category} - ${formData.name}`);
     const body = encodeURIComponent(`Nama: ${formData.name}\nEmail: ${formData.email}\nKategori: ${formData.category}\n\nDetail:\n${formData.details}`);
-    
     window.location.href = `mailto:${kcrData.contact.emails[1]}?subject=${subject}&body=${body}`;
     setIsSubmitting(false);
   };
 
-  // Interaction Design: Tactile motion for buttons
-  const buttonVariants = {
-    hover: { scale: 1.02, backgroundColor: "#B8860B" },
-    tap: { scale: 0.98 }
-  };
-
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-40 selection:bg-[#2A2C2B] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
         title="Hubungi Kami | Konsultasi Proyek Gratis"
-        description="Punya rencana proyek? Mari ngobrol. Tim KCR siap mendengarkan dan memberikan solusi konstruksi terbaik untuk Anda."
+        description="Punya rencana proyek? Mari ngobrol. Tim KCR siap mendengarkan and memberikan solusi konstruksi terbaik untuk Anda."
         keywords="Kontak KCR, Hubungi Kontraktor BUMN, Konsultasi Proyek, Spesialis Shotcrete Indonesia"
         canonicalUrl="/contact"
-        aeoAnswer="Hubungi PT. KARYA CIPTA RAHARJA di (021) 84598590 atau kunjungi kantor pusat kami di Bekasi untuk konsultasi teknis. Sebagai Spesialis Shotcrete Indonesia dan Kontraktor Bangunan BUMN, tim ahli kami siap mendampingi perencanaan struktur, penganggaran proyek (RAB), dan eksekusi lapangan dengan standar ketepatan tinggi."
+      />
+
+      <PageHeader 
+        label="HUBUNGI KAMI"
+        title="Konsultasi Teknis"
+        subtitle="untuk Proyek Presisi."
+        description="Hindari hambatan teknis and pembengkakan biaya. Tim ahli KCR siap membantu Anda merencanakan struktur yang aman, efisien, and tepat waktu."
       />
 
       <section className="framer-container">
-        {/* 1. HEADER - Reciprocity Trigger */}
-        <motion.div {...fadeInUp} className="max-w-3xl mb-24">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="framer-label text-brand block tracking-[0.6em]">HUBUNGI KAMI</span>
-            <div className="h-[1px] w-12 bg-brand/30" />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="px-3 py-1 bg-brand/10 rounded-full flex items-center gap-2"
-            >
-              <Sparkle size={14} className="text-brand" weight="fill" />
-              <span className="text-[10px] font-bold text-brand tracking-widest uppercase">Konsultasi Gratis</span>
-            </motion.div>
-          </div>
-          <h1 className="framer-h1 !text-[48px] md:!text-[64px] mb-8 leading-[1.1]">
-            Konsultasi Teknis <br />
-            <span className="italic font-serif text-brand">untuk Proyek Presisi.</span>
-          </h1>
-          <p className="framer-body !text-[18px] max-w-xl">
-            Hindari hambatan teknis dan pembengkakan biaya. Tim ahli KCR siap membantu Anda merencanakan struktur yang aman, efisien, dan tepat waktu.
-          </p>
-        </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          {/* 2. LEFT: CONTACT DETAILS & IMAGE */}
           <div className="lg:col-span-5 space-y-16">
             <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="space-y-12">
               <div className="flex gap-6 items-start group cursor-default">
@@ -122,221 +94,135 @@ const Contact: React.FC = () => {
               </div>
             </motion.div>
 
-            <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="aspect-[4/3] bg-[#e5e5e0] rounded-[12px] overflow-hidden hidden lg:block border-[0.5px] border-[#2A2C2B]/5">
-              <img 
-                src="https://images.pexels.com/photos/6794929/pexels-photo-6794929.jpeg" 
-                className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-1000 ease-in-out" 
-                alt="KCR Workspace"
-              />
+            <motion.div 
+              {...fadeInUp} 
+              transition={{ delay: 0.4 }}
+              className="aspect-[4/5] bg-[#1a1c19] rounded-2xl overflow-hidden relative group"
+            >
+              <img src="https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg" className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" alt="Office" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8">
+                 <p className="framer-label !text-brand mb-2">Operational Hours</p>
+                 <p className="text-white font-serif text-xl italic">Senin — Jumat, 08:00 - 17:00 WIB</p>
+              </div>
             </motion.div>
           </div>
 
-          {/* 3. RIGHT: MULTI-STEP HIGH CONVERTING FORM */}
-          <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="lg:col-span-7">
-            <div className="bg-white rounded-[16px] border-[0.5px] border-[#2A2C2B]/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden relative">
-              
-              {/* Goal-Gradient Indicator (Progress Bar) */}
-              <div className="h-1.5 w-full bg-[#F5F5F0]">
-                <motion.div 
-                  className="h-full bg-brand" 
-                  initial={{ width: "0%" }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.5, ease: "circOut" }}
-                />
+          <div className="lg:col-span-7">
+            <motion.div 
+              {...fadeInUp}
+              transition={{ delay: 0.3 }}
+              className="bg-white border-[0.5px] border-[#2A2C2B]/10 rounded-2xl p-8 md:p-12 shadow-sm"
+            >
+              <div className="flex items-center justify-between mb-16">
+                 <div>
+                    <h2 className="font-serif text-3xl mb-2">Kirim Pesan</h2>
+                    <p className="text-[13px] opacity-40 italic">Step {step} of {totalSteps}</p>
+                 </div>
+                 <div className="flex gap-4">
+                    <button onClick={prevStep} disabled={step === 1} className={`w-10 h-10 rounded-full border border-[#2A2C2B]/10 flex items-center justify-center transition-all ${step === 1 ? 'opacity-20' : 'hover:bg-[#2A2C2B] hover:text-white'}`}>
+                       <ArrowLeft size={18} />
+                    </button>
+                    <button onClick={nextStep} disabled={step === totalSteps} className={`w-10 h-10 rounded-full border border-[#2A2C2B]/10 flex items-center justify-center transition-all ${step === totalSteps ? 'opacity-20' : 'hover:bg-[#2A2C2B] hover:text-white'}`}>
+                       <ArrowRight size={18} />
+                    </button>
+                 </div>
               </div>
 
-              <div className="p-8 md:p-16">
-                <div className="flex justify-between items-center mb-12">
-                  <h2 className="font-serif text-[28px] text-[#2A2C2B]">
-                    {step === 1 && "Mulai dari sini"}
-                    {step === 2 && "Detail proyek"}
-                    {step === 3 && "Informasi kontak"}
-                  </h2>
-                  <span className="framer-label !text-[10px] bg-[#F5F5F0] px-3 py-1 rounded-full">
-                    Langkah {step} dari {totalSteps}
-                  </span>
-                </div>
-                
-                <form onSubmit={(e) => e.preventDefault()} className="space-y-10 min-h-[320px] flex flex-col justify-between">
-                  <AnimatePresence mode="wait">
+              <form onSubmit={handleSubmit} className="space-y-12">
+                 <AnimatePresence mode="wait">
                     {step === 1 && (
                       <motion.div 
-                        key="step1"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-8"
+                        key="step1" 
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+                        className="space-y-10"
                       >
-                        {/* Commitment & Consistency: Start with a simple choice */}
-                        <div className="flex flex-col gap-5">
-                          <label className="framer-label !text-[11px] text-[#2A2C2B]/60 uppercase tracking-widest">Pilih Jenis Layanan</label>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {[
-                              { id: 'SHOTCRETE', label: 'Shotcrete Specialist', icon: '🏗️' },
-                              { id: 'BUILDING', label: 'Building Contractor', icon: '🏢' },
-                              { id: 'PREFAB', label: 'Prefab Building', icon: '🏠' },
-                              { id: 'INTERIOR', label: 'Interior & Furniture', icon: '🛋️' },
-                            ].map((cat) => (
-                              <button
-                                key={cat.id}
-                                type="button"
-                                onClick={() => {
-                                  setFormData(prev => ({ ...prev, category: cat.id }));
-                                  setTimeout(nextStep, 300);
-                                }}
-                                className={`flex items-center gap-4 p-5 rounded-xl border-[0.5px] transition-all text-left ${
-                                  formData.category === cat.id 
-                                    ? 'border-brand bg-brand/5 shadow-sm' 
-                                    : 'border-[#2A2C2B]/10 hover:border-brand/40 hover:bg-[#F5F5F0]'
-                                }`}
-                              >
-                                <span className="text-xl">{cat.icon}</span>
-                                <span className="font-medium text-[#2A2C2B]">{cat.label}</span>
-                                {formData.category === cat.id && (
-                                  <CheckCircle weight="fill" className="ml-auto text-brand" size={20} />
-                                )}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
+                         <div className="space-y-4">
+                            <label className="framer-label !text-[10px] !opacity-100">Siapa Nama Anda?</label>
+                            <input 
+                              type="text" 
+                              name="name"
+                              value={formData.name}
+                              onChange={handleInputChange}
+                              placeholder="Masukkan nama lengkap..." 
+                              className="w-full bg-transparent border-b border-[#2A2C2B]/10 py-4 focus:border-brand transition-colors outline-none text-xl font-serif italic" 
+                            />
+                         </div>
+                         <div className="space-y-4">
+                            <label className="framer-label !text-[10px] !opacity-100">Alamat Email?</label>
+                            <input 
+                              type="email" 
+                              name="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              placeholder="nama@email.com" 
+                              className="w-full bg-transparent border-b border-[#2A2C2B]/10 py-4 focus:border-brand transition-colors outline-none text-xl font-serif italic" 
+                            />
+                         </div>
                       </motion.div>
                     )}
 
                     {step === 2 && (
                       <motion.div 
-                        key="step2"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
-                        className="space-y-8"
+                        key="step2" 
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+                        className="space-y-10"
                       >
-                        <div className="flex flex-col gap-4">
-                          <label className="framer-label !text-[11px] text-[#2A2C2B]/60 uppercase tracking-widest">Apa yang bisa kami bantu?</label>
-                          <textarea 
-                            name="details" 
-                            required 
-                            rows={6} 
-                            value={formData.details}
-                            onChange={handleInputChange}
-                            className="bg-[#F5F5F0]/50 border-[0.5px] border-[#2A2C2B]/10 rounded-xl p-5 focus:outline-none focus:border-brand focus:bg-white transition-all resize-none framer-body !text-[#2A2C2B] placeholder:opacity-30" 
-                            placeholder="Ceritakan kebutuhan proyek Anda, lokasi, atau estimasi luas bangunan..." 
-                          />
-                        </div>
+                         <label className="framer-label !text-[10px] !opacity-100">Apa Kebutuhan Anda?</label>
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {['Kontraktor Bangunan', 'Spesialis Shotcrete', 'Sistem Prefabrikasi', 'Interior & Furnitur'].map(cat => (
+                              <button 
+                                key={cat}
+                                type="button"
+                                onClick={() => setFormData(p => ({ ...p, category: cat }))}
+                                className={`p-6 border rounded-xl text-left transition-all ${formData.category === cat ? 'border-brand bg-brand/5' : 'border-[#2A2C2B]/10 hover:border-brand/40'}`}
+                              >
+                                 <p className={`text-[13px] font-bold ${formData.category === cat ? 'text-brand' : 'opacity-40'}`}>{cat}</p>
+                              </button>
+                            ))}
+                         </div>
                       </motion.div>
                     )}
 
                     {step === 3 && (
                       <motion.div 
-                        key="step3"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3 }}
+                        key="step3" 
+                        initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
                         className="space-y-10"
                       >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                          <div className="flex flex-col gap-3 group">
-                            <label className="framer-label !text-[11px] text-[#2A2C2B]/60 uppercase tracking-widest transition-colors group-focus-within:text-brand">Nama Lengkap</label>
-                            <input 
-                              name="name" 
-                              type="text" 
-                              required 
-                              value={formData.name}
+                         <div className="space-y-4">
+                            <label className="framer-label !text-[10px] !opacity-100">Detail Proyek / Pesan</label>
+                            <textarea 
+                              name="details"
+                              value={formData.details}
                               onChange={handleInputChange}
-                              className="bg-transparent border-b-[0.5px] border-[#2A2C2B]/20 py-2 focus:outline-none focus:border-brand transition-all framer-body !text-[#2A2C2B]" 
-                              placeholder="Budi Santoso" 
+                              rows={4}
+                              placeholder="Ceritakan sedikit tentang proyek Anda..." 
+                              className="w-full bg-transparent border-b border-[#2A2C2B]/10 py-4 focus:border-brand transition-colors outline-none text-xl font-serif italic resize-none" 
                             />
-                          </div>
-                          <div className="flex flex-col gap-3 group">
-                            <label className="framer-label !text-[11px] text-[#2A2C2B]/60 uppercase tracking-widest transition-colors group-focus-within:text-brand">Alamat Email</label>
-                            <input 
-                              name="email" 
-                              type="email" 
-                              required 
-                              value={formData.email}
-                              onChange={handleInputChange}
-                              className="bg-transparent border-b-[0.5px] border-[#2A2C2B]/20 py-2 focus:outline-none focus:border-brand transition-all framer-body !text-[#2A2C2B]" 
-                              placeholder="budi@perusahaan.com" 
-                            />
-                          </div>
-                        </div>
-                        <div className="p-4 bg-[#F5F5F0] rounded-xl flex items-start gap-4">
-                          <CheckCircle className="text-green-600 mt-1" size={18} weight="fill" />
-                          <p className="text-[12px] text-[#2A2C2B]/60 leading-relaxed">
-                            Hampir selesai! Data Anda akan kami gunakan hanya untuk keperluan konsultasi proyek ini.
-                          </p>
-                        </div>
+                         </div>
+                         <button 
+                           type="submit"
+                           disabled={isSubmitting}
+                           className="w-full bg-brand text-white py-6 rounded-xl font-bold uppercase tracking-widest text-[11px] hover:bg-[#B8860B] transition-all flex items-center justify-center gap-4 group"
+                         >
+                            {isSubmitting ? 'Mengirim...' : (
+                              <>
+                                Kirim Pesan Melalui Email
+                                <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                              </>
+                            )}
+                         </button>
+                         <div className="flex items-center gap-4 justify-center py-4 bg-brand/5 rounded-lg border border-brand/10">
+                            <CheckCircle size={18} className="text-brand" />
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-brand">Kami akan membalas dalam 24 jam kerja</p>
+                         </div>
                       </motion.div>
                     )}
-                  </AnimatePresence>
-
-                  <div className="flex items-center gap-4 pt-6 border-t-[0.5px] border-[#2A2C2B]/5">
-                    {step > 1 && (
-                      <motion.button
-                        type="button"
-                        onClick={prevStep}
-                        whileHover={{ x: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex items-center justify-center w-12 h-12 rounded-xl border-[0.5px] border-[#2A2C2B]/10 hover:bg-[#F5F5F0] transition-colors"
-                      >
-                        <ArrowLeft size={18} className="text-[#2A2C2B]" />
-                      </motion.button>
-                    )}
-                    
-                    {step < totalSteps ? (
-                      <motion.button
-                        type="button"
-                        onClick={nextStep}
-                        disabled={step === 1 && !formData.category}
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                        className={`framer-btn flex-1 justify-center !bg-[#2A2C2B] !text-white border-none disabled:opacity-30 disabled:pointer-events-none transition-all`}
-                      >
-                        <span>Lanjutkan</span>
-                        <ArrowRight weight="bold" size={16} className="ml-4" />
-                      </motion.button>
-                    ) : (
-                      <motion.button
-                        type="submit"
-                        onClick={handleSubmit}
-                        disabled={isSubmitting || !formData.name || !formData.email}
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                        className={`framer-btn flex-1 justify-center !bg-[#2A2C2B] !text-white border-none group relative overflow-hidden`}
-                      >
-                        {isSubmitting ? (
-                          <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="flex items-center gap-3"
-                          >
-                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            <span>Menyiapkan Email...</span>
-                          </motion.div>
-                        ) : (
-                          <>
-                            <span>Kirim Pesan</span>
-                            <ArrowRight weight="bold" size={16} className="ml-4 group-hover:translate-x-2 transition-transform" />
-                          </>
-                        )}
-                      </motion.button>
-                    )}
-                  </div>
-                </form>
-
-                {/* Social Proof & Trust */}
-                <p className="text-[10px] uppercase tracking-[0.2em] text-[#2A2C2B]/30 mt-8 text-center flex items-center justify-center gap-4">
-                  <span className="h-[1px] w-8 bg-[#2A2C2B]/10" />
-                  Mendukung Pembangunan Indonesia Sejak 2011
-                  <span className="h-[1px] w-8 bg-[#2A2C2B]/10" />
-                </p>
-              </div>
-            </div>
-          </motion.div>
+                 </AnimatePresence>
+              </form>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>

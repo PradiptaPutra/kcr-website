@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight } from '@phosphor-icons/react';
 import SEO from '../components/SEO';
+import ProductCard from '../components/ProductCard';
+import PageHeader from '../components/PageHeader';
 
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('SEMUA');
@@ -23,30 +24,20 @@ const Portfolio: React.FC = () => {
     : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-40 selection:bg-[#2A2C2B] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
         title="Portofolio Proyek"
         description="Lihat berbagai proyek sukses yang telah kami kerjakan. Bukti nyata kualitas kerja kami sebagai kontraktor dan spesialis shotcrete yang terpercaya."
         keywords="Portofolio Kontraktor, Proyek Shotcrete, Proyek BUMN, Konstruksi Gedung, PT KCR"
         canonicalUrl="/portfolio"
-        aeoAnswer="Portofolio PT. KARYA CIPTA RAHARJA mencakup berbagai Proyek Strategis Nasional dan infrastruktur vital di seluruh Indonesia. Sebagai Kontraktor Bangunan BUMN and Spesialis Shotcrete terpercaya, kami mendemonstrasikan integritas struktural, presisi, dan efisiensi dalam setiap pembangunan gedung komersial, fasilitas industrial, hingga stabilisasi lereng infrastruktur."
       />
 
-      {/* 1. EDITORIAL HEADER */}
-      <section className="framer-container mb-32">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl border-l-[0.5px] border-[#2A2C2B]/10 pl-10"
-        >
-          <span className="framer-label text-brand mb-10 block opacity-100">04 / PORTOFOLIO</span>
-          <h1 className="framer-h1">Hasil Karya <br/><span className="italic text-brand font-serif">& Pengalaman Kami.</span></h1>
-          <p className="framer-body !text-[18px] max-w-xl mt-12 leading-relaxed">
-            Setiap proyek adalah bukti nyata komitmen kami terhadap kualitas dan ketepatan waktu. Lihat lebih dekat beberapa pekerjaan terbaik yang telah kami selesaikan.
-          </p>
-        </motion.div>
-      </section>
+      <PageHeader 
+        label="04 / PORTOFOLIO"
+        title="Hasil Karya"
+        subtitle="& Pengalaman Kami."
+        description="Setiap proyek adalah bukti nyata komitmen kami terhadap kualitas dan ketepatan waktu. Lihat lebih dekat beberapa pekerjaan terbaik yang telah kami selesaikan."
+      />
 
       {/* 2. STICKY FILTER */}
       <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/80 backdrop-blur-xl border-y-[0.5px] border-[#2A2C2B]/5 mb-24">
@@ -71,48 +62,19 @@ const Portfolio: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. PROJECT LIST */}
+      {/* 3. PROJECT GRID */}
       <section className="framer-container">
-        <div className="flex flex-col gap-40">
-          <AnimatePresence mode="wait">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
             {filteredProjects.map((p, idx) => (
-              <motion.article 
+              <ProductCard 
                 key={`${p.client}-${idx}`}
-                layout
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-end group"
-              >
-                <div className="lg:col-span-7 overflow-hidden bg-[#e5e5e0] aspect-[16/9]">
-                  <img src={p.img} alt={p.project} className="w-full h-full object-cover transition-transform duration-[2s]" />
-                </div>
-
-                <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-10 pb-6 border-b-[0.5px] border-[#2A2C2B]/10">
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-4">
-                      <span className="framer-label text-brand opacity-100 font-bold">{p.year}</span>
-                      <div className="w-6 h-[0.5px] bg-[#2A2C2B]/20" />
-                      <span className="framer-label opacity-60 font-bold">{p.category}</span>
-                    </div>
-                    <h2 className="font-serif text-[32px] leading-[1.1] uppercase tracking-tight text-[#2A2C2B]">
-                      {p.client}
-                    </h2>
-                    <p className="framer-body !text-[15px]">{p.project}</p>
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                     <span className="framer-label opacity-30 !text-[9px]">Portofolio 0{idx + 1}</span>
-                     <motion.div 
-                       whileHover={{ x: 5, y: -5 }}
-                       className="w-12 h-12 rounded-full border-[0.5px] border-[#2A2C2B]/10 flex items-center justify-center cursor-pointer hover:bg-[#2A2C2B] hover:text-white transition-all duration-500"
-                     >
-                        <ArrowUpRight weight="light" size={24} />
-                     </motion.div>
-                  </div>
-                </div>
-              </motion.article>
+                series={p.client}
+                img={p.img}
+                description={p.project}
+                label={`${p.year} / ${p.category}`}
+                index={idx}
+              />
             ))}
           </AnimatePresence>
         </div>
@@ -122,7 +84,7 @@ const Portfolio: React.FC = () => {
       <section className="mt-60 framer-container">
         <div className="flex flex-col items-center">
            <div className="w-px h-32 bg-gradient-to-b from-[#2A2C2B]/10 to-transparent" />
-           <p className="framer-label opacity-20 mt-12 tracking-[1em]">Portofolio</p>
+           <p className="framer-label opacity-20 mt-12 tracking-[1em]">Archives</p>
         </div>
       </section>
     </div>

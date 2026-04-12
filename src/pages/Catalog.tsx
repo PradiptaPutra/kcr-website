@@ -4,17 +4,11 @@ import { ArrowRight } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
+import PageHeader from '../components/PageHeader';
 
 const Catalog: React.FC = () => {
   const [mainPillar, setMainPillar] = useState<'infrastructure' | 'interior'>('infrastructure');
   const [activeSection, setActiveSection] = useState<string>('all');
-
-  const fadeInUp = {
-    initial: { y: 20, opacity: 0 },
-    whileInView: { y: 0, opacity: 1 },
-    viewport: { once: true },
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }
-  };
 
   const images = kcrData.images.catalog;
   const tabTransition = { type: "spring", stiffness: 500, damping: 35 } as any;
@@ -42,7 +36,7 @@ const Catalog: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-40 pb-32 selection:bg-[#1a1c19] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
         title="Katalog Solusi Terpadu | Struktur & Interior"
         description="Jelajahi katalog lengkap PT. KARYA CIPTA RAHARJA. Dari sistem prefabrikasi dan shotcrete hingga furnitur kantor eksekutif dan workstation modern."
@@ -50,12 +44,12 @@ const Catalog: React.FC = () => {
         canonicalUrl="/catalog"
       />
       
-      <section className="framer-container mb-24">
-        <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#1a1c19]/10 pl-10">
-          <span className="framer-label text-brand mb-10 block">01 / KATALOG TERPADU</span>
-          <h1 className="framer-h1">Solusi <span className="italic text-brand font-serif">Struktural</span> & <br/>Interior Berkualitas.</h1>
-        </motion.div>
-      </section>
+      <PageHeader 
+        label="01 / KATALOG TERPADU"
+        title="Solusi"
+        subtitle={<>Struktural <span className="text-[#1a1c19] font-sans italic-none">&</span> Interior Berkualitas.</>}
+        description="Jelajahi koleksi lengkap kami untuk kebutuhan infrastruktur strategis dan solusi interior kantor modern."
+      />
 
       <section className="framer-container mb-12">
         <div className="flex gap-4 border-b border-[#1a1c19]/5">
