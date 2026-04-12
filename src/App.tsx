@@ -48,6 +48,7 @@ const App: React.FC = () => {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
+        <SplashScreen />
         <div className="flex flex-col min-h-screen relative bg-[#F5F5F0]">
           <Navbar />
           <main className="flex-grow">
@@ -58,6 +59,10 @@ const App: React.FC = () => {
         </div>
       </Router>
     </HelmetProvider>
+  );
+};
+
+export default App;
   );
 };
 
