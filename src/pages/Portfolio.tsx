@@ -3,20 +3,63 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
 import PageHeader from '../components/PageHeader';
-import { kcrData } from '../data/kcrData';
 
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('SEMUA');
 
   const projectCategories = ['INDUSTRIAL', 'KOMERSIAL', 'RESIDENSIAL', 'INFRASTRUKTUR', 'INTERIOR'];
   
-  const projects = kcrData.images.portfolio.map(p => ({
-    client: p.client,
-    project: p.title,
-    year: p.year,
-    category: p.category.toUpperCase(),
-    img: p.img
-  }));
+  const projects = [
+    { 
+      client: 'BUMN FINANCIAL', 
+      project: 'Fit-Out Interior Eksekutif', 
+      year: '2023', 
+      category: 'INTERIOR', 
+      img: '/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg' 
+    },
+    { 
+      client: 'SEKTOR SWASTA', 
+      project: 'Shotcrete & Fondasi Dalam', 
+      year: '2023', 
+      category: 'INDUSTRIAL', 
+      img: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200' 
+    },
+    { 
+      client: 'MITRA BUMN', 
+      project: 'Konstruksi Gedung Bertingkat', 
+      year: '2022', 
+      category: 'INFRASTRUKTUR', 
+      img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200' 
+    },
+    { 
+      client: 'PUSAT KOMERSIAL', 
+      project: 'Sistem Bangunan Prefabrikasi', 
+      year: '2023', 
+      category: 'KOMERSIAL', 
+      img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200' 
+    },
+    { 
+      client: 'KOMPLEKS RESIDENSIAL', 
+      project: 'Perumahan Light Steel Frame', 
+      year: '2022', 
+      category: 'RESIDENSIAL', 
+      img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200' 
+    },
+    { 
+      client: 'GUDANG INDUSTRIAL', 
+      project: 'Floor Hardening & Pelapisan Epoksi', 
+      year: '2023', 
+      category: 'INDUSTRIAL', 
+      img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200' 
+    },
+    { 
+      client: 'PERUSAHAAN NEGARA', 
+      project: 'Perbaikan Struktural & Waterproofing', 
+      year: '2021', 
+      category: 'INFRASTRUKTUR', 
+      img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200' 
+    },
+  ];
 
   const filteredProjects = activeCategory === 'SEMUA'
     ? projects
@@ -25,7 +68,7 @@ const Portfolio: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-24 md:pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
-        title="Portofolio Spesialis Shotcrete & Kontraktor BUMN"
+        title="Portofolio Proyek"
         description="Lihat berbagai proyek sukses yang telah kami kerjakan. Bukti nyata kualitas kerja kami sebagai kontraktor dan spesialis shotcrete yang terpercaya."
         keywords="Portofolio Kontraktor, Proyek Shotcrete, Proyek BUMN, Konstruksi Gedung, PT KCR"
         canonicalUrl="/portfolio"

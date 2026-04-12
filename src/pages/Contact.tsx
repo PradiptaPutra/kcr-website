@@ -1,11 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, CaretDown, MapPin, Phone, Envelope } from '@phosphor-icons/react';
+import { MapPin, Phone, Envelope, ArrowRight } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 
 const Contact: React.FC = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    category: '',
+    details: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const subject = encodeURIComponent(`Inquiry: ${formData.category} - ${formData.name}`);
+    const body = encodeURIComponent(`Nama: ${formData.name}\nEmail: ${formData.email}\nKategori: ${formData.category}\n\nDetail:\n${formData.details}`);
+    
+    window.location.href = `mailto:${kcrData.contact.emails[1]}?subject=${subject}&body=${body}`;
+    setIsSubmitting(false);
+  };
+
   const fadeInUp = {
     initial: { y: 20, opacity: 0 },
     whileInView: { y: 0, opacity: 1 },
@@ -13,128 +38,148 @@ const Contact: React.FC = () => {
     transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(`Project Inquiry: ${formData.get('category')} - ${formData.get('name')}`);
-    const body = encodeURIComponent(`Nama: ${formData.get('name')}\nEmail: ${formData.get('email')}\nKategori: ${formData.get('category')}\n\nDetail:\n${formData.get('details')}`);
-    window.location.href = `mailto:${kcrData.contact.emails[1]}?subject=${subject}&body=${body}`;
-  };
-
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-24 selection:bg-[#2A2C2B] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-20 md:pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
-        title="Kontak & Konsultasi"
-        description="Hubungi tim teknis PT. KARYA CIPTA RAHARJA untuk konsultasi arsitektural, evaluasi struktural, and penawaran proyek konstruksi."
+        title="Hubungi Kami | Konsultasi Proyek Gratis"
+        description="Punya rencana proyek? Mari ngobrol. Tim KCR siap mendengarkan and memberikan solusi konstruksi terbaik untuk Anda."
         keywords="Kontak KCR, Hubungi Kontraktor BUMN, Konsultasi Proyek, Spesialis Shotcrete Indonesia"
         canonicalUrl="/contact"
       />
 
       <PageHeader 
-        label="05 / KONTAK"
-        title="Hubungi"
-        subtitle="& Inkuiri Teknik."
-        description="Mari diskusikan visi proyek Anda. Tim ahli kami siap membantu mengejawantahkan rencana tersebut menjadi realitas struktural yang presisi."
+        label="HUBUNGI KAMI"
+        title="Mari Diskusikan"
+        subtitle="Proyek Anda."
+        description="Tim ahli kami siap memberikan solusi teknis and estimasi biaya yang akurat untuk kebutuhan konstruksi Anda."
       />
 
-      <section className="framer-container mt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          {/* 1. CONTACT INFO */}
-          <div className="lg:col-span-5 space-y-16">
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="space-y-12">
-              <div className="flex gap-8 items-start">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-brand/10 flex-shrink-0 shadow-sm">
-                  <MapPin weight="light" size={24} className="text-brand" />
+      <section className="framer-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          
+          {/* LEFT: Contact Information */}
+          <div className="lg:col-span-4 space-y-10 md:space-y-12">
+            <motion.div {...fadeInUp} className="space-y-8 md:space-y-10">
+              <div className="flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-[#1a1c19]/10 shrink-0">
+                  <MapPin size={24} className="text-brand" weight="light" />
                 </div>
-                <div className="space-y-3">
-                  <h3 className="framer-label !text-brand !opacity-100">Kantor Pusat</h3>
-                  <p className="framer-body !text-[15px] leading-relaxed max-w-xs">{kcrData.contact.address}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-8 items-start">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-brand/10 flex-shrink-0 shadow-sm">
-                  <Envelope weight="light" size={24} className="text-brand" />
-                </div>
-                <div className="space-y-3">
-                  <h3 className="framer-label !text-brand !opacity-100">Email Inkuiri</h3>
-                  <div className="flex flex-col gap-1">
-                    <a href={`mailto:${kcrData.contact.emails[1]}`} className="framer-body !text-[15px] hover:text-brand transition-colors">{kcrData.contact.emails[1]}</a>
-                    <a href={`mailto:${kcrData.contact.emails[0]}`} className="framer-body !text-[15px] hover:text-brand transition-colors opacity-60">{kcrData.contact.emails[0]}</a>
-                  </div>
+                <div>
+                  <h3 className="framer-label !opacity-100 mb-2">Kantor Pusat</h3>
+                  <p className="framer-body !text-sm leading-relaxed">{kcrData.contact.address}</p>
                 </div>
               </div>
 
-              <div className="flex gap-8 items-start">
-                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-brand/10 flex-shrink-0 shadow-sm">
-                  <Phone weight="light" size={24} className="text-brand" />
+              <div className="flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-[#1a1c19]/10 shrink-0">
+                  <Envelope size={24} className="text-brand" weight="light" />
                 </div>
-                <div className="space-y-3">
-                  <h3 className="framer-label !text-brand !opacity-100">Telepon</h3>
-                  <p className="framer-body !text-[15px] font-medium">{kcrData.contact.phones[0]}</p>
+                <div>
+                  <h3 className="framer-label !opacity-100 mb-2">Email</h3>
+                  <p className="framer-body !text-sm">{kcrData.contact.emails[1]}</p>
+                  <p className="framer-body !text-sm opacity-50">{kcrData.contact.emails[0]}</p>
+                </div>
+              </div>
+
+              <div className="flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-[#1a1c19]/10 shrink-0">
+                  <Phone size={24} className="text-brand" weight="light" />
+                </div>
+                <div>
+                  <h3 className="framer-label !opacity-100 mb-2">Telepon</h3>
+                  <p className="framer-body !text-sm">{kcrData.contact.phones[0]}</p>
                 </div>
               </div>
             </motion.div>
 
-            <motion.div {...fadeInUp} transition={{ delay: 0.4 }} className="aspect-video bg-white rounded-2xl overflow-hidden shadow-2xl border border-[#1a1c19]/5 group relative">
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" 
-                className="w-full h-full object-cover opacity-80 transition-all duration-[2s] group-hover:scale-110" 
-                alt="Studio Atmosphere"
-              />
-              <div className="absolute inset-0 bg-brand/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="p-8 bg-[#1a1c19] rounded-2xl text-white">
+               <p className="framer-label !text-brand mb-4">Jam Operasional</p>
+               <p className="font-serif text-xl italic mb-2">Senin — Jumat</p>
+               <p className="text-white/50 text-sm">08:00 - 17:00 WIB</p>
             </motion.div>
           </div>
 
-          {/* 2. INQUIRY FORM */}
-          <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="lg:col-span-7">
-            <div className="bg-white p-10 md:p-20 rounded-3xl border border-brand/10 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-full -mr-16 -mt-16 blur-3xl" />
-              <h2 className="font-serif text-[32px] mb-12 text-[#2A2C2B] tracking-tight">Formulir Inkuiri Teknis</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-12 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  <div className="flex flex-col gap-4 group">
-                    <label className="framer-label !text-[10px] group-focus-within:text-brand transition-colors">Nama Lengkap</label>
-                    <input name="name" type="text" required className="bg-transparent border-b border-[#2A2C2B]/10 py-3 focus:outline-none focus:border-brand transition-all framer-body !text-[#2A2C2B] placeholder:opacity-20" placeholder="Nama Anda" />
-                  </div>
-                  <div className="flex flex-col gap-4 group">
-                    <label className="framer-label !text-[10px] group-focus-within:text-brand transition-colors">Alamat Email</label>
-                    <input name="email" type="email" required className="bg-transparent border-b border-[#2A2C2B]/10 py-3 focus:outline-none focus:border-brand transition-all framer-body !text-[#2A2C2B] placeholder:opacity-20" placeholder="email@perusahaan.com" />
-                  </div>
+          {/* RIGHT: Simple Contact Form */}
+          <div className="lg:col-span-8">
+            <motion.div 
+              {...fadeInUp} 
+              className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-[#1a1c19]/5"
+            >
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label className="framer-label !text-[10px] !opacity-100">Nama Lengkap</label>
+                  <input 
+                    required
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full bg-[#F5F5F0]/50 border-b border-[#1a1c19]/10 py-4 px-4 focus:border-brand transition-colors outline-none font-serif italic text-lg"
+                    placeholder="Contoh: Bpk. Heru"
+                  />
                 </div>
 
-                <div className="flex flex-col gap-4 relative group">
-                  <label className="framer-label !text-[10px] group-focus-within:text-brand transition-colors">Kategori Proyek</label>
-                  <div className="relative">
-                    <select name="category" required className="w-full bg-transparent border-b border-[#2A2C2B]/10 py-3 focus:outline-none appearance-none cursor-pointer framer-body !text-[#2A2C2B]">
-                      <option value="" disabled selected>Pilih layanan utama</option>
-                      <option value="BUILDING">Building Contractor</option>
-                      <option value="SHOTCRETE">Shotcrete Specialist</option>
-                      <option value="PREFAB">Prefab Building System</option>
-                      <option value="INTERIOR">Interior & Furniture</option>
-                    </select>
-                    <CaretDown weight="light" size={18} className="absolute right-0 bottom-4 opacity-30 pointer-events-none group-focus-within:text-brand transition-colors" />
-                  </div>
+                <div className="space-y-2">
+                  <label className="framer-label !text-[10px] !opacity-100">Alamat Email</label>
+                  <input 
+                    required
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full bg-[#F5F5F0]/50 border-b border-[#1a1c19]/10 py-4 px-4 focus:border-brand transition-colors outline-none font-serif italic text-lg"
+                    placeholder="nama@perusahaan.com"
+                  />
                 </div>
 
-                <div className="flex flex-col gap-4 group">
-                  <label className="framer-label !text-[10px] group-focus-within:text-brand transition-colors">Detail Permintaan</label>
-                  <textarea name="details" required rows={5} className="bg-transparent border-b border-[#2A2C2B]/10 py-3 focus:outline-none focus:border-brand transition-all resize-none framer-body !text-[#2A2C2B] placeholder:opacity-20" placeholder="Ceritakan kebutuhan teknis, lokasi, atau anggaran proyek Anda..." />
+                <div className="md:col-span-2 space-y-2">
+                  <label className="framer-label !text-[10px] !opacity-100">Kategori Layanan</label>
+                  <select 
+                    required
+                    name="category"
+                    value={formData.category}
+                    onChange={handleInputChange}
+                    className="w-full bg-[#F5F5F0]/50 border-b border-[#1a1c19]/10 py-4 px-4 focus:border-brand transition-colors outline-none font-serif italic text-lg appearance-none cursor-pointer"
+                  >
+                    <option value="">Pilih layanan...</option>
+                    <option value="Kontraktor Bangunan">Kontraktor Bangunan</option>
+                    <option value="Spesialis Shotcrete">Spesialis Shotcrete</option>
+                    <option value="Sistem Prefabrikasi">Sistem Prefabrikasi</option>
+                    <option value="Interior & Furnitur">Interior & Furnitur</option>
+                  </select>
                 </div>
 
-                <div className="pt-8 border-t border-[#2A2C2B]/5">
-                  <button type="submit" className="framer-btn w-full justify-center group !bg-[#2A2C2B] !text-white border-none hover:!bg-brand transition-all py-6 shadow-xl shadow-brand/10">
-                    <span className="text-[13px] tracking-[0.4em]">Kirim Inkuiri Sekarang</span>
-                    <ArrowUpRight weight="bold" size={20} className="ml-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <div className="md:col-span-2 space-y-2">
+                  <label className="framer-label !text-[10px] !opacity-100">Pesan / Detail Proyek</label>
+                  <textarea 
+                    required
+                    name="details"
+                    value={formData.details}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full bg-[#F5F5F0]/50 border-b border-[#1a1c19]/10 py-4 px-4 focus:border-brand transition-colors outline-none font-serif italic text-lg resize-none"
+                    placeholder="Ceritakan singkat rencana proyek Anda..."
+                  />
+                </div>
+
+                <div className="md:col-span-2 pt-4">
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full md:w-auto px-12 py-5 bg-brand text-white rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-[#2A2C2B] transition-all flex items-center justify-center gap-4 group"
+                  >
+                    {isSubmitting ? 'Mengirim...' : (
+                      <>
+                        Kirim Pesan Melalui Email
+                        <ArrowRight className="group-hover:translate-x-2 transition-transform" weight="bold" />
+                      </>
+                    )}
                   </button>
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-[#2A2C2B]/30 mt-8 text-center font-medium">
-                    Estimasi respons: 1-2 hari kerja untuk tinjauan teknis awal.
-                  </p>
                 </div>
               </form>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
+
         </div>
       </section>
     </div>

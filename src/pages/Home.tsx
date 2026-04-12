@@ -16,50 +16,6 @@ const Home: React.FC = () => {
     transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }
   };
 
-  const heroImages = kcrData.images.hero;
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://karyaciptaraharja.com/#organization",
-        "name": "PT. KARYA CIPTA RAHARJA",
-        "alternateName": "KCR",
-        "url": "https://karyaciptaraharja.com",
-        "description": kcrData.company.description,
-        "foundingDate": "2006",
-        "contactPoint": [
-          {
-            "@type": "ContactPoint",
-            "telephone": "+62-21-8459-8590",
-            "contactType": "customer service",
-            "areaServed": "ID",
-            "availableLanguage": ["Indonesian", "English"]
-          }
-        ]
-      },
-      {
-        "@type": "ConstructionBusiness",
-        "@id": "https://karyaciptaraharja.com/#localbusiness",
-        "name": "PT. KARYA CIPTA RAHARJA",
-        "parentOrganization": { "@id": "https://karyaciptaraharja.com/#organization" },
-        "image": kcrData.images.hero,
-        "telephone": "(021) 84598590",
-        "email": "info@karyaciptaraharja.com",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Jl. Dirgantara Raya Blok A No. 7, BDP – Jatisari– Jatiasih",
-          "addressLocality": "Bekasi",
-          "addressRegion": "Jawa Barat",
-          "postalCode": "17426",
-          "addressCountry": "ID"
-        },
-        "url": "https://karyaciptaraharja.com"
-      }
-    ]
-  };
-
   return (
     <div className="bg-[#F5F5F0]">
       <SEO 
@@ -68,11 +24,7 @@ const Home: React.FC = () => {
         keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Kontraktor Terpercaya, Shotcrete Indonesia, Bangunan Prefab"
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </SEO>
+      />
 
       {/* 1. HERO */}
       <section className="relative h-screen w-full overflow-hidden bg-[#1a1c19] flex flex-col items-center">
@@ -83,7 +35,7 @@ const Home: React.FC = () => {
           transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] as any }}
           className="absolute inset-0"
         >
-          <img className="w-full h-full object-cover" src={heroImages[heroIndex]} alt={`KCR Construction Project - ${heroIndex + 1}`} />
+          <img className="w-full h-full object-cover" src={kcrData.images.hero[heroIndex]} alt={`KCR Construction Project - ${heroIndex + 1}`} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </motion.div>
 
@@ -133,14 +85,14 @@ const Home: React.FC = () => {
         {/* Navigation Buttons - Moved to sides for better accessibility and zero overlap */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 flex justify-between px-8 pointer-events-none">
           <button 
-            onClick={() => setHeroIndex(prev => (prev === 0 ? heroImages.length - 1 : prev - 1))} 
+            onClick={() => setHeroIndex(prev => (prev === 0 ? kcrData.images.hero.length - 1 : prev - 1))} 
             className="text-white/20 hover:text-white transition-all pointer-events-auto p-4"
             aria-label="Previous Hero Image"
           >
             <CaretLeft weight="light" size={32} />
           </button>
           <button 
-            onClick={() => setHeroIndex(prev => (prev === heroImages.length - 1 ? 0 : prev + 1))} 
+            onClick={() => setHeroIndex(prev => (prev === kcrData.images.hero.length - 1 ? 0 : prev + 1))} 
             className="text-white/20 hover:text-white transition-all pointer-events-auto p-4"
             aria-label="Next Hero Image"
           >
@@ -351,7 +303,7 @@ const Home: React.FC = () => {
             Dapatkan analisis teknis and konsultasi anggaran awal gratis dari tim ahli kami untuk memastikan proyek Anda berjalan efisien sejak hari pertama.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white border-none px-12">
+            <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white hover:!bg-brand border-none px-12">
               Mulai Konsultasi Gratis
             </Link>
             <a href="mailto:info@karyaciptaraharja.com" className="framer-label hover:text-brand transition-all flex items-center gap-2">

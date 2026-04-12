@@ -21,7 +21,7 @@ export const kcrData = {
       title: "Shotcrete (Beton Semprot)",
       description: "Aplikasi beton sistem spray untuk area sulit. Layanan mencakup Wet Shotcrete, Dry Shotcrete, Soilnailing, and Ready Pack Mortar.",
       subItems: ["Soilnailing", "Ready Pack Mortar", "Slope Stabilization"],
-      img: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200"
+      img: "https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200"
     },
     {
       id: "fireproofing",
@@ -178,13 +178,13 @@ export const kcrData = {
     ],
     catalog: {
       prefab: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200",
-      shotcrete: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200",
+      shotcrete: "https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200",
       chemicals: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=1200",
       furniture: "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg"
     },
     portfolio: [
       { id: '01', year: '2023', category: 'Industrial', title: 'Logistics Warehouse', client: 'Sektor Swasta', img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" },
-      { id: '02', year: '2022', category: 'Shotcrete', title: 'Slope Stabilization', client: 'Proyek Nasional', img: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200" },
+      { id: '02', year: '2022', category: 'Shotcrete', title: 'Slope Stabilization', client: 'Proyek Nasional', img: "https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200" },
       { id: '03', year: '2023', category: 'Interior', title: 'Fit-Out Interior Eksekutif', client: 'BUMN Financial', img: "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg" }
     ]
   },
