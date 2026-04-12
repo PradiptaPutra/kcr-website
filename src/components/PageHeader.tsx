@@ -17,26 +17,30 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   className = ""
 }) => {
   const fadeInUp = {
-    initial: { y: 20, opacity: 0 },
+    initial: { y: 10, opacity: 0 },
     animate: { y: 0, opacity: 1 },
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as any }
   };
 
   return (
-    <section className={`framer-container pt-20 mb-20 ${className}`}>
+    <section className={`framer-container pt-8 md:pt-12 mb-8 md:mb-12 ${className}`}>
       <motion.div 
         {...fadeInUp}
-        className="max-w-3xl"
+        className="max-w-4xl border-b border-[#1a1c19]/5 pb-10"
       >
-        <span className="framer-label text-brand mb-6 block tracking-[0.4em]">{label}</span>
-        <h1 className="framer-h2 !text-[36px] md:!text-[48px] mb-6 leading-tight">
-          {title} {subtitle && <span className="italic text-brand font-serif">{subtitle}</span>}
-        </h1>
-        {description && (
-          <p className="framer-body !text-[16px] max-w-2xl opacity-60">
-            {description}
-          </p>
-        )}
+        <div className="flex flex-col gap-3">
+          <span className="text-[10px] uppercase tracking-[0.4em] text-brand font-bold opacity-80">{label}</span>
+          <div className="flex flex-col md:flex-row md:items-baseline gap-x-4">
+            <h1 className="font-serif text-[24px] md:text-[32px] text-[#1a1c19]">
+              {title} {subtitle && <span className="italic text-brand">{subtitle}</span>}
+            </h1>
+          </div>
+          {description && (
+            <p className="text-[13px] opacity-40 max-w-xl leading-relaxed mt-2">
+              {description}
+            </p>
+          )}
+        </div>
       </motion.div>
     </section>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { List, X, MagnifyingGlass } from '@phosphor-icons/react';
+import { List, X, MagnifyingGlass, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
@@ -16,6 +16,17 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => setIsOpen(false), [location.pathname]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const links = [
     { n: 'Produk', p: '/catalog' },
@@ -78,29 +89,59 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-[#F5F5F0] z-[90] flex flex-col justify-center px-12 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-[#F5F5F0] z-[90] flex flex-col pt-32 pb-12 px-8 sm:px-12 lg:hidden overflow-y-auto"
           >
-            <div className="flex flex-col gap-8">
-              <span className="framer-label opacity-20 mb-4 tracking-[0.6em]">Navigasi</span>
-              {links.map((l, i) => (
-                <motion.div
-                  key={l.n}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 * i }}
-                >
-                  <Link 
-                    to={l.p} 
-                    className={`font-serif text-[42px] transition-all leading-tight ${location.pathname === l.p ? 'text-[#1a1c19]' : 'text-[#1a1c19]/40'}`}
-                  >
-                    {l.n}
-                  </Link>
-                </motion.div>
-              ))}
+            <div className="flex flex-col gap-10">
+              <div>
+                <span className="framer-label opacity-20 mb-6 block tracking-[0.6em] text-[10px]">Navigasi</span>
+                <div className="flex flex-col gap-6">
+                  {links.map((l, i) => (
+                    <motion.div
+                      key={l.n}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 * i }}
+                    >
+                      <Link 
+                        to={l.p} 
+                        className={`font-serif text-[32px] sm:text-[42px] transition-all leading-tight block ${location.pathname === l.p ? 'text-[#1a1c19]' : 'text-[#1a1c19]/40'}`}
+                      >
+                        {l.n}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-col gap-8">
+                <div>
+                  <span className="framer-label opacity-20 mb-4 block tracking-[0.6em] text-[10px]">Pencarian</span>
+                  <div className="relative">
+                    <input 
+                      type="text" 
+                      placeholder="Cari produk atau layanan..."
+                      className="w-full bg-transparent border-b border-[#1a1c19]/10 py-3 text-[15px] focus:outline-none focus:border-[#1a1c19]/40 transition-all font-sans"
+                    />
+                    <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20" size={20} />
+                  </div>
+                </div>
+
+                <div>
+                  <span className="framer-label opacity-20 mb-4 block tracking-[0.6em] text-[10px]">Media Sosial</span>
+                  <div className="flex gap-6">
+                    <a href="#" className="w-10 h-10 rounded-full border border-[#1a1c19]/10 flex items-center justify-center opacity-60 hover:opacity-100 transition-all">
+                      <InstagramLogo size={20} weight="light" />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-[#1a1c19]/10 flex items-center justify-center opacity-60 hover:opacity-100 transition-all">
+                      <LinkedinLogo size={20} weight="light" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

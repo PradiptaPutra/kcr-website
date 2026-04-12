@@ -14,7 +14,7 @@ const About: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-32 selection:bg-[#1a1c19] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-20 md:pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
         title="Tentang Kami | Pionir Teknologi Konstruksi Modern"
         description="Pelajari sejarah PT. KARYA CIPTA RAHARJA sejak 2006 sebagai pionir teknologi konstruksi modern, Spesialis Shotcrete Indonesia, and Kontraktor Bangunan BUMN terpercaya."
@@ -31,11 +31,11 @@ const About: React.FC = () => {
       />
 
       {/* Origins */}
-      <section className="framer-container mb-40">
+      <section className="framer-container mb-24 md:mb-40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <motion.div {...fadeInUp} className="lg:col-span-6 relative">
             <div className="aspect-[4/5] bg-[#1a1c19] overflow-hidden">
-              <img src="https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg" className="w-full h-full object-cover" alt="Origins" />
+              <img src="https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg" className="w-full h-full object-cover" alt="Origins" loading="lazy" />
             </div>
           </motion.div>
           <motion.div {...fadeInUp} transition={{ delay: 0.2, duration: 1 }} className="lg:col-span-6">
@@ -53,7 +53,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Vision */}
-      <section className="bg-[#1a1c19] text-[#F5F5F0] py-40">
+      <section className="bg-[#1a1c19] text-[#F5F5F0] py-24 md:py-40">
         <div className="framer-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
             <motion.div {...fadeInUp}>
@@ -64,7 +64,7 @@ const About: React.FC = () => {
               <p className="framer-body !text-white/50 max-w-sm">{kcrData.company.vision}</p>
             </motion.div>
             <motion.div {...fadeInUp} className="aspect-video bg-black overflow-hidden border-[0.5px] border-white/10 lg:ml-auto w-full">
-               <img src="https://images.pexels.com/photos/6615233/pexels-photo-6615233.jpeg" className="w-full h-full object-cover opacity-60" alt="Vision" />
+               <img src="https://images.pexels.com/photos/6615233/pexels-photo-6615233.jpeg" className="w-full h-full object-cover opacity-60" alt="Vision" loading="lazy" />
             </motion.div>
           </div>
 
@@ -84,7 +84,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Capabilities */}
-      <section className="py-40 framer-container">
+      <section className="py-24 md:py-40 framer-container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
            {[ 
              { icon: <HardHat weight="light" size={40} />, t: 'Ekselerasi', d: 'Kerja lebih cepat and rapi berkat sistem prefabrikasi modern.' },

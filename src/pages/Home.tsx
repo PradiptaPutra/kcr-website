@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CaretRight, CaretLeft, ArrowUpRight, X } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
+import { CaretRight, CaretLeft, ArrowUpRight } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
 
 const Home: React.FC = () => {
   const [heroIndex, setHeroIndex] = useState(0);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   const fadeInUp = {
     initial: { y: 20, opacity: 0 },
@@ -21,7 +20,7 @@ const Home: React.FC = () => {
     <div className="bg-[#F5F5F0]">
       <SEO 
         title="Kontraktor Bangunan & Spesialis Shotcrete Terpercaya"
-        description="PT. KARYA CIPTA RAHARJA (KCR) adalah kontraktor andalan dan Spesialis Shotcrete Indonesia. Kami memberikan solusi bangunan presisi, sistem prefab modern, dan manajemen yang rapi sejak 2006."
+        description="PT. KARYA CIPTA RAHARJA (KCR) adalah kontraktor andalan dan Spesialis Shotcrete Indonesia. Kami memberikan solusi bangunan presisi, sistem prefab modern, and manajemen yang rapi sejak 2006."
         keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Kontraktor Terpercaya, Shotcrete Indonesia, Bangunan Prefab"
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
@@ -52,7 +51,7 @@ const Home: React.FC = () => {
              <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 0.8 }} transition={{ delay: 0.9 }} className="block font-serif italic text-white/80">Presisi Tanpa Henti.</motion.span>
            </h1>
            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} className="text-white/60 text-lg mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-             Mitra Kontraktor & Spesialis Shotcrete terpercaya dengan pengalaman 17+ tahun dalam membangun infrastruktur dan Proyek Strategis Nasional.
+             Mitra Kontraktor & Spesialis Shotcrete terpercaya dengan pengalaman 17+ tahun dalam membangun infrastruktur and Proyek Strategis Nasional.
            </motion.p>
            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="flex flex-col sm:flex-row items-center justify-center gap-6">
              <Link to="/contact" className="framer-btn !bg-brand !text-white border-none hover:scale-105 transition-transform px-10">
@@ -104,7 +103,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* 2. NARRATIVE - Jobs to Be Done & Authority */}
-      <section className="py-32 framer-container">
+      <section className="py-20 md:py-32 framer-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <motion.div {...fadeInUp} className="lg:col-span-5 border-l-2 border-brand pl-10 py-2">
             <span className="framer-label text-brand mb-8 block">01 / MENGAPA KAMI</span>
@@ -116,10 +115,10 @@ const Home: React.FC = () => {
           
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:col-span-6 lg:col-start-7">
             <p className="framer-body !text-[18px] mb-10 text-[#2A2C2B] font-medium">
-              Kami memahami bahwa setiap proyek konstruksi adalah investasi besar yang menuntut keamanan tanpa celah dan ketepatan waktu.
+              Kami memahami bahwa setiap proyek konstruksi adalah investasi besar yang menuntut keamanan tanpa celah and ketepatan waktu.
             </p>
             <p className="framer-body mb-10">
-              Sebagai <strong className="text-brand">Spesialis Shotcrete Indonesia</strong>, KCR tidak hanya sekadar membangun, tetapi memberikan solusi perkuatan struktur yang telah teruji pada Proyek Strategis Nasional. Kami menggabungkan metode konvensional yang rapi dengan inovasi sistem prefabrikasi untuk efisiensi maksimal.
+              Sebagai **Spesialis Shotcrete Indonesia**, KCR tidak hanya sekadar membangun, tetapi memberikan solusi perkuatan struktur yang telah teruji pada Proyek Strategis Nasional. Kami menggabungkan metode konvensional yang rapi dengan inovasi sistem prefabrikasi untuk efisiensi maksimal.
             </p>
             <Link to="/about" className="framer-label group flex items-center gap-4 hover:text-brand transition-all !opacity-100">
               Pelajari Standar Kualitas Kami <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
@@ -129,84 +128,92 @@ const Home: React.FC = () => {
       </section>
 
       {/* 3. SOLUTIONS - Benefits Oriented (JTBD) */}
-      <section className="py-32 framer-container border-t border-[#2A2C2B]/5">
+      <section className="py-20 md:py-32 framer-container border-t border-[#2A2C2B]/5">
         <motion.div {...fadeInUp} className="mb-20">
           <span className="framer-label text-brand mb-6 block">02 / SOLUSI</span>
           <h2 className="framer-h2 text-[#2A2C2B]">Fokus Pada Hasil & Keamanan</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
-            {...fadeInUp}
-            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
-          >
-            <div className="flex justify-between items-start">
-              <span className="framer-label text-brand !opacity-100">01</span>
-              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
-                <ArrowUpRight weight="light" size={20} />
+          <Link to="/services" className="block group">
+            <motion.div 
+              {...fadeInUp}
+              className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group-hover:border-brand transition-all duration-500 h-full"
+            >
+              <div className="flex justify-between items-start">
+                <span className="framer-label text-brand !opacity-100">01</span>
+                <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                  <ArrowUpRight weight="light" size={20} />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Manajemen Proyek Terpadu</h3>
-              <p className="framer-body !text-[15px] opacity-80">Dari tahap perencanaan hingga serah terima, kami memastikan kontrol kualitas yang ketat sehingga proyek Anda selesai tepat waktu tanpa pembengkakan biaya.</p>
-            </div>
-          </motion.div>
+              <div className="flex flex-col gap-4">
+                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Manajemen Proyek Terpadu</h3>
+                <p className="framer-body !text-[15px] opacity-80">Dari tahap perencanaan hingga serah terima, kami memastikan kontrol kualitas yang ketat sehingga proyek Anda selesai tepat waktu tanpa pembengkakan biaya.</p>
+              </div>
+            </motion.div>
+          </Link>
 
-          <motion.div 
-            {...fadeInUp}
-            transition={{ delay: 0.1 }}
-            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
-          >
-            <div className="flex justify-between items-start">
-              <span className="framer-label text-brand !opacity-100">02</span>
-              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
-                <ArrowUpRight weight="light" size={20} />
+          <Link to="/services" className="block group">
+            <motion.div 
+              {...fadeInUp}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group-hover:border-brand transition-all duration-500 h-full"
+            >
+              <div className="flex justify-between items-start">
+                <span className="framer-label text-brand !opacity-100">02</span>
+                <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                  <ArrowUpRight weight="light" size={20} />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Proteksi Lereng & Infrastruktur</h3>
-              <p className="framer-body !text-[15px] opacity-80">Spesialisasi Shotcrete kami memberikan keamanan ekstra pada area rawan longsor dan dinding terowongan dengan aplikasi beton semprot yang presisi.</p>
-            </div>
-          </motion.div>
+              <div className="flex flex-col gap-4">
+                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Proteksi Lereng & Infrastruktur</h3>
+                <p className="framer-body !text-[15px] opacity-80">Spesialisasi Shotcrete kami memberikan keamanan ekstra pada area rawan longsor and dinding terowongan dengan aplikasi beton semprot yang presisi.</p>
+              </div>
+            </motion.div>
+          </Link>
 
-          <motion.div 
-            {...fadeInUp}
-            transition={{ delay: 0.2 }}
-            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
-          >
-            <div className="flex justify-between items-start">
-              <span className="framer-label text-brand !opacity-100">03</span>
-              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
-                <ArrowUpRight weight="light" size={20} />
+          <Link to="/catalog" className="block group">
+            <motion.div 
+              {...fadeInUp}
+              transition={{ delay: 0.2 }}
+              className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group-hover:border-brand transition-all duration-500 h-full"
+            >
+              <div className="flex justify-between items-start">
+                <span className="framer-label text-brand !opacity-100">03</span>
+                <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                  <ArrowUpRight weight="light" size={20} />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Konstruksi Prefab Modern</h3>
-              <p className="framer-body !text-[15px] opacity-80">Percepat waktu pembangunan hingga 40% dengan sistem rangka baja ringan prefabrikasi yang akurat dan efisien untuk berbagai jenis bangunan.</p>
-            </div>
-          </motion.div>
+              <div className="flex flex-col gap-4">
+                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Konstruksi Prefab Modern</h3>
+                <p className="framer-body !text-[15px] opacity-80">Percepat waktu pembangunan hingga 40% dengan sistem rangka baja ringan prefabrikasi yang akurat and efisien untuk berbagai jenis bangunan.</p>
+              </div>
+            </motion.div>
+          </Link>
 
-          <motion.div 
-            {...fadeInUp}
-            transition={{ delay: 0.3 }}
-            className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group hover:border-brand transition-all duration-500"
-          >
-            <div className="flex justify-between items-start">
-              <span className="framer-label text-brand !opacity-100">04</span>
-              <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
-                <ArrowUpRight weight="light" size={20} />
+          <Link to="/catalog" className="block group">
+            <motion.div 
+              {...fadeInUp}
+              transition={{ delay: 0.3 }}
+              className="bg-white p-12 border-[0.5px] border-[#2A2C2B]/10 rounded-[12px] flex flex-col gap-8 group-hover:border-brand transition-all duration-500 h-full"
+            >
+              <div className="flex justify-between items-start">
+                <span className="framer-label text-brand !opacity-100">04</span>
+                <div className="w-10 h-10 border border-[#2A2C2B]/10 rounded-full flex items-center justify-center group-hover:bg-[#2A2C2B] group-hover:text-white transition-all">
+                  <ArrowUpRight weight="light" size={20} />
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Fit-Out Interior Eksekutif</h3>
-              <p className="framer-body !text-[15px] opacity-80">Menciptakan ruang kerja yang produktif dengan furnitur custom berkualitas tinggi yang mencerminkan prestise dan profesionalisme perusahaan Anda.</p>
-            </div>
-          </motion.div>
+              <div className="flex flex-col gap-4">
+                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Fit-Out Interior Eksekutif</h3>
+                <p className="framer-body !text-[15px] opacity-80">Menciptakan ruang kerja yang produktif dengan furnitur custom berkualitas tinggi yang mencerminkan prestise and profesionalisme perusahaan Anda.</p>
+              </div>
+            </motion.div>
+          </Link>
         </div>
       </section>
 
       {/* 4. STRATEGIC ADVANTAGES - Authority & Loss Aversion */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-20 md:py-32 bg-white relative overflow-hidden">
         <div className="framer-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div {...fadeInUp} className="lg:col-span-6">
@@ -224,28 +231,22 @@ const Home: React.FC = () => {
                   <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">2</div>
                   <div>
                     <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Sertifikasi & Standar Nasional</h3>
-                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Kepatuhan ketat terhadap standar teknis dan K3, memastikan setiap struktur yang kami bangun memiliki daya tahan jangka panjang dan keamanan maksimal.</p>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Kepatuhan ketat terhadap standar teknis and K3, memastikan setiap struktur yang kami bangun memiliki daya tahan jangka panjang and keamanan maksimal.</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
                   <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">3</div>
                   <div>
                     <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Teknologi Shotcrete Teruji</h3>
-                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Sebagai spesialis, kami memiliki peralatan dan tim ahli yang mampu menangani medan tersulit sekalipun, mulai dari lereng curam hingga terowongan.</p>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Sebagai spesialis, kami memiliki peralatan and tim ahli yang mampu menangani medan tersulit sekalipun, mulai dari lereng curam hingga terowongan.</p>
                   </div>
                 </div>
               </div>
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="lg:col-span-5 lg:col-start-8">
               <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl group">
-                <img 
-                  src={kcrData.images.hero[2]} 
-                  alt="KCR Field Operation" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" 
-                  onClick={() => setSelectedImage(kcrData.images.hero[2])}
-                />
-                <div className="absolute inset-0 bg-brand/20 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/90 backdrop-blur-md rounded-xl pointer-events-none">
+                <img src={kcrData.images.hero[2]} alt="KCR Field Operation" className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/90 backdrop-blur-md rounded-xl">
                   <p className="framer-body !text-brand italic font-serif text-lg mb-2">"Keamanan bukan sekadar opsi, melainkan pondasi utama dari setiap jengkal beton yang kami aplikasikan."</p>
                   <p className="framer-label !text-[#2A2C2B] !opacity-100">— Tim Teknis KCR</p>
                 </div>
@@ -256,11 +257,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* 5. TRUSTED BY - Social Proof */}
-      <section className="py-24 border-y border-[#2A2C2B]/5 bg-[#F5F5F0]/50">
+      <section className="py-16 md:py-24 border-y border-[#2A2C2B]/5 bg-[#F5F5F0]/50">
         <div className="framer-container text-center">
           <span className="framer-label text-[#2A2C2B]/40 mb-12 block tracking-[0.4em]">DIPERCAYA OLEH MITRA STRATEGIS</span>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 hover:opacity-100 transition-opacity duration-500 grayscale">
-             {/* Generic Placeholders representing BUMN/Swasta for Social Proof */}
              <div className="font-serif text-2xl tracking-tighter">BUMN <span className="text-brand">Karya</span></div>
              <div className="font-serif text-2xl tracking-tighter">Sektor <span className="text-brand">Energi</span></div>
              <div className="font-serif text-2xl tracking-tighter">Industri <span className="text-brand">Nasional</span></div>
@@ -270,7 +270,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* 6. ARCHIVES - Proof of Competence */}
-      <section className="py-32 bg-[#2A2C2B] text-[#F5F5F0]">
+      <section className="py-20 md:py-32 bg-[#2A2C2B] text-[#F5F5F0]">
         <div className="framer-container">
           <motion.div {...fadeInUp} className="mb-24 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-10 gap-6">
             <h2 className="framer-h1 !text-[42px] text-white">Bukti Nyata Karya Kami</h2>
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
                 description={p.client}
                 label={`${p.year} / ${p.category}`}
                 index={idx}
-                onImageClick={setSelectedImage}
+                ctaLink="/portfolio"
               />
             ))}
           </div>
@@ -296,12 +296,12 @@ const Home: React.FC = () => {
       </section>
 
       {/* 5. CTA - Reciprocity & Loss Aversion */}
-      <section className="py-40 framer-container text-center relative overflow-hidden">
+      <section className="py-24 md:py-40 framer-container text-center relative overflow-hidden">
         <motion.div {...fadeInUp}>
           <span className="framer-label text-brand mb-8 block tracking-[0.8em]">KONSULTASI</span>
           <h2 className="framer-h1 mb-8 text-[#2A2C2B]">Jangan Biarkan Proyek Anda <span className="italic font-serif text-brand">Terhambat.</span></h2>
           <p className="framer-body max-w-2xl mx-auto mb-16 text-[#2A2C2B]/70">
-            Dapatkan analisis teknis dan konsultasi anggaran awal gratis dari tim ahli kami untuk memastikan proyek Anda berjalan efisien sejak hari pertama.
+            Dapatkan analisis teknis and konsultasi anggaran awal gratis dari tim ahli kami untuk memastikan proyek Anda berjalan efisien sejak hari pertama.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white hover:!bg-brand border-none px-12">
@@ -313,31 +313,6 @@ const Home: React.FC = () => {
           </div>
         </motion.div>
       </section>
-
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8 cursor-zoom-out backdrop-blur-sm"
-          >
-            <button className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors" onClick={() => setSelectedImage(null)}>
-              <X weight="light" size={32} />
-            </button>
-            <motion.img
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              src={selectedImage}
-              alt="Enlarged Detail"
-              className="max-w-full max-h-full object-contain shadow-2xl"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
