@@ -1,204 +1,157 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Plus, Minus } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
-import ProductCard from '../components/ProductCard';
-import PageHeader from '../components/PageHeader';
 
 const Catalog: React.FC = () => {
-  const [mainPillar, setMainPillar] = useState<'infrastructure' | 'interior'>('infrastructure');
-  const [activeSection, setActiveSection] = useState<string>('all');
+  const [activeSection, setActiveSection] = useState<'all' | 'prefab' | 'shotcrete' | 'chemicals' | 'furniture'>('all');
+  const [expandedSeries, setExpandedSeries] = useState<string | null>(null);
 
-  const tabTransition = { type: "spring", stiffness: 500, damping: 35 } as any;
-
-  const infrastructureCategories = [
-    { id: 'all', l: 'Semua Layanan' },
-    { id: 'structural', l: 'Konstruksi & Sipil' },
-    { id: 'chemical', l: 'Kimia Konstruksi' },
-    { id: 'manufacturing', l: 'Manufaktur & CNC' },
-  ];
-
-  const interiorCategories = [
-    { id: 'all', l: 'Semua Produk' },
-    { id: 'workstations', l: 'Workstations' },
-    { id: 'executive', l: 'Executive & Meeting' },
-    { id: 'hospitality', l: 'Hospitality & Custom' },
-  ];
-
-  const categories = mainPillar === 'infrastructure' ? infrastructureCategories : interiorCategories;
-
-  const handlePillarChange = (pillar: 'infrastructure' | 'interior') => {
-    setMainPillar(pillar);
-    setActiveSection('all');
+  const fadeInUp = {
+    initial: { y: 20, opacity: 0 },
+    whileInView: { y: 0, opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }
   };
 
+  const images = kcrData.images.catalog;
+
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-32 selection:bg-[#1a1c19] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
-        title="Katalog Solusi Terpadu | Konstruksi & Interior"
-        description="Jelajahi katalog lengkap PT. KARYA CIPTA RAHARJA. Dari sistem prefabrikasi and shotcrete hingga furnitur kantor eksekutif and workstation modern."
-        keywords="Sistem Prefabrikasi, Shotcrete, Furnitur Kantor, Workstation, Meeting Table, Katalog Konstruksi Indonesia"
+        title="Katalog Sistem & Produk"
+        description="Jelajahi sistem konstruksi khusus KCR, termasuk Sistem Prefabrikasi, Spesialis Shotcrete Indonesia, and sistem interior eksekutif."
         canonicalUrl="/catalog"
       />
       
-      <PageHeader 
-        label="01 / KATALOG TERPADU"
-        title="Solusi"
-        subtitle={<>Konstruksi <span className="text-[#1a1c19] font-sans italic-none">&</span> Interior Presisi.</>}
-        description="Integrasi layanan teknik konstruksi modern dengan manufaktur furniture berbasis teknologi CNC standar Eropa."
-      />
-
-      {/* PILLAR SWITCHER */}
-      <section className="framer-container mb-12">
-        <div className="flex gap-4 border-b border-[#1a1c19]/5">
-          <button 
-            onClick={() => handlePillarChange('infrastructure')}
-            className={`pb-6 px-4 text-sm uppercase tracking-widest font-bold transition-all relative ${mainPillar === 'infrastructure' ? 'text-brand' : 'text-[#1a1c19]/30 hover:text-[#1a1c19]/60'}`}
-          >
-            Teknik & Konstruksi
-            {mainPillar === 'infrastructure' && <motion.div layoutId="pillar-line" className="absolute bottom-0 left-0 w-full h-1 bg-brand" />}
-          </button>
-          <button 
-            onClick={() => handlePillarChange('interior')}
-            className={`pb-6 px-4 text-sm uppercase tracking-widest font-bold transition-all relative ${mainPillar === 'interior' ? 'text-brand' : 'text-[#1a1c19]/30 hover:text-[#1a1c19]/60'}`}
-          >
-            Furniture & Interior
-            {mainPillar === 'interior' && <motion.div layoutId="pillar-line" className="absolute bottom-0 left-0 w-full h-1 bg-brand" />}
-          </button>
-        </div>
+      <section className="framer-container mb-24">
+        <motion.div {...fadeInUp} className="max-w-4xl border-l-[0.5px] border-[#2A2C2B]/10 pl-10">
+          <span className="framer-label text-brand mb-10 block uppercase">01 / Katalog Solusi</span>
+          <h1 className="framer-h1">Sistem <span className="italic text-brand font-serif">Struktural</span> & <br/>Interior Terpadu.</h1>
+        </motion.div>
       </section>
 
-      {/* SUB-CATEGORY FILTER */}
-      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/80 backdrop-blur-xl border-b border-[#1a1c19]/5 mb-20">
+      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/80 backdrop-blur-xl border-y-[0.5px] border-[#2A2C2B]/5 mb-20">
         <div className="framer-container py-5 flex flex-wrap gap-x-10 gap-y-3">
-          {categories.map((t) => (
-            <motion.button 
-              key={t.id} 
-              onClick={() => setActiveSection(t.id)} 
-              whileHover={{ x: 2 }}
-              className={`framer-label relative pb-2 transition-opacity duration-200 ${activeSection === t.id ? 'opacity-100 font-bold' : 'opacity-30 hover:opacity-100'}`}
-            >
+          {[
+            { id: 'all', l: 'Semua' },
+            { id: 'prefab', l: 'Prefabrikasi' },
+            { id: 'shotcrete', l: 'Shotcrete' },
+            { id: 'chemicals', l: 'Kimia' },
+            { id: 'furniture', l: 'Produk Furnitur' },
+          ].map((t) => (
+            <button key={t.id} onClick={() => setActiveSection(t.id as any)} className={`framer-label transition-all duration-500 relative pb-2 ${activeSection === t.id ? 'opacity-100 font-bold text-[#2A2C2B]' : 'opacity-30 hover:opacity-100'}`}>
               {t.l}
-              {activeSection === t.id && (
-                <motion.div 
-                  layoutId="catalog-underline" 
-                  className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand" 
-                  transition={tabTransition}
-                />
-              )}
-            </motion.button>
+              {activeSection === t.id && <motion.div layoutId="catalog-underline" className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand" />}
+            </button>
           ))}
         </div>
       </section>
 
       <AnimatePresence mode="wait">
-        
-        {/* PILLAR 1: INFRASTRUCTURE & CONSTRUCTION */}
-        {mainPillar === 'infrastructure' && (
-          <motion.section 
-            key="infrastructure-pillar"
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-            className="framer-container"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {activeSection === 'all' || activeSection === 'structural' ? (
-                <>
-                  <ProductCard 
-                    series="Prefab Building"
-                    img={kcrData.services[0].img}
-                    description={kcrData.services[0].description}
-                    label="Structural System"
-                    ctaLink="/contact"
-                  />
-                  <ProductCard 
-                    series="Civil & Interior Fit-Out"
-                    img={kcrData.services[5].img}
-                    description={kcrData.services[5].description}
-                    label="Architectural"
-                    ctaLink="/contact"
-                  />
-                </>
-              ) : null}
-
-              {activeSection === 'all' || activeSection === 'chemical' ? (
-                <>
-                  {kcrData.services.slice(1, 5).map((s, idx) => (
-                    <ProductCard 
-                      key={s.id}
-                      series={s.title}
-                      img={s.img}
-                      description={s.description}
-                      label="Chemical Construction"
-                      index={idx}
-                      ctaLink="/contact"
-                    />
-                  ))}
-                </>
-              ) : null}
-
-              {activeSection === 'all' || activeSection === 'manufacturing' ? (
-                <>
-                  {kcrData.capabilities.map((c, idx) => (
-                    <ProductCard 
-                      key={c.title}
-                      series={c.title}
-                      img={c.img}
-                      description={c.description}
-                      label="Engineering"
-                      index={idx}
-                      ctaLink="/contact"
-                    />
-                  ))}
-                </>
-              ) : null}
-            </div>
-          </motion.section>
-        )}
-
-        {/* PILLAR 2: FURNITURE & INTERIOR */}
-        {mainPillar === 'interior' && (
-          <motion.section 
-            key="interior-pillar"
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-            className="framer-container"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {(activeSection === 'all' || activeSection === 'workstations') && kcrData.products.workstations.map((p, idx) => (
-                <ProductCard 
-                  key={p.series} 
-                  {...p} 
-                  label="Team Performance" 
-                  index={idx} 
-                  ctaLink="/contact"
-                />
-              ))}
-              
-              {(activeSection === 'all' || activeSection === 'executive') && kcrData.products.executive.map((p, idx) => (
-                <ProductCard 
-                  key={p.series} 
-                  {...p} 
-                  label="Executive Suite" 
-                  index={idx} 
-                  ctaLink="/contact"
-                />
-              ))}
-
-              {(activeSection === 'all' || activeSection === 'hospitality') && kcrData.products.hospitality.map((p, idx) => (
-                <ProductCard 
-                  key={p.series} 
-                  {...p} 
-                  label="Hospitality & Custom" 
-                  index={idx} 
-                  ctaLink="/contact"
-                />
+        {activeSection === 'all' && (
+          <motion.section key="all" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="framer-container">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { id: 'prefab', l: 'Prefabrikasi', img: images.prefab, c: 'Light Steel Frame System' },
+                { id: 'shotcrete', l: 'Shotcrete', img: images.shotcrete, c: 'Beton Semprot Spesialis' },
+                { id: 'chemicals', l: 'Kimia Konstruksi', img: images.chemicals, c: 'Technical Floor & Repair' },
+                { id: 'furniture', l: 'Produk Furnitur', img: images.furniture, c: 'Executive Office Systems' },
+              ].map((card) => (
+                <button key={card.id} onClick={() => setActiveSection(card.id as any)} className="text-left group flex flex-col gap-6">
+                  <div className="bg-[#e5e5e0] aspect-[4/5] overflow-hidden rounded-[4px]"><img src={card.img} className="w-full h-full object-cover transition-opacity duration-1000 hover:opacity-80" alt={card.l} /></div>
+                  <div className="flex flex-col gap-3">
+                    <h2 className="font-serif text-[24px] text-[#2A2C2B]">{card.l}</h2>
+                    <p className="framer-body !text-[12px] opacity-40 uppercase tracking-widest">{card.c}</p>
+                    <ArrowRight weight="light" size={24} className="text-brand opacity-50 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </button>
               ))}
             </div>
           </motion.section>
         )}
 
+        {activeSection === 'furniture' && (
+          <motion.section key="furniture" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="framer-container">
+            <div className="space-y-32">
+              <div>
+                <h3 className="framer-label opacity-30 mb-12 border-b-[0.5px] border-[#2A2C2B]/10 pb-6">Executive Series</h3>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                  <div className="lg:col-span-4 space-y-6">
+                    {kcrData.products.executive.map((s) => (
+                      <div key={s.series} className={`p-8 border-[0.5px] rounded-[12px] transition-all duration-500 cursor-pointer ${expandedSeries === s.series ? 'bg-white border-brand' : 'border-[#2A2C2B]/10 hover:border-[#2A2C2B]/30'}`} onClick={() => setExpandedSeries(expandedSeries === s.series ? null : s.series)}>
+                        <div className="flex justify-between items-center">
+                          <span className="font-serif text-[24px] text-[#2A2C2B]">{s.series}</span>
+                          {expandedSeries === s.series ? <Minus weight="light" /> : <Plus weight="light" />}
+                        </div>
+                        <AnimatePresence>
+                          {expandedSeries === s.series && (
+                            <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                              <div className="mt-8 space-y-4">
+                                {s.models.map(m => (
+                                  <div key={m.name} className="framer-body !text-[13px] border-t-[0.5px] border-[#2A2C2B]/5 pt-4">
+                                    <p className="font-medium text-[#2A2C2B] mb-1">{m.name}</p>
+                                    <p>Dim: {m.dim} cm</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="lg:col-span-8 grid grid-cols-2 gap-8">
+                    <div className="bg-[#e5e5e0] aspect-[4/5] rounded-[8px] overflow-hidden"><img src={images.furniture} className="w-full h-full object-cover" alt="Furniture 1" /></div>
+                    <div className="bg-[#e5e5e0] aspect-[4/5] rounded-[8px] overflow-hidden mt-16"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover" alt="Furniture 2" /></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+        )}
+
+        {(activeSection === 'prefab' || activeSection === 'shotcrete' || activeSection === 'chemicals') && (
+          <motion.section key="other" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.5 }} className="framer-container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div className="bg-[#e5e5e0] aspect-[16/10] rounded-[8px] overflow-hidden">
+                <img src={images[activeSection as keyof typeof images]} className="w-full h-full object-cover" alt="Solution" />
+              </div>
+              <div className="space-y-10">
+                <h2 className="font-serif text-[40px] text-[#2A2C2B] leading-tight uppercase">Spesialis <br/><span className="italic font-serif text-brand">{activeSection}</span></h2>
+                <p className="framer-body">Layanan teknis kami mencakup solusi komprehensif untuk infrastruktur modern dengan durabilitas material maksimal.</p>
+                <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white border-none hover:!bg-brand transition-all">Minta Penawaran Teknik</Link>
+              </div>
+            </div>
+          </motion.section>
+        )}
       </AnimatePresence>
+
+      <section className="py-48 bg-white border-t-[0.5px] border-[#2A2C2B]/10 mt-40 relative overflow-hidden">
+        <div className="framer-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end text-[#2A2C2B]">
+            <div className="lg:col-span-7">
+              <span className="framer-label text-brand mb-10 block tracking-[0.6em]">02 / Engagement</span>
+              <h2 className="framer-h1 !text-[42px] md:!text-[56px] leading-[1.1]">
+                Siap mengejawantahkan <br/>
+                <span className="italic font-serif text-brand">visi teknis</span> Anda?
+              </h2>
+            </div>
+            <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-8">
+              <p className="framer-body !text-[16px]">
+                Konsultasikan kebutuhan RAB dan spesifikasi material proyek Anda bersama tim ahli kami untuk hasil yang saksama dan terukur.
+              </p>
+              <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white border-none hover:!bg-brand group self-start">
+                <span>Hubungi Tim Teknis</span>
+                <ArrowRight weight="light" size={18} className="ml-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
-
 export default Catalog;

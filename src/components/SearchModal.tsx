@@ -50,8 +50,8 @@ const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => {
     // Search Products
     Object.entries(kcrData.products).forEach(([cat, prods]) => {
       if (Array.isArray(prods)) {
-        prods.forEach(p => {
-          if (p.series.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q))) {
+        prods.forEach((p: any) => {
+          if (p.series.toLowerCase().includes(q)) {
             searchResults.push({ 
               type: 'product', 
               title: p.series, 

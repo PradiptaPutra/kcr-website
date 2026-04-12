@@ -1,69 +1,88 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CaretRight, CaretLeft, ArrowUpRight } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
+import SEO from '../components/SEO';
 
 const Home: React.FC = () => {
   const [heroIndex, setHeroIndex] = useState(0);
   
-  // High-stability Unsplash IDs
-  const heroImages = [
-    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000',
-    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=2000',
-    'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=2000',
-  ];
+  const heroImages = kcrData.images.hero;
 
-  // Optimized Light Motion Variants for Mobile
   const fadeInUp = {
-    initial: { y: 15, opacity: 0.2 },
+    initial: { y: 20, opacity: 0 },
     whileInView: { y: 0, opacity: 1 },
     viewport: { once: true, margin: "-20px" },
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }
   };
 
-  const selectedProjects = [
-    { 
-      id: '01',
-      year: '2023',
-      category: 'Industrial',
-      title: 'Logistics Warehouse',
-      client: 'Sektor Swasta Nasional',
-      img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200'
-    },
-    { 
-      id: '02',
-      year: '2022',
-      category: 'Shotcrete',
-      title: 'Slope Stabilization',
-      client: 'Proyek Strategis Nasional',
-      img: 'https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200'
-    },
-    { 
-      id: '03',
-      year: '2023',
-      category: 'Interior',
-      title: 'Executive Office',
-      client: 'BUMN Financial Center',
-      img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200'
-    }
-  ];
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://karyaciptaraharja.com/#organization",
+        "name": "PT. KARYA CIPTA RAHARJA",
+        "alternateName": "KCR",
+        "url": "https://karyaciptaraharja.com",
+        "description": kcrData.company.description,
+        "foundingDate": "2006",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+62-21-8459-8590",
+            "contactType": "customer service",
+            "areaServed": "ID",
+            "availableLanguage": ["Indonesian", "English"]
+          }
+        ]
+      },
+      {
+        "@type": "ConstructionBusiness",
+        "@id": "https://karyaciptaraharja.com/#localbusiness",
+        "name": "PT. KARYA CIPTA RAHARJA",
+        "parentOrganization": { "@id": "https://karyaciptaraharja.com/#organization" },
+        "image": kcrData.images.hero,
+        "telephone": "(021) 84598590",
+        "email": "info@karyaciptaraharja.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Dirgantara Raya Blok A No. 7, BDP – Jatisari– Jatiasih",
+          "addressLocality": "Bekasi",
+          "addressRegion": "Jawa Barat",
+          "postalCode": "17426",
+          "addressCountry": "ID"
+        },
+        "url": "https://karyaciptaraharja.com"
+      }
+    ]
+  };
 
   return (
     <div className="bg-[#F5F5F0]">
-      <Helmet><title>{kcrData.company.name} | Solusi Konstruksi Presisi</title></Helmet>
+      <SEO 
+        title="Kontraktor Bangunan & Spesialis Shotcrete Indonesia"
+        description="PT. KARYA CIPTA RAHARJA (KCR) adalah Kontraktor Bangunan BUMN dan Spesialis Shotcrete Indonesia. Kami menghadirkan solusi konstruksi presisi, sistem prefabrikasi modern, dan manajemen teknis saksama sejak 2006."
+        keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Kontraktor BUMN, Shotcrete Indonesia, Prefab Building System, Konstruksi Indonesia"
+        canonicalUrl="/"
+        ogImage={kcrData.images.hero[0]}
+      >
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </SEO>
 
       {/* 1. HERO */}
       <section className="relative h-screen w-full overflow-hidden bg-[#1a1c19] flex items-center justify-center">
         <motion.div 
           key={heroIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.5 }}
-          transition={{ duration: 1 }}
+          initial={{ scale: 1.05, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.5 }}
+          transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] as any }}
           className="absolute inset-0"
         >
-          <img className="w-full h-full object-cover" src={heroImages[heroIndex]} alt="Hero" />
+          <img className="w-full h-full object-cover" src={heroImages[heroIndex]} alt={`KCR Construction Project - ${heroIndex + 1}`} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </motion.div>
 
@@ -81,8 +100,20 @@ const Home: React.FC = () => {
         </div>
 
         <div className="absolute bottom-12 right-12 z-20 flex items-center gap-8">
-          <button onClick={() => setHeroIndex(prev => (prev === 0 ? kcrData.images.hero.length - 1 : prev - 1))} className="text-white/40 hover:text-white transition-all"><CaretLeft weight="light" size={24} /></button>
-          <button onClick={() => setHeroIndex(prev => (prev === kcrData.images.hero.length - 1 ? 0 : prev + 1))} className="text-white/40 hover:text-white transition-all"><CaretRight weight="light" size={24} /></button>
+          <button 
+            onClick={() => setHeroIndex(prev => (prev === 0 ? heroImages.length - 1 : prev - 1))} 
+            className="text-white/40 hover:text-white transition-all"
+            aria-label="Previous Hero Image"
+          >
+            <CaretLeft weight="light" size={24} />
+          </button>
+          <button 
+            onClick={() => setHeroIndex(prev => (prev === heroImages.length - 1 ? 0 : prev + 1))} 
+            className="text-white/40 hover:text-white transition-all"
+            aria-label="Next Hero Image"
+          >
+            <CaretRight weight="light" size={24} />
+          </button>
         </div>
       </section>
 
@@ -149,24 +180,24 @@ const Home: React.FC = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 gap-20">
-            {selectedProjects.map((p, idx) => (
-              <motion.div 
+            {kcrData.images.portfolio.map((p) => (
+              <motion.article 
                 key={p.id}
                 {...fadeInUp}
                 className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center group"
               >
                 <div className="lg:col-span-7 overflow-hidden rounded-[8px]">
-                  <img src={p.img} alt={p.title} className="w-full aspect-[16/9] object-cover opacity-80" />
+                  <img src={p.img} alt={`KCR Project Archive: ${p.title} - ${p.category}`} className="w-full aspect-[16/9] object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
                 </div>
                 <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-6">
-                  <span className="framer-label !text-[#F5F5F0] !opacity-100">{p.year} / {p.category}</span>
+                  <span className="framer-label !text-[#F5F5F0] !opacity-100 font-bold">{p.year} / {p.category}</span>
                   <h3 className="font-serif text-[32px] leading-tight text-white">{p.title}</h3>
                   <p className="framer-body !text-white/50">{p.client}</p>
                   <Link to="/portfolio" className="framer-label !text-white hover:text-brand transition-all flex items-center gap-3">
                     View Case Study <CaretRight weight="bold" />
                   </Link>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
