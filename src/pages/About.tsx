@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Buildings, HardHat, CompassTool, ArrowRight } from '@phosphor-icons/react';
-import { Link } from 'react-router-dom';
+import { Buildings, HardHat, CompassTool } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 

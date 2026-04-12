@@ -6,9 +6,10 @@ import SEO from '../components/SEO';
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('SEMUA');
 
-  const projectCategories = ['INDUSTRIAL', 'KOMERSIAL', 'RESIDENSIAL', 'INFRASTRUKTUR'];
+  const projectCategories = ['INDUSTRIAL', 'KOMERSIAL', 'RESIDENSIAL', 'INFRASTRUKTUR', 'INTERIOR'];
   
   const projects = [
+    { client: 'BUMN FINANCIAL', project: 'Fit-Out Interior Eksekutif', year: '2023', category: 'INTERIOR', img: '/assets/images/overview/PRIME_SERIES_cropped.jpg' },
     { client: 'SEKTOR SWASTA', project: 'Shotcrete & Fondasi Dalam', year: '2023', category: 'INDUSTRIAL', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200' },
     { client: 'MITRA BUMN', project: 'Konstruksi Gedung Bertingkat', year: '2022', category: 'INFRASTRUKTUR', img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200' },
     { client: 'PUSAT KOMERSIAL', project: 'Sistem Bangunan Prefabrikasi', year: '2023', category: 'KOMERSIAL', img: 'https://cdn.pixabay.com/photo/2014/10/01/22/01/house-469036_1280.jpg' },

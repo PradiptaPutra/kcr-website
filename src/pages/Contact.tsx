@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, CaretDown, MapPin, Phone, Envelope, CheckCircle, Sparkle } from '@phosphor-icons/react';
+import { ArrowRight, ArrowLeft, MapPin, Phone, Envelope, CheckCircle, Sparkle } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 

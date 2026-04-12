@@ -14,11 +14,11 @@ const Catalog: React.FC = () => {
     initial: { y: 20, opacity: 0 },
     whileInView: { y: 0, opacity: 1 },
     viewport: { once: true },
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as any }
   };
 
   const images = kcrData.images.catalog;
-  const tabTransition = { type: "spring", stiffness: 500, damping: 35 };
+  const tabTransition = { type: "spring", stiffness: 500, damping: 35 } as any;
 
   const infrastructureCategories = [
     { id: 'all', l: 'Semua Struktur' },
@@ -29,10 +29,10 @@ const Catalog: React.FC = () => {
 
   const interiorCategories = [
     { id: 'all', l: 'Semua Interior' },
-    { id: 'furniture', l: 'Executive Desks', img: images.furniture, c: 'Executive Office Systems' },
-    { id: 'workstation', l: 'Workstations', img: 'https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg', c: 'Team Performance Systems' },
-    { id: 'meeting', l: 'Meeting Tables', img: 'https://images.pexels.com/photos/4985341/pexels-photo-4985341.jpeg', c: 'Boardroom Solutions' },
-    { id: 'hospitality', l: 'Hospitality', img: 'https://images.pexels.com/photos/29383009/pexels-photo-29383009.jpeg', c: 'Dining & Bed Series' },
+    { id: 'furniture', l: 'Executive Desks', img: '/assets/images/overview/INTERIOR_FITOUT_cropped.jpg', c: 'Executive Office Systems' },
+    { id: 'workstation', l: 'Workstations', img: '/assets/images/workstation/WORKSTATION_FORMA_cropped.jpg', c: 'Team Performance Systems' },
+    { id: 'meeting', l: 'Meeting Tables', img: '/assets/images/overview/FERMI_RMT01_cropped.jpg', c: 'Boardroom Solutions' },
+    { id: 'hospitality', l: 'Hospitality', img: '/assets/images/overview/HOSPITALITY_OTHERS_cropped.jpg', c: 'Dining & Bed Series' },
   ];
 
   const categories = mainPillar === 'infrastructure' ? infrastructureCategories : interiorCategories;
@@ -189,13 +189,66 @@ const Catalog: React.FC = () => {
                   </motion.div>
                 ))}
               </div>
-              <div className="lg:col-span-8 space-y-12">
-                <div className="bg-[#e5e5e0] aspect-video rounded-[12px] overflow-hidden shadow-2xl">
-                  <img src={images.furniture} className="w-full h-full object-cover" alt="Executive Furniture" />
-                </div>
-                <div className="grid grid-cols-2 gap-8">
-                  <div className="bg-[#e5e5e0] aspect-square rounded-[12px] overflow-hidden"><img src="https://images.pexels.com/photos/4985341/pexels-photo-4985341.jpeg" className="w-full h-full object-cover" alt="Detail 1" /></div>
-                  <div className="bg-[#e5e5e0] aspect-square rounded-[12px] overflow-hidden"><img src="https://images.pexels.com/photos/7046155/pexels-photo-7046155.jpeg" className="w-full h-full object-cover" alt="Detail 2" /></div>
+              <div className="lg:col-span-8">
+                <div className="sticky top-40 space-y-12">
+                  <AnimatePresence mode="wait">
+                    <motion.div 
+                      key={expandedSeries || 'default'}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="relative group"
+                    >
+                      <div className="bg-[#e5e5e0] aspect-[16/10] rounded-[24px] overflow-hidden shadow-2xl border border-white/20">
+                        <img 
+                          src={(kcrData.products.executiveDesks.find(s => s.series === expandedSeries) as any)?.img || images.furniture} 
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                          alt={expandedSeries || "Executive Furniture"} 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        {expandedSeries && (
+                          <div className="absolute bottom-0 left-0 right-0 p-10 bg-gradient-to-t from-black/60 to-transparent text-white">
+                            <span className="framer-label !text-brand mb-2 block">Premium Collection</span>
+                            <h4 className="font-serif text-[42px] leading-tight">{expandedSeries}</h4>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {!expandedSeries && (
+                    <div className="grid grid-cols-2 gap-8">
+                      {kcrData.products.executiveDesks.slice(0, 2).map((s: any) => (
+                        <motion.div 
+                          key={s.series} 
+                          whileHover={{ y: -8 }}
+                          onClick={() => setExpandedSeries(s.series)}
+                          className="aspect-square rounded-[20px] overflow-hidden cursor-pointer group relative shadow-lg"
+                        >
+                          <img src={s.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={s.series} />
+                          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                          <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <p className="framer-label !text-white text-[10px]">{s.series}</p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {expandedSeries && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="p-10 border border-brand/20 bg-brand/5 rounded-[24px] backdrop-blur-sm"
+                    >
+                      <p className="framer-label text-brand mb-4">Informasi Tambahan</p>
+                      <p className="text-[14px] leading-relaxed opacity-60">
+                        Setiap unit {expandedSeries} dapat dikustomisasi dalam hal pemilihan warna laminate, tipe handle, hingga integrasi sistem kelistrikan sesuai kebutuhan spesifik kantor Anda. Hubungi tim teknis kami untuk katalog material lengkap.
+                      </p>
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </div>
@@ -221,6 +274,9 @@ const Catalog: React.FC = () => {
                       initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }}
                       className="bg-white p-10 border border-[#1a1c19]/5 rounded-[20px] shadow-sm hover:shadow-xl transition-all group"
                     >
+                      <div className="aspect-[16/10] overflow-hidden rounded-[12px] mb-8 bg-[#f5f5f0]">
+                        <img src={s.img} alt={s.series} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      </div>
                       <span className="framer-label text-brand mb-6 block">Koleksi 0{idx+1}</span>
                       <h4 className="font-serif text-[24px] mb-4 group-hover:text-brand transition-colors">{s.series}</h4>
                       <p className="text-[13px] opacity-50 mb-8 leading-relaxed">{s.description}</p>
@@ -246,25 +302,32 @@ const Catalog: React.FC = () => {
             className="framer-container"
           >
              <div className="bg-[#1a1c19] text-white p-12 md:p-24 rounded-[32px] overflow-hidden relative">
-                <div className="relative z-10 max-w-3xl">
-                  <span className="framer-label text-brand mb-8 block">THE BOARDROOM</span>
-                  <h3 className="framer-h1 !text-[48px] text-white mb-12">Meeting Tables <span className="italic font-serif text-brand">Collection.</span></h3>
-                  
-                  <div className="space-y-16">
-                    {kcrData.products.meetingTables.map((s) => (
-                      <div key={s.series}>
-                        <h4 className="framer-label !text-white/30 mb-8 border-b border-white/10 pb-4">{s.series}</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                          {s.models.map(m => (
-                            <div key={m.name} className="group">
-                              <p className="text-brand uppercase tracking-widest text-[10px] font-bold mb-4">{m.name}</p>
-                              <p className="text-[24px] font-serif mb-2">{m.dim}</p>
-                              <p className="text-white/40 text-[12px]">{m.capacity || m.finishes}</p>
-                            </div>
-                          ))}
+                <div className="relative z-10 flex flex-col lg:flex-row gap-16">
+                  <div className="max-w-2xl flex-1">
+                    <span className="framer-label text-brand mb-8 block">THE BOARDROOM</span>
+                    <h3 className="framer-h1 !text-[48px] text-white mb-12">Meeting Tables <span className="italic font-serif text-brand">Collection.</span></h3>
+                    
+                    <div className="space-y-16">
+                      {kcrData.products.meetingTables.map((s) => (
+                        <div key={s.series}>
+                          <h4 className="framer-label !text-white/30 mb-8 border-b border-white/10 pb-4">{s.series}</h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            {s.models.map(m => (
+                              <div key={m.name} className="group">
+                                <p className="text-brand uppercase tracking-widest text-[10px] font-bold mb-4">{m.name}</p>
+                                <p className="text-[24px] font-serif mb-2">{m.dim}</p>
+                                <p className="text-white/40 text-[12px]">{m.capacity || m.finishes}</p>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="aspect-[4/5] bg-white/5 rounded-2xl overflow-hidden shadow-2xl">
+                       <img src={(kcrData.products.meetingTables[0] as any).img} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Meeting Table" />
+                    </div>
                   </div>
                 </div>
                 <div className="absolute -bottom-10 -right-10 text-[20vw] font-serif opacity-[0.03] pointer-events-none select-none">FERMI</div>
@@ -279,11 +342,13 @@ const Catalog: React.FC = () => {
             className="framer-container"
           >
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
-                {kcrData.products.hospitality.map((s, idx) => (
+                {kcrData.products.hospitality.map((s) => (
                   <div key={s.series} className="flex flex-col gap-10">
-                    <div className="aspect-[16/10] bg-[#e5e5e0] rounded-[16px] overflow-hidden">
-                      <img 
-                        src={idx === 0 ? 'https://images.pexels.com/photos/29383009/pexels-photo-29383009.jpeg' : 'https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg'} 
+                    <div className="aspect-[16/10] bg-[#e5e5e0] rounded-[16px] overflow-hidden group">
+                      <motion.img 
+                        src={(s as any).img} 
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.8 }}
                         className="w-full h-full object-cover" 
                         alt={s.series} 
                       />
