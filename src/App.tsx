@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import SplashScreen from './components/SplashScreen';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -59,10 +60,6 @@ const App: React.FC = () => {
         </div>
       </Router>
     </HelmetProvider>
-  );
-};
-
-export default App;
   );
 };
 
