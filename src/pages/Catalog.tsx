@@ -26,28 +26,36 @@ const Catalog: React.FC = () => {
         canonicalUrl="/catalog"
       />
       
-      <PageHeader 
-        label="01 / KATALOG PRODUK"
-        title="Koleksi"
-        subtitle={<>Furnitur Kantor <span className="text-[#1a1c19] font-sans italic-none">&</span> Hospitality.</>}
-        description="Manufaktur furnitur presisi dengan teknologi CNC standar Eropa untuk ruang kerja and hospitality yang inspiratif."
-      />
+      <div className="relative overflow-hidden">
+        <PageHeader 
+          label="01 / KATALOG PRODUK"
+          title="Koleksi"
+          subtitle={<>Furnitur Kantor <span className="text-brand font-serif-italic">&</span> Hospitality.</>}
+          description="Manufaktur furnitur presisi dengan teknologi CNC standar Eropa untuk ruang kerja and hospitality yang inspiratif."
+        />
+        {/* Floating Decor */}
+        <motion.div 
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 right-[10%] w-32 h-32 border border-brand/10 rounded-full hidden lg:block"
+        />
+      </div>
 
       {/* SUB-CATEGORY FILTER */}
-      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/80 backdrop-blur-xl border-b border-[#1a1c19]/5 mb-20">
-        <div className="framer-container py-5 flex flex-wrap gap-x-10 gap-y-3">
+      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/70 backdrop-blur-2xl border-b border-[#1a1c19]/5 mb-20 py-2">
+        <div className="framer-container flex flex-wrap gap-x-12 gap-y-4">
           {interiorCategories.map((t) => (
             <motion.button 
               key={t.id} 
               onClick={() => setActiveSection(t.id)} 
               whileHover={{ x: 2 }}
-              className={`framer-label relative pb-2 transition-opacity duration-200 ${activeSection === t.id ? 'opacity-100 font-bold' : 'opacity-30 hover:opacity-100'}`}
+              className={`framer-label relative pb-4 pt-4 transition-opacity duration-300 ${activeSection === t.id ? 'opacity-100 !text-brand' : 'opacity-30 hover:opacity-100'}`}
             >
               {t.l}
               {activeSection === t.id && (
                 <motion.div 
                   layoutId="catalog-underline" 
-                  className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand" 
+                  className="absolute bottom-0 left-0 w-full h-px bg-brand" 
                   transition={tabTransition}
                 />
               )}
@@ -56,43 +64,54 @@ const Catalog: React.FC = () => {
         </div>
       </section>
 
-      <motion.section 
-        initial={{ opacity: 0, y: 10 }} 
-        animate={{ opacity: 1, y: 0 }}
-        className="framer-container"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {(activeSection === 'all' || activeSection === 'workstations') && kcrData.products.workstations.map((p, idx) => (
-            <ProductCard 
-              key={p.series} 
-              {...p} 
-              label="Team Performance" 
-              index={idx} 
-              ctaLink="/contact"
-            />
-          ))}
-          
-          {(activeSection === 'all' || activeSection === 'executive') && kcrData.products.executive.map((p, idx) => (
-            <ProductCard 
-              key={p.series} 
-              {...p} 
-              label="Executive Suite" 
-              index={idx} 
-              ctaLink="/contact"
-            />
-          ))}
+      <section className="framer-container">
+        <AnimatePresence mode="popLayout">
+          <motion.div 
+            key={activeSection}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            {(activeSection === 'all' || activeSection === 'workstations') && kcrData.products.workstations.map((p, idx) => (
+              <ProductCard 
+                key={p.series} 
+                {...p} 
+                label="Team Performance" 
+                index={idx} 
+                ctaLink="/contact"
+              />
+            ))}
+            
+            {(activeSection === 'all' || activeSection === 'executive') && kcrData.products.executive.map((p, idx) => (
+              <ProductCard 
+                key={p.series} 
+                {...p} 
+                label="Executive Suite" 
+                index={idx} 
+                ctaLink="/contact"
+              />
+            ))}
 
-          {(activeSection === 'all' || activeSection === 'hospitality') && kcrData.products.hospitality.map((p, idx) => (
-            <ProductCard 
-              key={p.series} 
-              {...p} 
-              label="Hospitality & Custom" 
-              index={idx} 
-              ctaLink="/contact"
-            />
-          ))}
-        </div>
-      </motion.section>
+            {(activeSection === 'all' || activeSection === 'hospitality') && kcrData.products.hospitality.map((p, idx) => (
+              <ProductCard 
+                key={p.series} 
+                {...p} 
+                label="Hospitality & Custom" 
+                index={idx} 
+                ctaLink="/contact"
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      </section>
+
+      {/* Ornament Footer */}
+      <section className="mt-40 md:mt-60 framer-container flex flex-col items-center">
+         <div className="ornament-line" />
+         <p className="framer-label !text-[9px] opacity-20 mt-12 tracking-[1.5em]">Collections Archive</p>
+      </section>
     </div>
   );
 };

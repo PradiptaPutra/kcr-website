@@ -36,7 +36,7 @@ export const kcrData = {
       title: "Interior Fit-Out",
       description: "Eksekusi komprehensif pekerjaan interior fit-out untuk ruang komersial and residensial.",
       subItems: ["Layout Planning", "Furniture Installation", "Interior Finishing"],
-      img: "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg"
+      img: "/assets/images/overview/MODERNA_SERIES_cropped.jpg"
     }
   ],
 
@@ -160,14 +160,14 @@ export const kcrData = {
   images: {
     hero: [
       "/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg",
-      "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg",
+      "/assets/images/overview/PRIME_SERIES_cropped.jpg",
       "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg"
     ],
     catalog: {
       workstations: "/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg",
       executive: "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg",
       hospitality: "/assets/images/overview/COSMO_BEDSERIES_cropped.jpg",
-      furniture: "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg"
+      furniture: "/assets/images/overview/MODERNA_SERIES_cropped.jpg"
     },
     portfolio: [
       { id: '01', year: '2023', category: 'Interior', title: 'Fit-Out Interior Eksekutif', client: 'BUMN Financial', img: "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg" },

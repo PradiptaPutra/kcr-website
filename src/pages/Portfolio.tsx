@@ -3,14 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
 import PageHeader from '../components/PageHeader';
-import { kcrData } from '../data/kcrData';
 
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('SEMUA');
 
   const projectCategories = ['OFFICE', 'HOSPITALITY', 'INTERIOR', 'CUSTOM'];
   
-  // Use data from kcrData or map the existing ones to furniture context
   const projects = [
     { 
       client: 'BUMN FINANCIAL', 
@@ -45,7 +43,7 @@ const Portfolio: React.FC = () => {
       project: 'Bespoke Wardrobe & Cabinetry', 
       year: '2022', 
       category: 'CUSTOM', 
-      img: '/assets/images/overview/INTERIOR_FITOUT_cropped.jpg' 
+      img: '/assets/images/overview/MODERNA_SERIES_cropped.jpg' 
     },
     { 
       client: 'CO-WORKING SPACE', 
@@ -68,7 +66,7 @@ const Portfolio: React.FC = () => {
     : projects.filter((project) => project.category === activeCategory);
 
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-24 md:pb-40 selection:bg-[#2A2C2B] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-24 md:pb-40 selection:bg-[#1A1C19] selection:text-white">
       <SEO 
         title="Portofolio Proyek | KCR Furniture"
         description="Lihat berbagai proyek furnitur kantor and hospitality sukses yang telah kami kerjakan. Bukti nyata kualitas manufaktur furnitur KCR."
@@ -76,40 +74,45 @@ const Portfolio: React.FC = () => {
         canonicalUrl="/portfolio"
       />
 
-      <PageHeader 
-        label="04 / PORTOFOLIO"
-        title="Hasil Karya"
-        subtitle="& Pengalaman Kami."
-        description="Setiap proyek adalah bukti nyata komitmen kami terhadap kualitas and ketepatan waktu. Lihat lebih dekat beberapa pekerjaan furnitur terbaik yang telah kami selesaikan."
-      />
+      <div className="relative overflow-hidden">
+        <PageHeader 
+          label="04 / PORTOFOLIO"
+          title="Hasil Karya"
+          subtitle={<>& Pengalaman <span className="text-brand font-serif-italic">Kami.</span></>}
+          description="Setiap proyek adalah bukti nyata komitmen kami terhadap kualitas and ketepatan waktu. Lihat lebih dekat beberapa pekerjaan furnitur terbaik yang telah kami selesaikan."
+        />
+      </div>
 
-      {/* 2. STICKY FILTER */}
-      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/80 backdrop-blur-xl border-y-[0.5px] border-[#2A2C2B]/5 mb-12 md:mb-24">
-        <div className="framer-container py-5 flex flex-wrap items-center gap-x-10 gap-y-3">
+      {/* STICKY FILTER */}
+      <section className="sticky top-[72px] z-30 bg-[#F5F5F0]/70 backdrop-blur-2xl border-y border-[#1A1C19]/5 mb-16 md:mb-24 py-2">
+        <div className="framer-container flex flex-wrap items-center gap-x-12 gap-y-4">
           <button 
             onClick={() => setActiveCategory('SEMUA')}
-            className={`framer-label transition-all duration-500 relative pb-1 ${activeCategory === 'SEMUA' ? 'opacity-100 text-[#2A2C2B]' : 'opacity-60 hover:opacity-100'}`}
+            className={`framer-label transition-all duration-500 relative pb-4 pt-4 ${activeCategory === 'SEMUA' ? 'opacity-100 !text-brand' : 'opacity-30 hover:opacity-100'}`}
           >
             Semua ({projects.length})
-            {activeCategory === 'SEMUA' && <motion.div layoutId="underline" className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand" />}
+            {activeCategory === 'SEMUA' && <motion.div layoutId="portfolio-underline" className="absolute bottom-0 left-0 w-full h-px bg-brand" />}
           </button>
           {projectCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`framer-label transition-all duration-500 relative pb-1 ${activeCategory === cat ? 'opacity-100 text-[#2A2C2B]' : 'opacity-60 hover:opacity-100'}`}
+              className={`framer-label transition-all duration-500 relative pb-4 pt-4 ${activeCategory === cat ? 'opacity-100 !text-brand' : 'opacity-30 hover:opacity-100'}`}
             >
               {cat}
-              {activeCategory === cat && <motion.div layoutId="underline" className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand" />}
+              {activeCategory === cat && <motion.div layoutId="portfolio-underline" className="absolute bottom-0 left-0 w-full h-px bg-brand" />}
             </button>
           ))}
         </div>
       </section>
 
-      {/* 3. PROJECT GRID */}
+      {/* PROJECT GRID */}
       <section className="framer-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="popLayout">
+          <motion.div 
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
             {filteredProjects.map((p, idx) => (
               <ProductCard 
                 key={`${p.client}-${idx}`}
@@ -121,15 +124,15 @@ const Portfolio: React.FC = () => {
                 ctaLink="/contact"
               />
             ))}
-          </AnimatePresence>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </section>
 
-      {/* 4. FOOTER LINE */}
-      <section className="mt-32 md:mt-60 framer-container">
+      {/* ORNAMENT FOOTER */}
+      <section className="mt-40 md:mt-60 framer-container">
         <div className="flex flex-col items-center">
-           <div className="w-px h-32 bg-gradient-to-b from-[#2A2C2B]/10 to-transparent" />
-           <p className="framer-label opacity-20 mt-12 tracking-[1em]">Archives</p>
+           <div className="ornament-line" />
+           <p className="framer-label !text-[9px] opacity-20 mt-12 tracking-[1.5em]">Archives</p>
         </div>
       </section>
     </div>

@@ -23,9 +23,7 @@ const Navbar: React.FC = () => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
   const links = [
@@ -36,44 +34,72 @@ const Navbar: React.FC = () => {
     { n: 'Kontak', p: '/contact' },
   ];
 
-  // Logic: Transparent by default, subtle blur only when scrolled or menu is open
+  // Logic: Use a clean background without bottom border to avoid "white line" glitches on scroll
   const navBg = (scrolled || isOpen) 
-    ? 'bg-[#F5F5F0]/80 backdrop-blur-xl' 
+    ? 'bg-[#F5F5F0]/90 backdrop-blur-2xl shadow-sm' 
     : 'bg-transparent';
 
-  // Logic: Text is white ONLY on the home hero (not scrolled, home page). Everything else is darker for visibility.
   const isHomeHero = isHome && !scrolled && !isOpen;
-  const textColor = isHomeHero ? 'text-white' : 'text-[#2A2C2B]';
+  const textColor = isHomeHero ? 'text-white' : 'text-[#1A1C19]';
 
   return (
     <>
       <nav 
-        className={`fixed top-0 w-full z-[10000] flex items-center transition-all duration-500 h-[72px] ${navBg}`}
+        className={`fixed top-0 w-full z-[10000] flex items-center transition-all duration-700 h-[72px] ${navBg}`}
       >
         <div className="framer-container w-full flex justify-between items-center relative">
-          <Link to="/" aria-label="KCR Furniture Home" className={`text-[18px] font-serif font-normal tracking-[0.4em] z-[110] transition-colors duration-500 ${textColor}`}>
-            KCR FURNITURE
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Link 
+              to="/" 
+              aria-label="KCR Furniture Home" 
+              className={`text-[16px] font-serif font-bold tracking-[0.5em] z-[110] transition-colors duration-500 uppercase ${textColor}`}
+            >
+              KCR FURNITURE
+            </Link>
+          </motion.div>
 
-          <div className="hidden lg:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">
-            {links.map((l) => (
-              <Link 
-                key={l.n} 
-                to={l.p} 
-                className={`framer-label font-bold transition-all duration-500 silent-hover ${textColor} ${location.pathname === l.p ? 'opacity-100 border-b border-current' : 'opacity-60'}`}
+          <div className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
+            {links.map((l, i) => (
+              <motion.div
+                key={l.n}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
               >
-                {l.n}
-              </Link>
+                <Link 
+                  to={l.p} 
+                  className={`framer-label !font-bold transition-all duration-500 relative py-2 ${textColor} ${location.pathname === l.p ? 'opacity-100' : 'opacity-40 hover:opacity-100'}`}
+                >
+                  {l.n}
+                  {location.pathname === l.p && (
+                    <motion.div 
+                      layoutId="nav-underline" 
+                      className="absolute bottom-0 left-0 w-full h-px bg-current"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </motion.div>
             ))}
           </div>
-          <div className={`hidden lg:flex items-center gap-8 ${textColor}`}>
+          
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className={`hidden lg:flex items-center gap-8 ${textColor}`}
+          >
             <button 
-              className="opacity-40 transition-opacity"
+              className="opacity-40 hover:opacity-100 transition-opacity"
               aria-label="Search"
             >
               <MagnifyingGlass weight="light" size={20} />
             </button>
-          </div>
+          </motion.div>
 
           <button 
             className={`lg:hidden z-[110] transition-colors duration-500 ${textColor}`} 
@@ -85,30 +111,29 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 bg-[#F5F5F0] z-[90] flex flex-col pt-32 pb-12 px-8 sm:px-12 lg:hidden overflow-y-auto"
           >
             <div className="flex flex-col gap-10">
               <div>
-                <span className="framer-label opacity-20 mb-6 block tracking-[0.6em] text-[10px]">Navigasi</span>
-                <div className="flex flex-col gap-6">
+                <span className="framer-label opacity-20 mb-8 block tracking-[0.6em] text-[10px]">Navigasi</span>
+                <div className="flex flex-col gap-8">
                   {links.map((l, i) => (
                     <motion.div
                       key={l.n}
-                      initial={{ x: -20, opacity: 0 }}
+                      initial={{ x: -30, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.1 * i }}
+                      transition={{ delay: 0.1 * i, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <Link 
                         to={l.p} 
-                        className={`font-serif text-[32px] sm:text-[42px] transition-all leading-tight block ${location.pathname === l.p ? 'text-[#1a1c19]' : 'text-[#1a1c19]/40'}`}
+                        className={`font-serif text-[40px] sm:text-[56px] transition-all leading-tight block tracking-tight ${location.pathname === l.p ? 'text-[#1A1C19]' : 'text-[#1A1C19]/30'}`}
                       >
                         {l.n}
                       </Link>
@@ -117,27 +142,27 @@ const Navbar: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-col gap-8">
+              <div className="mt-12 flex flex-col gap-12">
                 <div>
-                  <span className="framer-label opacity-20 mb-4 block tracking-[0.6em] text-[10px]">Pencarian</span>
+                  <span className="framer-label opacity-20 mb-6 block tracking-[0.6em] text-[10px]">Pencarian</span>
                   <div className="relative">
                     <input 
                       type="text" 
-                      placeholder="Cari produk atau layanan..."
-                      className="w-full bg-transparent border-b border-[#1a1c19]/10 py-3 text-[15px] focus:outline-none focus:border-[#1a1c19]/40 transition-all font-sans"
+                      placeholder="Cari produk furnitur..."
+                      className="w-full bg-transparent border-b border-[#1A1C19]/10 py-4 text-[18px] focus:outline-none focus:border-[#1A1C19]/40 transition-all font-sans"
                     />
-                    <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20" size={20} />
+                    <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 opacity-20" size={24} />
                   </div>
                 </div>
 
                 <div>
-                  <span className="framer-label opacity-20 mb-4 block tracking-[0.6em] text-[10px]">Media Sosial</span>
-                  <div className="flex gap-6">
-                    <a href="#" className="w-10 h-10 rounded-full border border-[#1a1c19]/10 flex items-center justify-center opacity-60 hover:opacity-100 transition-all">
-                      <InstagramLogo size={20} weight="light" />
+                  <span className="framer-label opacity-20 mb-6 block tracking-[0.6em] text-[10px]">Media Sosial</span>
+                  <div className="flex gap-8">
+                    <a href="#" className="w-12 h-12 rounded-full border border-[#1A1C19]/10 flex items-center justify-center opacity-40 hover:opacity-100 hover:border-[#1A1C19] transition-all">
+                      <InstagramLogo size={24} weight="light" />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-[#1a1c19]/10 flex items-center justify-center opacity-60 hover:opacity-100 transition-all">
-                      <LinkedinLogo size={20} weight="light" />
+                    <a href="#" className="w-12 h-12 rounded-full border border-[#1A1C19]/10 flex items-center justify-center opacity-40 hover:opacity-100 hover:border-[#1A1C19] transition-all">
+                      <LinkedinLogo size={24} weight="light" />
                     </a>
                   </div>
                 </div>
