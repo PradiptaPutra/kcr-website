@@ -1,35 +1,35 @@
-# KCR Digital Twin Portfolio Strategy (2026)
+# KCR Furniture Digital Twin Strategy (2026)
 
 ## 1. Objective
-To eliminate the "Certainty Gap" in BUMN and National Strategic Project (PSN) bidding. By providing a digital, interactive replica of completed and active projects, KCR allows stakeholders to conduct "Virtual Site Visits" and verify technical integrity without leaving their offices.
+To eliminate the "Certainty Gap" in premium B2B furniture and interior procurement. By providing a digital, interactive replica of completed office and hospitality projects, KCR allows stakeholders to conduct "Virtual Showroom Visits" and verify technical craftsmanship without leaving their offices.
 
 ## 2. Technology Stack Recommendation
-*   **Capture Hardware:** Matterport Pro3 (for fast, high-quality visual twins) or Leica BLK360 (for millimeter-accurate engineering data).
+*   **Capture Hardware:** Matterport Pro3 (for fast, high-quality visual twins of interiors).
 *   **Digital Twin Platform:** 
     *   *Visual-First:* Matterport Cloud (Easily embeddable in React).
-    *   *Engineering-First:* Autodesk Tandem or NVIDIA Omniverse (for BIM-integrated twins).
-*   **Integration:** React + Three.js for custom spatial annotations and real-time data overlays.
+    *   *Engineering-First:* NVIDIA Omniverse (for photorealistic rendering of furniture models).
+*   **Integration:** React + Three.js for custom spatial annotations and AR visualization of furniture in client spaces.
 
 ## 3. Implementation Plan
 
-### Phase 1: The "Digital Showcase" (Short-term)
-*   **Action:** Scan 3 flagship projects (1 Shotcrete site, 1 Prefab building, 1 Executive Interior).
-*   **Website Update:** Add a "3D Walkthrough" button to the `/portfolio` page.
-*   **Lead Capture:** Gate the high-resolution engineering view behind a "Request Technical Access" form (captures high-intent B2B leads).
+### Phase 1: The "Digital Showroom" (Short-term)
+*   **Action:** Scan 3 flagship projects (1 Executive Office, 1 Modular Workstation floor, 1 Hotel Guest Room).
+*   **Website Update:** Add a "3D Walkthrough" button to the `/portfolio` and `/catalog` pages.
+*   **Lead Capture:** Gate the high-resolution engineering view behind a "Request Design Consultation" form.
 
-### Phase 2: Live Digital Twins (Mid-term)
-*   **Action:** Integrate IoT sensors (moisture, stress, temperature) on active Shotcrete or Prefab sites.
-*   **Value Prop:** Clients can see real-time "Health Monitoring" of their infrastructure.
-*   **Decision Data:** Use this data to prove the long-term durability of KCR's shotcrete applications compared to traditional methods.
+### Phase 2: Interactive Customization (Mid-term)
+*   **Action:** Integrate 3D Configurators for workstations and executive desks.
+*   **Value Prop:** Clients can visualize different finishes and configurations in real-time.
+*   **Decision Data:** Use this to accelerate the procurement cycle by finalizing designs digitally.
 
-### Phase 3: Spatial Bidding (Long-term)
+### Phase 3: Spatial Design Bidding (Long-term)
 *   **Action:** Present future bids using **Spatial Computing (Apple Vision Pro / Quest 4)**.
-*   **Value Prop:** Let BUMN directors "walk through" the proposed building *before* a single shovel hits the ground.
+*   **Value Prop:** Let corporate directors "walk through" their new office layout *before* manufacturing begins.
 
 ## 4. Marketing Synergy
-*   **LinkedIn Content:** Post "Time-lapse" videos of the Digital Twin being built layer-by-layer.
-*   **AEO Optimization:** Use the Digital Twin's metadata to answer complex technical questions on AI engines (e.g., "What is the slope angle of KCR's latest stabilization project?").
-*   **Direct Sales:** Send personalized "Private Virtual Tour" links to BUMN procurement officers.
+*   **LinkedIn Content:** Post "Exploded View" videos of furniture assemblies layer-by-layer.
+*   **AEO Optimization:** Use the Digital Twin's metadata to answer complex technical questions on AI engines (e.g., "What are the dimensions of KCR's latest modular workstation?").
+*   **Direct Sales:** Send personalized "Private Virtual Tour" links to procurement officers and interior designers.
 
 ---
-*Prepared for PT. KARYA CIPTA RAHARJA*
+*Prepared for KCR FURNITURE*

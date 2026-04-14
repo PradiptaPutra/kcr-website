@@ -11,7 +11,7 @@ const LeadGenerator: React.FC = () => {
     requirements: ''
   });
 
-  const industries = ['Infrastructure', 'Industrial', 'Commercial', 'Residential', 'Public Works', 'Other'];
+  const industries = ['Corporate / Office', 'Hospitality / Hotel', 'Commercial / Retail', 'Residential', 'Co-working Space', 'Other'];
   
   const allServices = kcrData.services.map(s => s.title);
 
@@ -21,15 +21,15 @@ const LeadGenerator: React.FC = () => {
   return (
     <div className="bg-black text-white p-12 md:p-24 min-h-[600px] flex flex-col justify-center border border-white/10">
       <div className="max-w-2xl mx-auto w-full">
-        <span className="text-[10px] uppercase tracking-[0.4em] text-white/40 mb-8 block font-sans">Strategic Engagement / Project Inquiry</span>
+        <span className="text-[10px] uppercase tracking-[0.4em] text-white/40 mb-8 block font-sans">Strategic Engagement / Furniture Inquiry</span>
         
         {step === 1 && (
           <div className="animate-fade-up">
             <h2 className="font-serif-italic text-4xl md:text-5xl mb-12 leading-tight">
-              Request a <span className="italic text-white/50">Technical</span> Consultation.
+              Request a <span className="italic text-white/50">Design</span> Consultation.
             </h2>
             <div className="space-y-4">
-              <p className="text-sm text-white/60 mb-8 font-light">Select the service area for your project inquiry.</p>
+              <p className="text-sm text-white/60 mb-8 font-light">Select the service area for your interior project inquiry.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {allServices.map((p, i) => (
                   <button
@@ -98,13 +98,13 @@ const LeadGenerator: React.FC = () => {
                 />
               </div>
               <p className="text-[10px] text-white/40 leading-relaxed">
-                By submitting, you authorize {kcrData.company.name} to contact you regarding your project inquiry. All data is handled according to Indonesian PDP regulations.
+                By submitting, you authorize {kcrData.company.name} to contact you regarding your furniture project inquiry. All data is handled according to Indonesian PDP regulations.
               </p>
               <button 
                 className="w-full py-8 bg-white text-black text-sm tracking-[0.4em] uppercase hover:bg-white/90 transition-all duration-500 font-medium"
                 onClick={() => {
                   console.log('Inquiry Captured:', { selectedService, ...formData });
-                  alert('Thank you. A technical strategist will contact you shortly.');
+                  alert('Thank you. A design consultant will contact you shortly.');
                   setStep(1);
                 }}
               >

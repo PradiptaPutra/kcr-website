@@ -51,8 +51,8 @@ const Navbar: React.FC = () => {
         className={`fixed top-0 w-full z-[10000] flex items-center transition-all duration-500 h-[72px] ${navBg}`}
       >
         <div className="framer-container w-full flex justify-between items-center relative">
-          <Link to="/" aria-label="KCR Home" className={`text-[18px] font-serif font-normal tracking-[0.4em] z-[110] transition-colors duration-500 ${textColor}`}>
-            KCR
+          <Link to="/" aria-label="KCR Furniture Home" className={`text-[18px] font-serif font-normal tracking-[0.4em] z-[110] transition-colors duration-500 ${textColor}`}>
+            KCR FURNITURE
           </Link>
 
           <div className="hidden lg:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">

@@ -1,54 +1,41 @@
 export const kcrData = {
   company: {
-    name: "PT. KARYA CIPTA RAHARJA",
-    tagline: "Mitra Konstruksi & Spesialis Shotcrete Terpercaya",
-    description: "Sejak tahun 2006, PT. KARYA CIPTA RAHARJA hadir sebagai kontraktor andalan untuk berbagai proyek BUMN and swasta. Kami bangga dikenal sebagai Spesialis Shotcrete Indonesia yang selalu mengutamakan kualitas, keamanan, and hasil kerja rapi dalam setiap proyek infrastruktur.",
-    introduction: "Pengalaman panjang kami terbukti lewat berbagai keterlibatan dalam Proyek Strategis Nasional (PSN). Filosofi kami sangat sederhana: membangun struktur yang kuat, aman, and efisien.",
-    specialization: "Selain ahli dalam aplikasi beton semprot (Shotcrete), KCR juga berinovasi dengan sistem bangunan prefabrikasi baja ringan and manufaktur interior berbasis teknologi CNC standar Eropa.",
-    vision: "Visi kami adalah menjadi kontraktor pilihan utama yang memberikan solusi konstruksi menyeluruh—mulai dari pengerjaan struktur bangunan, spesialisasi teknis, hingga penyediaan interior and furnitur berkualitas."
+    name: "KCR FURNITURE",
+    fullName: "PT. KARYA CIPTA RAHARJA",
+    tagline: "High-End Office & Hospitality Furniture Solutions",
+    description: "Sejak tahun 2006, KCR Furniture hadir sebagai penyedia solusi interior and furnitur berkualitas untuk berbagai proyek perkantoran, hotel, and residensial. Kami mengkombinasikan desain modern dengan teknologi CNC standar Eropa untuk menghasilkan produk yang presisi, estetis, and tahan lama.",
+    introduction: "Kami berfokus pada penciptaan ruang kerja and hospitality yang inspiratif. Dengan fasilitas manufaktur mandiri, kami memastikan setiap produk memenuhi standar kualitas tertinggi.",
+    specialization: "Spesialisasi kami mencakup manufaktur furnitur kantor (workstations, executive desks) and hospitality (custom hotel furniture) berbasis teknologi CNC standar Eropa.",
+    vision: "Visi kami adalah menjadi mitra pilihan utama dalam penyediaan furnitur and solusi interior yang inovatif, fungsional, and berkelas dunia."
   },
   
   services: [
     {
-      id: "prefab-construction",
-      title: "Prefab Building Construction",
-      description: "Sistem bangunan prefabrikasi menggunakan teknologi Light Steel Frame sebagai struktur dinding inti. Sangat efisien untuk pembangunan cepat dengan akurasi tinggi.",
-      subItems: ["Building Camps", "Ready-to-live Houses"],
-      img: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200"
+      id: "office-solutions",
+      title: "Office Furniture Solutions",
+      description: "Desain and manufaktur furnitur kantor modular yang memaksimalkan produktivitas and kolaborasi tim.",
+      subItems: ["Workstations", "Executive Desks", "Meeting Tables"],
+      img: "/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg"
     },
     {
-      id: "shotcrete-specialist",
-      title: "Shotcrete (Beton Semprot)",
-      description: "Aplikasi beton sistem spray untuk area sulit. Layanan mencakup Wet Shotcrete, Dry Shotcrete, Soilnailing, and Ready Pack Mortar.",
-      subItems: ["Soilnailing", "Ready Pack Mortar", "Slope Stabilization"],
-      img: "https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200"
+      id: "hospitality-custom",
+      title: "Hospitality & Custom Furniture",
+      description: "Solusi furnitur custom untuk hotel, resort, and hunian premium dengan standar kualitas tinggi.",
+      subItems: ["Hotel Bed Series", "Dining Sets", "Custom Cabinetry"],
+      img: "/assets/images/overview/COSMO_BEDSERIES_cropped.jpg"
     },
     {
-      id: "fireproofing",
-      title: "Fireproofing Systems",
-      description: "Material pelindung struktur baja dari api, dihitung berdasarkan fire rating. Menggunakan Fermiculite Base, Intumescent, and Dense Concrete.",
-      subItems: ["Fermiculite Base", "Intumescent Paint"],
-      img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200"
+      id: "cnc-manufacturing",
+      title: "CNC Precision Manufacturing",
+      description: "Produksi berbasis mesin dengan teknologi CNC standar Eropa untuk detail presisi and volume masif.",
+      subItems: ["Precision Cutting", "Mass Production", "Custom Engraving"],
+      img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1200"
     },
     {
-      id: "waterproofing",
-      title: "Waterproofing Solutions",
-      description: "Sistem perlindungan kebocoran bangunan yang terintegrasi. Mencakup metode Integral, Membrane, Coating, and Waterstop.",
-      subItems: ["Integral & Membrane", "Coating Systems"],
-      img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1200"
-    },
-    {
-      id: "flooring",
-      title: "Industrial Flooring",
-      description: "Aplikasi lantai beton pelindung untuk ketahanan benturan and bahan kimia. Menggunakan Floorhardener, Epoxy Coating, and Self Levelling.",
-      subItems: ["Floorhardener", "Epoxy Coating"],
-      img: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=1200"
-    },
-    {
-      id: "civil-interior",
-      title: "Interior Fit-Out & Civil",
-      description: "Eksekusi komprehensif pekerjaan sipil, arsitektural, and interior fit-out untuk ruang komersial and residensial.",
-      subItems: ["Civil Works", "Full Fit-Out"],
+      id: "interior-fitout",
+      title: "Interior Fit-Out",
+      description: "Eksekusi komprehensif pekerjaan interior fit-out untuk ruang komersial and residensial.",
+      subItems: ["Layout Planning", "Furniture Installation", "Interior Finishing"],
       img: "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg"
     }
   ],
@@ -172,20 +159,20 @@ export const kcrData = {
 
   images: {
     hero: [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000",
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=2000",
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000"
+      "/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg",
+      "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg",
+      "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg"
     ],
     catalog: {
-      prefab: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=1200",
-      shotcrete: "https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200",
-      chemicals: "https://images.unsplash.com/photo-1567789884554-0b844b597180?auto=format&fit=crop&q=80&w=1200",
+      workstations: "/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg",
+      executive: "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg",
+      hospitality: "/assets/images/overview/COSMO_BEDSERIES_cropped.jpg",
       furniture: "/assets/images/overview/INTERIOR_FITOUT_cropped.jpg"
     },
     portfolio: [
-      { id: '01', year: '2023', category: 'Industrial', title: 'Logistics Warehouse', client: 'Sektor Swasta', img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200" },
-      { id: '02', year: '2022', category: 'Shotcrete', title: 'Slope Stabilization', client: 'Proyek Nasional', img: "https://images.unsplash.com/photo-1517646288024-aa24d2a1a214?auto=format&fit=crop&q=80&w=1200" },
-      { id: '03', year: '2023', category: 'Interior', title: 'Fit-Out Interior Eksekutif', client: 'BUMN Financial', img: "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg" }
+      { id: '01', year: '2023', category: 'Interior', title: 'Fit-Out Interior Eksekutif', client: 'BUMN Financial', img: "/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg" },
+      { id: '02', year: '2022', category: 'Office', title: 'Modular Workstation Installation', client: 'Tech Startup', img: "/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg" },
+      { id: '03', year: '2023', category: 'Hospitality', title: 'Hotel Furniture Supply', client: 'Luxury Hotel Chain', img: "/assets/images/overview/COSMO_BEDSERIES_cropped.jpg" }
     ]
   },
 

@@ -3,12 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../components/SEO';
 import ProductCard from '../components/ProductCard';
 import PageHeader from '../components/PageHeader';
+import { kcrData } from '../data/kcrData';
 
 const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('SEMUA');
 
-  const projectCategories = ['INDUSTRIAL', 'KOMERSIAL', 'RESIDENSIAL', 'INFRASTRUKTUR', 'INTERIOR'];
+  const projectCategories = ['OFFICE', 'HOSPITALITY', 'INTERIOR', 'CUSTOM'];
   
+  // Use data from kcrData or map the existing ones to furniture context
   const projects = [
     { 
       client: 'BUMN FINANCIAL', 
@@ -18,46 +20,46 @@ const Portfolio: React.FC = () => {
       img: '/assets/images/workstation/EXECUTIVEDESK_PRIME_SERIES_cropped.jpg' 
     },
     { 
-      client: 'SEKTOR SWASTA', 
-      project: 'Shotcrete & Fondasi Dalam', 
+      client: 'TECH STARTUP HQ', 
+      project: 'Modular Workstation System', 
       year: '2023', 
-      category: 'INDUSTRIAL', 
-      img: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1200' 
+      category: 'OFFICE', 
+      img: '/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg' 
     },
     { 
-      client: 'MITRA BUMN', 
-      project: 'Konstruksi Gedung Bertingkat', 
+      client: 'LUXURY HOTEL', 
+      project: 'Custom Guest Room Furniture', 
       year: '2022', 
-      category: 'INFRASTRUKTUR', 
-      img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200' 
+      category: 'HOSPITALITY', 
+      img: '/assets/images/overview/COSMO_BEDSERIES_cropped.jpg' 
     },
     { 
-      client: 'PUSAT KOMERSIAL', 
-      project: 'Sistem Bangunan Prefabrikasi', 
+      client: 'CORPORATE OFFICE', 
+      project: 'Boardroom & Meeting Systems', 
       year: '2023', 
-      category: 'KOMERSIAL', 
-      img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200' 
+      category: 'OFFICE', 
+      img: '/assets/images/overview/FERMI_ST3_cropped.jpg' 
     },
     { 
-      client: 'KOMPLEKS RESIDENSIAL', 
-      project: 'Perumahan Light Steel Frame', 
+      client: 'BOUTIQUE RESIDENCE', 
+      project: 'Bespoke Wardrobe & Cabinetry', 
       year: '2022', 
-      category: 'RESIDENSIAL', 
-      img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200' 
+      category: 'CUSTOM', 
+      img: '/assets/images/overview/INTERIOR_FITOUT_cropped.jpg' 
     },
     { 
-      client: 'GUDANG INDUSTRIAL', 
-      project: 'Floor Hardening & Pelapisan Epoksi', 
+      client: 'CO-WORKING SPACE', 
+      project: 'Flexible Workstations & Pods', 
       year: '2023', 
-      category: 'INDUSTRIAL', 
-      img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200' 
+      category: 'OFFICE', 
+      img: '/assets/images/workstation/WORKSTATION_FORMA_cropped.jpg' 
     },
     { 
-      client: 'PERUSAHAAN NEGARA', 
-      project: 'Perbaikan Struktural & Waterproofing', 
+      client: 'GOVERNMENT OFFICE', 
+      project: 'Executive Suite Furnishing', 
       year: '2021', 
-      category: 'INFRASTRUKTUR', 
-      img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=1200' 
+      category: 'OFFICE', 
+      img: '/assets/images/workstation/PRIME_SERIES_cropped.jpg' 
     },
   ];
 
@@ -68,9 +70,9 @@ const Portfolio: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-24 md:pb-40 selection:bg-[#2A2C2B] selection:text-white">
       <SEO 
-        title="Portofolio Proyek"
-        description="Lihat berbagai proyek sukses yang telah kami kerjakan. Bukti nyata kualitas kerja kami sebagai kontraktor dan spesialis shotcrete yang terpercaya."
-        keywords="Portofolio Kontraktor, Proyek Shotcrete, Proyek BUMN, Konstruksi Gedung, PT KCR"
+        title="Portofolio Proyek | KCR Furniture"
+        description="Lihat berbagai proyek furnitur kantor and hospitality sukses yang telah kami kerjakan. Bukti nyata kualitas manufaktur furnitur KCR."
+        keywords="Portofolio Furnitur, Office Furniture Project, Hospitality Furniture, Custom Furniture Indonesia, KCR Furniture"
         canonicalUrl="/portfolio"
       />
 
@@ -78,7 +80,7 @@ const Portfolio: React.FC = () => {
         label="04 / PORTOFOLIO"
         title="Hasil Karya"
         subtitle="& Pengalaman Kami."
-        description="Setiap proyek adalah bukti nyata komitmen kami terhadap kualitas dan ketepatan waktu. Lihat lebih dekat beberapa pekerjaan terbaik yang telah kami selesaikan."
+        description="Setiap proyek adalah bukti nyata komitmen kami terhadap kualitas and ketepatan waktu. Lihat lebih dekat beberapa pekerjaan furnitur terbaik yang telah kami selesaikan."
       />
 
       {/* 2. STICKY FILTER */}

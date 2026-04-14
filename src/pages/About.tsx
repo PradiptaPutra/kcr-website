@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Buildings, HardHat, CompassTool } from '@phosphor-icons/react';
+import { Desktop, Factory, CompassTool } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
@@ -16,18 +16,18 @@ const About: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-20 md:pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
-        title="Tentang Kami | Pionir Teknologi Konstruksi Modern"
-        description="Pelajari sejarah PT. KARYA CIPTA RAHARJA sejak 2006 sebagai pionir teknologi konstruksi modern, Spesialis Shotcrete Indonesia, and Kontraktor Bangunan BUMN terpercaya."
-        keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Sejarah KCR, Profil PT KCR, Konstruksi Modern Indonesia"
+        title="Tentang Kami | KCR Furniture"
+        description="Pelajari sejarah KCR Furniture (PT. KARYA CIPTA RAHARJA) sejak 2006 sebagai penyedia solusi furnitur kantor and hospitality premium dengan teknologi CNC standar Eropa."
+        keywords="Furniture Kantor, Office Furniture, Workstation, Meja Eksekutif, Hospitality Furniture, Furniture Hotel, CNC Furniture, KCR Furniture Profile"
         canonicalUrl="/about"
-        ogImage="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop"
+        ogImage={kcrData.images.hero[1]}
       />
 
       <PageHeader 
         label="02 / PROFIL PERUSAHAAN"
-        title="Pengalaman yang"
-        subtitle="Berbicara."
-        description="Sejak 2006, kami telah menjadi bagian dari pembangunan infrastruktur penting di Indonesia dengan komitmen penuh pada hasil kerja yang berkualitas."
+        title="Dedikasi pada"
+        subtitle="Kualitas & Presisi."
+        description="Sejak 2006, kami telah bertransformasi menjadi mitra terpercaya dalam penyediaan furnitur and solusi interior berkualitas tinggi untuk sektor korporasi and hospitality."
       />
 
       {/* Origins */}
@@ -35,13 +35,13 @@ const About: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <motion.div {...fadeInUp} className="lg:col-span-6 relative">
             <div className="aspect-[4/5] bg-[#1a1c19] overflow-hidden">
-              <img src="https://images.pexels.com/photos/3153207/pexels-photo-3153207.jpeg" className="w-full h-full object-cover" alt="Origins" loading="lazy" />
+              <img src="/assets/images/overview/INTERIOR_FITOUT_cropped.jpg" className="w-full h-full object-cover" alt="KCR Manufacturing" loading="lazy" />
             </div>
           </motion.div>
           <motion.div {...fadeInUp} transition={{ delay: 0.2, duration: 1 }} className="lg:col-span-6">
-            <span className="framer-label opacity-30 mb-8 block framer-border pb-4">Sejarah Kami</span>
+            <span className="framer-label opacity-30 mb-8 block framer-border pb-4">Sejarah & Filosofi</span>
             <h2 className="framer-h2 mb-10">
-              Terus Berinovasi <br/><span className="italic text-brand font-serif">untuk Hasil Terbaik.</span>
+              Inovasi Manufaktur <br/><span className="italic text-brand font-serif">untuk Ruang Inspiratif.</span>
             </h2>
             <div className="space-y-8 framer-body max-w-md">
               <p>{kcrData.company.description}</p>
@@ -57,19 +57,19 @@ const About: React.FC = () => {
         <div className="framer-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
             <motion.div {...fadeInUp}>
-              <span className="framer-label text-brand mb-12 block">FOKUS KAMI</span>
+              <span className="framer-label text-brand mb-12 block">VISI & MISI</span>
               <h2 className="framer-h1 text-white mb-10">
-                Membangun untuk <br/><span className="italic text-brand font-serif">Jangka Panjang.</span>
+                Menjadi Mitra <br/><span className="italic text-brand font-serif">Interior Utama.</span>
               </h2>
               <p className="framer-body !text-white/50 max-w-sm">{kcrData.company.vision}</p>
             </motion.div>
             <motion.div {...fadeInUp} className="aspect-video bg-black overflow-hidden border-[0.5px] border-white/10 lg:ml-auto w-full">
-               <img src="https://images.pexels.com/photos/6615233/pexels-photo-6615233.jpeg" className="w-full h-full object-cover opacity-60" alt="Vision" loading="lazy" />
+               <img src="/assets/images/workstation/WORKSTATION_MODERNA_cropped.jpg" className="w-full h-full object-cover opacity-60" alt="Vision" loading="lazy" />
             </motion.div>
           </div>
 
           <motion.div {...fadeInUp} className="border-t-[0.5px] border-white/10 pt-20">
-            <span className="framer-label text-white/20 mb-12 block tracking-[0.4em]">Layanan Utama</span>
+            <span className="framer-label text-white/20 mb-12 block tracking-[0.4em]">Fokus Layanan</span>
             <div className="space-y-0">
               {kcrData.services.map((service, idx) => (
                 <div key={idx} className="flex flex-col md:flex-row gap-6 py-10 border-b-[0.5px] border-white/5 group hover:bg-white/[0.02] px-6 transition-colors duration-500">
@@ -87,9 +87,9 @@ const About: React.FC = () => {
       <section className="py-24 md:py-40 framer-container">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
            {[ 
-             { icon: <HardHat weight="light" size={40} />, t: 'Ekselerasi', d: 'Kerja lebih cepat and rapi berkat sistem prefabrikasi modern.' },
-             { icon: <CompassTool weight="light" size={40} />, t: 'Presisi', d: 'Penggunaan material terbaik untuk memastikan bangunan kuat and awet.' },
-             { icon: <Buildings weight="light" size={40} />, t: 'Inovasi', d: 'Menggunakan baja ringan berkualitas untuk struktur bangunan yang aman and hemat biaya.' }
+             { icon: <Factory weight="light" size={40} />, t: 'Manufaktur Mandiri', d: 'Fasilitas produksi sendiri memastikan kontrol kualitas penuh and ketepatan waktu pengiriman.' },
+             { icon: <CompassTool weight="light" size={40} />, t: 'CNC Precision', d: 'Teknologi CNC standar Eropa menjamin akurasi milimeter and konsistensi pada setiap unit produk.' },
+             { icon: <Desktop weight="light" size={40} />, t: 'Custom Design', d: 'Kemampuan adaptasi desain and material untuk memenuhi kebutuhan spesifik and identitas brand Anda.' }
            ].map((i, idx) => (
              <motion.div 
                key={idx}

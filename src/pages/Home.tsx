@@ -19,9 +19,9 @@ const Home: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0]">
       <SEO 
-        title="Kontraktor Bangunan & Spesialis Shotcrete Terpercaya"
-        description="PT. KARYA CIPTA RAHARJA (KCR) adalah kontraktor andalan dan Spesialis Shotcrete Indonesia. Kami memberikan solusi bangunan presisi, sistem prefab modern, and manajemen yang rapi sejak 2006."
-        keywords="Kontraktor Bangunan, Spesialis Shotcrete, Sistem Prefabrikasi, Kontraktor Terpercaya, Shotcrete Indonesia, Bangunan Prefab"
+        title="High-End Office & Hospitality Furniture Solutions"
+        description="KCR Furniture (PT. KARYA CIPTA RAHARJA) adalah penyedia furnitur kantor eksekutif and hospitality premium. Manufaktur presisi dengan teknologi CNC standar Eropa sejak 2006."
+        keywords="Furniture Kantor, Office Furniture, Workstation, Meja Eksekutif, Hospitality Furniture, Furniture Hotel, CNC Furniture, KCR Furniture"
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
       />
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
           transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] as any }}
           className="absolute inset-0"
         >
-          <img className="w-full h-full object-cover" src={kcrData.images.hero[heroIndex]} alt={`KCR Construction Project - ${heroIndex + 1}`} />
+          <img className="w-full h-full object-cover" src={kcrData.images.hero[heroIndex]} alt={`KCR Furniture Project - ${heroIndex + 1}`} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
         </motion.div>
 
@@ -46,23 +46,23 @@ const Home: React.FC = () => {
         <div className="relative z-10 text-center px-6 max-w-5xl flex-1 flex flex-col justify-center items-center">
            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 0.5 }} className="framer-label text-white mb-8 block tracking-[0.8em]">EST. 2006</motion.span>
            <h1 className="framer-h1 text-white mb-8">
-             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="block">Bangun Tanpa <span className="italic font-serif">Kompromi</span>,</motion.span>
+             <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7 }} className="block">Desain Tanpa <span className="italic font-serif">Kompromi</span>,</motion.span>
              <motion.span initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 0.8 }} transition={{ delay: 0.9 }} className="block font-serif italic text-white/80">Presisi Tanpa Henti.</motion.span>
            </h1>
            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} className="text-white/60 text-lg mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-             Mitra Kontraktor & Spesialis Shotcrete terpercaya dengan pengalaman 17+ tahun dalam membangun infrastruktur and Proyek Strategis Nasional.
+             Penyedia Solusi Furnitur Kantor & Hospitality premium dengan manufaktur mandiri berbasis teknologi CNC standar Eropa.
            </motion.p>
            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="flex flex-col sm:flex-row items-center justify-center gap-6">
              <Link to="/contact" className="framer-btn !bg-brand !text-white border-none hover:scale-105 transition-transform px-10">
-               Konsultasi Proyek Gratis
+               Konsultasi Interior Gratis
              </Link>
-             <Link to="/portfolio" className="framer-btn !border-white/40 !text-white hover:!bg-white hover:!text-[#2A2C2B] px-10">
-               Lihat Portofolio Kami
+             <Link to="/catalog" className="framer-btn !border-white/40 !text-white hover:!bg-white hover:!text-[#2A2C2B] px-10">
+               Lihat Katalog Produk
              </Link>
            </motion.div>
         </div>
 
-        {/* Trust Indicators - Authority & Social Proof at the very bottom */}
+        {/* Trust Indicators */}
         <div className="relative z-20 w-full hidden md:block pb-12 shrink-0">
           <div className="framer-container">
             <div className="grid grid-cols-3 gap-12 border-t border-white/10 pt-10">
@@ -71,18 +71,18 @@ const Home: React.FC = () => {
                 <span className="text-white/40 uppercase tracking-widest text-xs">Tahun Pengalaman</span>
               </div>
               <div className="text-center">
-                <span className="block text-white text-3xl font-serif mb-2">100+</span>
-                <span className="text-white/40 uppercase tracking-widest text-xs">Proyek Selesai</span>
+                <span className="block text-white text-3xl font-serif mb-2">CNC</span>
+                <span className="text-white/40 uppercase tracking-widest text-xs">Teknologi Presisi</span>
               </div>
               <div className="text-center">
-                <span className="block text-white text-3xl font-serif mb-2">BUMN</span>
-                <span className="text-white/40 uppercase tracking-widest text-xs">Mitra Terpercaya</span>
+                <span className="block text-white text-3xl font-serif mb-2">CUSTOM</span>
+                <span className="text-white/40 uppercase tracking-widest text-xs">Solusi Terpersonalisasi</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Navigation Buttons - Moved to sides for better accessibility and zero overlap */}
+        {/* Navigation Buttons */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 flex justify-between px-8 pointer-events-none">
           <button 
             onClick={() => setHeroIndex(prev => (prev === 0 ? kcrData.images.hero.length - 1 : prev - 1))} 
@@ -101,36 +101,36 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. NARRATIVE - Jobs to Be Done & Authority */}
+      {/* 2. NARRATIVE */}
       <section className="py-20 md:py-32 framer-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <motion.div {...fadeInUp} className="lg:col-span-5 border-l-2 border-brand pl-10 py-2">
-            <span className="framer-label text-brand mb-8 block">01 / MENGAPA KAMI</span>
+            <span className="framer-label text-brand mb-8 block">01 / MENGAPA KCR FURNITURE</span>
             <h2 className="framer-h2 leading-tight text-[#2A2C2B]">
-              Keahlian Teknis untuk <br/> 
-              <span className="italic text-brand font-serif text-[1.1em]">Struktur Masa Depan.</span>
+              Keahlian Manufaktur untuk <br/> 
+              <span className="italic text-brand font-serif text-[1.1em]">Ruang Masa Depan.</span>
             </h2>
           </motion.div>
           
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="lg:col-span-6 lg:col-start-7">
             <p className="framer-body !text-[18px] mb-10 text-[#2A2C2B] font-medium">
-              Kami memahami bahwa setiap proyek konstruksi adalah investasi besar yang menuntut keamanan tanpa celah and ketepatan waktu.
+              Kami memahami bahwa ruang kerja and hospitality yang baik adalah perpaduan antara estetika, fungsi, and kenyamanan jangka panjang.
             </p>
             <p className="framer-body mb-10">
-              Sebagai **Spesialis Shotcrete Indonesia**, KCR tidak hanya sekadar membangun, tetapi memberikan solusi perkuatan struktur yang telah teruji pada Proyek Strategis Nasional. Kami menggabungkan metode konvensional yang rapi dengan inovasi sistem prefabrikasi untuk efisiensi maksimal.
+              Sebagai **Spesialis Furnitur Presisi**, KCR mengintegrasikan desain modern dengan teknologi CNC standar Eropa. Kami tidak hanya menyediakan produk, tetapi memberikan solusi tata ruang yang meningkatkan produktivitas and mencerminkan prestise brand Anda.
             </p>
             <Link to="/about" className="framer-label group flex items-center gap-4 hover:text-brand transition-all !opacity-100">
-              Pelajari Standar Kualitas Kami <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
+              Pelajari Standar Manufaktur Kami <CaretRight weight="bold" className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* 3. SOLUTIONS - Benefits Oriented (JTBD) */}
+      {/* 3. SOLUTIONS */}
       <section className="py-20 md:py-32 framer-container border-t border-[#2A2C2B]/5">
         <motion.div {...fadeInUp} className="mb-20">
           <span className="framer-label text-brand mb-6 block">02 / SOLUSI</span>
-          <h2 className="framer-h2 text-[#2A2C2B]">Fokus Pada Hasil & Keamanan</h2>
+          <h2 className="framer-h2 text-[#2A2C2B]">Fokus Pada Kualitas & Estetika</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -146,8 +146,8 @@ const Home: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4">
-                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Manajemen Proyek Terpadu</h3>
-                <p className="framer-body !text-[15px] opacity-80">Dari tahap perencanaan hingga serah terima, kami memastikan kontrol kualitas yang ketat sehingga proyek Anda selesai tepat waktu tanpa pembengkakan biaya.</p>
+                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Furnitur Kantor Modular</h3>
+                <p className="framer-body !text-[15px] opacity-80">Sistem workstation and meja eksekutif yang fleksibel, dirancang untuk mendukung dinamika kerja modern and kolaborasi tim.</p>
               </div>
             </motion.div>
           </Link>
@@ -165,8 +165,8 @@ const Home: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4">
-                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Proteksi Lereng & Infrastruktur</h3>
-                <p className="framer-body !text-[15px] opacity-80">Spesialisasi Shotcrete kami memberikan keamanan ekstra pada area rawan longsor and dinding terowongan dengan aplikasi beton semprot yang presisi.</p>
+                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Hospitality & Hotel Custom</h3>
+                <p className="framer-body !text-[15px] opacity-80">Menyediakan rangkaian tempat tidur, furnitur kamar, and dining sets custom dengan detail premium untuk hotel and resort.</p>
               </div>
             </motion.div>
           </Link>
@@ -184,8 +184,8 @@ const Home: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4">
-                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Konstruksi Prefab Modern</h3>
-                <p className="framer-body !text-[15px] opacity-80">Percepat waktu pembangunan hingga 40% dengan sistem rangka baja ringan prefabrikasi yang akurat and efisien untuk berbagai jenis bangunan.</p>
+                <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Manufaktur CNC Presisi</h3>
+                <p className="framer-body !text-[15px] opacity-80">Teknologi pemotongan and pengerjaan kayu berbasis CNC memastikan akurasi milimeter and konsistensi kualitas pada setiap unit produk.</p>
               </div>
             </motion.div>
           </Link>
@@ -204,50 +204,50 @@ const Home: React.FC = () => {
               </div>
               <div className="flex flex-col gap-4">
                 <h3 className="font-serif text-[28px] text-[#2A2C2B] uppercase tracking-tight">Fit-Out Interior Eksekutif</h3>
-                <p className="framer-body !text-[15px] opacity-80">Menciptakan ruang kerja yang produktif dengan furnitur custom berkualitas tinggi yang mencerminkan prestise and profesionalisme perusahaan Anda.</p>
+                <p className="framer-body !text-[15px] opacity-80">Layanan menyeluruh mulai dari perencanaan layout hingga instalasi furnitur untuk menciptakan ruang interior yang kohesif and profesional.</p>
               </div>
             </motion.div>
           </Link>
         </div>
       </section>
 
-      {/* 4. STRATEGIC ADVANTAGES - Authority & Loss Aversion */}
+      {/* 4. STRATEGIC ADVANTAGES */}
       <section className="py-20 md:py-32 bg-white relative overflow-hidden">
         <div className="framer-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div {...fadeInUp} className="lg:col-span-6">
               <span className="framer-label text-brand mb-8 block tracking-[0.6em]">KEUNGGULAN STRATEGIS</span>
-              <h2 className="framer-h2 mb-12 text-[#2A2C2B]">Mengapa Proyek Besar <br/><span className="italic font-serif text-brand">Mempercayakan KCR?</span></h2>
+              <h2 className="framer-h2 mb-12 text-[#2A2C2B]">Mengapa Memilih <br/><span className="italic font-serif text-brand">KCR Furniture?</span></h2>
               <div className="space-y-10">
                 <div className="flex gap-6">
                   <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">1</div>
                   <div>
-                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Zero Delay Management</h3>
-                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Kami menggunakan sistem manajemen lapangan yang rapi untuk menghindari hambatan operasional yang sering kali menyebabkan pembengkakan biaya pada proyek konstruksi.</p>
+                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">European Standard Precision</h3>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Pemanfaatan mesin CNC canggih dengan standar Eropa menjamin setiap produk memiliki detail yang sempurna and presisi tinggi yang sulit dicapai secara manual.</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
                   <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">2</div>
                   <div>
-                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Sertifikasi & Standar Nasional</h3>
-                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Kepatuhan ketat terhadap standar teknis and K3, memastikan setiap struktur yang kami bangun memiliki daya tahan jangka panjang and keamanan maksimal.</p>
+                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Customized Engineering</h3>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Kami mampu mengadaptasi desain and material sesuai dengan kebutuhan spesifik proyek, anggaran klien, and identitas visual perusahaan Anda.</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
                   <div className="w-12 h-12 rounded-full bg-[#F5F5F0] flex items-center justify-center flex-shrink-0 text-brand font-serif text-xl italic">3</div>
                   <div>
-                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Teknologi Shotcrete Teruji</h3>
-                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Sebagai spesialis, kami memiliki peralatan and tim ahli yang mampu menangani medan tersulit sekalipun, mulai dari lereng curam hingga terowongan.</p>
+                    <h3 className="font-serif text-2xl text-[#2A2C2B] mb-2">Mandiri & Terintegrasi</h3>
+                    <p className="framer-body !text-sm text-[#2A2C2B]/60">Dengan fasilitas produksi sendiri, kami memiliki kontrol penuh terhadap lini masa produksi and standar kualitas, memastikan pengiriman tepat waktu.</p>
                   </div>
                 </div>
               </div>
             </motion.div>
             <motion.div {...fadeInUp} transition={{ delay: 0.3 }} className="lg:col-span-5 lg:col-start-8">
               <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl group">
-                <img src={kcrData.images.hero[2]} alt="KCR Field Operation" className="w-full h-full object-cover" loading="lazy" />
+                <img src={kcrData.images.hero[1]} alt="KCR Manufacturing Process" className="w-full h-full object-cover" loading="lazy" />
                 <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/90 backdrop-blur-md rounded-xl">
-                  <p className="framer-body !text-brand italic font-serif text-lg mb-2">"Keamanan bukan sekadar opsi, melainkan pondasi utama dari setiap jengkal beton yang kami aplikasikan."</p>
-                  <p className="framer-label !text-[#2A2C2B] !opacity-100">— Tim Teknis KCR</p>
+                  <p className="framer-body !text-brand italic font-serif text-lg mb-2">"Presisi bukan sekadar angka, melainkan dedikasi kami untuk menghadirkan kualitas terbaik di setiap sudut ruangan Anda."</p>
+                  <p className="framer-label !text-[#2A2C2B] !opacity-100">— Tim Produksi KCR</p>
                 </div>
               </div>
             </motion.div>
@@ -255,20 +255,20 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. TRUSTED BY - Social Proof */}
+      {/* 5. TRUSTED BY */}
       <section className="py-16 md:py-24 border-y border-[#2A2C2B]/5 bg-[#F5F5F0]/50">
         <div className="framer-container text-center">
           <span className="framer-label text-[#2A2C2B]/40 mb-12 block tracking-[0.4em]">DIPERCAYA OLEH MITRA STRATEGIS</span>
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 hover:opacity-100 transition-opacity duration-500 grayscale">
-             <div className="font-serif text-2xl tracking-tighter">BUMN <span className="text-brand">Karya</span></div>
-             <div className="font-serif text-2xl tracking-tighter">Sektor <span className="text-brand">Energi</span></div>
-             <div className="font-serif text-2xl tracking-tighter">Industri <span className="text-brand">Nasional</span></div>
-             <div className="font-serif text-2xl tracking-tighter">Swasta <span className="text-brand">Logistik</span></div>
+             <div className="font-serif text-2xl tracking-tighter">BUMN <span className="text-brand">Financial</span></div>
+             <div className="font-serif text-2xl tracking-tighter">Sektor <span className="text-brand">Perbankan</span></div>
+             <div className="font-serif text-2xl tracking-tighter">Industri <span className="text-brand">Kreatif</span></div>
+             <div className="font-serif text-2xl tracking-tighter">Luxury <span className="text-brand">Hotels</span></div>
           </div>
         </div>
       </section>
 
-      {/* 6. ARCHIVES - Proof of Competence */}
+      {/* 6. ARCHIVES */}
       <section className="py-20 md:py-32 bg-[#2A2C2B] text-[#F5F5F0]">
         <div className="framer-container">
           <motion.div {...fadeInUp} className="mb-24 flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-10 gap-6">
@@ -294,13 +294,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA - Reciprocity & Loss Aversion */}
+      {/* 5. CTA */}
       <section className="py-24 md:py-40 framer-container text-center relative overflow-hidden">
         <motion.div {...fadeInUp}>
           <span className="framer-label text-brand mb-8 block tracking-[0.8em]">KONSULTASI</span>
-          <h2 className="framer-h1 mb-8 text-[#2A2C2B]">Jangan Biarkan Proyek Anda <span className="italic font-serif text-brand">Terhambat.</span></h2>
+          <h2 className="framer-h1 mb-8 text-[#2A2C2B]">Wujudkan Ruang Kerja <span className="italic font-serif text-brand">Impian Anda.</span></h2>
           <p className="framer-body max-w-2xl mx-auto mb-16 text-[#2A2C2B]/70">
-            Dapatkan analisis teknis and konsultasi anggaran awal gratis dari tim ahli kami untuk memastikan proyek Anda berjalan efisien sejak hari pertama.
+            Dapatkan konsultasi desain and penawaran harga custom dari tim ahli kami untuk transformasi interior kantor atau hotel Anda.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link to="/contact" className="framer-btn !bg-[#2A2C2B] !text-white hover:!bg-brand border-none px-12">

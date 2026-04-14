@@ -13,9 +13,10 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-6">
             <p className="framer-label text-brand !text-[10px]">Layanan</p>
             <ul className="flex flex-col gap-3 font-sans font-normal text-[13px] opacity-50">
-              <li><Link to="/services" className="silent-hover">Kontraktor Bangunan</Link></li>
-              <li><Link to="/services" className="silent-hover">Spesialis Shotcrete</Link></li>
-              <li><Link to="/services" className="silent-hover">Sistem Prefabrikasi</Link></li>
+              <li><Link to="/services" className="silent-hover">Furnitur Kantor</Link></li>
+              <li><Link to="/services" className="silent-hover">Hospitality Custom</Link></li>
+              <li><Link to="/services" className="silent-hover">Manufaktur CNC</Link></li>
+              <li><Link to="/services" className="silent-hover">Interior Fit-Out</Link></li>
             </ul>
           </div>
 
@@ -51,9 +52,9 @@ const Footer: React.FC = () => {
         {/* BOTTOM BAR */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 pt-10 border-t-[0.5px] border-white/5">
           <div className="flex flex-col gap-4">
-            <h3 className="text-[22px] font-serif font-normal tracking-tighter text-white">KCR</h3>
+            <h3 className="text-[22px] font-serif font-normal tracking-tighter text-white uppercase">KCR FURNITURE</h3>
             <p className="text-[10px] text-white/20 uppercase tracking-[0.4em] leading-relaxed">
-              © {new Date().getFullYear()} PT. KARYA CIPTA RAHARJA.<br className="md:hidden"/> ALL RIGHTS RESERVED.
+              © {new Date().getFullYear()} KCR FURNITURE.<br className="md:hidden"/> ALL RIGHTS RESERVED.
             </p>
           </div>
 
