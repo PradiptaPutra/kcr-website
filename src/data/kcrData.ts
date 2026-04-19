@@ -347,6 +347,11 @@ export const kcrData = {
     { id: 114, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-02", specs: "2200 (P) x 820 (T) x 36 (L)", price: 6230000, price_tax: 6915300, img: "/assets/images/products/DT_02.jpg" },
     { id: 115, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-03", specs: "2200 (P) x 820 (T) x 36 (L)", price: 6500000, price_tax: 7215000, img: "/assets/images/products/DT_03.jpg" },
     { id: 116, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-04", specs: "2200 (P) x 820 (T) x 36 (L)", price: 6300000, price_tax: 6993000, img: "/assets/images/products/DT_04.jpg" },
+    { id: 117, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-01", specs: "Kursi Hadap / Kursi Cafe Kayu", price: 1850000, price_tax: 2053500, img: "/assets/images/products/KH_01.png" },
+    { id: 118, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-02", specs: "Kursi Hadap / Kursi Cafe Kayu", price: 1950000, price_tax: 2164500, img: "/assets/images/products/KH_02.png" },
+    { id: 119, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-03", specs: "Kursi Hadap / Kursi Cafe Kayu", price: 1750000, price_tax: 1942500, img: "/assets/images/products/KH_03.png" },
+    { id: 120, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KJ-01", specs: "Kursi Jengki Kayu Solid", price: 2250000, price_tax: 2497500, img: "/assets/images/products/KJ_01.png" },
+    { id: 121, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KM-01", specs: "Kursi Makan Kayu Modern", price: 2150000, price_tax: 2386500, img: "/assets/images/products/KM_CHAIR_01.png" },
   ],
 
   images: {
