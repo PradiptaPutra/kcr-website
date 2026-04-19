@@ -26,7 +26,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
     <section className={`framer-container pt-8 md:pt-12 mb-8 md:mb-12 ${className}`}>
       <motion.div 
         {...fadeInUp}
-        className="max-w-4xl border-b border-[#1a1c19]/5 pb-10"
+        className="max-w-4xl border-b border-[#1a1c19]/10 pb-10"
       >
         <div className="flex flex-col gap-3">
           <span className="text-[10px] uppercase tracking-[0.4em] text-brand font-bold opacity-80">{label}</span>
@@ -36,7 +36,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
             </h1>
           </div>
           {description && (
-            <p className="text-[13px] opacity-40 max-w-xl leading-relaxed mt-2">
+            <p className="text-[13px] opacity-65 max-w-xl leading-relaxed mt-2">
               {description}
             </p>
           )}

@@ -14,8 +14,10 @@ const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
 const Catalog = lazy(() => import('./pages/Catalog'));
-const Portfolio = lazy(() => import('./pages/Portfolio'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Professional = lazy(() => import('./pages/Professional'));
+const CaseStudies = lazy(() => import('./pages/CaseStudies'));
+const Insights = lazy(() => import('./pages/Insights'));
 
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
@@ -46,8 +48,10 @@ const AnimatedRoutes = () => {
           <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
           <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
           <Route path="/catalog" element={<PageWrapper><Catalog /></PageWrapper>} />
-          <Route path="/portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+          <Route path="/professional" element={<PageWrapper><Professional /></PageWrapper>} />
+          <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
+          <Route path="/insights" element={<PageWrapper><Insights /></PageWrapper>} />
         </Routes>
       </Suspense>
     </AnimatePresence>
@@ -62,7 +66,7 @@ const App: React.FC = () => {
         <ScrollToTop />
         <div className="flex flex-col min-h-screen relative bg-[#F5F5F0]">
           <Navbar />
-          <main className="flex-grow">
+          <main id="main-content" className="flex-grow">
             <AnimatedRoutes />
           </main>
           <Footer />

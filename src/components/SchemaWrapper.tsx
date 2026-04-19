@@ -22,7 +22,7 @@ const SchemaWrapper: React.FC<SchemaProps> = ({ type, data }) => {
       "postalCode": "17426",
       "addressCountry": "ID"
     },
-    "contactPoint": kcrData.contact.phones.map(phone => ({
+    "contactPoint": (kcrData.contact.phones || []).map(phone => ({
       "@type": "ContactPoint",
       "telephone": phone,
       "contactType": "customer service",

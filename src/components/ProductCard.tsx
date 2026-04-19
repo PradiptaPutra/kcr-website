@@ -1,244 +1,290 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowsOut, ChatTeardropText } from '@phosphor-icons/react';
-import { useNavigate } from 'react-router-dom';
-
-interface Model {
-  name: string;
-  dim?: string;
-  capacity?: string;
-  finishes?: string;
-}
+import { X, ArrowsOut, ArrowRight, Check, WhatsappLogo } from '@phosphor-icons/react';
+import { createPortal } from 'react-dom';
+import { getProjectTags, getIndustryBadge, kcrData } from '../data/kcrData';
+import { trackEvent } from '../utils/analytics';
 
 interface ProductCardProps {
-  series: string;
+  id: number;
+  category: string;
+  name: string;
+  specs: string;
+  price: number;
+  price_tax: number;
   img: string;
-  description?: string;
-  label?: string;
-  models?: Model[];
   index?: number;
-  layout?: 'grid' | 'row';
-  ctaLink?: string;
+  activeIndustry?: string;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ 
-  series, 
+  id,
+  category,
+  name, 
+  specs,
+  price,
+  price_tax,
   img, 
-  description, 
-  label, 
-  models, 
   index = 0,
-  layout = 'grid',
-  ctaLink
+  activeIndustry = 'all'
 }) => {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const navigate = useNavigate();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const retailTags = getProjectTags(category);
 
-  // Prevent scroll when lightbox is open
+  const industryBadge = getIndustryBadge(activeIndustry);
+
+  const formatter = new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  });
+
   useEffect(() => {
-    if (isLightboxOpen) {
+    if (isDrawerOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
     return () => { document.body.style.overflow = 'unset'; };
-  }, [isLightboxOpen]);
+  }, [isDrawerOpen]);
 
   const fadeInUp = {
     initial: { y: 30, opacity: 0 },
     whileInView: { y: 0, opacity: 1 },
     viewport: { once: true },
-    transition: { duration: 1, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] as any }
+    transition: { duration: 0.8, delay: (index % 6) * 0.1, ease: [0.16, 1, 0.3, 1] as any }
   };
 
-  const handleCTANavigate = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (ctaLink) {
-      navigate(ctaLink);
-      window.scrollTo(0, 0);
-    }
+  const handleInquiry = () => {
+    trackEvent('product_inquiry_click', { product_id: id, product_name: name, industry: activeIndustry });
+    const message = encodeURIComponent(`Halo KCR Furniture, saya tertarik dengan produk ${name} untuk kebutuhan proyek saya. Mohon informasi lebih lanjut mengenai spesifikasi dan penawaran harganya.`);
+    window.open(`https://wa.me/${kcrData.contact.whatsapp}?text=${message}`, '_blank');
   };
 
-  const Lightbox = () => (
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  };
+
+  const modalContent = (
     <AnimatePresence>
-      {isLightboxOpen && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[999999] bg-[#0a0a0a] flex flex-col backdrop-blur-3xl pointer-events-auto"
-        >
-          {/* Top Navigation */}
-          <div className="flex justify-between items-center p-6 md:px-12 md:py-8 text-white z-[100]">
-            <div className="flex flex-col gap-1">
-              <span className="text-brand uppercase tracking-[0.4em] text-[9px] font-bold">{label || 'PRODUCT VIEW'}</span>
-              <h2 className="font-serif text-xl md:text-3xl">{series}</h2>
-            </div>
-            
-            <button 
-              className="w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all border border-white/10 text-white/60 hover:text-white group"
-              onClick={() => setIsLightboxOpen(false)}
-            >
-              <X size={24} weight="light" className="group-hover:rotate-90 transition-transform duration-500" />
-            </button>
-          </div>
-
-          {/* Immersive Image Viewer */}
-          <div 
-            className="flex-grow relative overflow-hidden flex items-center justify-center p-4 md:p-12"
-            onClick={() => setIsLightboxOpen(false)}
-          >
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full h-full flex items-center justify-center"
-            >
-              <img 
-                src={img} 
-                alt={series} 
-                className="max-w-full max-h-full object-contain select-none shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]"
-              />
-            </motion.div>
-          </div>
-
-          {/* Content Overlay */}
+      {isDrawerOpen && (
+        <div className="fixed inset-0 z-[100000] flex items-center justify-center p-3 md:p-8">
+          {/* Backdrop */}
           <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 1 }}
-            className="p-8 md:p-12 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent text-white z-50 pointer-events-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeDrawer}
+            className="absolute inset-0 bg-[#1A1C19]/80 backdrop-blur-xl"
+          />
+          
+          {/* Modal Container */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative w-full max-w-6xl max-h-[92vh] bg-[#F5F5F0] rounded-[8px] shadow-2xl overflow-hidden flex flex-col lg:flex-row"
           >
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-end gap-16">
-              <div className="flex-1 max-w-2xl text-left">
-                {description && <p className="font-serif text-xl md:text-2xl text-white/80 leading-relaxed mb-10 font-light">"{description}"</p>}
-                
-                <button 
-                  onClick={handleCTANavigate}
-                  className="flex items-center gap-6 bg-brand text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-[#A67C52] transition-all shadow-2xl shadow-brand/20 active:scale-95"
-                >
-                  <ChatTeardropText size={24} weight="fill" />
-                  Request Technical Consultation
-                </button>
+            {/* Close Button */}
+            <button 
+              onClick={closeDrawer}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-[#1A1C19]/5 border border-[#1A1C19]/10 flex items-center justify-center hover:bg-[#1A1C19] hover:text-white transition-all group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              aria-label="Close product details"
+            >
+              <X size={18} weight="bold" className="group-hover:rotate-90 transition-transform duration-500" />
+            </button>
+
+            {/* Left: Product Visual */}
+            <div className="lg:w-3/5 bg-white flex items-center justify-center p-10 sm:p-12 lg:p-20 relative overflow-hidden">
+              <div className="absolute top-12 left-12">
+                 <span className="framer-label text-brand text-[10px] tracking-[0.5em] block mb-2">
+                   {industryBadge ? industryBadge.toUpperCase() : category.toUpperCase()}
+                 </span>
+                 <div className="h-px w-12 bg-brand/30" />
               </div>
               
-              {models && models.length > 0 && (
-                <div className="w-full md:w-auto min-w-[360px] space-y-6 text-left bg-white/5 p-8 rounded-2xl backdrop-blur-md border border-white/10">
-                  <p className="framer-label text-white/40 text-[9px] tracking-[0.5em]">TECHNICAL SPECIFICATIONS</p>
-                  <div className="grid grid-cols-1 gap-2">
-                    {models.map(m => (
-                      <div key={m.name} className="flex justify-between items-center py-3 border-b border-white/5">
-                        <span className="text-white/90 text-[13px] font-medium">{m.name}</span>
-                        <span className="text-brand text-[11px] ml-10 font-mono uppercase tracking-tighter opacity-80">{m.dim || m.capacity || m.finishes}</span>
+              <motion.img 
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                src={img} 
+                alt={name} 
+                className="w-full h-full object-contain max-h-[56vh] lg:max-h-[60vh]" 
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            {/* Right: Info Panel */}
+            <div className="lg:w-2/5 flex flex-col min-h-0 bg-[#F5F5F0]">
+              <div className="flex-grow overflow-y-auto px-6 md:px-10 py-10 md:py-14">
+                <div className="space-y-12">
+                  {/* Header */}
+                  <div className="space-y-4">
+                    <h2 className="font-serif text-4xl md:text-5xl font-medium text-[#1A1C19] leading-tight">{name}</h2>
+                    <p className="text-[13px] text-[#1A1C19]/40 font-mono tracking-widest border-l-2 border-brand pl-4 uppercase">Reference Series</p>
+                  </div>
+
+                  {/* Investment / Price Section */}
+                  <div className="space-y-8 bg-white p-8 rounded-lg border border-[#1A1C19]/5 shadow-sm">
+                    <div className="flex flex-col gap-2">
+                    <span className="framer-label text-[9px] tracking-[0.3em] opacity-60">ESTIMATED INVESTMENT</span>
+                    <div className="flex items-baseline gap-4">
+                      <h3 className="font-serif text-4xl font-medium text-brand">{formatter.format(price_tax)}</h3>
+                    </div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mt-2">Inclusive of 11% PPN (Tax)</p>
+                  </div>
+
+                    <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[#1A1C19]/5 text-[11px] uppercase tracking-widest font-bold">
+                      <div className="space-y-1 opacity-40">
+                        <span>Base Price</span>
+                        <p className="font-mono text-xs mt-1 text-[#1A1C19]">{formatter.format(price)}</p>
                       </div>
-                    ))}
+                      <div className="space-y-1 opacity-40 text-right">
+                        <span>Tax Component</span>
+                        <p className="font-mono text-xs mt-1 text-[#1A1C19]">{formatter.format(price_tax - price)}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Technical Specs */}
+                  <div className="space-y-6">
+                    <span className="framer-label text-[10px] tracking-[0.4em] opacity-50 block mb-4">SPECIFICATIONS</span>
+                    <div className="p-6 bg-[#1A1C19]/5 rounded-[4px] border border-[#1A1C19]/5">
+                      <p className="text-[15px] text-[#1A1C19] leading-relaxed font-medium">
+                        {specs}
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      <span className="framer-label text-[9px] tracking-[0.28em] !opacity-80">COCOK UNTUK</span>
+                      <div className="flex flex-wrap gap-2">
+                        {retailTags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-[#1A1C19]/15 bg-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[#1A1C19]/75"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div className="rounded-[4px] border border-[#1A1C19]/10 bg-white p-3">
+                        <p className="text-[9px] uppercase tracking-[0.2em] text-[#1A1C19]/50 mb-1">Lead Time</p>
+                        <p className="text-[12px] font-semibold text-[#1A1C19]/80">7-14 Hari</p>
+                      </div>
+                      <div className="rounded-[4px] border border-[#1A1C19]/10 bg-white p-3">
+                        <p className="text-[9px] uppercase tracking-[0.2em] text-[#1A1C19]/50 mb-1">Garansi</p>
+                        <p className="text-[12px] font-semibold text-[#1A1C19]/80">12 Bulan</p>
+                      </div>
+                      <div className="rounded-[4px] border border-[#1A1C19]/10 bg-white p-3">
+                        <p className="text-[9px] uppercase tracking-[0.2em] text-[#1A1C19]/50 mb-1">Layanan</p>
+                        <p className="text-[12px] font-semibold text-[#1A1C19]/80">Instalasi</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 opacity-60">
+                      <Check size={16} className="text-brand" weight="bold" />
+                      <span className="text-[10px] font-bold uppercase tracking-widest">Precision CNC Standard</span>
+                    </div>
                   </div>
                 </div>
-              )}
+              </div>
+
+              {/* Action Area (Sticky-like at bottom of panel) */}
+              <div className="p-6 md:p-10 bg-white/50 backdrop-blur-sm border-t border-[#1A1C19]/5 space-y-4">
+                <button 
+                  onClick={handleInquiry}
+                  className="w-full flex items-center justify-center gap-4 bg-[#1A1C19] text-white py-5 rounded-[4px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.24em] text-[10px] sm:text-[11px] hover:bg-brand transition-all shadow-xl active:scale-[0.98]"
+                >
+                  <WhatsappLogo size={20} weight="fill" />
+                  Tanya via WhatsApp
+                </button>
+
+                <p className="text-[10px] text-center text-[#1A1C19]/40 uppercase tracking-widest font-medium">
+                  Tersedia untuk pengadaan massal & kustomisasi spesifikasi
+                </p>
+              </div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       )}
     </AnimatePresence>
-  );
-
-  const cardInner = (
-    <>
-      <div 
-        className="aspect-[4/5] overflow-hidden rounded-[4px] mb-8 bg-[#f0f0eb] cursor-zoom-in group relative shadow-premium"
-        onClick={() => setIsLightboxOpen(true)}
-      >
-        <img 
-          src={img} 
-          alt={series} 
-          className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110" 
-        />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-[#1A1C19]/10 transition-all duration-700 flex items-center justify-center">
-           <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-700">
-              <ArrowsOut size={24} className="text-white" weight="light" />
-           </div>
-        </div>
-      </div>
-      
-      <div className="flex-grow flex flex-col">
-        {label && <span className="framer-label text-brand mb-4 block tracking-[0.4em]">{label}</span>}
-        <h4 className="font-serif text-[28px] mb-4 text-[#1A1C19] tracking-tight font-medium leading-tight">{series}</h4>
-        
-        {description && (
-          <p className="text-[15px] text-[#1A1C19]/60 mb-10 leading-relaxed max-w-[90%]">
-            {description}
-          </p>
-        )}
-      </div>
-
-      <div className="mt-auto pt-8 border-t border-[#1A1C19]/5 relative z-10">
-        <button 
-          onClick={() => setIsLightboxOpen(true)}
-          className="w-full flex items-center justify-between group/btn py-4.5 px-6 rounded-full transition-all bg-transparent border border-[#1A1C19]/10 text-[#1A1C19] hover:bg-[#1A1C19] hover:text-white cursor-pointer"
-        >
-          <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Detail Koleksi</span>
-          <div className="w-8 h-8 rounded-full flex items-center justify-center transition-all bg-[#1A1C19]/5 group-hover/btn:bg-white/20">
-            <ArrowsOut weight="bold" size={14} />
-          </div>
-        </button>
-      </div>
-    </>
   );
 
   return (
     <>
       <motion.div 
         {...fadeInUp}
-        className={layout === 'row' ? "w-full" : "bg-white p-10 border border-[#1A1C19]/5 rounded-[4px] shadow-premium hover:shadow-premium-hover transition-all duration-700 flex flex-col h-full"}
+        className="p-6 md:p-8 bg-white border border-[#1A1C19]/5 rounded-[4px] shadow-premium hover:shadow-premium-hover transition-all duration-700 flex flex-col h-full group"
       >
-        {layout === 'row' ? (
-          <article className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-7">
-              <div 
-                className="overflow-hidden rounded-[4px] bg-[#f0f0eb] cursor-zoom-in relative group shadow-premium"
-                onClick={() => setIsLightboxOpen(true)}
-              >
-                <img 
-                  src={img} 
-                  alt={series} 
-                  className="w-full aspect-[16/10] object-cover transition-all duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-105" 
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-[#1A1C19]/10 transition-all duration-700 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-700">
-                    <ArrowsOut size={32} className="text-white" weight="light" />
-                  </div>
-                </div>
+        <div 
+          className="aspect-[4/3] overflow-hidden mb-6 md:mb-8 bg-[#f0f0eb] cursor-zoom-in relative shadow-sm rounded-[4px]"
+          onClick={() => {
+            setIsDrawerOpen(true);
+            trackEvent('product_modal_open', { product_id: id, source: 'image' });
+          }}
+        >
+            <img 
+              src={img} 
+              alt={name} 
+              className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110" 
+              loading="lazy"
+              decoding="async"
+            />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-[#1A1C19]/10 transition-all duration-700 flex items-center justify-center">
+             <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-700 shadow-2xl">
+                <ArrowsOut size={24} className="text-white" weight="light" />
+             </div>
+          </div>
+          <div className="absolute top-4 left-4">
+            <span className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest text-brand border border-brand/10">
+              {industryBadge || category}
+            </span>
+          </div>
+        </div>
+        
+        <div className="flex-grow flex flex-col text-left">
+          <h4 className="font-serif text-[22px] md:text-[24px] mb-2 text-[#1A1C19] tracking-tight font-medium leading-tight group-hover:text-brand transition-colors duration-500">{name}</h4>
+          <p className="text-[12px] text-[#1A1C19]/40 mb-6 font-mono uppercase tracking-tighter line-clamp-1">{specs}</p>
+          
+          <div className="mt-auto space-y-4">
+            <div className="flex items-baseline justify-between pt-6 border-t border-[#1A1C19]/5">
+              <span className="text-[10px] uppercase tracking-widest font-bold opacity-30">Estimasi Proyek</span>
+              <div className="text-right">
+                <div className="text-[18px] font-serif font-medium text-[#1A1C19]">{formatter.format(price_tax)}</div>
+                <div className="text-[9px] uppercase tracking-widest opacity-40">Per Unit</div>
               </div>
             </div>
-            <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-6">
-              {label && <span className="framer-label text-brand text-[10px] tracking-[0.5em]">{label}</span>}
-              <h3 className="font-serif text-[42px] leading-[1.1] text-[#1A1C19] tracking-tight font-medium">{series}</h3>
-              {description && <p className="framer-body !text-[17px] text-[#1A1C19]/60 leading-relaxed font-light">{description}</p>}
-              
-              {models && models.length > 0 && (
-                <div className="space-y-3 mt-6 border-y border-[#1A1C19]/5 py-6">
-                  {models.map(m => (
-                    <div key={m.name} className="flex justify-between items-center text-[12px]">
-                      <span className="font-bold uppercase tracking-widest text-[10px] opacity-40">{m.name}</span>
-                      <span className="text-[#1A1C19] font-mono">{m.dim || m.capacity || m.finishes}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
 
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <button 
-                onClick={() => setIsLightboxOpen(true)}
-                className="flex items-center justify-between group/btn py-6 px-10 rounded-full border transition-all mt-8 border-brand text-brand hover:bg-brand hover:text-white cursor-pointer shadow-xl shadow-brand/5 hover:shadow-brand/20"
+                onClick={handleInquiry}
+                className="w-full flex items-center justify-center gap-2 py-4 px-4 rounded-full transition-all bg-[#1A1C19] text-white hover:bg-brand shadow-lg shadow-[#1A1C19]/10"
               >
-                <span className="text-[11px] uppercase tracking-[0.4em] font-bold">Detail Koleksi</span>
-                <ArrowsOut weight="bold" size={18} className="ml-4 group-hover/btn:rotate-45 transition-transform duration-500" />
+                <WhatsappLogo size={13} weight="fill" />
+                <span className="text-[9px] uppercase tracking-[0.2em] font-bold">WhatsApp</span>
+              </button>
+              <button 
+                ref={triggerRef}
+                onClick={() => {
+                  setIsDrawerOpen(true);
+                  trackEvent('product_modal_open', { product_id: id, source: 'button' });
+                }}
+                className="w-full flex items-center justify-between group/btn py-4 px-4 rounded-full transition-all border border-[#1A1C19]/20 bg-white text-[#1A1C19] hover:border-brand hover:text-brand cursor-pointer shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              >
+                  <span className="text-[9px] uppercase tracking-[0.18em] font-bold">Spek</span>
+                <div className="w-5 h-5 rounded-full flex items-center justify-center transition-all bg-[#1A1C19]/5 group-hover/btn:bg-brand/15">
+                  <ArrowRight weight="bold" size={11} />
+                </div>
               </button>
             </div>
-          </article>
-        ) : cardInner}
+          </div>
+        </div>
       </motion.div>
-      <Lightbox />
+      {typeof document !== 'undefined' ? createPortal(modalContent, document.body) : null}
     </>
   );
 };

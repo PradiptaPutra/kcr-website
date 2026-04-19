@@ -1,0 +1,264 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TrendStatus {
+  rising
+  stable
+  viral
+}
+
+enum PricingTier {
+  low
+  medium
+  premium
+  unknown
+}
+
+enum AlertType {
+  PRICE_DROP
+  NEW_PRODUCT
+  AD_SPEND_SPIKE
+  RANK_CHANGE
+  SOCIAL_SURGE
+}
+
+enum Recommendation {
+  GO
+  NO_GO
+  WATCH
+}
+
+enum SocialPlatform {
+  instagram
+  tiktok
+}
+
+enum LeadSegment {
+  B2B
+  PROJECT
+  WHOLESALE
+}
+
+enum LeadStatus {
+  NEW
+  QUALIFIED
+  CONTACTED
+  WON
+  LOST
+}
+
+model TrendSnapshot {
+  id           String      @id @default(cuid())
+  keyword      String
+  category     String
+  searchVolume Int
+  growth       Float
+  platform     String
+  status       TrendStatus
+  capturedAt   DateTime    @default(now())
+  createdAt    DateTime    @default(now())
+
+  @@index([keyword, capturedAt])
+  @@index([platform, capturedAt])
+}
+
+model Competitor {
+  id          String   @id @default(cuid())
+  url         String   @unique
+  brand       String
+  pricing     PricingTier
+  avgPrice    Int
+  salesSignal Int
+  strengths   Json
+  weaknesses  Json
+  adHooks     Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  products CompetitorProduct[]
+}
+
+model CompetitorProduct {
+  id                String   @id @default(cuid())
+  competitorId      String
+  competitor_brand  String?
+  title             String
+  priceText         String
+  salesVolume       Int
+  url               String
+  capturedAt        DateTime @default(now())
+
+  competitor Competitor @relation(fields: [competitorId], references: [id], onDelete: Cascade)
+
+  @@index([competitorId, capturedAt])
+  @@index([competitor_brand, capturedAt])
+}
+
+model AdCreative {
+  id                    String   @id @default(cuid())
+  externalId            String?
+  platform              String
+  advertiser            String
+  competitor_brand      String?
+  status                String
+  hook                  String
+  copy                  String
+  cta                   String
+  keyword               String?
+  startedAt             DateTime
+  firstSeen             DateTime @default(now())
+  lastSeen              DateTime @default(now())
+  sourceUrl             String
+  estimatedMonthlySpend Float?
+  createdAt             DateTime @default(now())
+
+  @@index([platform, startedAt])
+  @@index([keyword])
+  @@index([competitor_brand, lastSeen])
+}
+
+model ProductScore {
+  id                String         @id @default(cuid())
+  keyword           String
+  demandScore       Float
+  competitionScore  Float
+  viralityScore     Float
+  totalScore        Float
+  recommendation    Recommendation
+  contributors      Json
+  createdAt         DateTime       @default(now())
+
+  @@index([keyword, createdAt])
+  @@index([totalScore])
+}
+
+model WeeklyReport {
+  id          String   @id @default(cuid())
+  reportDate  DateTime @unique
+  summary     String
+  topKeyword  String
+  topScore    Float
+  strategy    Json
+  createdAt   DateTime @default(now())
+}
+
+model KeywordRanking {
+  id            String   @id @default(cuid())
+  keyword       String
+  competitorUrl String
+  competitorBrand String
+  position      Int
+  platform      String   @default("google")
+  region        String   @default("ID")
+  previousPos   Int?
+  changePercent Float?
+  capturedAt    DateTime @default(now())
+  createdAt     DateTime @default(now())
+
+  @@index([keyword, capturedAt])
+  @@index([competitorBrand, capturedAt])
+  @@index([platform, region, capturedAt])
+}
+
+model SocialMetric {
+  id               String         @id @default(cuid())
+  platform         SocialPlatform
+  accountHandle    String
+  competitorBrand  String
+  followers        Int
+  engagementRate   Float
+  postingFrequency Float
+  avgViews         Int
+  sentimentScore   Float?
+  topContentType   String
+  hashtagTrends    Json
+  capturedAt       DateTime       @default(now())
+  createdAt        DateTime       @default(now())
+
+  @@index([platform, capturedAt])
+  @@index([competitorBrand, capturedAt])
+  @@index([accountHandle, capturedAt])
+}
+
+model MarketOpportunity {
+  id                 String   @id @default(cuid())
+  keyword            String
+  category           String
+  demandScore        Float
+  competitionScore   Float
+  opportunityScore   Float
+  avgMarketPrice     Int
+  seasonalWindow     String
+  recommendedSegment LeadSegment
+  rationale          Json
+  capturedAt         DateTime @default(now())
+  createdAt          DateTime @default(now())
+
+  @@index([keyword, capturedAt])
+  @@index([opportunityScore])
+  @@index([recommendedSegment, capturedAt])
+}
+
+model QualifiedLead {
+  id                String     @id @default(cuid())
+  segment           LeadSegment
+  companyName       String
+  contactName       String?
+  email             String?
+  phone             String?
+  city              String
+  source            String
+  intentScore       Float
+  budgetEstimate    Int?
+  priceSensitivity  String
+  preferredStyles   Json
+  preferredMaterials Json
+  status            LeadStatus @default(NEW)
+  notes             String?
+  capturedAt        DateTime   @default(now())
+  createdAt         DateTime   @default(now())
+
+  @@index([segment, status, capturedAt])
+  @@index([intentScore])
+  @@index([city, capturedAt])
+}
+
+model AlertRule {
+  id                String    @id @default(cuid())
+  keyword           String
+  type              AlertType @default(PRICE_DROP)
+  growthThreshold   Float?
+  enabled           Boolean   @default(true)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  events AlertEvent[]
+
+  @@unique([keyword, type])
+  @@index([keyword])
+}
+
+model AlertEvent {
+  id          String    @id @default(cuid())
+  alertRuleId String
+  type        AlertType @default(PRICE_DROP)
+  keyword     String
+  severity    String    @default("MEDIUM")
+  message     String
+  growth      Float?
+  delivered   Boolean   @default(false)
+  payload     Json
+  metadata    Json?
+  createdAt   DateTime  @default(now())
+
+  alertRule AlertRule @relation(fields: [alertRuleId], references: [id], onDelete: Cascade)
+
+  @@index([keyword, createdAt])
+  @@index([alertRuleId, createdAt])
+  @@index([severity])
+}
