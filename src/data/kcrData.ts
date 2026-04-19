@@ -232,8 +232,8 @@ export const kcrData = {
 
   catalogProducts: [
     { id: 1, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-1", specs: "1600 (P) x 700 (L) x 750 (T) mm", price: 9700000, price_tax: 10767000, img: "/assets/images/products/LAMINA_FST_1.jpg" },
-    { id: 2, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-2", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", price: 14100000, price_tax: 15651000, img: "/assets/images/products/LAMINA_FST_2.jpg" },
-    { id: 3, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-3", specs: "1800 (P) x 900 (L) x 750 (T) mm", price: 13100000, price_tax: 14541000, img: "/assets/images/products/LAMINA_FST_3.jpg" },
+    { id: 2, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-2", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", price: 14100000, price_tax: 15651000, img: "/assets/images/products/LAMINA_FST_2.png" },
+    { id: 3, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-3", specs: "1800 (P) x 900 (L) x 750 (T) mm", price: 13100000, price_tax: 14541000, img: "/assets/images/products/LAMINA_FST_2.png" },
     { id: 4, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-4", specs: "2000 (P) x 860 (L) x 750 (T) mm", price: 16500000, price_tax: 18315000, img: "/assets/images/products/LAMINA_FST_4.jpg" },
     { id: 5, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-5", specs: "2000 (P) x 860 (L) x 750 (T) mm", price: 32625000, price_tax: 36213750, img: "/assets/images/products/LAMINA_FST_5.jpg" },
     { id: 6, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-6", specs: "Meja: 2000 (P) x 860 (L) x 750 (T) mm", price: 42700000, price_tax: 47397000, img: "/assets/images/products/LAMINA_FST_6.jpg" },
