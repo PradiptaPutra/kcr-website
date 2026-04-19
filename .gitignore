@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .gstack/
+
+# Large raw assets and temporary files
+"Kcr product image/"
+*.zip
+"Pricelist 2026.xlsx"
