@@ -7,13 +7,14 @@ import ProductCard from '../components/ProductCard';
 import PageHeader from '../components/PageHeader';
 import { trackEvent } from '../utils/analytics';
 
+const ALLOWED_SORT = ['default', 'price_asc', 'price_desc', 'name_asc', 'newest'] as const;
+
 const Catalog: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeSection, setActiveSection] = useState<string>('all');
   const [activeIndustry, setActiveIndustry] = useState<string>('all');
   const [query, setQuery] = useState('');
   const [sortBy, setSortBy] = useState<'default' | 'price_asc' | 'price_desc' | 'name_asc' | 'newest'>('default');
-  const allowedSort = ['default', 'price_asc', 'price_desc', 'name_asc', 'newest'] as const;
 
   const interiorCategories = [
     { id: 'all', l: 'Semua Kategori' },
@@ -58,7 +59,7 @@ const Catalog: React.FC = () => {
     setActiveSection(categoryParam);
     setActiveIndustry(industryParam);
     setQuery(queryParam);
-    setSortBy(allowedSort.includes(sortParam) ? sortParam : 'default');
+    setSortBy(ALLOWED_SORT.includes(sortParam) ? sortParam : 'default');
   }, [searchParams]);
 
   const updateSearch = (next: {
