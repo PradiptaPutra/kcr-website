@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
+import FloatingWhatsAppCTA from './components/FloatingWhatsAppCTA';
 import './index.css';
 
 // Lazy load page components
@@ -70,6 +71,7 @@ const App: React.FC = () => {
             <AnimatedRoutes />
           </main>
           <Footer />
+          <FloatingWhatsAppCTA />
           <Analytics />
         </div>
       </Router>

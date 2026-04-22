@@ -370,32 +370,40 @@ export const kcrData = {
 
   contact: {
     address: "Jl. Dirgantara Raya Blok A No. 7, BDP – Jatisari– Jatiasih– Bekasi 17426",
-    phones: ["(021) 84598590"],
+    phones: ["021.84593454"],
     whatsapp: "6282359440670",
     emails: ["kcraharja@yahoo.com", "info@karyaciptaraharja.com"],
+    distributionHubs: ["Jakarta", "Bekasi", "Yogyakarta", "Surakarta", "Bali"],
+    businessDevelopment: [
+      { name: "Landri Widyakusuma", phone: "021.84593454" },
+      { name: "Sugeng Widodo", phone: "021.84593454" },
+      { name: "Agung Wijanarko", phone: "081 726 2153" },
+    ],
+    headOfficePhone: "021.84593454",
+    representativeOffices: ["Solo", "Jogja", "Purbalingga", "Balikpapan"],
     locations: [
       {
         city: "Jakarta (HQ)",
         address: "Jl. Dirgantara Raya Blok A No. 7, BDP – Jatisari – Jatiasih – Bekasi 17426",
-        phone: "(021) 84598590",
+        phone: "021.84593454",
         email: "info@karyaciptaraharja.com"
       },
       {
         city: "Solo & Yogyakarta",
         address: "Area Solo - Yogyakarta Regional Hub",
-        phone: "(021) 84598590",
+        phone: "021.84593454",
         email: "solo.yogya@karyaciptaraharja.com"
       },
       {
         city: "Bali",
         address: "Bali Regional Office & Showroom Hub",
-        phone: "(021) 84598590",
+        phone: "021.84593454",
         email: "bali@karyaciptaraharja.com"
       },
       {
         city: "Kalimantan Hub",
         address: "Kalimantan Project Coordination Center",
-        phone: "(021) 84598590",
+        phone: "021.84593454",
         email: "kalimantan@karyaciptaraharja.com"
       }
     ]

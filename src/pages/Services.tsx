@@ -204,6 +204,17 @@ const Services: React.FC = () => {
           </div>
         </motion.div>
       </section>
+
+      <section className="framer-container pb-20">
+        <div className="rounded-[12px] border border-[#1A1C19]/10 bg-white p-5">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1A1C19]/60 mb-3">Jelajahi Juga</p>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/catalog" className="cta-secondary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Katalog Produk</Link>
+            <Link to="/case-studies" className="cta-secondary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Case Studies</Link>
+            <Link to="/contact" className="cta-primary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Hubungi Tim</Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
@@ -38,8 +39,8 @@ const CaseStudies: React.FC = () => {
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                <img src={study.beforeImage} alt={`${study.title} before`} className="w-full h-52 object-cover rounded-[4px]" loading="lazy" decoding="async" />
-                <img src={study.afterImage} alt={`${study.title} after`} className="w-full h-52 object-cover rounded-[4px]" loading="lazy" decoding="async" />
+                <img src={study.beforeImage} alt={`${study.title} before`} className="w-full h-52 object-cover rounded-[4px]" loading="lazy" decoding="async" sizes="(min-width: 1024px) 18vw, 45vw" />
+                <img src={study.afterImage} alt={`${study.title} after`} className="w-full h-52 object-cover rounded-[4px]" loading="lazy" decoding="async" sizes="(min-width: 1024px) 18vw, 45vw" />
               </div>
               <div className="lg:col-span-7 space-y-5">
                 <p className="framer-label text-brand">{study.industry}</p>
@@ -59,6 +60,17 @@ const CaseStudies: React.FC = () => {
             </div>
           </motion.article>
         ))}
+      </section>
+
+      <section className="framer-container mt-14">
+        <div className="rounded-[12px] border border-[#1A1C19]/10 bg-white p-5">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1A1C19]/60 mb-3">Lanjutkan Eksplorasi</p>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/catalog" className="cta-secondary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Katalog Produk</Link>
+            <Link to="/services" className="cta-secondary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Layanan</Link>
+            <Link to="/contact" className="cta-primary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Konsultasi Proyek</Link>
+          </div>
+        </div>
       </section>
     </div>
   );

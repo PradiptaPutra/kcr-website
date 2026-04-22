@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
-import { MapPin, CaretRight, InstagramLogo, CheckCircle, Info } from '@phosphor-icons/react';
+import { Link, useLocation } from 'react-router-dom';
+import { MapPin, CaretRight, InstagramLogo, CheckCircle, Info, Phone } from '@phosphor-icons/react';
 import { kcrData } from '../data/kcrData';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
@@ -22,9 +22,26 @@ const Contact: React.FC = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [referenceId, setReferenceId] = useState('');
+  const hasSubmittedRef = useRef(false);
+  const formDataRef = useRef(formData);
+  const formStepRef = useRef(formStep);
+
+  useEffect(() => {
+    formDataRef.current = formData;
+  }, [formData]);
+
+  useEffect(() => {
+    formStepRef.current = formStep;
+    trackEvent('contact_form_step_view', { step: formStep });
+  }, [formStep]);
 
   // Goal-Gradient Effect: Initialize context from navigation state
   useEffect(() => {
+    trackEvent('contact_page_view', {
+      source: (location.state && typeof location.state === 'object' && 'product' in location.state) ? 'product_card' : 'direct',
+      mode: isProfessionalMode ? 'professional' : 'default',
+    });
+
     if (isProfessionalMode) {
       setFormData((prev) => ({
         ...prev,
@@ -42,6 +59,16 @@ const Contact: React.FC = () => {
         service: prev.service || 'Interior Fit-Out'
       }));
     }
+    return () => {
+      const latest = formDataRef.current;
+      if (!hasSubmittedRef.current && (latest.name || latest.email || latest.company || latest.service || latest.message)) {
+        trackEvent('contact_form_dropoff', {
+          step: formStepRef.current,
+          has_profile_data: Boolean(latest.name || latest.email || latest.service),
+          has_message: Boolean(latest.message),
+        });
+      }
+    };
   }, [isProfessionalMode, location.state]);
 
   const validateStepOne = () => {
@@ -69,12 +96,39 @@ const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateStepTwo()) return;
+
     const id = `KCR-${Date.now().toString().slice(-6)}`;
     setReferenceId(id);
+
+    const whatsappNumber = (kcrData.contact.whatsapp || '').replace(/[^\d]/g, '');
+    const whatsappMessage = [
+      '*KCR Furniture — New Project Inquiry*',
+      '',
+      `Reference: ${id}`,
+      '',
+      '*Profile*',
+      `Nama: ${formData.name || '-'}`,
+      `Email: ${formData.email || '-'}`,
+      `Perusahaan: ${formData.company || '-'}`,
+      `Minat Layanan: ${formData.service || '-'}`,
+      '',
+      '*Project Context*',
+      `Context Produk: ${formData.productContext || '-'}`,
+      `Pesan/Kebutuhan: ${formData.message || '-'}`,
+    ].join('\n');
+
+    if (whatsappNumber) {
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+      trackEvent('contact_form_whatsapp_redirect', { reference_id: id });
+    }
+
     trackEvent('contact_form_submit', {
+      reference_id: id,
       service: formData.service || 'unspecified',
       has_product_context: Boolean(formData.productContext),
     });
+    hasSubmittedRef.current = true;
     setFormStep(3);
   };
 
@@ -92,7 +146,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#F5F5F0] min-h-screen pt-20 md:pt-24 pb-24 md:pb-40 selection:bg-[#1a1c19] selection:text-white">
+    <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-24 md:pb-40 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
         title="Hubungi Kami | KCR Furniture"
         description="Mulai konsultasi furnitur dan interior Anda hari ini. Tim ahli KCR Furniture siap membantu mewujudkan ruang kerja dan hospitality yang inspiratif."
@@ -112,22 +166,44 @@ const Contact: React.FC = () => {
         {/* 1. CONTACT INFO & REGIONAL HUBS */}
         <div className="lg:col-span-4 space-y-16">
           <motion.div {...fadeInUp}>
-            <span className="framer-label text-brand mb-8 block tracking-[0.4em]">REGIONAL HUBS</span>
-            <div className="space-y-12">
-              {(kcrData.contact.locations || []).map((loc: any) => (
-                <div key={loc.city} className="space-y-4">
-                  <h4 className="font-serif text-lg font-medium text-[#1A1C19] flex items-center gap-3">
-                    <MapPin weight="light" size={20} className="text-brand" />
-                    {loc.city}
-                  </h4>
-                  <div className="pl-8 space-y-2">
-                    <p className="framer-body !text-[13px] opacity-60 leading-relaxed">{loc.address}</p>
-                    <div className="flex flex-col gap-1">
-                      <a href={`tel:${loc.phone}`} className="text-[11px] font-mono hover:text-brand transition-colors">{loc.phone}</a>
-                      <a href={`mailto:${loc.email}`} className="text-[11px] font-mono hover:text-brand transition-colors lowercase">{loc.email}</a>
-                    </div>
+            <span className="framer-label text-brand mb-8 block tracking-[0.4em]">DISTRIBUTION HUB</span>
+            <div className="space-y-3">
+              {(kcrData.contact.distributionHubs || []).map((city: string) => (
+                <p key={city} className="font-serif text-lg font-medium text-[#1A1C19] flex items-center gap-3">
+                  <MapPin weight="light" size={20} className="text-brand" />
+                  {city}
+                </p>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
+            <span className="framer-label text-brand mb-8 block tracking-[0.4em]">BUSINESS DEVELOPMENT</span>
+            <div className="space-y-4">
+              {(kcrData.contact.businessDevelopment || []).map((person: any) => {
+                const displayPhone = person.phone || kcrData.contact.headOfficePhone;
+                const dialPhone = (person.phone || kcrData.contact.headOfficePhone || '').replace(/[^\d+]/g, '');
+                return (
+                  <div key={person.name} className="pl-1">
+                    <p className="font-serif text-lg font-medium text-[#1A1C19]">{person.name}</p>
+                    <a href={`tel:${dialPhone}`} className="inline-flex items-center gap-2 text-[11px] font-mono hover:text-brand transition-colors">
+                      <Phone size={12} weight="duotone" />
+                      {displayPhone}
+                    </a>
                   </div>
-                </div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
+            <span className="framer-label text-brand mb-8 block tracking-[0.4em]">REP OFFICE</span>
+            <div className="space-y-2">
+              {(kcrData.contact.representativeOffices || []).map((office: string) => (
+                <p key={office} className="framer-body !text-[13px] text-[#1A1C19] flex items-center gap-3">
+                  <CaretRight size={14} className="text-brand" />
+                  {office}
+                </p>
               ))}
             </div>
           </motion.div>
@@ -199,8 +275,16 @@ const Contact: React.FC = () => {
                   setFormStep(2);
                   trackEvent('contact_form_step', { step: 2 });
                 }} 
-                 className="space-y-10"
-               >
+                  className="space-y-10"
+                >
+                {Object.keys(errors).length > 0 && (
+                  <div className="rounded-[4px] border border-red-200 bg-red-50 px-4 py-3" role="alert" aria-live="assertive">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-red-700">Periksa data berikut:</p>
+                    <ul className="mt-2 space-y-1 text-[12px] text-red-700">
+                      {Object.values(errors).map((error) => <li key={error}>• {error}</li>)}
+                    </ul>
+                  </div>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="flex flex-col gap-3">
                     <label className="framer-label !text-[10px] opacity-40">NAMA LENGKAP</label>
@@ -280,6 +364,14 @@ const Contact: React.FC = () => {
                 onSubmit={handleSubmit} 
                 className="space-y-10"
               >
+                {Object.keys(errors).length > 0 && (
+                  <div className="rounded-[4px] border border-red-200 bg-red-50 px-4 py-3" role="alert" aria-live="assertive">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-red-700">Periksa data berikut:</p>
+                    <ul className="mt-2 space-y-1 text-[12px] text-red-700">
+                      {Object.values(errors).map((error) => <li key={error}>• {error}</li>)}
+                    </ul>
+                  </div>
+                )}
                 <div className="flex flex-col gap-3 text-left">
                     <label className="framer-label !text-[10px] opacity-40">PESAN / KEBUTUHAN TEKNIK</label>
                     <textarea 
@@ -299,9 +391,13 @@ const Contact: React.FC = () => {
                     <button className="w-full py-6 bg-[#1a1c19] text-white rounded-[4px] text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-brand transition-all shadow-xl shadow-[#1a1c19]/10">
                       Ajukan Blueprint Teknik
                     </button>
+                    <p className="text-center text-[11px] text-[#1A1C19]/70">Setelah klik, WhatsApp akan terbuka dengan ringkasan data Anda.</p>
                     <button 
                       type="button" 
-                      onClick={() => setFormStep(1)}
+                      onClick={() => {
+                        setFormStep(1);
+                        trackEvent('contact_form_step_back', { from_step: 2, to_step: 1 });
+                      }}
                       className="framer-label !text-[10px] opacity-40 hover:opacity-100 transition-opacity"
                     >
                       KEMBALI KE SEBELUMNYA
@@ -337,11 +433,16 @@ const Contact: React.FC = () => {
                     setReferenceId('');
                     setErrors({});
                     setFormData({ name: '', email: '', company: '', service: '', message: '', productContext: '' });
+                    hasSubmittedRef.current = false;
                   }}
                   className="framer-label text-brand hover:underline"
                 >
                   Ajukan Proyek Lainnya
                 </button>
+                <div className="mt-8 flex items-center justify-center gap-3">
+                  <Link to="/catalog" className="cta-secondary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Lihat Katalog</Link>
+                  <Link to="/services" className="cta-secondary !px-5 !py-2 !text-[9px] !tracking-[0.16em]">Layanan</Link>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

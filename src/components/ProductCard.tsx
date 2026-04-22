@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowsOut, ArrowRight, Check, WhatsappLogo } from '@phosphor-icons/react';
 import { createPortal } from 'react-dom';
@@ -40,6 +41,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
     minimumFractionDigits: 0,
   });
 
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  };
+
   useEffect(() => {
     if (isDrawerOpen) {
       document.body.style.overflow = 'hidden';
@@ -47,6 +53,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
       document.body.style.overflow = 'unset';
     }
     return () => { document.body.style.overflow = 'unset'; };
+  }, [isDrawerOpen]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isDrawerOpen) {
+        closeDrawer();
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [isDrawerOpen]);
 
   const fadeInUp = {
@@ -60,11 +77,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
     trackEvent('product_inquiry_click', { product_id: id, product_name: name, industry: activeIndustry });
     const message = encodeURIComponent(`Halo KCR Furniture, saya tertarik dengan produk ${name} untuk kebutuhan proyek saya. Mohon informasi lebih lanjut mengenai spesifikasi dan penawaran harganya.`);
     window.open(`https://wa.me/${kcrData.contact.whatsapp}?text=${message}`, '_blank');
-  };
-
-  const closeDrawer = () => {
-    setIsDrawerOpen(false);
-    requestAnimationFrame(() => triggerRef.current?.focus());
   };
 
   const modalContent = (
@@ -87,6 +99,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="relative w-full max-w-6xl max-h-[92vh] bg-[#F5F5F0] rounded-[8px] shadow-2xl overflow-hidden flex flex-col lg:flex-row"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Detail produk ${name}`}
           >
             {/* Close Button */}
             <button 
@@ -110,12 +125,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 initial={{ opacity: 0, scale: 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                src={img} 
-                alt={name} 
-                className="w-full h-full object-contain max-h-[56vh] lg:max-h-[60vh]" 
-                loading="lazy"
-                decoding="async"
-              />
+                 src={img} 
+                 alt={name} 
+                 className="w-full h-full object-contain max-h-[56vh] lg:max-h-[60vh]" 
+                 loading="lazy"
+                 decoding="async"
+                 sizes="(min-width: 1024px) 60vw, 100vw"
+               />
             </div>
 
             {/* Right: Info Panel */}
@@ -203,9 +219,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
                   Tanya via WhatsApp
                 </button>
 
-                <p className="text-[10px] text-center text-[#1A1C19]/40 uppercase tracking-widest font-medium">
+                <p className="text-[10px] text-center text-[#1A1C19]/55 uppercase tracking-widest font-medium">
                   Tersedia untuk pengadaan massal & kustomisasi spesifikasi
                 </p>
+                <Link
+                  to="/contact"
+                  state={{ product: name, context: 'catalog_modal' }}
+                  onClick={() => {
+                    trackEvent('product_contact_form_click', { product_id: id, product_name: name });
+                    closeDrawer();
+                  }}
+                  className="w-full flex items-center justify-center rounded-[4px] border border-[#1A1C19]/15 bg-white py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#1A1C19]/80 transition hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                  Isi Form Proyek
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -227,13 +254,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
             trackEvent('product_modal_open', { product_id: id, source: 'image' });
           }}
         >
-            <img 
-              src={img} 
-              alt={name} 
-              className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110" 
-              loading="lazy"
-              decoding="async"
-            />
+             <img 
+               src={img} 
+               alt={name} 
+               className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110" 
+               loading="lazy"
+               decoding="async"
+               sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw"
+             />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-[#1A1C19]/10 transition-all duration-700 flex items-center justify-center">
              <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-700 shadow-2xl">
                 <ArrowsOut size={24} className="text-white" weight="light" />
@@ -250,9 +278,24 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <h4 className="font-serif text-[22px] md:text-[24px] mb-2 text-[#1A1C19] tracking-tight font-medium leading-tight group-hover:text-brand transition-colors duration-500">{name}</h4>
           <p className="text-[12px] text-[#1A1C19]/40 mb-6 font-mono uppercase tracking-tighter line-clamp-1">{specs}</p>
           
-          <div className="mt-auto space-y-4">
-            <div className="flex items-baseline justify-between pt-6 border-t border-[#1A1C19]/5">
-              <span className="text-[10px] uppercase tracking-widest font-bold opacity-30">Estimasi Proyek</span>
+            <div className="mt-auto space-y-4">
+              <div className="grid grid-cols-3 gap-2 text-center">
+                <div className="rounded-[4px] border border-[#1A1C19]/10 bg-[#F5F5F0] px-2 py-2">
+                  <p className="text-[8px] uppercase tracking-[0.16em] text-[#1A1C19]/55">Lead Time</p>
+                  <p className="text-[10px] font-bold text-[#1A1C19]/80">7-14 Hari</p>
+                </div>
+                <div className="rounded-[4px] border border-[#1A1C19]/10 bg-[#F5F5F0] px-2 py-2">
+                  <p className="text-[8px] uppercase tracking-[0.16em] text-[#1A1C19]/55">MOQ</p>
+                  <p className="text-[10px] font-bold text-[#1A1C19]/80">1 Unit</p>
+                </div>
+                <div className="rounded-[4px] border border-[#1A1C19]/10 bg-[#F5F5F0] px-2 py-2">
+                  <p className="text-[8px] uppercase tracking-[0.16em] text-[#1A1C19]/55">Garansi</p>
+                  <p className="text-[10px] font-bold text-[#1A1C19]/80">12 Bulan</p>
+                </div>
+              </div>
+
+              <div className="flex items-baseline justify-between pt-6 border-t border-[#1A1C19]/5">
+                <span className="text-[10px] uppercase tracking-widest font-bold opacity-30">Estimasi Proyek</span>
               <div className="text-right">
                 <div className="text-[18px] font-serif font-medium text-[#1A1C19]">{formatter.format(price_tax)}</div>
                 <div className="text-[9px] uppercase tracking-widest opacity-40">Per Unit</div>

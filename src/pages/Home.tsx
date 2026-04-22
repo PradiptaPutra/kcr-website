@@ -513,6 +513,9 @@ const Home: React.FC = () => {
                 <WhatsappLogo size={22} weight="fill" />
                 Mulai Konsultasi Proyek
               </button>
+              <Link to="/services" className="cta-secondary !bg-white/10 !text-white !border-white/20 hover:!bg-white hover:!text-[#1A1C19]">
+                Lihat Layanan
+              </Link>
             </div>
         </motion.div>
       </section>

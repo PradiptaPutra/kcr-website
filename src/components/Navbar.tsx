@@ -60,12 +60,11 @@ const Navbar: React.FC = () => {
     { n: 'Kontak', p: '/contact' },
   ];
 
-  // Dynamic Industrial Glass Pill
   const isScrolled = scrolled || isOpen;
   
   const navContainerClasses = isScrolled
-    ? 'mt-3 md:mt-4 w-[calc(100%-1.5rem)] max-w-6xl bg-[#F5F5F0]/85 supports-[backdrop-filter]:bg-[#F5F5F0]/72 supports-[backdrop-filter]:backdrop-blur-xl border border-[#1A1C19]/9 rounded-full px-6 md:px-8 shadow-[0_6px_18px_rgba(26,28,25,0.06)]'
-    : 'w-full bg-[#F5F5F0]/90 supports-[backdrop-filter]:bg-[#F5F5F0]/80 supports-[backdrop-filter]:backdrop-blur-xl border-b border-[#1A1C19]/5 rounded-none px-6 md:px-12 xl:px-16';
+    ? 'w-full bg-[#F5F5F0]/92 supports-[backdrop-filter]:bg-[#F5F5F0]/84 supports-[backdrop-filter]:backdrop-blur-xl border-b border-[#1A1C19]/10 px-6 md:px-12 xl:px-16 shadow-[0_6px_18px_rgba(26,28,25,0.06)]'
+    : 'w-full bg-[#F5F5F0]/90 supports-[backdrop-filter]:bg-[#F5F5F0]/80 supports-[backdrop-filter]:backdrop-blur-xl border-b border-[#1A1C19]/8 px-6 md:px-12 xl:px-16';
 
   const textColor = 'text-[#1A1C19]';
 
