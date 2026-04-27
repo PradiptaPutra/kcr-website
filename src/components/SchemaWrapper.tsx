@@ -31,6 +31,36 @@ const SchemaWrapper: React.FC<SchemaProps> = ({ type, data }) => {
     }))
   });
 
+  const getProductSchema = (productData: any) => ({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": productData.name,
+    "image": `https://karyaciptaraharja.com${productData.img}`,
+    "description": productData.specs,
+    "brand": {
+      "@type": "Brand",
+      "name": "KCR Furniture"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "PT Afan Maju Sejahtera (AMS)",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": kcrData.contact.address,
+        "addressLocality": "Bekasi",
+        "addressRegion": "Jawa Barat",
+        "postalCode": "17426",
+        "addressCountry": "ID"
+      }
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": productData.price,
+      "priceCurrency": "IDR",
+      "availability": "https://schema.org/InStock"
+    }
+  });
+
   const getServiceSchema = (serviceData: any) => ({
     "@context": "https://schema.org",
     "@type": "Service",
@@ -44,7 +74,20 @@ const SchemaWrapper: React.FC<SchemaProps> = ({ type, data }) => {
     "areaServed": "ID"
   });
 
-  const schema = type === 'Organization' ? getOrganizationSchema() : getServiceSchema(data);
+  const getSchema = () => {
+    switch (type) {
+      case 'Organization':
+        return getOrganizationSchema();
+      case 'Product':
+        return getProductSchema(data);
+      case 'Service':
+        return getServiceSchema(data);
+      default:
+        return getOrganizationSchema();
+    }
+  };
+
+  const schema = getSchema();
 
   return (
     <Helmet>

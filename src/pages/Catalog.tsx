@@ -17,11 +17,12 @@ const Catalog: React.FC = () => {
   const [sortBy, setSortBy] = useState<'default' | 'price_asc' | 'price_desc' | 'name_asc' | 'newest'>('default');
 
   const interiorCategories = [
-    { id: 'all', l: 'Semua Kategori' },
-    { id: 'workstations', l: 'Area Kerja (Workstations)' },
-    { id: 'executive', l: 'Ruang Eksekutif' },
-    { id: 'hospitality', l: 'Hospitality' },
-    { id: 'others', l: 'Kategori Lainnya' },
+    { id: 'all', l: 'Semua Koleksi' },
+    { id: 'workstations', l: 'Workstations & System Furniture' },
+    { id: 'executive', l: 'Executive & Private Office' },
+    { id: 'hospitality', l: 'Hospitality & Commercial' },
+    { id: 'apartment_villa', l: 'Bespoke Apartment & Vila' },
+    { id: 'others', l: 'Specialized & Technical Units' },
   ];
 
   const industryCategories = [
@@ -29,7 +30,6 @@ const Catalog: React.FC = () => {
     { id: 'office', l: 'Perkantoran' },
     { id: 'hospitality', l: 'Hospitality' },
     { id: 'government', l: 'Pemerintahan' },
-    { id: 'education', l: 'Pendidikan' },
   ];
 
   const normalizeCategoryParam = (value: string | null): string => {
@@ -39,6 +39,7 @@ const Catalog: React.FC = () => {
     if (normalized.includes('workstation')) return 'workstations';
     if (normalized.includes('executive')) return 'executive';
     if (normalized.includes('hospitality')) return 'hospitality';
+    if (normalized.includes('apartment') || normalized.includes('villa')) return 'apartment_villa';
     if (normalized.includes('other')) return 'others';
     return 'all';
   };
@@ -101,6 +102,8 @@ const Catalog: React.FC = () => {
       } else if (activeSection === 'hospitality') {
         const hospitalityCategories = ['Coffee Table', 'Kursi Makan', 'Meja Makan', 'Wardrobe', 'Side Table', 'Side Drawer', 'Tempat Tidur', 'Sofa'];
         products = products.filter(p => hospitalityCategories.includes(p.category));
+      } else if (activeSection === 'apartment_villa') {
+        products = products.filter(p => p.category === 'Apartement & Vila (Built-in Furniture Only)');
       } else if (activeSection === 'others') {
         const othersCategories = ['Mobile Drawer', 'Meja Belajar Sekolah', 'Daun Pintu'];
         products = products.filter(p => othersCategories.includes(p.category));
@@ -128,8 +131,6 @@ const Catalog: React.FC = () => {
   });
 
   const filteredProducts = [...searchedProducts].sort((a, b) => {
-    if (sortBy === 'price_asc') return a.price_tax - b.price_tax;
-    if (sortBy === 'price_desc') return b.price_tax - a.price_tax;
     if (sortBy === 'name_asc') return a.name.localeCompare(b.name);
     if (sortBy === 'newest') return b.id - a.id;
     return a.id - b.id;
@@ -141,15 +142,12 @@ const Catalog: React.FC = () => {
 
   const selectedCategoryLabel = interiorCategories.find((item) => item.id === activeSection)?.l ?? 'Semua Kategori';
   const selectedIndustryLabel = industryCategories.find((item) => item.id === activeIndustry)?.l ?? 'Semua Industri';
-  const selectedSortLabel = sortBy === 'price_asc'
-    ? 'Harga Termurah'
-    : sortBy === 'price_desc'
-      ? 'Harga Tertinggi'
-      : sortBy === 'name_asc'
-        ? 'Nama A-Z'
-        : sortBy === 'newest'
-          ? 'Terbaru'
-          : 'Default';
+  const selectedSortLabel =
+    sortBy === 'name_asc'
+      ? 'Nama A-Z'
+      : sortBy === 'newest'
+        ? 'Terbaru'
+        : 'Default';
 
   const activeFilterChips = [
     activeSection !== 'all' ? { key: 'section', label: `Kategori: ${selectedCategoryLabel}`, onRemove: () => updateSearch({ section: 'all' }) } : null,
@@ -180,6 +178,22 @@ const Catalog: React.FC = () => {
         name: item.name,
         category: item.category,
         image: `https://karyaciptaraharja.com${item.img}`,
+        brand: {
+          '@type': 'Brand',
+          name: 'KCR Furniture'
+        },
+        manufacturer: {
+          '@type': 'Organization',
+          name: 'PT Afan Maju Sejahtera (AMS)',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: kcrData.contact.address,
+            addressLocality: 'Bekasi',
+            addressRegion: 'Jawa Barat',
+            postalCode: '17426',
+            addressCountry: 'ID'
+          }
+        }
       })),
     },
   };
@@ -187,9 +201,9 @@ const Catalog: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
-        title={`Katalog ${selectedCategoryLabel} untuk ${selectedIndustryLabel} | KCR Furniture`}
-        description={`Jelajahi katalog ${selectedCategoryLabel} KCR Furniture untuk kebutuhan ${selectedIndustryLabel}. Gunakan filter kategori, industri, dan pencarian untuk mempercepat pengadaan proyek.`}
-        keywords="Furnitur Kantor, Workstation, Meja Eksekutif, Meeting Table, Furnitur Hotel, KCR Furniture Catalog"
+        title={`Katalog Produsen Furnitur Kantor & Custom Furniture | KCR Furniture`}
+        description={`Jelajahi katalog KCR Furniture, produsen furnitur kantor & custom furniture Bekasi. Temukan workstations, meja eksekutif, dan hospitality furniture untuk proyek Anda.`}
+        keywords="Produsen Furnitur Kantor, Custom Furniture Bekasi, Mass Production Furniture, Interior Fit-out Contractor Indonesia, Furnitur Kantor, Workstation, Meja Eksekutif, Meeting Table, Furnitur Hotel, KCR Furniture Catalog"
         canonicalUrl={canonicalUrl}
       >
         <script type="application/ld+json">{JSON.stringify(filteredCatalogSchema)}</script>
@@ -288,8 +302,6 @@ const Catalog: React.FC = () => {
           >
             <option value="default">Default order</option>
             <option value="newest">Terbaru</option>
-            <option value="price_asc">Harga: Rendah ke Tinggi</option>
-            <option value="price_desc">Harga: Tinggi ke Rendah</option>
             <option value="name_asc">Nama: A-Z</option>
           </select>
 
@@ -338,16 +350,42 @@ const Catalog: React.FC = () => {
                 />
               ))
             ) : (
-              <div className="col-span-full rounded-[4px] border border-dashed border-[#1A1C19]/20 bg-white p-10 text-center">
-                <p className="font-serif text-2xl text-[#1A1C19]">Produk tidak ditemukan</p>
-                <p className="mt-3 text-[13px] text-[#1A1C19]/60">Coba gunakan kata kunci atau kategori yang berbeda.</p>
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-                  <button
-                    onClick={clearFilters}
-                    className="cta-secondary !px-4 !py-2 !text-[9px] !tracking-[0.16em]"
-                  >
-                    Reset Filter
-                  </button>
+              <div className="col-span-full">
+                <div className="rounded-[4px] border border-dashed border-[#1A1C19]/20 bg-white px-6 py-16 text-center md:p-20">
+                  <div className="mx-auto max-w-2xl">
+                    <p className="font-serif text-3xl text-[#1A1C19] md:text-4xl">Produk tidak ditemukan</p>
+                    <p className="mt-4 text-[14px] leading-relaxed text-[#1A1C19]/60">Maaf, kami tidak dapat menemukan produk yang sesuai dengan kriteria Anda. Coba gunakan kata kunci yang lebih umum atau reset filter Anda.</p>
+                    <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                      <button
+                        onClick={clearFilters}
+                        className="cta-secondary !px-6 !py-3 !text-[10px] !tracking-[0.2em]"
+                      >
+                        Reset Filter
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-12 rounded-[18px] border border-[#1A1C19]/5 bg-white p-8 shadow-[0_20px_50px_rgba(0,0,0,0.03)] md:p-12">
+                  <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+                    <div className="max-w-xl text-center md:text-left">
+                      <h3 className="font-serif text-2xl text-[#1A1C19]">Belum menemukan produk yang tepat?</h3>
+                      <p className="mt-3 text-[14px] leading-relaxed text-[#1A1C19]/70">
+                        Konsultasikan kebutuhan technical spec Anda dengan tim engineer kami di Bekasi. Kami spesialis dalam pengembangan produk kustom dan manufaktur massal dengan akurasi tinggi.
+                      </p>
+                    </div>
+                    <a
+                      href={`https://wa.me/${kcrData.contact.whatsapp}?text=${encodeURIComponent('Halo KCR Furniture, saya ingin konsultasi kebutuhan technical spec produk furniture.')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cta-primary flex items-center gap-3 !px-8 !py-4 !text-[11px] !tracking-[0.22em]"
+                    >
+                      <span>WHATSAPP KONSULTASI</span>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.16669 7H12.8334M12.8334 7L7.00002 1.16667M12.8334 7L7.00002 12.8333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             )}

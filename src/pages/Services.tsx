@@ -24,24 +24,24 @@ const Services: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-20 md:pb-32 selection:bg-[#1A1C19] selection:text-white">
       <SEO 
-        title="Layanan Furnitur Kantor & Hospitality Premium | KCR Furniture"
-        description="Layanan KCR Furniture mencakup desain dan manufaktur furnitur kantor modular, solusi furniture hotel custom, hingga interior fit-out eksekutif dengan teknologi CNC presisi."
-        keywords="Furniture Kantor, Office Furniture Solutions, Custom Hotel Furniture, Interior Fitout, CNC Woodworking, KCR Furniture Services"
+        title="Interior Fit-out Contractor Indonesia & Custom Furniture Bekasi | KCR Furniture"
+        description="KCR Furniture adalah interior fit-out contractor Indonesia & produsen custom furniture Bekasi. Spesialis furniture kantor premium & mass production furniture dengan presisi CNC."
+        keywords="Interior Fit-out Contractor Indonesia, Custom Furniture Bekasi, Produsen Furnitur Kantor, Mass Production Furniture, Furniture Kantor, Office Furniture Solutions, Custom Hotel Furniture, Interior Fitout, CNC Woodworking, KCR Furniture Services"
         canonicalUrl="/services"
       />
 
       <div className="relative overflow-hidden">
         <PageHeader 
           label="03 / LAYANAN INTERIOR"
-          title="Solusi Furnitur"
-          subtitle={<>& Interior <span className="text-brand font-serif-italic">Terintegrasi.</span></>}
-          description="Menghadirkan keahlian manufaktur furnitur tingkat tinggi untuk ruang kerja dan hospitality dengan standar kualitas internasional."
+          title="Interior Fit-out"
+          subtitle={<>Contractor <span className="text-brand font-serif-italic">Indonesia.</span></>}
+          description="Menghadirkan keahlian manufaktur furnitur tingkat tinggi dan solusi interior fit-out untuk ruang kerja dan hospitality dengan standar kualitas internasional."
         />
       </div>
 
       {/* Grid of Main Services */}
       <section className="framer-container mb-32 md:mb-56">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1A1C19]/5 border border-[#1A1C19]/5 rounded-[4px] overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1A1C19]/5 border border-[#1A1C19]/5 rounded-[4px] overflow-hidden">
           {kcrData.services.map((service, idx) => (
             <motion.article 
               key={service.id} 
@@ -83,8 +83,8 @@ const Services: React.FC = () => {
           >
             <div className="space-y-4">
               <span className="framer-label text-brand tracking-[0.4em]">MANUFACTURING EXCELLENCE</span>
-              <h3 className="font-serif text-3xl md:text-4xl">Kapasitas Produksi Skala Besar</h3>
-              <p className="framer-body opacity-60 leading-relaxed">Didukung oleh pabrik AMS di Bekasi dengan mesin CNC mutakhir untuk menjamin roll-out proyek tepat waktu.</p>
+              <h3 className="font-serif text-3xl md:text-4xl">Custom Furniture Bekasi & Mass Production</h3>
+              <p className="framer-body opacity-60 leading-relaxed">Didukung oleh pabrik AMS di Bekasi dengan mesin CNC mutakhir untuk menjamin mass production furniture tepat waktu.</p>
             </div>
             
             <div className="p-8 bg-[#F5F5F0] rounded-[4px] space-y-6">

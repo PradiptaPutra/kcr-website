@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import SplashScreen from './components/SplashScreen';
+import ScrollProgress from './components/ScrollProgress';
 import FloatingWhatsAppCTA from './components/FloatingWhatsAppCTA';
 import './index.css';
 
@@ -63,6 +64,7 @@ const App: React.FC = () => {
   return (
     <HelmetProvider>
       <SplashScreen />
+      <ScrollProgress />
       <Router>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen relative bg-[#F5F5F0]">

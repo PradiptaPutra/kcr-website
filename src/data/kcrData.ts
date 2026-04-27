@@ -1,3 +1,18 @@
+export interface CatalogProduct {
+  id: number;
+  industries: string[];
+  category: string;
+  series: string;
+  name: string;
+  specs: string;
+  brand: string;
+  manufacturer: string;
+  price: number;
+  price_tax: number;
+  img: string;
+  assets?: string[];
+}
+
 export const kcrData = {
   company: {
     name: "KCR FURNITURE",
@@ -227,131 +242,243 @@ export const kcrData = {
           { name: "Valo-CRB04", dim: "200 cm" }
         ]
       }
+    ],
+    apartment_villa: [
+      {
+        series: "Embarcadero Bintaro A",
+        img: "/assets/portfolio/embarcadero-bintaro-a-view-1.jpeg",
+        description: "Solusi built-in furniture custom untuk apartemen modern, memaksimalkan penggunaan ruang dengan desain yang sleek.",
+        features: ["Space-saving design", "Integrated storage", "Modern aesthetics"],
+        materials: ["Plywood", "HPL Finish", "Mirror accents"],
+        startingPrice: 0,
+        models: [
+          { name: "Wardrobe & Cabinet Set", dim: "Custom" }
+        ]
+      },
+      {
+        series: "Embarcadero Bintaro B",
+        img: "/assets/portfolio/embarcadero-bintaro-b-video-1.mp4",
+        description: "Interior apartemen premium dengan fokus pada fungsionalitas dan detail finishing yang halus.",
+        features: ["Premium finishing", "Soft-close hardware", "Custom layout"],
+        materials: ["Plywood", "HPL", "Glass"],
+        startingPrice: 0,
+        models: [
+          { name: "Full Set Built-in", dim: "Custom" }
+        ]
+      },
+      {
+        series: "Residence 8 Senopati",
+        img: "/assets/portfolio/residence-8-senopati-view-1.jpeg",
+        description: "Desain furnitur mewah untuk hunian high-end di lokasi prestisius, menggunakan material berkualitas tinggi.",
+        features: ["High-end materials", "Luxury aesthetic", "Bespoke craftsmanship"],
+        materials: ["Plywood", "Veneer", "Solid Wood"],
+        startingPrice: 0,
+        models: [
+          { name: "Bespoke Cabinetry", dim: "Custom" }
+        ]
+      },
+      {
+        series: "Vila Bedugul Bali",
+        img: "/assets/portfolio/vila-bedugul-bar.jpeg",
+        description: "Integrasi furnitur dengan nuansa resort yang hangat and material tahan terhadap kelembapan tinggi.",
+        features: ["Moisture resistant", "Resort style", "Integrated lighting"],
+        materials: ["HMR", "Solid Wood", "Natural Finish"],
+        startingPrice: 0,
+        models: [
+          { name: "Vila Full Set", dim: "Custom" }
+        ]
+      }
     ]
   },
 
   catalogProducts: [
-    { id: 1, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-1", specs: "1600 (P) x 700 (L) x 750 (T) mm", price: 9700000, price_tax: 10767000, img: "/assets/images/products/LAMINA_FST_1.jpg" },
-    { id: 2, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-2", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", price: 14100000, price_tax: 15651000, img: "/assets/images/products/LAMINA_FST_2.png" },
-    { id: 3, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-3", specs: "1800 (P) x 900 (L) x 750 (T) mm", price: 13100000, price_tax: 14541000, img: "/assets/images/products/LAMINA_FST_2.png" },
-    { id: 4, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-4", specs: "2000 (P) x 860 (L) x 750 (T) mm", price: 16500000, price_tax: 18315000, img: "/assets/images/products/LAMINA_FST_4.jpg" },
-    { id: 5, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-5", specs: "2000 (P) x 860 (L) x 750 (T) mm", price: 32625000, price_tax: 36213750, img: "/assets/images/products/LAMINA_FST_5.jpg" },
-    { id: 6, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-6", specs: "Meja: 2000 (P) x 860 (L) x 750 (T) mm", price: 42700000, price_tax: 47397000, img: "/assets/images/products/LAMINA_FST_6.jpg" },
-    { id: 7, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Proxima", name: "PROXIMA-01", specs: "Meja: 1400 (P) x 700 (L) x 750 (T) mm", price: 10850000, price_tax: 12043500, img: "/assets/images/products/PROXIMA_01.jpg" },
-    { id: 8, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", price: 25400000, price_tax: 28194000, img: "/assets/images/products/INCORE_IST_01.jpg" },
-    { id: 9, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-20", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", price: 21100000, price_tax: 23421000, img: "/assets/images/products/INCORE_IST_01.jpg" },
-    { id: 10, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-16", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", price: 18000000, price_tax: 19980000, img: "/assets/images/products/INCORE_IST_01.jpg" },
-    { id: 11, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", price: 22600000, price_tax: 25086000, img: "/assets/images/products/INCORE_IST_02.jpg" },
-    { id: 12, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-20", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", price: 18500000, price_tax: 20535000, img: "/assets/images/products/INCORE_IST_02.jpg" },
-    { id: 13, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-16", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", price: 15800000, price_tax: 17538000, img: "/assets/images/products/INCORE_IST_02.jpg" },
-    { id: 14, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-01-24", specs: "2600 (P) x 900 (L) x 750 (T) mm", price: 42400000, price_tax: 47064000, img: "/assets/images/products/PRIME_CP.jpg" },
-    { id: 15, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-02-22", specs: "2400 (P) x 900 (L) x 750 (T) mm", price: 38000000, price_tax: 42180000, img: "/assets/images/products/PRIME_CP.jpg" },
-    { id: 16, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-03-20", specs: "2200 (P) x 900 (L) x 750 (T) mm", price: 35800000, price_tax: 39738000, img: "/assets/images/products/PRIME_CP.jpg" },
-    { id: 17, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-01-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", price: 51240000, price_tax: 56876400, img: "/assets/images/products/PRIME_EX.jpg" },
-    { id: 18, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-02-22", specs: "Meja: 2200 (P) x 900 (L) x 750 (T) mm", price: 46970000, price_tax: 52136700, img: "/assets/images/products/PRIME_EX.jpg" },
-    { id: 19, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-03-20", specs: "Meja: 2000 (P) x 900 (L) x 750 (T) mm", price: 42700000, price_tax: 47397000, img: "/assets/images/products/PRIME_EX.jpg" },
-    { id: 20, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-01", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", price: 19700000, price_tax: 21867000, img: "/assets/images/products/LUNA_LST.jpg" },
-    { id: 21, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-02", specs: "Meja: 1800 (P) x 800 (L) x 750 (T) mm", price: 17700000, price_tax: 19647000, img: "/assets/images/products/LUNA_LST.jpg" },
-    { id: 22, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-03", specs: "Meja: 1600 (P) x 800 (L) x 750 (T) mm", price: 15800000, price_tax: 17538000, img: "/assets/images/products/LUNA_LST.jpg" },
-    { id: 23, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-01", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", price: 20000000, price_tax: 22200000, img: "/assets/images/products/NOVE_NST.jpg" },
-    { id: 24, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-02", specs: "Meja: 1800 (P) x 800 (L) x 750 (T) mm", price: 17900000, price_tax: 19869000, img: "/assets/images/products/NOVE_NST.jpg" },
-    { id: 25, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-03", specs: "Meja: 1600 (P) x 800 (L) x 750 (T) mm", price: 16000000, price_tax: 17760000, img: "/assets/images/products/NOVE_NST.jpg" },
-    { id: 26, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Moderna", name: "MST - 02", specs: "1800 (P) x 900 (L) x 750 (T) mm", price: 14200000, price_tax: 15762000, img: "/assets/images/products/MST_02.jpg" },
-    { id: 27, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWA", specs: "1200 (P) x 600 (L) x 750 (T) mm", price: 5400000, price_tax: 5994000, img: "/assets/images/products/FORMA_FWA.jpg" },
-    { id: 28, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-2px", specs: "1600 (P) x 1200 (L) x 750 (T) mm", price: 9800000, price_tax: 10878000, img: "/assets/images/products/FORMA_FWB.jpg" },
-    { id: 29, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-4px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", price: 17775000, price_tax: 19730250, img: "/assets/images/products/FORMA_FWB.jpg" },
-    { id: 30, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-6px", specs: "4400 (P) x 1200 (L) x 750 (T) mm", price: 27220000, price_tax: 30214200, img: "/assets/images/products/FORMA_FWB_6PX.jpg" },
-    { id: 31, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-8px", specs: "6000 (P) x 1200 (L) x 750 (T) mm", price: 37500000, price_tax: 41625000, img: "/assets/images/products/FORMA_FWB_8PX.jpg" },
-    { id: 32, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-2px", specs: "1880 (P) x 1840 (L) x 750 (T) mm", price: 18700000, price_tax: 20757000, img: "/assets/images/products/FORMA_FWC_2PX.jpg" },
-    { id: 33, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-4px", specs: "3080 (P) x 1840 (L) x 750 (T) mm", price: 27650000, price_tax: 30691500, img: "/assets/images/products/FORMA_FWC_4PX.jpg" },
-    { id: 34, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-6px", specs: "4280 (P) x 1840 (L) x 750 (T) mm", price: 34250000, price_tax: 38017500, img: "/assets/images/products/FORMA_FWC_6PX.jpg" },
-    { id: 35, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-8px", specs: "5480 (P) x 1840 (L) x 750 (T) mm", price: 42000000, price_tax: 46620000, img: "/assets/images/products/FORMA_FWC_8PX.jpg" },
-    { id: 36, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-2px", specs: "1200 (P) x 1200 (L) x 750 (T) mm", price: 8550000, price_tax: 9490500, img: "/assets/images/products/FORMA_FWD_2PX.jpg" },
-    { id: 37, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 16500000, price_tax: 18315000, img: "/assets/images/products/FORMA_FWD_4PX.jpg" },
-    { id: 38, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", price: 24375000, price_tax: 27056250, img: "/assets/images/products/FORMA_FWD_6PX.jpg" },
-    { id: 39, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", price: 32250000, price_tax: 35797500, img: "/assets/images/products/FORMA_FWD_8PX.jpg" },
-    { id: 40, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 13250000, price_tax: 14707500, img: "/assets/images/products/MODERNA_MSA_4PX.jpg" },
-    { id: 41, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", price: 20625000, price_tax: 22893750, img: "/assets/images/products/MODERNA_MSA_6PX.jpg" },
-    { id: 42, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", price: 27875000, price_tax: 30941250, img: "/assets/images/products/MODERNA_MSA_8PX.jpg" },
-    { id: 43, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 15900000, price_tax: 17649000, img: "/assets/images/products/MODERNA_MSB_4PX.jpg" },
-    { id: 44, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm,", price: 24200000, price_tax: 26862000, img: "/assets/images/products/MODERNA_MSB_6PX.jpg" },
-    { id: 45, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", price: 32125000, price_tax: 35658750, img: "/assets/images/products/MODERNA_MSB_8PX.jpg" },
-    { id: 46, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSC-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 16500000, price_tax: 18315000, img: "/assets/images/products/MODERNA_MSC_4PX.jpg" },
-    { id: 47, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSC-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", price: 24700000, price_tax: 27417000, img: "/assets/images/products/MODERNA_MSC_6PX.jpg" },
-    { id: 48, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSC-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", price: 32675000, price_tax: 36269250, img: "/assets/images/products/MODERNA_MSC_8PX.jpg" },
-    { id: 49, industries: ['Office', 'Education'], category: "Mobile Drawer", series: "Moderna", name: "MD-01", specs: "450 (P) x 450 (L) x 600 (T) mm", price: 2660000, price_tax: 2952600, img: "/assets/images/products/MD_01.jpg" },
-    { id: 50, industries: ['Office', 'Education'], category: "Mobile Drawer", series: "Moderna", name: "MD-02", specs: "450 (P) x 450 (L) x 600 (T) mm", price: 2350000, price_tax: 2608500, img: "/assets/images/products/MD_02.jpg" },
-    { id: 51, industries: ['Office', 'Education'], category: "Mobile Drawer", series: "Moderna", name: "MD-03", specs: "400 (P) x 470 (L) x 590 (T) mm", price: 2160000, price_tax: 2397600, img: "/assets/images/products/MD_03.jpg" },
-    { id: 52, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-01", specs: "1300 (P) x 400 (L) x 900 (T) mm", price: 5750000, price_tax: 6382500, img: "/assets/images/products/VALO_01.jpg" },
-    { id: 53, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-02", specs: "800 (P) x 400 (L) x 900 (T) mm", price: 4450000, price_tax: 4939500, img: "/assets/images/products/VALO_02.jpg" },
-    { id: 54, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-03", specs: "1300 (P) x 400 (L) x 900 (T) mm", price: 5750000, price_tax: 6382500, img: "/assets/images/products/VALO_03.jpg" },
-    { id: 55, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-04", specs: "800 (P) x 400 (L) x 900 (T) mm", price: 4450000, price_tax: 4939500, img: "/assets/images/products/VALO_04.jpg" },
-    { id: 56, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-CRB04", specs: "2000 (P) x 400 (L) x 900 (T) mm", price: 8840000, price_tax: 9812400, img: "/assets/images/products/VALO_CRB_04.jpg" },
-    { id: 57, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-01", specs: "2400 (P) x 1200 (L) x 750 (T)", price: 11950000, price_tax: 13264500, img: "/assets/images/products/FERMI_01.jpg" },
-    { id: 58, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-02", specs: "Diameter = 1200 mm", price: 10850000, price_tax: 12043500, img: "/assets/images/products/FERMI_02.jpg" },
-    { id: 59, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-03", specs: "Diameter = 1000 mm", price: 7200000, price_tax: 7992000, img: "/assets/images/products/FERMI_03.jpg" },
-    { id: 60, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-6px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 10400000, price_tax: 11544000, img: "/assets/images/products/FERMI_ST_01.jpg" },
-    { id: 61, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-10px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", price: 12500000, price_tax: 13875000, img: "/assets/images/products/FERMI_ST_01.jpg" },
-    { id: 62, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-12px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", price: 17600000, price_tax: 19536000, img: "/assets/images/products/FERMI_ST_01.jpg" },
-    { id: 63, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-16px", specs: "5000 (P) x 1200 (L) x 750 (T) mm", price: 21300000, price_tax: 23643000, img: "/assets/images/products/FERMI_ST_01.jpg" },
-    { id: 64, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 6px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 13600000, price_tax: 15096000, img: "/assets/images/products/FERMI_ST_02.jpg" },
-    { id: 65, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 10px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", price: 15500000, price_tax: 17205000, img: "/assets/images/products/FERMI_ST_02.jpg" },
-    { id: 66, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 12px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", price: 19000000, price_tax: 21090000, img: "/assets/images/products/FERMI_ST_02.jpg" },
-    { id: 67, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 16px", specs: "5000 (P) x 1200 (L) x 750 (T) mm", price: 26400000, price_tax: 29304000, img: "/assets/images/products/FERMI_ST_02.jpg" },
-    { id: 68, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 6px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 11440000, price_tax: 12698400, img: "/assets/images/products/FERMI_ST_03.jpg" },
-    { id: 69, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 10px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", price: 13300000, price_tax: 14763000, img: "/assets/images/products/FERMI_ST_03.jpg" },
-    { id: 70, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 12px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", price: 17100000, price_tax: 18981000, img: "/assets/images/products/FERMI_ST_03.jpg" },
-    { id: 71, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 16px", specs: "5000 (P) x 1200 (L) x 750 (T) mm", price: 23700000, price_tax: 26307000, img: "/assets/images/products/FERMI_ST_03.jpg" },
-    { id: 72, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Luna", name: "LMT-01", specs: "2800 (P) x 1200 (L) x 750 (T) mm", price: 15900000, price_tax: 17649000, img: "/assets/images/products/LUNA_LMT.jpg" },
-    { id: 73, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Luna", name: "LMT-02", specs: "3000 (P) x 1200 (L) x 750 (T) mm", price: 17100000, price_tax: 18981000, img: "/assets/images/products/LUNA_LMT.jpg" },
-    { id: 74, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Luna", name: "LMT-03", specs: "3600 (P) x 1200 (L) x 750 (T) mm", price: 18200000, price_tax: 20202000, img: "/assets/images/products/LUNA_LMT.jpg" },
-    { id: 75, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Nova", name: "NMT-01", specs: "2400 (P) x 1200 (L) x 750 (T) mm", price: 15100000, price_tax: 16761000, img: "/assets/images/products/NOVE_MT.jpg" },
-    { id: 76, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Nova", name: "NMT-02", specs: "2800 (P) x 1200 (L) x 750 (T) mm", price: 17300000, price_tax: 19203000, img: "/assets/images/products/NOVE_MT.jpg" },
-    { id: 77, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Nova", name: "NMT-03", specs: "3000 (P) x 1200 (L) x 750 (T) mm", price: 18700000, price_tax: 20757000, img: "/assets/images/products/NOVE_MT.jpg" },
-    { id: 78, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Verne", name: "VERNE-01", specs: "1200 (P) x 700 (L) x 450 (T) mm", price: 13000000, price_tax: 14430000, img: "/assets/images/products/VERNE_01.jpg" },
-    { id: 79, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Verne", name: "VERNE-02", specs: "900 (P) x 900 (L) x 450 (T) mm", price: 9900000, price_tax: 10989000, img: "/assets/images/products/VERNE_02.jpg" },
-    { id: 80, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-01", specs: "1200 (P) x 600 (L) x 450 (T) mm", price: 9900000, price_tax: 10989000, img: "/assets/images/products/BOHR_01.jpg" },
-    { id: 81, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-02", specs: "1200 (P) x 600 (L) x 450 (T) mm", price: 8100000, price_tax: 8991000, img: "/assets/images/products/BOHR_02.jpg" },
-    { id: 82, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-03", specs: "800 (P) x 400 (L) x 450 (T)", price: 5200000, price_tax: 5772000, img: "/assets/images/products/BOHR_03.jpg" },
-    { id: 83, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-04", specs: "1200 (P) x 600 (L) x 450 (T) mm", price: 5750000, price_tax: 6382500, img: "/assets/images/products/BOHR_04.jpg" },
-    { id: 84, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-05", specs: "Diameter = 600 mm", price: 7300000, price_tax: 8103000, img: "/assets/images/products/BOHR_05.jpg" },
-    { id: 85, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-06", specs: "1200 (P) x 600 (L) x 450 (T) mm", price: 7850000, price_tax: 8713500, img: "/assets/images/products/BOHR_06.jpg" },
-    { id: 86, industries: ['Education'], category: "Meja Belajar Sekolah", series: "Standard", name: "MB-01", specs: "600 (P) x 550 (L) x 690 (T) mm", price: 1670000, price_tax: 1853700, img: "/assets/images/products/MB_01.jpg" },
-    { id: 87, industries: ['Education'], category: "Meja Belajar Sekolah", series: "Standard", name: "MB-02", specs: "600 (P) x 550 (L) x 720 (T) mm", price: 1880000, price_tax: 2086800, img: "/assets/images/products/MB_02.jpg" },
-    { id: 88, industries: ['Education'], category: "Meja Belajar Sekolah", series: "Standard", name: "MB-03", specs: "600 (P) x 600 (L) x 750 (T) mm", price: 2100000, price_tax: 2331000, img: "/assets/images/products/MB_03.jpg" },
-    { id: 89, industries: ['Hospitality'], category: "Kursi Makan", series: "Bara", name: "KM-01", specs: "Keseluruhan: 450 (P) x 450 (L) x 900 (L) mm", price: 2640000, price_tax: 2930400, img: "/assets/images/products/KM_01.jpg" },
-    { id: 90, industries: ['Hospitality'], category: "Kursi Makan", series: "Bara", name: "KM - 02", specs: "Keseluruhan: 450 (P) x 450 (L) x 800 (L) mm", price: 2300000, price_tax: 2553000, img: "/assets/images/products/KM_02.jpg" },
-    { id: 91, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01", specs: "1800 (P) x 1000 (L) x 750 (T) mm", price: 10725000, price_tax: 11904750, img: "/assets/images/products/BARA_01.jpg" },
-    { id: 92, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01 4px", specs: "1600 (P) x 1000 (L) x 750 (T) mm", price: 9600000, price_tax: 10656000, img: "/assets/images/products/BARA_01.jpg" },
-    { id: 93, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01 6px", specs: "1800 (P) x 1200 (L) x 750 (T) mm", price: 12870000, price_tax: 14285700, img: "/assets/images/products/BARA_01.jpg" },
-    { id: 94, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01 8px", specs: "2200 (P) x 1200 (L) x 750 (T) mm", price: 15730000, price_tax: 17460300, img: "/assets/images/products/BARA_01.jpg" },
-    { id: 95, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-02 4px", specs: "1600 (P) x 1000 (L) x 750 (T) mm", price: 8250000, price_tax: 9157500, img: "/assets/images/products/BARA_02.jpg" },
-    { id: 96, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-02 6px", specs: "1800 (P) x 1200 (L) x 750 (T) mm", price: 9300000, price_tax: 10323000, img: "/assets/images/products/BARA_02.jpg" },
-    { id: 97, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-02 8px", specs: "2200 (P) x 1200 (L) x 750 (T) mm", price: 11350000, price_tax: 12598500, img: "/assets/images/products/BARA_02.jpg" },
-    { id: 98, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-03 4px", specs: "1600 (P) x 1000 (L) x 750 (T) mm", price: 8500000, price_tax: 9435000, img: "/assets/images/products/BARA_03.jpg" },
-    { id: 99, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-03 6px", specs: "1800 (P) x 1200 (L) x 750 (T) mm", price: 9200000, price_tax: 10212000, img: "/assets/images/products/BARA_03.jpg" },
-    { id: 100, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-03 8px", specs: "2200 (P) x 1200 (L) x 750 (T) mm", price: 10600000, price_tax: 11766000, img: "/assets/images/products/BARA_03.jpg" },
-    { id: 101, industries: ['Hospitality'], category: "Wardrobe", series: "Hyla", name: "HYLA-01", specs: "1200 (P) x 600 (L) x 2300 (T)", price: 14700000, price_tax: 16317000, img: "/assets/images/products/HYLA_01.jpg" },
-    { id: 102, industries: ['Hospitality'], category: "Wardrobe", series: "Hyla", name: "HYLA-02", specs: "1200 (P) x 600 (L) x 2300 (T)", price: 10550000, price_tax: 11710500, img: "/assets/images/products/HYLA_02.jpg" },
-    { id: 103, industries: ['Hospitality'], category: "Side Table", series: "Rivera", name: "RIVERA-01", specs: "500 (P) x 400 (L) x 500 (T) mm", price: 2750000, price_tax: 3052500, img: "/assets/images/products/RIVERA_01.jpg" },
-    { id: 104, industries: ['Hospitality'], category: "Side Table", series: "Rivera", name: "RIVERA-02", specs: "850 (P) x 400 (L) x 520 (T) mm", price: 3700000, price_tax: 4107000, img: "/assets/images/products/RIVERA_02.jpg" },
-    { id: 105, industries: ['Hospitality'], category: "Mobile Drawer", series: "Cosmo", name: "CSD-03", specs: "500 (P) x 400 (L) x 400 (T) mm", price: 2750000, price_tax: 3052500, img: "/assets/images/products/CSD_01.jpg" },
-    { id: 106, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-01", specs: "Dipan: 2020 (P) x 2020 (L) x 300 (T) mm", price: 31750000, price_tax: 35242500, img: "/assets/images/products/DIVAN_01.jpg" },
-    { id: 107, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-02", specs: "Dipan: 2020 (P) x 1820 (L) x 300 (T) mm", price: 24000000, price_tax: 26640000, img: "/assets/images/products/DIVAN_02.jpg" },
-    { id: 108, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-03", specs: "Dipan: 2020 (P) x 2020 (L) x 300 (T) mm", price: 34875000, price_tax: 38711250, img: "/assets/images/products/DIVAN_03.jpg" },
-    { id: 109, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-04", specs: "Dipan: 2020 (P) x 1820 (L) x 300 (T) mm", price: 27125000, price_tax: 30108750, img: "/assets/images/products/DIVAN_04.jpg" },
-    { id: 110, industries: ['Office', 'Hospitality', 'Government'], category: "Sofa", series: "RD", name: "RD-03", specs: "Keseluruhan: 2200 (P) x 830 (L) x 770 (T) mm", price: 23650000, price_tax: 26251500, img: "/assets/images/products/RD_03.jpg" },
-    { id: 111, industries: ['Office', 'Hospitality', 'Government'], category: "Sofa", series: "RD", name: "RD-01", specs: "Keseluruhan: 920 (P) x 830 (L) x 770 (T) mm", price: 10980000, price_tax: 12187800, img: "/assets/images/products/RD_01.jpg" },
-    { id: 112, industries: ['Office', 'Hospitality', 'Government'], category: "Sofa", series: "SRK", name: "SRK-L", specs: "Panjang Sofa: 2400 + 2000 mm", price: 47275000, price_tax: 52475250, img: "/assets/images/products/SRK_L.jpg" },
-    { id: 113, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-01", specs: "2200 (P) x 820 (T) x 36 (L)", price: 5600000, price_tax: 6216000, img: "/assets/images/products/DT_01.jpg" },
-    { id: 114, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-02", specs: "2200 (P) x 820 (T) x 36 (L)", price: 6230000, price_tax: 6915300, img: "/assets/images/products/DT_02.jpg" },
-    { id: 115, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-03", specs: "2200 (P) x 820 (T) x 36 (L)", price: 6500000, price_tax: 7215000, img: "/assets/images/products/DT_03.jpg" },
-    { id: 116, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-04", specs: "2200 (P) x 820 (T) x 36 (L)", price: 6300000, price_tax: 6993000, img: "/assets/images/products/DT_04.jpg" },
-    { id: 117, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-01", specs: "Kursi Hadap / Kursi Cafe Kayu", price: 1850000, price_tax: 2053500, img: "/assets/images/products/KH_01.png" },
-    { id: 118, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-02", specs: "Kursi Hadap / Kursi Cafe Kayu", price: 1950000, price_tax: 2164500, img: "/assets/images/products/KH_02.png" },
-    { id: 119, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-03", specs: "Kursi Hadap / Kursi Cafe Kayu", price: 1750000, price_tax: 1942500, img: "/assets/images/products/KH_03.png" },
-    { id: 120, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KJ-01", specs: "Kursi Jengki Kayu Solid", price: 2250000, price_tax: 2497500, img: "/assets/images/products/KJ_01.png" },
-    { id: 121, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KM-01", specs: "Kursi Makan Kayu Modern", price: 2150000, price_tax: 2386500, img: "/assets/images/products/KM_CHAIR_01.png" },
+    { id: 1, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-1", specs: "1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9700000, price_tax: 10767000, img: "/assets/images/products/LAMINA_FST_1.jpg" },
+    { id: 2, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-2", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 14100000, price_tax: 15651000, img: "/assets/images/products/LAMINA_FST_2.png" },
+    { id: 3, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-3", specs: "1800 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13100000, price_tax: 14541000, img: "/assets/images/products/LAMINA_FST_2.png" },
+    { id: 4, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-4", specs: "2000 (P) x 860 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16500000, price_tax: 18315000, img: "/assets/images/products/LAMINA_FST_4.jpg" },
+    { id: 5, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-5", specs: "2000 (P) x 860 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 32625000, price_tax: 36213750, img: "/assets/images/products/LAMINA_FST_5.jpg" },
+    { id: 6, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-6", specs: "Meja: 2000 (P) x 860 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42700000, price_tax: 47397000, img: "/assets/images/products/LAMINA_FST_6.jpg" },
+    { id: 7, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Proxima", name: "PROXIMA-01", specs: "Meja: 1400 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10850000, price_tax: 12043500, img: "/assets/images/products/PROXIMA_01.jpg" },
+    { id: 8, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 25400000, price_tax: 28194000, img: "/assets/images/products/INCORE_IST_01.jpg" },
+    { id: 9, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-20", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 21100000, price_tax: 23421000, img: "/assets/images/products/INCORE_IST_01.jpg" },
+    { id: 10, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-16", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18000000, price_tax: 19980000, img: "/assets/images/products/INCORE_IST_01.jpg" },
+    { id: 11, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 22600000, price_tax: 25086000, img: "/assets/images/products/INCORE_IST_02.jpg" },
+    { id: 12, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-20", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18500000, price_tax: 20535000, img: "/assets/images/products/INCORE_IST_02.jpg" },
+    { id: 13, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-16", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15800000, price_tax: 17538000, img: "/assets/images/products/INCORE_IST_02.jpg" },
+    { id: 14, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-01-24", specs: "2600 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42400000, price_tax: 47064000, img: "/assets/images/products/PRIME_CP.jpg" },
+    { id: 15, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-02-22", specs: "2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 38000000, price_tax: 42180000, img: "/assets/images/products/PRIME_CP.jpg" },
+    { id: 16, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-03-20", specs: "2200 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 35800000, price_tax: 39738000, img: "/assets/images/products/PRIME_CP.jpg" },
+    { id: 17, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-01-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 51240000, price_tax: 56876400, img: "/assets/images/products/PRIME_EX.jpg" },
+    { id: 18, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-02-22", specs: "Meja: 2200 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 46970000, price_tax: 52136700, img: "/assets/images/products/PRIME_EX.jpg" },
+    { id: 19, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-03-20", specs: "Meja: 2000 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42700000, price_tax: 47397000, img: "/assets/images/products/PRIME_EX.jpg" },
+    { id: 20, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-01", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 19700000, price_tax: 21867000, img: "/assets/images/products/LUNA_LST.jpg" },
+    { id: 21, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-02", specs: "Meja: 1800 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17700000, price_tax: 19647000, img: "/assets/images/products/LUNA_LST.jpg" },
+    { id: 22, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-03", specs: "Meja: 1600 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15800000, price_tax: 17538000, img: "/assets/images/products/LUNA_LST.jpg" },
+    { id: 23, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-01", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 20000000, price_tax: 22200000, img: "/assets/images/products/NOVE_NST.jpg" },
+    { id: 24, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-02", specs: "Meja: 1800 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17900000, price_tax: 19869000, img: "/assets/images/products/NOVE_NST.jpg" },
+    { id: 25, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-03", specs: "Meja: 1600 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16000000, price_tax: 17760000, img: "/assets/images/products/NOVE_NST.jpg" },
+    { id: 26, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Moderna", name: "MST - 02", specs: "1800 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 14200000, price_tax: 15762000, img: "/assets/images/products/MST_02.jpg" },
+    { id: 27, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWA", specs: "1200 (P) x 600 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5400000, price_tax: 5994000, img: "/assets/images/products/FORMA_FWA.jpg" },
+    { id: 28, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-2px", specs: "1600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9800000, price_tax: 10878000, img: "/assets/images/products/FORMA_FWB.jpg" },
+    { id: 29, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-4px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17775000, price_tax: 19730250, img: "/assets/images/products/FORMA_FWB.jpg" },
+    { id: 30, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-6px", specs: "4400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 27220000, price_tax: 30214200, img: "/assets/images/products/FORMA_FWB_6PX.jpg" },
+    { id: 31, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-8px", specs: "6000 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 37500000, price_tax: 41625000, img: "/assets/images/products/FORMA_FWB_8PX.jpg" },
+    { id: 32, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-2px", specs: "1880 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18700000, price_tax: 20757000, img: "/assets/images/products/FORMA_FWC_2PX.jpg" },
+    { id: 33, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-4px", specs: "3080 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 27650000, price_tax: 30691500, img: "/assets/images/products/FORMA_FWC_4PX.jpg" },
+    { id: 34, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-6px", specs: "4280 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 34250000, price_tax: 38017500, img: "/assets/images/products/FORMA_FWC_6PX.jpg" },
+    { id: 35, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-8px", specs: "5480 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42000000, price_tax: 46620000, img: "/assets/images/products/FORMA_FWC_8PX.jpg" },
+    { id: 36, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-2px", specs: "1200 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 8550000, price_tax: 9490500, img: "/assets/images/products/FORMA_FWD_2PX.jpg" },
+    { id: 37, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16500000, price_tax: 18315000, img: "/assets/images/products/FORMA_FWD_4PX.jpg" },
+    { id: 38, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 24375000, price_tax: 27056250, img: "/assets/images/products/FORMA_FWD_6PX.jpg" },
+    { id: 39, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 32250000, price_tax: 35797500, img: "/assets/images/products/FORMA_FWD_8PX.jpg" },
+    { id: 40, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13250000, price_tax: 14707500, img: "/assets/images/products/MODERNA_MSA_4PX.jpg" },
+    { id: 41, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 20625000, price_tax: 22893750, img: "/assets/images/products/MODERNA_MSA_6PX.jpg" },
+    { id: 42, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 27875000, price_tax: 30941250, img: "/assets/images/products/MODERNA_MSA_8PX.jpg" },
+    { id: 43, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15900000, price_tax: 17649000, img: "/assets/images/products/MODERNA_MSB_4PX.jpg" },
+    { id: 44, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm,", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 24200000, price_tax: 26862000, img: "/assets/images/products/MODERNA_MSB_6PX.jpg" },
+    { id: 45, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 32125000, price_tax: 35658750, img: "/assets/images/products/MODERNA_MSB_8PX.jpg" },
+    { id: 46, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSC-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16500000, price_tax: 18315000, img: "/assets/images/products/MODERNA_MSC_4PX.jpg" },
+    { id: 47, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSC-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 24700000, price_tax: 27417000, img: "/assets/images/products/MODERNA_MSC_6PX.jpg" },
+    { id: 48, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSC-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 32675000, price_tax: 36269250, img: "/assets/images/products/MODERNA_MSC_8PX.jpg" },
+    { id: 49, industries: ['Office', 'Education'], category: "Mobile Drawer", series: "Moderna", name: "MD-01", specs: "450 (P) x 450 (L) x 600 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2660000, price_tax: 2952600, img: "/assets/images/products/MD_01.jpg" },
+    { id: 50, industries: ['Office', 'Education'], category: "Mobile Drawer", series: "Moderna", name: "MD-02", specs: "450 (P) x 450 (L) x 600 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2350000, price_tax: 2608500, img: "/assets/images/products/MD_02.jpg" },
+    { id: 51, industries: ['Office', 'Education'], category: "Mobile Drawer", series: "Moderna", name: "MD-03", specs: "400 (P) x 470 (L) x 590 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2160000, price_tax: 2397600, img: "/assets/images/products/MD_03.jpg" },
+    { id: 52, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-01", specs: "1300 (P) x 400 (L) x 900 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5750000, price_tax: 6382500, img: "/assets/images/products/VALO_01.jpg" },
+    { id: 53, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-02", specs: "800 (P) x 400 (L) x 900 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 4450000, price_tax: 4939500, img: "/assets/images/products/VALO_02.jpg" },
+    { id: 54, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-03", specs: "1300 (P) x 400 (L) x 900 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5750000, price_tax: 6382500, img: "/assets/images/products/VALO_03.jpg" },
+    { id: 55, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-04", specs: "800 (P) x 400 (L) x 900 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 4450000, price_tax: 4939500, img: "/assets/images/products/VALO_04.jpg" },
+    { id: 56, industries: ['Office', 'Hospitality', 'Government'], category: "Credenza", series: "Valo", name: "VALO-CRB04", specs: "2000 (P) x 400 (L) x 900 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 8840000, price_tax: 9812400, img: "/assets/images/products/VALO_CRB_04.jpg" },
+    { id: 57, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-01", specs: "2400 (P) x 1200 (L) x 750 (T)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 11950000, price_tax: 13264500, img: "/assets/images/products/FERMI_01.jpg" },
+    { id: 58, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-02", specs: "Diameter = 1200 mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10850000, price_tax: 12043500, img: "/assets/images/products/FERMI_02.jpg" },
+    { id: 59, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-03", specs: "Diameter = 1000 mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 7200000, price_tax: 7992000, img: "/assets/images/products/FERMI_03.jpg" },
+    { id: 60, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-6px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10400000, price_tax: 11544000, img: "/assets/images/products/FERMI_ST_01.jpg" },
+    { id: 61, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-10px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 12500000, price_tax: 13875000, img: "/assets/images/products/FERMI_ST_01.jpg" },
+    { id: 62, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-12px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17600000, price_tax: 19536000, img: "/assets/images/products/FERMI_ST_01.jpg" },
+    { id: 63, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-01-16px", specs: "5000 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 21300000, price_tax: 23643000, img: "/assets/images/products/FERMI_ST_01.jpg" },
+    { id: 64, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 6px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13600000, price_tax: 15096000, img: "/assets/images/products/FERMI_ST_02.jpg" },
+    { id: 65, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 10px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15500000, price_tax: 17205000, img: "/assets/images/products/FERMI_ST_02.jpg" },
+    { id: 66, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 12px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 19000000, price_tax: 21090000, img: "/assets/images/products/FERMI_ST_02.jpg" },
+    { id: 67, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-02 16px", specs: "5000 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 26400000, price_tax: 29304000, img: "/assets/images/products/FERMI_ST_02.jpg" },
+    { id: 68, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 6px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 11440000, price_tax: 12698400, img: "/assets/images/products/FERMI_ST_03.jpg" },
+    { id: 69, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 10px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13300000, price_tax: 14763000, img: "/assets/images/products/FERMI_ST_03.jpg" },
+    { id: 70, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 12px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17100000, price_tax: 18981000, img: "/assets/images/products/FERMI_ST_03.jpg" },
+    { id: 71, industries: ['Office', 'Hospitality', 'Government'], category: "Meja Meeting", series: "Fermi", name: "FERMI-ST-03 16px", specs: "5000 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 23700000, price_tax: 26307000, img: "/assets/images/products/FERMI_ST_03.jpg" },
+    { id: 72, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Luna", name: "LMT-01", specs: "2800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15900000, price_tax: 17649000, img: "/assets/images/products/LUNA_LMT.jpg" },
+    { id: 73, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Luna", name: "LMT-02", specs: "3000 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17100000, price_tax: 18981000, img: "/assets/images/products/LUNA_LMT.jpg" },
+    { id: 74, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Luna", name: "LMT-03", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18200000, price_tax: 20202000, img: "/assets/images/products/LUNA_LMT.jpg" },
+    { id: 75, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Nova", name: "NMT-01", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15100000, price_tax: 16761000, img: "/assets/images/products/NOVE_MT.jpg" },
+    { id: 76, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Nova", name: "NMT-02", specs: "2800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17300000, price_tax: 19203000, img: "/assets/images/products/NOVE_MT.jpg" },
+    { id: 77, industries: ['Office', 'Government'], category: "Meja Meeting", series: "Nova", name: "NMT-03", specs: "3000 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18700000, price_tax: 20757000, img: "/assets/images/products/NOVE_MT.jpg" },
+    { id: 78, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Verne", name: "VERNE-01", specs: "1200 (P) x 700 (L) x 450 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13000000, price_tax: 14430000, img: "/assets/images/products/VERNE_01.jpg" },
+    { id: 79, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Verne", name: "VERNE-02", specs: "900 (P) x 900 (L) x 450 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9900000, price_tax: 10989000, img: "/assets/images/products/VERNE_02.jpg" },
+    { id: 80, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-01", specs: "1200 (P) x 600 (L) x 450 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9900000, price_tax: 10989000, img: "/assets/images/products/BOHR_01.jpg" },
+    { id: 81, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-02", specs: "1200 (P) x 600 (L) x 450 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 8100000, price_tax: 8991000, img: "/assets/images/products/BOHR_02.jpg" },
+    { id: 82, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-03", specs: "800 (P) x 400 (L) x 450 (T)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5200000, price_tax: 5772000, img: "/assets/images/products/BOHR_03.jpg" },
+    { id: 83, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-04", specs: "1200 (P) x 600 (L) x 450 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5750000, price_tax: 6382500, img: "/assets/images/products/BOHR_04.jpg" },
+    { id: 84, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-05", specs: "Diameter = 600 mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 7300000, price_tax: 8103000, img: "/assets/images/products/BOHR_05.jpg" },
+    { id: 85, industries: ['Office', 'Hospitality', 'Government'], category: "Coffee Table", series: "Bohr", name: "BOHR-06", specs: "1200 (P) x 600 (L) x 450 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 7850000, price_tax: 8713500, img: "/assets/images/products/BOHR_06.jpg" },
+    { id: 86, industries: ['Education'], category: "Meja Belajar Sekolah", series: "Standard", name: "MB-01", specs: "600 (P) x 550 (L) x 690 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 1670000, price_tax: 1853700, img: "/assets/images/products/MB_01.jpg" },
+    { id: 87, industries: ['Education'], category: "Meja Belajar Sekolah", series: "Standard", name: "MB-02", specs: "600 (P) x 550 (L) x 720 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 1880000, price_tax: 2086800, img: "/assets/images/products/MB_02.jpg" },
+    { id: 88, industries: ['Education'], category: "Meja Belajar Sekolah", series: "Standard", name: "MB-03", specs: "600 (P) x 600 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2100000, price_tax: 2331000, img: "/assets/images/products/MB_03.jpg" },
+    { id: 89, industries: ['Hospitality'], category: "Kursi Makan", series: "Bara", name: "KM-01", specs: "Keseluruhan: 450 (P) x 450 (L) x 900 (L) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2640000, price_tax: 2930400, img: "/assets/images/products/KM_01.jpg" },
+    { id: 90, industries: ['Hospitality'], category: "Kursi Makan", series: "Bara", name: "KM - 02", specs: "Keseluruhan: 450 (P) x 450 (L) x 800 (L) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2300000, price_tax: 2553000, img: "/assets/images/products/KM_02.jpg" },
+    { id: 91, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01", specs: "1800 (P) x 1000 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10725000, price_tax: 11904750, img: "/assets/images/products/BARA_01.jpg" },
+    { id: 92, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01 4px", specs: "1600 (P) x 1000 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9600000, price_tax: 10656000, img: "/assets/images/products/BARA_01.jpg" },
+    { id: 93, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01 6px", specs: "1800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 12870000, price_tax: 14285700, img: "/assets/images/products/BARA_01.jpg" },
+    { id: 94, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-01 8px", specs: "2200 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15730000, price_tax: 17460300, img: "/assets/images/products/BARA_01.jpg" },
+    { id: 95, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-02 4px", specs: "1600 (P) x 1000 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 8250000, price_tax: 9157500, img: "/assets/images/products/BARA_02.jpg" },
+    { id: 96, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-02 6px", specs: "1800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9300000, price_tax: 10323000, img: "/assets/images/products/BARA_02.jpg" },
+    { id: 97, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-02 8px", specs: "2200 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 11350000, price_tax: 12598500, img: "/assets/images/products/BARA_02.jpg" },
+    { id: 98, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-03 4px", specs: "1600 (P) x 1000 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 8500000, price_tax: 9435000, img: "/assets/images/products/BARA_03.jpg" },
+    { id: 99, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-03 6px", specs: "1800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9200000, price_tax: 10212000, img: "/assets/images/products/BARA_03.jpg" },
+    { id: 100, industries: ['Hospitality'], category: "Meja Makan", series: "Bara", name: "BARA-03 8px", specs: "2200 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10600000, price_tax: 11766000, img: "/assets/images/products/BARA_03.jpg" },
+    { id: 101, industries: ['Hospitality'], category: "Wardrobe", series: "Hyla", name: "HYLA-01", specs: "1200 (P) x 600 (L) x 2300 (T)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 14700000, price_tax: 16317000, img: "/assets/images/products/HYLA_01.jpg" },
+    { id: 102, industries: ['Hospitality'], category: "Wardrobe", series: "Hyla", name: "HYLA-02", specs: "1200 (P) x 600 (L) x 2300 (T)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10550000, price_tax: 11710500, img: "/assets/images/products/HYLA_02.jpg" },
+    { id: 103, industries: ['Hospitality'], category: "Side Table", series: "Rivera", name: "RIVERA-01", specs: "500 (P) x 400 (L) x 500 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2750000, price_tax: 3052500, img: "/assets/images/products/RIVERA_01.jpg" },
+    { id: 104, industries: ['Hospitality'], category: "Side Table", series: "Rivera", name: "RIVERA-02", specs: "850 (P) x 400 (L) x 520 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 3700000, price_tax: 4107000, img: "/assets/images/products/RIVERA_02.jpg" },
+    { id: 105, industries: ['Hospitality'], category: "Mobile Drawer", series: "Cosmo", name: "CSD-03", specs: "500 (P) x 400 (L) x 400 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2750000, price_tax: 3052500, img: "/assets/images/products/CSD_01.jpg" },
+    { id: 106, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-01", specs: "Dipan: 2020 (P) x 2020 (L) x 300 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 31750000, price_tax: 35242500, img: "/assets/images/products/DIVAN_01.jpg" },
+    { id: 107, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-02", specs: "Dipan: 2020 (P) x 1820 (L) x 300 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 24000000, price_tax: 26640000, img: "/assets/images/products/DIVAN_02.jpg" },
+    { id: 108, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-03", specs: "Dipan: 2020 (P) x 2020 (L) x 300 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 34875000, price_tax: 38711250, img: "/assets/images/products/DIVAN_03.jpg" },
+    { id: 109, industries: ['Hospitality'], category: "Tempat Tidur", series: "Cosmo", name: "DIPAN-04", specs: "Dipan: 2020 (P) x 1820 (L) x 300 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 27125000, price_tax: 30108750, img: "/assets/images/products/DIVAN_04.jpg" },
+    { id: 110, industries: ['Office', 'Hospitality', 'Government'], category: "Sofa", series: "RD", name: "RD-03", specs: "Keseluruhan: 2200 (P) x 830 (L) x 770 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 23650000, price_tax: 26251500, img: "/assets/images/products/RD_03.jpg" },
+    { id: 111, industries: ['Office', 'Hospitality', 'Government'], category: "Sofa", series: "RD", name: "RD-01", specs: "Keseluruhan: 920 (P) x 830 (L) x 770 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10980000, price_tax: 12187800, img: "/assets/images/products/RD_01.jpg" },
+    { id: 112, industries: ['Office', 'Hospitality', 'Government'], category: "Sofa", series: "SRK", name: "SRK-L", specs: "Panjang Sofa: 2400 + 2000 mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 47275000, price_tax: 52475250, img: "/assets/images/products/SRK_L.jpg" },
+    { id: 113, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-01", specs: "2200 (P) x 820 (T) x 36 (L)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5600000, price_tax: 6216000, img: "/assets/images/products/DT_01.jpg" },
+    { id: 114, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-02", specs: "2200 (P) x 820 (T) x 36 (L)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 6230000, price_tax: 6915300, img: "/assets/images/products/DT_02.jpg" },
+    { id: 115, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-03", specs: "2200 (P) x 820 (T) x 36 (L)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 6500000, price_tax: 7215000, img: "/assets/images/products/DT_03.jpg" },
+    { id: 116, industries: ['Office', 'Hospitality', 'Government'], category: "Daun Pintu", series: "Standard", name: "DT-04", specs: "2200 (P) x 820 (T) x 36 (L)", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 6300000, price_tax: 6993000, img: "/assets/images/products/DT_04.jpg" },
+    { id: 117, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-01", specs: "Kursi Hadap / Kursi Cafe Kayu", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 1850000, price_tax: 2053500, img: "/assets/images/products/KH_01.png" },
+    { id: 118, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-02", specs: "Kursi Hadap / Kursi Cafe Kayu", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 1950000, price_tax: 2164500, img: "/assets/images/products/KH_02.png" },
+    { id: 119, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KH-03", specs: "Kursi Hadap / Kursi Cafe Kayu", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 1750000, price_tax: 1942500, img: "/assets/images/products/KH_03.png" },
+    { id: 120, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KJ-01", specs: "Kursi Jengki Kayu Solid", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2250000, price_tax: 2497500, img: "/assets/images/products/KJ_01.png" },
+    { id: 121, industries: ['Hospitality', 'Office'], category: "Kursi", series: "Kursi Kayu", name: "KM-01", specs: "Kursi Makan Kayu Modern", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 2150000, price_tax: 2386500, img: "/assets/images/products/KM_CHAIR_01.png" },
+    { 
+      id: 122, 
+      industries: ['Hospitality'], 
+      category: "Apartement & Vila (Built-in Furniture Only)", 
+      series: "Embarcadero Bintaro A", 
+      name: "Apartment Set A", 
+      specs: "Custom built-in furniture", 
+      price: 0, 
+      price_tax: 0, 
+      img: "/assets/portfolio/embarcadero-bintaro-a-view-1.jpeg",
+      assets: [
+        "/assets/portfolio/embarcadero-bintaro-a-view-1.jpeg",
+        "/assets/portfolio/embarcadero-bintaro-a-video-1.mp4"
+      ]
+    },
+    { 
+      id: 123, 
+      industries: ['Hospitality'], 
+      category: "Apartement & Vila (Built-in Furniture Only)", 
+      series: "Embarcadero Bintaro B", 
+      name: "Apartment Set B", 
+      specs: "Custom built-in furniture", 
+      price: 0, 
+      price_tax: 0, 
+      img: "/assets/portfolio/embarcadero-bintaro-b-video-1.mp4",
+      assets: [
+        "/assets/portfolio/embarcadero-bintaro-b-video-1.mp4"
+      ]
+    },
+    { 
+      id: 124, 
+      industries: ['Hospitality'], 
+      category: "Apartement & Vila (Built-in Furniture Only)", 
+      series: "Residence 8 Senopati", 
+      name: "Residence 8 Set", 
+      specs: "Custom built-in furniture", 
+      price: 0, 
+      price_tax: 0, 
+      img: "/assets/portfolio/residence-8-senopati-view-1.jpeg",
+      assets: [
+        "/assets/portfolio/residence-8-senopati-view-1.jpeg",
+        "/assets/portfolio/residence-8-senopati-view-2.jpeg",
+        "/assets/portfolio/residence-8-senopati-view-3.jpeg",
+        "/assets/portfolio/residence-8-senopati-view-4.jpeg"
+      ]
+    },
+    { 
+      id: 125, 
+      industries: ['Hospitality'], 
+      category: "Apartement & Vila (Built-in Furniture Only)", 
+      series: "Vila Bedugul Bali", 
+      name: "Vila Bedugul Set", 
+      specs: "Custom built-in furniture", 
+      price: 0, 
+      price_tax: 0, 
+      img: "/assets/portfolio/vila-bedugul-bar.jpeg",
+      assets: [
+        "/assets/portfolio/vila-bedugul-bar.jpeg",
+        "/assets/portfolio/vila-bedugul-bed.jpeg",
+        "/assets/portfolio/vila-bedugul-bed-2.jpeg",
+        "/assets/portfolio/vila-bedugul-kitchen.jpeg",
+        "/assets/portfolio/vila-bedugul-kitchen-2.jpeg",
+        "/assets/portfolio/vila-bedugul-shelf.jpeg",
+        "/assets/portfolio/vila-bedugul-video-1.mp4"
+      ]
+    },
   ],
 
   images: {
@@ -369,42 +496,47 @@ export const kcrData = {
   },
 
   contact: {
-    address: "Jl. Dirgantara Raya Blok A No. 7, BDP – Jatisari– Jatiasih– Bekasi 17426",
+    address: "Jl. Dirgantara Raya Blok A no.7, BDP, Jatisari, Jatiasih, Bekasi 17426",
     phones: ["021.84593454"],
     whatsapp: "6282359440670",
     emails: ["kcraharja@yahoo.com", "info@karyaciptaraharja.com"],
-    distributionHubs: ["Jakarta", "Bekasi", "Yogyakarta", "Surakarta", "Bali"],
     businessDevelopment: [
       { name: "Landri Widyakusuma", phone: "021.84593454" },
       { name: "Sugeng Widodo", phone: "021.84593454" },
       { name: "Agung Wijanarko", phone: "081 726 2153" },
     ],
     headOfficePhone: "021.84593454",
-    representativeOffices: ["Solo", "Jogja", "Purbalingga", "Balikpapan"],
+    representativeOffices: ["Purbalingga", "Jogjakarta", "Surakarta", "Balikpapan"],
     locations: [
       {
         city: "Jakarta (HQ)",
-        address: "Jl. Dirgantara Raya Blok A No. 7, BDP – Jatisari – Jatiasih – Bekasi 17426",
+        address: "Jl. Dirgantara Raya Blok A no.7, BDP, Jatisari, Jatiasih, Bekasi 17426",
         phone: "021.84593454",
         email: "info@karyaciptaraharja.com"
       },
       {
-        city: "Solo & Yogyakarta",
-        address: "Area Solo - Yogyakarta Regional Hub",
+        city: "Purbalingga",
+        address: "Dawuhan, Padamara, Purbalingga, Jateng",
         phone: "021.84593454",
-        email: "solo.yogya@karyaciptaraharja.com"
+        email: "info@karyaciptaraharja.com"
       },
       {
-        city: "Bali",
-        address: "Bali Regional Office & Showroom Hub",
+        city: "Jogjakarta",
+        address: "Palaksari, Pakembinangun, Sleman, Jogjakarta",
         phone: "021.84593454",
-        email: "bali@karyaciptaraharja.com"
+        email: "info@karyaciptaraharja.com"
       },
       {
-        city: "Kalimantan Hub",
-        address: "Kalimantan Project Coordination Center",
+        city: "Surakarta",
+        address: "Randusari, Jebres, Surakarta",
         phone: "021.84593454",
-        email: "kalimantan@karyaciptaraharja.com"
+        email: "info@karyaciptaraharja.com"
+      },
+      {
+        city: "Balikpapan",
+        address: "Balikpapan Regency blok FA2 no.8, Kaltim",
+        phone: "021.84593454",
+        email: "info@karyaciptaraharja.com"
       }
     ]
   },
@@ -481,24 +613,19 @@ export const kcrData = {
     },
     industrySolutions: {
       Office: {
-        headline: "Solusi Ruang Kerja Korporasi Modern",
-        description: "Sistem workstation dan furnitur kantor modular yang dirancang untuk meningkatkan produktivitas, kolaborasi tim, dan efisiensi operasional perusahaan.",
-        contextualMessage: "Optimalkan performa tim dengan lingkungan kerja yang ergonomis dan profesional."
+        headline: "High-Performance Corporate Ecosystem",
+        description: "Transformasi ruang kerja melalui sistem modular dan furnitur eksekutif yang mengintegrasikan aspek ergonomis, efisiensi operasional, dan representasi identitas korporasi.",
+        contextualMessage: "Optimalkan kapabilitas tim Anda dengan infrastruktur ruang kerja yang prestisius dan fungsional."
       },
       Hospitality: {
-        headline: "Eksklusivitas untuk Industri Hospitality",
-        description: "Furnitur premium dengan standar ketahanan hotel berbintang. Menggunakan finishing high-end untuk menciptakan pengalaman tamu yang tak terlupakan.",
-        contextualMessage: "Hadirkan kenyamanan dan kemewahan yang tahan lama bagi tamu properti Anda."
+        headline: "World-Class Hospitality Standards",
+        description: "Furnitur kustom dengan durabilitas tinggi untuk intensitas operasional hotel dan resort. Menggunakan teknik finishing premium untuk menghadirkan pengalaman tamu yang eksklusif.",
+        contextualMessage: "Wujudkan standar kemewahan yang tahan lama pada setiap detail properti hospitality Anda."
       },
       Government: {
-        headline: "Keandalan untuk Instansi Pemerintah",
-        description: "Furnitur dengan desain formal dan material berkualitas tinggi yang memenuhi standar pengadaan institusi publik dan perkantoran pemerintahan.",
-        contextualMessage: "Wujudkan ruang publik yang representatif, berwibawa, dan tahan lama."
-      },
-      Education: {
-        headline: "Infrastruktur Edukasi yang Inspiratif",
-        description: "Solusi meja belajar dan furnitur ruang kelas yang fleksibel, mendukung metode pembelajaran aktif dan memiliki ketahanan tinggi terhadap penggunaan harian.",
-        contextualMessage: "Dukung perkembangan generasi masa depan dengan fasilitas belajar yang berkualitas."
+        headline: "Public & Government Institutional Excellence",
+        description: "Solusi interior yang formal dan berwibawa. Memadukan material berkualitas tinggi dengan presisi manufaktur masif untuk memenuhi standar pengadaan instansi publik.",
+        contextualMessage: "Bangun ruang publik yang representatif, kokoh, dan mencerminkan integritas institusi."
       }
     },
     };
@@ -516,7 +643,8 @@ const projectTagsByCategory: Record<string, string[]> = {
   'Coffee Table': ['Lobby', 'Lounge', 'Area Resepsionis'],
   Sofa: ['Executive Lounge', 'Area Tunggu', 'Ruang Santai'],
   'Tempat Tidur': ['Hotel', 'Resort', 'Suite Mewah'],
-  Wardrobe: ['Kamar Hotel', 'Apartemen Service', 'Bespoke Storage']
+  Wardrobe: ['Kamar Hotel', 'Apartemen Service', 'Bespoke Storage'],
+  'Apartement & Vila (Built-in Furniture Only)': ['Apartemen', 'Vila', 'Bespoke Furniture']
 };
 
 export const getProjectTags = (category: string): string[] =>
@@ -527,7 +655,6 @@ export const getIndustryBadge = (industry: string): string | null => {
     office: 'Corporate Standard',
     hospitality: 'Hospitality Grade',
     government: 'Government Spec',
-    education: 'Educational Standard',
   };
   return badges[industry.toLowerCase()] || null;
 };

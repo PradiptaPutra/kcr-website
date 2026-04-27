@@ -45,17 +45,17 @@ const Navbar: React.FC = () => {
   }, [isOpen]);
 
   const links = [
-    { 
-      n: 'Solusi Proyek', 
+    {
+      n: 'Solusi Sektoral',
       p: '/catalog',
       subLinks: [
-        { n: 'Solusi Perkantoran', p: '/catalog?category=workstations' },
-        { n: 'Solusi Perhotelan', p: '/catalog?category=hospitality' },
-        { n: 'Instansi Pemerintah', p: '/catalog?category=executive' },
-        { n: 'Ruang Edukasi', p: '/catalog?category=others' },
+        { n: 'Corporate & Office', p: '/catalog?industry=office' },
+        { n: 'Hospitality & Resort', p: '/catalog?industry=hospitality' },
+        { n: 'Public & Government', p: '/catalog?industry=government' },
       ]
     },
     { n: 'Profil', p: '/about' },
+
     { n: 'Layanan', p: '/services' },
     { n: 'Kontak', p: '/contact' },
   ];

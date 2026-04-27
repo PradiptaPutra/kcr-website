@@ -39,9 +39,9 @@ const Home: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0]">
       <SEO 
-        title="High-End Office & Hospitality Furniture Solutions"
-        description="Manufactured by AMS & Distributed by KCR Furniture. KCR Furniture (PT. KARYA CIPTA RAHARJA) adalah penyedia furnitur kantor eksekutif dan hospitality premium sejak 2006."
-        keywords="Furniture Kantor, Office Furniture, Workstation, Meja Eksekutif, Hospitality Furniture, Furniture Hotel, CNC Furniture, KCR Furniture"
+        title="Produsen Furnitur Kantor & Custom Furniture Bekasi | KCR Furniture"
+        description="KCR Furniture (PT. Karya Cipta Raharja) adalah produsen furnitur kantor Bekasi & interior fit-out contractor Indonesia. Spesialis mass production furniture & custom furniture premium sejak 2006."
+        keywords="Produsen Furnitur Kantor, Custom Furniture Bekasi, Interior Fit-out Contractor Indonesia, Mass Production Furniture, Furniture Kantor, Office Furniture, Workstation, Meja Eksekutif, Hospitality Furniture, Furniture Hotel, CNC Furniture, KCR Furniture"
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
       />
@@ -74,7 +74,7 @@ const Home: React.FC = () => {
                transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }} 
                className="block"
               >
-                Skala Manufaktur,
+                Produsen Furnitur Kantor
               </motion.span>
              <motion.span 
                initial={{ y: 60, opacity: 0 }} 
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
                transition={{ duration: 1.2, delay: 0.9, ease: [0.16, 1, 0.3, 1] }} 
                className="block font-serif-italic text-brand"
               >
-                Detail Arsitektural.
+                & Custom Furniture Bekasi.
               </motion.span>
            </h1>
 
@@ -199,9 +199,8 @@ const Home: React.FC = () => {
           <motion.div {...fadeInUp} className="text-center mb-16 md:mb-24">
             <span className="framer-label text-brand mb-10 block tracking-[0.5em] opacity-80">01 / FILOSOFI KAMI</span>
             <h2 className="font-serif text-[42px] md:text-[64px] lg:text-[88px] leading-[1.05] text-[#1A1C19] tracking-[-0.02em]">
-              Mengkombinasikan desain <br className="hidden md:block" /> 
-              kontemporer dengan <br className="hidden md:block" />
-              <span className="font-serif-italic text-brand font-light">presisi teknologi Eropa.</span>
+              Interior Fit-out Contractor <br className="hidden md:block" /> 
+              & <span className="font-serif-italic text-brand font-light">Mass Production Furniture.</span>
             </h2>
           </motion.div>
 
@@ -247,10 +246,9 @@ const Home: React.FC = () => {
             <span className="framer-label text-brand mb-12 block tracking-[0.5em]">02 / SOLUSI INDUSTRI</span>
             <div className="flex flex-col border-t border-white/20">
                {[
-                 { title: "Corporate Office", desc: "Sistem workstation modular dan meja eksekutif untuk produktivitas tim.", link: "/catalog?industry=office" },
-                 { title: "Hospitality & Resort", desc: "Furnitur kustom dengan standar kemewahan dan daya tahan tinggi.", link: "/catalog?industry=hospitality" },
-                 { title: "Government Sector", desc: "Solusi interior berwibawa dengan material premium dan presisi tinggi.", link: "/catalog?industry=government" },
-                 { title: "Education & Tech", desc: "Ruang kolaboratif yang fleksibel untuk pusat inovasi dan edukasi.", link: "/catalog?industry=education" }
+                 { title: "Executive & Corporate Space", desc: "Sistem workstation dan furnitur eksekutif yang dirancang untuk produktivitas tinggi dan penguatan identitas korporasi.", link: "/catalog?industry=office" },
+                 { title: "Hospitality & Resort", desc: "Solusi furnitur kustom dengan durabilitas standar hotel bintang lima dan estetika premium yang tak lekang oleh waktu.", link: "/catalog?industry=hospitality" },
+                 { title: "Public & Government Institution", desc: "Pengadaan furnitur berwibawa untuk instansi publik dengan kepastian kualitas material dan presisi produksi massal.", link: "/catalog?industry=government" }
                ].map((sol, idx) => (
                  <Link 
                    key={idx}
@@ -262,15 +260,15 @@ const Home: React.FC = () => {
                    
                    <div className="flex items-center gap-4 md:gap-8 relative z-10 w-full md:w-[60%]">
                      <span className="font-serif text-xl md:text-2xl opacity-40 group-hover:text-brand group-hover:opacity-100 transition-colors shrink-0">0{idx + 1}</span>
-                     <h3 className="font-serif text-2xl md:text-3xl lg:text-[44px] uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500 truncate">{sol.title}</h3>
+                     <h3 className="font-serif text-2xl md:text-3xl lg:text-[44px] uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500 line-clamp-1">{sol.title}</h3>
                    </div>
                    
-                   <div className="mt-6 md:mt-0 flex items-center justify-between md:justify-end gap-6 md:gap-8 relative z-10 w-full md:w-[40%]">
-                     <p className="text-sm text-white/80 max-w-[220px] md:opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden lg:block text-right">
+                   <div className="mt-4 md:mt-0 flex items-center justify-between md:justify-end gap-6 md:gap-8 relative z-10 w-full md:w-[40%]">
+                     <p className="text-[13px] md:text-sm text-white/70 max-w-[280px] md:opacity-0 group-hover:opacity-100 transition-all duration-500 lg:block text-left md:text-right leading-relaxed">
                        {sol.desc}
                      </p>
-                     <div className="w-12 h-12 shrink-0 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all">
-                       <ArrowUpRight size={20} className="group-hover:text-white transition-colors" />
+                     <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all">
+                       <ArrowUpRight size={18} className="group-hover:text-white transition-colors" />
                      </div>
                    </div>
                  </Link>
@@ -457,11 +455,11 @@ const Home: React.FC = () => {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/50 -skew-x-12 translate-x-20 pointer-events-none" />
         <div className="framer-container relative z-10">
           <motion.div {...fadeInUp} className="mb-24 text-center max-w-3xl mx-auto">
-            <span className="framer-label text-brand mb-6 block tracking-[0.5em]">SIGNATURE PIECES</span>
-            <h2 className="font-serif text-[40px] md:text-[56px] leading-tight mb-8">Koleksi <span className="font-serif-italic text-brand">Unggulan.</span></h2>
-            <p className="text-[16px] text-[#1A1C19]/60 leading-relaxed mb-10">Sistem workstation dan meja eksekutif yang paling sering dispesifikasikan oleh arsitek untuk proyek perkantoran premium.</p>
+            <span className="framer-label text-brand mb-6 block tracking-[0.5em]">SIGNATURE COLLECTIONS</span>
+            <h2 className="font-serif text-[40px] md:text-[56px] leading-tight mb-8">Koleksi <span className="font-serif-italic text-brand">Masterpiece.</span></h2>
+            <p className="text-[16px] text-[#1A1C19]/60 leading-relaxed mb-10">Sistem furnitur yang paling sering dispesifikasikan oleh firma arsitek dan desainer interior untuk proyek-proyek prestisius dengan tuntutan presisi manufaktur yang tinggi.</p>
             <Link to="/catalog" className="cta-secondary inline-flex w-max">
-              Eksplorasi Seluruh Katalog
+              Eksplorasi Katalog Teknis
             </Link>
           </motion.div>
 

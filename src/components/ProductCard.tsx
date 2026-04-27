@@ -14,6 +14,7 @@ interface ProductCardProps {
   price: number;
   price_tax: number;
   img: string;
+  assets?: string[];
   index?: number;
   activeIndustry?: string;
 }
@@ -23,26 +24,28 @@ const ProductCard: React.FC<ProductCardProps> = ({
   category,
   name, 
   specs,
-  price,
-  price_tax,
   img, 
+  assets = [],
   index = 0,
   activeIndustry = 'all'
 }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [currentAssetIndex, setCurrentAssetIndex] = useState(0);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  
+  const allAssets = assets.length > 0 ? assets : [img];
+  const currentAsset = allAssets[currentAssetIndex];
+  const isVideo = currentAsset.toLowerCase().endsWith('.mp4');
+  
+  // Find first image for poster
+  const posterImage = allAssets.find(asset => !asset.toLowerCase().endsWith('.mp4')) || allAssets[0];
+
   const retailTags = getProjectTags(category);
-
   const industryBadge = getIndustryBadge(activeIndustry);
-
-  const formatter = new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0,
-  });
 
   const closeDrawer = () => {
     setIsDrawerOpen(false);
+    setCurrentAssetIndex(0);
     requestAnimationFrame(() => triggerRef.current?.focus());
   };
 
@@ -57,14 +60,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isDrawerOpen) {
+      if (!isDrawerOpen) return;
+
+      if (event.key === 'Escape') {
         closeDrawer();
+      } else if (event.key === 'ArrowRight') {
+        setCurrentAssetIndex((prev) => (prev === allAssets.length - 1 ? 0 : prev + 1));
+      } else if (event.key === 'ArrowLeft') {
+        setCurrentAssetIndex((prev) => (prev === 0 ? allAssets.length - 1 : prev - 1));
       }
     };
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [isDrawerOpen]);
+  }, [isDrawerOpen, allAssets.length]);
 
   const fadeInUp = {
     initial: { y: 30, opacity: 0 },
@@ -121,17 +130,69 @@ const ProductCard: React.FC<ProductCardProps> = ({
                  <div className="h-px w-12 bg-brand/30" />
               </div>
               
-              <motion.img 
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                 src={img} 
-                 alt={name} 
-                 className="w-full h-full object-contain max-h-[56vh] lg:max-h-[60vh]" 
-                 loading="lazy"
-                 decoding="async"
-                 sizes="(min-width: 1024px) 60vw, 100vw"
-               />
+              {isVideo ? (
+                <motion.video
+                  key={currentAsset}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  src={currentAsset}
+                  className="w-full h-full object-contain max-h-[56vh] lg:max-h-[60vh]"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster={posterImage}
+                />
+              ) : (
+                <motion.img 
+                  key={currentAsset}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  src={currentAsset} 
+                  alt={name} 
+                  className="w-full h-full object-contain max-h-[56vh] lg:max-h-[60vh]" 
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 1024px) 60vw, 100vw"
+                />
+              )}
+
+              {/* Gallery Navigation */}
+              {allAssets.length > 1 && (
+                <>
+                  <div className="absolute bottom-6 sm:bottom-12 left-0 right-0 flex justify-center gap-2 px-10">
+                    {allAssets.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentAssetIndex(idx)}
+                        className={`h-1 transition-all duration-500 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand ${idx === currentAssetIndex ? 'w-6 sm:w-8 bg-brand' : 'w-1.5 sm:w-2 bg-[#1A1C19]/10 hover:bg-[#1A1C19]/30'}`}
+                        aria-label={`Go to asset ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                  
+                  {/* Next/Prev Buttons */}
+                  <div className="absolute inset-y-0 left-2 right-2 sm:left-4 sm:right-4 flex items-center justify-between pointer-events-none">
+                    <button
+                      onClick={() => setCurrentAssetIndex((prev) => (prev === 0 ? allAssets.length - 1 : prev - 1))}
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/40 sm:bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-[#1A1C19] hover:bg-white transition-all pointer-events-auto shadow-lg sm:shadow-xl active:scale-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                      aria-label="Previous asset"
+                    >
+                      <ArrowRight size={18} weight="bold" className="rotate-180" />
+                    </button>
+                    <button
+                      onClick={() => setCurrentAssetIndex((prev) => (prev === allAssets.length - 1 ? 0 : prev + 1))}
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/40 sm:bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-[#1A1C19] hover:bg-white transition-all pointer-events-auto shadow-lg sm:shadow-xl active:scale-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                      aria-label="Next asset"
+                    >
+                      <ArrowRight size={18} weight="bold" />
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Right: Info Panel */}
@@ -142,28 +203,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
                   <div className="space-y-4">
                     <h2 className="font-serif text-4xl md:text-5xl font-medium text-[#1A1C19] leading-tight">{name}</h2>
                     <p className="text-[13px] text-[#1A1C19]/40 font-mono tracking-widest border-l-2 border-brand pl-4 uppercase">Reference Series</p>
-                  </div>
-
-                  {/* Investment / Price Section */}
-                  <div className="space-y-8 bg-white p-8 rounded-lg border border-[#1A1C19]/5 shadow-sm">
-                    <div className="flex flex-col gap-2">
-                    <span className="framer-label text-[9px] tracking-[0.3em] opacity-60">ESTIMATED INVESTMENT</span>
-                    <div className="flex items-baseline gap-4">
-                      <h3 className="font-serif text-4xl font-medium text-brand">{formatter.format(price_tax)}</h3>
-                    </div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] font-bold opacity-50 mt-2">Inclusive of 11% PPN (Tax)</p>
-                  </div>
-
-                    <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[#1A1C19]/5 text-[11px] uppercase tracking-widest font-bold">
-                      <div className="space-y-1 opacity-40">
-                        <span>Base Price</span>
-                        <p className="font-mono text-xs mt-1 text-[#1A1C19]">{formatter.format(price)}</p>
-                      </div>
-                      <div className="space-y-1 opacity-40 text-right">
-                        <span>Tax Component</span>
-                        <p className="font-mono text-xs mt-1 text-[#1A1C19]">{formatter.format(price_tax - price)}</p>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Technical Specs */}
@@ -213,7 +252,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
               <div className="p-6 md:p-10 bg-white/50 backdrop-blur-sm border-t border-[#1A1C19]/5 space-y-4">
                 <button 
                   onClick={handleInquiry}
-                  className="w-full flex items-center justify-center gap-4 bg-[#1A1C19] text-white py-5 rounded-[4px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.24em] text-[10px] sm:text-[11px] hover:bg-brand transition-all shadow-xl active:scale-[0.98]"
+                  className="w-full flex items-center justify-center gap-4 bg-[#1A1C19] text-white py-5 rounded-[4px] font-bold uppercase tracking-[0.18em] sm:tracking-[0.24em] text-[10px] sm:text-[11px] hover:bg-brand transition-all shadow-xl active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                  aria-label={`Inquire about ${name} via WhatsApp`}
                 >
                   <WhatsappLogo size={20} weight="fill" />
                   Tanya via WhatsApp
@@ -230,6 +270,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                     closeDrawer();
                   }}
                   className="w-full flex items-center justify-center rounded-[4px] border border-[#1A1C19]/15 bg-white py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#1A1C19]/80 transition hover:border-brand hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                  aria-label={`Fill project form for ${name}`}
                 >
                   Isi Form Proyek
                 </Link>
@@ -248,29 +289,56 @@ const ProductCard: React.FC<ProductCardProps> = ({
         className="p-6 md:p-8 bg-white border border-[#1A1C19]/5 rounded-[4px] shadow-premium hover:shadow-premium-hover transition-all duration-700 flex flex-col h-full group"
       >
         <div 
-          className="aspect-[4/3] overflow-hidden mb-6 md:mb-8 bg-[#f0f0eb] cursor-zoom-in relative shadow-sm rounded-[4px]"
+          className="aspect-[4/3] overflow-hidden mb-6 md:mb-8 bg-[#f0f0eb] cursor-zoom-in relative shadow-sm rounded-[4px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
           onClick={() => {
             setIsDrawerOpen(true);
             trackEvent('product_modal_open', { product_id: id, source: 'image' });
           }}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              setIsDrawerOpen(true);
+              trackEvent('product_modal_open', { product_id: id, source: 'image_keyboard' });
+            }
+          }}
+          aria-label={`View details for ${name}`}
         >
-             <img 
-               src={img} 
-               alt={name} 
-               className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110" 
-               loading="lazy"
-               decoding="async"
-               sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw"
-             />
+             {allAssets[0].toLowerCase().endsWith('.mp4') ? (
+               <video
+                 src={allAssets[0]}
+                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110"
+                 autoPlay
+                 loop
+                 muted
+                 playsInline
+                 preload="metadata"
+                 poster={posterImage}
+               />
+             ) : (
+               <img 
+                 src={allAssets[0]} 
+                 alt={name} 
+                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110" 
+                 loading="lazy"
+                 decoding="async"
+                 sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw"
+               />
+             )}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-[#1A1C19]/10 transition-all duration-700 flex items-center justify-center">
              <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-700 shadow-2xl">
                 <ArrowsOut size={24} className="text-white" weight="light" />
              </div>
           </div>
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 flex flex-col gap-2">
             <span className="bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest text-brand border border-brand/10">
               {industryBadge || category}
             </span>
+            {allAssets.length > 1 && (
+              <span className="bg-[#1A1C19]/80 backdrop-blur-md px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest text-white w-max">
+                {allAssets.length} {allAssets.filter(a => a.endsWith('.mp4')).length > 0 ? 'Assets' : 'Photos'}
+              </span>
+            )}
           </div>
         </div>
         
@@ -294,18 +362,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </div>
               </div>
 
-              <div className="flex items-baseline justify-between pt-6 border-t border-[#1A1C19]/5">
-                <span className="text-[10px] uppercase tracking-widest font-bold opacity-30">Estimasi Proyek</span>
-              <div className="text-right">
-                <div className="text-[18px] font-serif font-medium text-[#1A1C19]">{formatter.format(price_tax)}</div>
-                <div className="text-[9px] uppercase tracking-widest opacity-40">Per Unit</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-6 border-t border-[#1A1C19]/5">
               <button 
                 onClick={handleInquiry}
-                className="w-full flex items-center justify-center gap-2 py-4 px-4 rounded-full transition-all bg-[#1A1C19] text-white hover:bg-brand shadow-lg shadow-[#1A1C19]/10"
+                className="w-full flex items-center justify-center gap-2 py-4 px-4 rounded-full transition-all bg-[#1A1C19] text-white hover:bg-brand shadow-lg shadow-[#1A1C19]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                aria-label={`Inquire about ${name} via WhatsApp`}
               >
                 <WhatsappLogo size={13} weight="fill" />
                 <span className="text-[9px] uppercase tracking-[0.2em] font-bold">WhatsApp</span>
@@ -317,6 +378,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
                   trackEvent('product_modal_open', { product_id: id, source: 'button' });
                 }}
                 className="w-full flex items-center justify-between group/btn py-4 px-4 rounded-full transition-all border border-[#1A1C19]/20 bg-white text-[#1A1C19] hover:border-brand hover:text-brand cursor-pointer shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                aria-label={`View specifications and details for ${name}`}
               >
                   <span className="text-[9px] uppercase tracking-[0.18em] font-bold">Spek</span>
                 <div className="w-5 h-5 rounded-full flex items-center justify-center transition-all bg-[#1A1C19]/5 group-hover/btn:bg-brand/15">

@@ -165,18 +165,6 @@ const Contact: React.FC = () => {
         
         {/* 1. CONTACT INFO & REGIONAL HUBS */}
         <div className="lg:col-span-4 space-y-16">
-          <motion.div {...fadeInUp}>
-            <span className="framer-label text-brand mb-8 block tracking-[0.4em]">DISTRIBUTION HUB</span>
-            <div className="space-y-3">
-              {(kcrData.contact.distributionHubs || []).map((city: string) => (
-                <p key={city} className="font-serif text-lg font-medium text-[#1A1C19] flex items-center gap-3">
-                  <MapPin weight="light" size={20} className="text-brand" />
-                  {city}
-                </p>
-              ))}
-            </div>
-          </motion.div>
-
           <motion.div {...fadeInUp} transition={{ delay: 0.1 }}>
             <span className="framer-label text-brand mb-8 block tracking-[0.4em]">BUSINESS DEVELOPMENT</span>
             <div className="space-y-4">
@@ -197,13 +185,24 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <motion.div {...fadeInUp} transition={{ delay: 0.2 }}>
-            <span className="framer-label text-brand mb-8 block tracking-[0.4em]">REP OFFICE</span>
-            <div className="space-y-2">
-              {(kcrData.contact.representativeOffices || []).map((office: string) => (
-                <p key={office} className="framer-body !text-[13px] text-[#1A1C19] flex items-center gap-3">
-                  <CaretRight size={14} className="text-brand" />
-                  {office}
-                </p>
+            <span className="framer-label text-brand mb-10 block tracking-[0.4em]">REP OFFICE</span>
+            <div className="grid grid-cols-1 gap-y-10">
+              {(kcrData.contact.locations || [])
+                .filter((loc: any) => !loc.city.includes("(HQ)"))
+                .map((loc: any) => (
+                <div key={loc.city} className="group">
+                  <div className="flex items-start gap-4 mb-3">
+                    <div className="mt-1 w-8 h-8 rounded-full bg-brand/5 border border-brand/10 flex items-center justify-center shrink-0 group-hover:bg-brand group-hover:text-white transition-all duration-500">
+                      <MapPin weight="light" size={16} />
+                    </div>
+                    <div>
+                      <p className="font-serif text-xl font-medium text-[#1A1C19] mb-1">{loc.city}</p>
+                      <p className="text-[13px] text-[#1A1C19]/50 leading-relaxed max-w-[280px]">
+                        {loc.address}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </motion.div>
