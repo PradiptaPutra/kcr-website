@@ -22,7 +22,9 @@ const SEO: React.FC<SEOProps> = ({
   children,
 }) => {
   const siteName = kcrData.company.name;
-  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | ${kcrData.company.tagline}`;
+  const fullTitle = title 
+    ? (title.toLowerCase().includes(siteName.toLowerCase()) ? title : `${title} | ${siteName}`)
+    : `${siteName} | ${kcrData.company.tagline}`;
   const defaultDescription = kcrData.company.description;
   const metaDescription = description || defaultDescription;
   const url = canonicalUrl ? `https://karyaciptaraharja.com${canonicalUrl}` : 'https://karyaciptaraharja.com';

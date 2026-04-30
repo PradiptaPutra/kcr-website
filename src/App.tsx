@@ -20,6 +20,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Professional = lazy(() => import('./pages/Professional'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const Insights = lazy(() => import('./pages/Insights'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
@@ -54,6 +55,7 @@ const AnimatedRoutes = () => {
           <Route path="/professional" element={<PageWrapper><Professional /></PageWrapper>} />
           <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
           <Route path="/insights" element={<PageWrapper><Insights /></PageWrapper>} />
+          <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
         </Routes>
       </Suspense>
     </AnimatePresence>

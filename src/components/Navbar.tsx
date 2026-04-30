@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
           </div>
           
           <button 
-            className={`lg:hidden z-[110] transition-colors duration-500 rounded-full p-1.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${textColor}`} 
+            className={`lg:hidden z-[110] transition-colors duration-500 rounded-full p-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${textColor}`} 
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
