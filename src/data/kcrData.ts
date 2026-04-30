@@ -626,6 +626,11 @@ export const kcrData = {
         headline: "Public & Government Institutional Excellence",
         description: "Solusi interior yang formal dan berwibawa. Memadukan material berkualitas tinggi dengan presisi manufaktur masif untuk memenuhi standar pengadaan instansi publik.",
         contextualMessage: "Bangun ruang publik yang representatif, kokoh, dan mencerminkan integritas institusi."
+      },
+      Education: {
+        headline: "Innovative Learning Environments",
+        description: "Menciptakan ruang belajar yang adaptif dan tahan lama. Furnitur kami dirancang untuk mendukung interaksi dinamis antara pengajar dan siswa dengan standar keamanan tinggi.",
+        contextualMessage: "Dukung ekosistem pendidikan Anda dengan infrastruktur ruang belajar yang modern dan ergonomis."
       }
     },
     };
@@ -655,6 +660,7 @@ export const getIndustryBadge = (industry: string): string | null => {
     office: 'Corporate Standard',
     hospitality: 'Hospitality Grade',
     government: 'Government Spec',
+    education: 'Institutional Spec',
   };
   return badges[industry.toLowerCase()] || null;
 };

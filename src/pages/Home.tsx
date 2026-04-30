@@ -248,7 +248,8 @@ const Home: React.FC = () => {
                {[
                  { title: "Executive & Corporate Space", desc: "Sistem workstation dan furnitur eksekutif yang dirancang untuk produktivitas tinggi dan penguatan identitas korporasi.", link: "/catalog?industry=office" },
                  { title: "Hospitality & Resort", desc: "Solusi furnitur kustom dengan durabilitas standar hotel bintang lima dan estetika premium yang tak lekang oleh waktu.", link: "/catalog?industry=hospitality" },
-                 { title: "Public & Government Institution", desc: "Pengadaan furnitur berwibawa untuk instansi publik dengan kepastian kualitas material dan presisi produksi massal.", link: "/catalog?industry=government" }
+                 { title: "Public & Government Institution", desc: "Pengadaan furnitur berwibawa untuk instansi publik dengan kepastian kualitas material dan presisi produksi massal.", link: "/catalog?industry=government" },
+                 { title: "Education & Institutional Space", desc: "Solusi furnitur untuk area belajar dan laboratorium yang mengutamakan durabilitas dan fungsionalitas edukasi.", link: "/catalog?industry=education" }
                ].map((sol, idx) => (
                  <Link 
                    key={idx}

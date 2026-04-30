@@ -30,6 +30,7 @@ const Catalog: React.FC = () => {
     { id: 'office', l: 'Perkantoran' },
     { id: 'hospitality', l: 'Hospitality' },
     { id: 'government', l: 'Pemerintahan' },
+    { id: 'education', l: 'Pendidikan' },
   ];
 
   const normalizeCategoryParam = (value: string | null): string => {

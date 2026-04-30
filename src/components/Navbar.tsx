@@ -52,6 +52,7 @@ const Navbar: React.FC = () => {
         { n: 'Corporate & Office', p: '/catalog?industry=office' },
         { n: 'Hospitality & Resort', p: '/catalog?industry=hospitality' },
         { n: 'Public & Government', p: '/catalog?industry=government' },
+        { n: 'Education & Institutional', p: '/catalog?industry=education' },
       ]
     },
     { n: 'Profil', p: '/about' },
