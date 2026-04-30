@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
-import PageHeader from '../components/PageHeader';
 
 const NotFound: React.FC = () => {
   return (
