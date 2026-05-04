@@ -37,26 +37,20 @@ const CaseStudies: React.FC = () => {
             transition={{ delay: idx * 0.08 }}
             className="bg-white border border-[#1A1C19]/10 rounded-[4px] p-6 md:p-10 shadow-premium"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                <img src={study.beforeImage} alt={`${study.title} before`} className="w-full h-52 object-cover rounded-[4px]" loading="lazy" decoding="async" sizes="(min-width: 1024px) 18vw, 45vw" />
-                <img src={study.afterImage} alt={`${study.title} after`} className="w-full h-52 object-cover rounded-[4px]" loading="lazy" decoding="async" sizes="(min-width: 1024px) 18vw, 45vw" />
+            <div className="space-y-5">
+              <p className="framer-label text-brand">{study.industry}</p>
+              <h3 className="font-serif text-3xl text-[#1A1C19]">{study.title}</h3>
+              <p className="text-[14px] text-[#1A1C19]/75 leading-relaxed">{study.scope}</p>
+              <div className="inline-flex rounded-full bg-[#1A1C19]/5 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-[#1A1C19]/70">
+                Timeline: {study.timeline}
               </div>
-              <div className="lg:col-span-7 space-y-5">
-                <p className="framer-label text-brand">{study.industry}</p>
-                <h3 className="font-serif text-3xl text-[#1A1C19]">{study.title}</h3>
-                <p className="text-[14px] text-[#1A1C19]/75 leading-relaxed">{study.scope}</p>
-                <div className="inline-flex rounded-full bg-[#1A1C19]/5 px-4 py-2 text-[11px] uppercase tracking-[0.2em] text-[#1A1C19]/70">
-                  Timeline: {study.timeline}
-                </div>
-                <ul className="space-y-2 pt-2">
-                  {study.outcomes.map((outcome) => (
-                    <li key={outcome} className="text-[13px] text-[#1A1C19]/80 leading-relaxed border-l-2 border-brand pl-3">
-                      {outcome}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="space-y-2 pt-2">
+                {study.outcomes.map((outcome) => (
+                  <li key={outcome} className="text-[13px] text-[#1A1C19]/80 leading-relaxed border-l-2 border-brand pl-3">
+                    {outcome}
+                  </li>
+                ))}
+              </ul>
             </div>
           </motion.article>
         ))}

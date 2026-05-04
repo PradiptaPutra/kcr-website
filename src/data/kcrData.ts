@@ -13,6 +13,8 @@ export interface CatalogProduct {
   assets?: string[];
 }
 
+import heroImage from '../../hero.png';
+
 export const kcrData = {
   company: {
     name: "KCR FURNITURE",
@@ -484,7 +486,7 @@ export const kcrData = {
   images: {
     hero: [
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=90&w=2200",
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&q=90&w=2200",
+      heroImage,
       "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&q=90&w=2200"
     ],
     catalog: {

@@ -99,7 +99,7 @@ const Home: React.FC = () => {
                 <Button 
                   variant="primary" 
                   size="lg" 
-                  className="w-full sm:w-auto px-10 py-5 flex items-center justify-center gap-3 shadow-xl shadow-brand/10"
+                   className="w-full sm:w-auto px-10 py-5 flex items-center justify-center gap-3 shadow-xl shadow-brand/15 bg-brand text-white hover:bg-brand/90 border-brand"
                   onClick={() => handleWhatsApp('hero')}
                 >
                   <WhatsappLogo size={22} weight="fill" />
@@ -134,8 +134,8 @@ const Home: React.FC = () => {
                  decoding="async"
                  sizes="(min-width: 1024px) 55vw, 100vw"
                />
-               <div className="absolute inset-0 bg-black/10" />
-            </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-l from-black/45 via-black/20 to-transparent lg:from-black/55 lg:via-black/25" />
+             </motion.div>
           </AnimatePresence>
 
           {/* Vertical Index Indicator */}
