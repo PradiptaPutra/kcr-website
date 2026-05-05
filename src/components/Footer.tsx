@@ -57,8 +57,9 @@ const Footer: React.FC = () => {
             <div className="flex flex-col gap-6 font-sans font-normal text-[13px] opacity-75 leading-relaxed max-w-sm">
               <p>{kcrData.contact.address}</p>
               <div className="flex flex-wrap gap-6 text-[11px] tracking-widest font-medium uppercase opacity-80">
-                <a href={`tel:${kcrData.contact.phones[0]}`} className="text-brand">T. {kcrData.contact.phones[0]}</a>
-                <a href={`mailto:${kcrData.contact.emails[1]}`} className="text-brand">E. {kcrData.contact.emails[1]}</a>
+                {kcrData.contact.phones.length > 0 && (
+                  <a href={`tel:${kcrData.contact.phones[0]}`} className="text-brand">T. {kcrData.contact.phones[0]}</a>
+                )}
               </div>
             </div>
           </div>

@@ -9,9 +9,8 @@ Domain adalah alamat "kunci" agar pelanggan bisa menemukan bisnis Anda di intern
 
 | Pilihan Alamat | Status | Harga (Per Tahun) |
 | :--- | :--- | :--- |
-| **kcrfurniture.id** | **Tersedia** | **Rp 225.000** |
 | **kcrfurniture.com** | **Tersedia** | **Rp 155.000** |
-| **karyaciptaraharja.com** | **Tersedia** | **Rp 165.000** |
+| **kcrfurniture.id** | **Tersedia** | **Rp 225.000** |
 
 > *Penting: Website ini menggunakan teknologi server modern (Vercel) yang **Gratis (Rp 0)** selamanya untuk pemakaian normal. Anda hanya perlu membayar biaya perpanjangan alamat/domain di atas sekali setiap tahun.*
 

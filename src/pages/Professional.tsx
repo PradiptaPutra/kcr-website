@@ -15,7 +15,7 @@ const Professional: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-24 md:pb-40 selection:bg-[#1A1C19] selection:text-white">
       <SEO
-        title="KCR Professional Program | B2B Project Pathway"
+        title="KCR Professional Program"
         description="Program B2B KCR untuk procurement, fit-out, dan rollout multi-lokasi dengan respon prioritas 24 jam."
         keywords="KCR Professional Program, B2B furniture, office fit-out, procurement"
         canonicalUrl="/professional"

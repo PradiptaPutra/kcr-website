@@ -170,7 +170,7 @@ const Catalog: React.FC = () => {
     '@type': 'CollectionPage',
     name: `Katalog KCR Furniture - ${selectedCategoryLabel}`,
     description: `Katalog terfilter untuk ${selectedCategoryLabel} di segmen ${selectedIndustryLabel}.`,
-    url: `https://karyaciptaraharja.com${canonicalUrl}`,
+    url: `https://kcrfurniture.com${canonicalUrl}`,
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: filteredProducts.slice(0, 12).map((item, index) => ({
@@ -178,7 +178,7 @@ const Catalog: React.FC = () => {
         position: index + 1,
         name: item.name,
         category: item.category,
-        image: `https://karyaciptaraharja.com${item.img}`,
+        image: `https://kcrfurniture.com${item.img}`,
         brand: {
           '@type': 'Brand',
           name: 'KCR Furniture'
@@ -199,11 +199,19 @@ const Catalog: React.FC = () => {
     },
   };
 
+  const seoTitle = activeSection !== 'all' || activeIndustry !== 'all' 
+    ? `${selectedCategoryLabel} ${activeIndustry !== 'all' ? `untuk ${selectedIndustryLabel}` : ''} | Katalog KCR Furniture`
+    : "Katalog Produsen Furnitur Kantor & Custom Furniture | KCR Furniture";
+  
+  const seoDescription = activeSection !== 'all'
+    ? `Lihat koleksi ${selectedCategoryLabel} premium KCR Furniture. Solusi interior berkualitas tinggi untuk ${activeIndustry !== 'all' ? selectedIndustryLabel : 'berbagai industri'}.`
+    : "Jelajahi katalog KCR Furniture, produsen furnitur kantor & custom furniture Bekasi. Temukan workstations, meja eksekutif, dan hospitality furniture untuk proyek Anda.";
+
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
-        title={`Katalog Produsen Furnitur Kantor & Custom Furniture | KCR Furniture`}
-        description={`Jelajahi katalog KCR Furniture, produsen furnitur kantor & custom furniture Bekasi. Temukan workstations, meja eksekutif, dan hospitality furniture untuk proyek Anda.`}
+        title={seoTitle}
+        description={seoDescription}
         keywords="Produsen Furnitur Kantor, Custom Furniture Bekasi, Mass Production Furniture, Interior Fit-out Contractor Indonesia, Furnitur Kantor, Workstation, Meja Eksekutif, Meeting Table, Furnitur Hotel, KCR Furniture Catalog"
         canonicalUrl={canonicalUrl}
       >

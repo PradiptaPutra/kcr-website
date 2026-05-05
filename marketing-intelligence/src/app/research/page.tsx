@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
+import SearchPerformanceCard from '@/components/dashboard/SearchPerformanceCard';
 import { getTrendingProducts, TrendData } from '@/services/marketing-service';
 import { Search, TrendingUp, Globe, ShoppingBag, Zap, ArrowUpDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -108,6 +109,16 @@ export default function ResearchPage() {
                ))
              )}
            </AnimatePresence>
+        </div>
+
+        {/* Search Performance Section */}
+        <div className="mt-12">
+           <div className="flex items-center gap-3 mb-8">
+              <div className="h-px flex-1 bg-zinc-900" />
+              <h2 className="text-xl font-black italic tracking-tighter text-white uppercase">{t('research.searchPerformance') || 'SEARCH_PERFORMANCE_INTEL'}</h2>
+              <div className="h-px flex-1 bg-zinc-900" />
+           </div>
+           <SearchPerformanceCard />
         </div>
 
         {/* Platform Insights */}

@@ -499,46 +499,36 @@ export const kcrData = {
 
   contact: {
     address: "Jl. Dirgantara Raya Blok A no.7, BDP, Jatisari, Jatiasih, Bekasi 17426",
-    phones: ["021.84593454"],
+    phones: [],
     whatsapp: "6281916191968",
-    emails: ["kcraharja@yahoo.com", "info@karyaciptaraharja.com"],
+    emails: [],
     businessDevelopment: [
       { name: "Landri Widyakusuma", phone: "" },
       { name: "Sugeng Widodo", phone: "" },
       { name: "Agung Wijanarko", phone: "081329663040" },
     ],
-    headOfficePhone: "021.84593454",
+    headOfficePhone: "",
     representativeOffices: ["Purbalingga", "Jogjakarta", "Surakarta", "Balikpapan"],
     locations: [
       {
         city: "Jakarta (HQ)",
-        address: "Jl. Dirgantara Raya Blok A no.7, BDP, Jatisari, Jatiasih, Bekasi 17426",
-        phone: "021.84593454",
-        email: "info@karyaciptaraharja.com"
+        address: "Jl. Dirgantara Raya Blok A no.7, BDP, Jatisari, Jatiasih, Bekasi 17426"
       },
       {
         city: "Purbalingga",
-        address: "Dawuhan, Padamara, Purbalingga, Jateng",
-        phone: "021.84593454",
-        email: "info@karyaciptaraharja.com"
+        address: "Dawuhan, Padamara, Purbalingga, Jateng"
       },
       {
         city: "Jogjakarta",
-        address: "Palaksari, Pakembinangun, Sleman, Jogjakarta",
-        phone: "021.84593454",
-        email: "info@karyaciptaraharja.com"
+        address: "Palaksari, Pakembinangun, Sleman, Jogjakarta"
       },
       {
         city: "Surakarta",
-        address: "Randusari, Jebres, Surakarta",
-        phone: "021.84593454",
-        email: "info@karyaciptaraharja.com"
+        address: "Randusari, Jebres, Surakarta"
       },
       {
         city: "Balikpapan",
-        address: "Balikpapan Regency blok FA2 no.8, Kaltim",
-        phone: "021.84593454",
-        email: "info@karyaciptaraharja.com"
+        address: "Balikpapan Regency blok FA2 no.8, Kaltim"
       }
     ]
   },
@@ -665,6 +655,12 @@ export const getIndustryBadge = (industry: string): string | null => {
     education: 'Institutional Spec',
   };
   return badges[industry.toLowerCase()] || null;
+};
+
+export const getMarketplaceLinksForProduct = (_productName: string): EcommerceLink[] => {
+  return [];
+};
+owerCase()] || null;
 };
 
 export const getMarketplaceLinksForProduct = (_productName: string): EcommerceLink[] => {

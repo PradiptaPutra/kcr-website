@@ -9,12 +9,9 @@ Nama domain adalah alamat digital bisnis Anda. Berikut adalah rekomendasi berdas
 
 | Opsi Domain | Relevansi | Estimasi Biaya (Tahunan) | Rekomendasi |
 | :--- | :--- | :--- | :--- |
-| **karyaciptaraharja.com** | Nama Resmi Perusahaan | Rp 165.000 | **Wajib.** Untuk kredibilitas korporasi. |
-| **kcrfurniture.id** | Pendek & Profesional | Rp 225.000 | **Utama.** Sangat baik untuk pasar Indonesia. |
-| **kcrfurniture.com** | Branding Global | Rp 155.000 | **Cadangan.** Jika ingin ekspansi internasional. |
+| **kcrfurniture.com** | Branding Global | Rp 155.000 | **Utama.** Pilihan terbaik untuk jangkauan luas. |
+| **kcrfurniture.id** | Profesional Indonesia | Rp 225.000 | **Cadangan.** Sangat baik untuk pasar lokal. |
 | **kcr.co.id** | Legalitas Formal | Rp 300.000 | **Opsi.** Memerlukan dokumen legal PT. |
-
-> **Saran Strategis:** Saya merekomendasikan penggunaan **kcrfurniture.id** sebagai alamat utama karena mudah diingat, dan **karyaciptaraharja.com** sebagai alias yang diarahkan (redirect) ke alamat utama.
 
 ---
 

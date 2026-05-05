@@ -9,6 +9,8 @@ interface SEOProps {
   ogType?: string;
   ogImage?: string;
   keywords?: string;
+  googleVerification?: string;
+  robots?: string;
   children?: React.ReactNode;
 }
 
@@ -19,6 +21,8 @@ const SEO: React.FC<SEOProps> = ({
   ogType = 'website',
   ogImage,
   keywords,
+  googleVerification,
+  robots = 'index, follow',
   children,
 }) => {
   const siteName = kcrData.company.name;
@@ -27,21 +31,20 @@ const SEO: React.FC<SEOProps> = ({
     : `${siteName} | ${kcrData.company.tagline}`;
   const defaultDescription = kcrData.company.description;
   const metaDescription = description || defaultDescription;
-  const url = canonicalUrl ? `https://karyaciptaraharja.com${canonicalUrl}` : 'https://karyaciptaraharja.com';
-  const image = ogImage || 'https://karyaciptaraharja.com/logo.png';
+  const url = canonicalUrl ? `https://kcrfurniture.com${canonicalUrl}` : 'https://kcrfurniture.com';
+  const image = ogImage || 'https://kcrfurniture.com/logo.png';
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: kcrData.company.name,
-    url: 'https://karyaciptaraharja.com',
-    logo: 'https://karyaciptaraharja.com/logo.png',
+    url: 'https://kcrfurniture.com',
+    logo: 'https://kcrfurniture.com/logo.png',
     description: kcrData.company.tagline,
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'customer support',
-        telephone: kcrData.contact.phones[0],
-        email: kcrData.contact.emails[1],
+        ...(kcrData.contact.phones.length > 0 && { telephone: kcrData.contact.phones[0] }),
         areaServed: 'ID',
         availableLanguage: ['id', 'en'],
       },
@@ -51,11 +54,11 @@ const SEO: React.FC<SEOProps> = ({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: kcrData.company.name,
-    url: 'https://karyaciptaraharja.com',
+    url: 'https://kcrfurniture.com',
     inLanguage: 'id-ID',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://karyaciptaraharja.com/catalog?q={search_term_string}',
+      target: 'https://kcrfurniture.com/catalog?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };
@@ -66,8 +69,9 @@ const SEO: React.FC<SEOProps> = ({
       <title>{fullTitle}</title>
       <meta name="description" content={metaDescription} />
       {keywords && <meta name="keywords" content={keywords} />}
+      {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
       <link rel="canonical" href={url} />
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="robots" content={robots} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />

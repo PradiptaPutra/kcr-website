@@ -12,7 +12,7 @@ const SchemaWrapper: React.FC<SchemaProps> = ({ type, data }) => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": kcrData.company.name,
-    "url": "https://karyaciptaraharja.com",
+    "url": "https://kcrfurniture.com",
     "description": kcrData.company.description,
     "address": {
       "@type": "PostalAddress",
@@ -35,7 +35,7 @@ const SchemaWrapper: React.FC<SchemaProps> = ({ type, data }) => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": productData.name,
-    "image": `https://karyaciptaraharja.com${productData.img}`,
+    "image": `https://kcrfurniture.com${productData.img}`,
     "description": productData.specs,
     "brand": {
       "@type": "Brand",

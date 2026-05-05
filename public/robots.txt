@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://karyaciptaraharja.com/sitemap.xml
+Sitemap: https://kcrfurniture.com/sitemap.xml

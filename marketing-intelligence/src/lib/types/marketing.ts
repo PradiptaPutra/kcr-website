@@ -142,3 +142,24 @@ export interface DashboardOverviewPayload {
     avgRoas: number;
   };
 }
+
+export interface GSCKeywordMetrics {
+  keyword: string;
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+
+export interface GSCOverviewMetrics {
+  totalClicks: number;
+  totalImpressions: number;
+  avgCtr: number;
+  avgPosition: number;
+}
+
+export interface GSCData {
+  overview: GSCOverviewMetrics;
+  keywords: GSCKeywordMetrics[];
+  scannedAt: string;
+}

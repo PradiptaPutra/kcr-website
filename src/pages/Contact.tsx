@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
   const [formStep, setFormStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    phone: '',
     company: '',
     service: '',
     message: '',
@@ -61,10 +61,10 @@ const Contact: React.FC = () => {
     }
     return () => {
       const latest = formDataRef.current;
-      if (!hasSubmittedRef.current && (latest.name || latest.email || latest.company || latest.service || latest.message)) {
+      if (!hasSubmittedRef.current && (latest.name || latest.phone || latest.company || latest.service || latest.message)) {
         trackEvent('contact_form_dropoff', {
           step: formStepRef.current,
-          has_profile_data: Boolean(latest.name || latest.email || latest.service),
+          has_profile_data: Boolean(latest.name || latest.phone || latest.service),
           has_message: Boolean(latest.message),
         });
       }
@@ -74,10 +74,8 @@ const Contact: React.FC = () => {
   const validateStepOne = () => {
     const nextErrors: Record<string, string> = {};
     if (!formData.name.trim()) nextErrors.name = 'Nama wajib diisi.';
-    if (!formData.email.trim()) {
-      nextErrors.email = 'Email wajib diisi.';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      nextErrors.email = 'Format email tidak valid.';
+    if (!formData.phone.trim()) {
+      nextErrors.phone = 'Nomor WhatsApp/Telepon wajib diisi.';
     }
     if (!formData.service.trim()) nextErrors.service = 'Pilih layanan terlebih dahulu.';
 
@@ -108,7 +106,7 @@ const Contact: React.FC = () => {
       '',
       '*Profile*',
       `Nama: ${formData.name || '-'}`,
-      `Email: ${formData.email || '-'}`,
+      `Telp/WA: ${formData.phone || '-'}`,
       `Perusahaan: ${formData.company || '-'}`,
       `Minat Layanan: ${formData.service || '-'}`,
       '',
@@ -303,19 +301,19 @@ const Contact: React.FC = () => {
                     {errors.name && <p className="text-[12px] text-red-600">{errors.name}</p>}
                   </div>
                   <div className="flex flex-col gap-3">
-                    <label className="framer-label !text-[10px] opacity-40">ALAMAT EMAIL</label>
+                    <label className="framer-label !text-[10px] opacity-40">NOMOR WHATSAPP / TELEPON</label>
                     <input 
                       required
-                      type="email" 
-                      placeholder="john@company.com"
-                      className={`w-full bg-transparent border-b py-3 text-[15px] transition-all font-sans focus:outline-none focus:border-brand ${errors.email ? 'border-red-500' : 'border-[#1a1c19]/10'}`}
-                      value={formData.email}
+                      type="tel" 
+                      placeholder="08123456789"
+                      className={`w-full bg-transparent border-b py-3 text-[15px] transition-all font-sans focus:outline-none focus:border-brand ${errors.phone ? 'border-red-500' : 'border-[#1a1c19]/10'}`}
+                      value={formData.phone}
                       onChange={(e) => {
-                        setFormData({...formData, email: e.target.value});
-                        if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
+                        setFormData({...formData, phone: e.target.value});
+                        if (errors.phone) setErrors((prev) => ({ ...prev, phone: '' }));
                       }}
                     />
-                    {errors.email && <p className="text-[12px] text-red-600">{errors.email}</p>}
+                    {errors.phone && <p className="text-[12px] text-red-600">{errors.phone}</p>}
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -433,7 +431,7 @@ const Contact: React.FC = () => {
                     setFormStep(1);
                     setReferenceId('');
                     setErrors({});
-                    setFormData({ name: '', email: '', company: '', service: '', message: '', productContext: '' });
+                    setFormData({ name: '', phone: '', company: '', service: '', message: '', productContext: '' });
                     hasSubmittedRef.current = false;
                   }}
                   className="framer-label text-brand hover:underline"

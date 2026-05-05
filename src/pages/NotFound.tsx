@@ -7,9 +7,10 @@ const NotFound: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-[80vh] pt-24 pb-32 flex flex-col items-center justify-center selection:bg-[#1A1C19] selection:text-white">
       <SEO
-        title="Halaman Tidak Ditemukan | KCR Furniture"
+        title="Halaman Tidak Ditemukan"
         description="Maaf, halaman yang Anda cari tidak ditemukan di KCR Furniture."
         canonicalUrl="/404"
+        robots="noindex, nofollow"
       />
       
       <div className="framer-container text-center max-w-2xl mx-auto">
