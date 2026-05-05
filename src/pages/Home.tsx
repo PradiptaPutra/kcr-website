@@ -44,6 +44,7 @@ const Home: React.FC = () => {
         keywords="Produsen Furnitur Kantor, Custom Furniture Bekasi, Interior Fit-out Contractor Indonesia, Mass Production Furniture, Furniture Kantor, Office Furniture, Workstation, Meja Eksekutif, Hospitality Furniture, Furniture Hotel, CNC Furniture, KCR Furniture"
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
+        googleVerification="HHFyXUU6ZV_uI9fVMHgk6sJ3kfrd17TxqkjbfBJdAm8"
       />
 
       {/* 1. HERO - Asymmetrical Industrial Grid */}
