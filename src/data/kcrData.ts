@@ -500,7 +500,7 @@ export const kcrData = {
   contact: {
     address: "Jl. Dirgantara Raya Blok A no.7, BDP, Jatisari, Jatiasih, Bekasi 17426",
     phones: ["021.84593454"],
-    whatsapp: "6282359440670",
+    whatsapp: "6281916191968",
     emails: ["kcraharja@yahoo.com", "info@karyaciptaraharja.com"],
     businessDevelopment: [
       { name: "Landri Widyakusuma", phone: "021.84593454" },
