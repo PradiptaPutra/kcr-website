@@ -660,9 +660,3 @@ export const getIndustryBadge = (industry: string): string | null => {
 export const getMarketplaceLinksForProduct = (_productName: string): EcommerceLink[] => {
   return [];
 };
-owerCase()] || null;
-};
-
-export const getMarketplaceLinksForProduct = (_productName: string): EcommerceLink[] => {
-  return [];
-};
