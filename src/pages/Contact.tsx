@@ -169,15 +169,17 @@ const Contact: React.FC = () => {
             <span className="framer-label text-brand mb-8 block tracking-[0.4em]">BUSINESS DEVELOPMENT</span>
             <div className="space-y-4">
               {(kcrData.contact.businessDevelopment || []).map((person: any) => {
-                const displayPhone = person.phone || kcrData.contact.headOfficePhone;
-                const dialPhone = (person.phone || kcrData.contact.headOfficePhone || '').replace(/[^\d+]/g, '');
+                const displayPhone = person.phone;
+                const dialPhone = (person.phone || '').replace(/[^\d+]/g, '');
                 return (
                   <div key={person.name} className="pl-1">
                     <p className="font-serif text-lg font-medium text-[#1A1C19]">{person.name}</p>
-                    <a href={`tel:${dialPhone}`} className="inline-flex items-center gap-2 text-[11px] font-mono hover:text-brand transition-colors">
-                      <Phone size={12} weight="duotone" />
-                      {displayPhone}
-                    </a>
+                    {displayPhone ? (
+                      <a href={`tel:${dialPhone}`} className="inline-flex items-center gap-2 text-[11px] font-mono hover:text-brand transition-colors">
+                        <Phone size={12} weight="duotone" />
+                        {displayPhone}
+                      </a>
+                    ) : null}
                   </div>
                 );
               })}

@@ -503,9 +503,9 @@ export const kcrData = {
     whatsapp: "6281916191968",
     emails: ["kcraharja@yahoo.com", "info@karyaciptaraharja.com"],
     businessDevelopment: [
-      { name: "Landri Widyakusuma", phone: "021.84593454" },
-      { name: "Sugeng Widodo", phone: "021.84593454" },
-      { name: "Agung Wijanarko", phone: "081 726 2153" },
+      { name: "Landri Widyakusuma", phone: "" },
+      { name: "Sugeng Widodo", phone: "" },
+      { name: "Agung Wijanarko", phone: "081329663040" },
     ],
     headOfficePhone: "021.84593454",
     representativeOffices: ["Purbalingga", "Jogjakarta", "Surakarta", "Balikpapan"],
