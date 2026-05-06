@@ -200,19 +200,19 @@ const Catalog: React.FC = () => {
   };
 
   const seoTitle = activeSection !== 'all' || activeIndustry !== 'all' 
-    ? `${selectedCategoryLabel} ${activeIndustry !== 'all' ? `untuk ${selectedIndustryLabel}` : ''} | Katalog KCR Furniture`
-    : "Katalog Produsen Furnitur Kantor & Custom Furniture | KCR Furniture";
+    ? `${selectedCategoryLabel} ${activeIndustry !== 'all' ? `untuk ${selectedIndustryLabel}` : ''} | Pengadaan Furnitur Indonesia`
+    : "Katalog Produsen Furnitur Kantor & Kontraktor Interior Fit-out Indonesia | KCR Furniture";
   
   const seoDescription = activeSection !== 'all'
-    ? `Lihat koleksi ${selectedCategoryLabel} premium KCR Furniture. Solusi interior berkualitas tinggi untuk ${activeIndustry !== 'all' ? selectedIndustryLabel : 'berbagai industri'}.`
-    : "Jelajahi katalog KCR Furniture, produsen furnitur kantor & custom furniture Bekasi. Temukan workstations, meja eksekutif, dan hospitality furniture untuk proyek Anda.";
+    ? `Lihat koleksi ${selectedCategoryLabel} premium KCR Furniture. Solusi interior berkualitas tinggi untuk proyek skala nasional di ${activeIndustry !== 'all' ? selectedIndustryLabel : 'seluruh Indonesia'}.`
+    : "Jelajahi katalog KCR Furniture, produsen furnitur kantor & kontraktor interior fit-out skala nasional di Indonesia. Temukan workstations dan custom furniture premium.";
 
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-32 selection:bg-[#1a1c19] selection:text-white">
       <SEO 
         title={seoTitle}
         description={seoDescription}
-        keywords="Produsen Furnitur Kantor, Custom Furniture Bekasi, Mass Production Furniture, Interior Fit-out Contractor Indonesia, Furnitur Kantor, Workstation, Meja Eksekutif, Meeting Table, Furnitur Hotel, KCR Furniture Catalog"
+        keywords="Produsen Furnitur Kantor Indonesia, Kontraktor Interior Fit-out Indonesia, Custom Furniture Indonesia, Pengadaan Furnitur Kantor, Furniture Kantor Premium, KCR Furniture"
         canonicalUrl={canonicalUrl}
       >
         <script type="application/ld+json">{JSON.stringify(filteredCatalogSchema)}</script>
@@ -221,9 +221,9 @@ const Catalog: React.FC = () => {
       <div className="relative overflow-hidden">
         <PageHeader 
           label="01 / KATALOG PRODUK"
-          title="Koleksi"
-          subtitle={<>Furnitur Kantor <span className="text-brand font-serif-italic">&</span> Hospitality.</>}
-          description="Manufaktur furnitur presisi dengan teknologi CNC standar Eropa untuk ruang kerja dan hospitality yang inspiratif."
+          title="Pengadaan Furnitur"
+          subtitle={<>Skala <span className="text-brand font-serif-italic">Nasional</span> Indonesia.</>}
+          description="Manufaktur furnitur presisi dengan teknologi CNC standar Eropa untuk kebutuhan pengadaan ruang kerja dan hospitality di seluruh Indonesia."
         />
       </div>
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from '@phosphor-icons/react';
 import SEO from '../components/SEO';
 import PageHeader from '../components/PageHeader';
 import { kcrData } from '../data/kcrData';
@@ -34,19 +36,23 @@ const Insights: React.FC = () => {
             key={item.id}
             {...fadeInUp}
             transition={{ delay: idx * 0.07 }}
-            className="bg-white border border-[#1A1C19]/10 rounded-[4px] p-8 shadow-premium h-full flex flex-col"
+            className="group"
           >
-            <div className="mb-6 flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-brand font-bold">{item.type}</span>
-              <span className="text-[10px] uppercase tracking-[0.12em] text-[#1A1C19]/45">{item.readTime}</span>
-            </div>
-            <h3 className="font-serif text-[28px] leading-tight text-[#1A1C19] mb-5">{item.title}</h3>
-            <p className="text-[14px] leading-relaxed text-[#1A1C19]/70">{item.summary}</p>
-            <div className="mt-auto pt-8">
-              <span className="inline-flex rounded-full border border-[#1A1C19]/15 px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-[#1A1C19]/70">
-                Coming soon
-              </span>
-            </div>
+            <Link 
+              to={`/insights/${item.id}`}
+              className="bg-white border border-[#1A1C19]/10 rounded-[4px] p-6 md:p-8 shadow-premium h-full flex flex-col transition-all duration-500 hover:border-brand/30 hover:shadow-hover group-hover:-translate-y-1"
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-brand font-bold">{item.type}</span>
+                <span className="text-[10px] uppercase tracking-[0.12em] text-[#1A1C19]/45">{item.readTime}</span>
+              </div>
+              <h3 className="font-serif text-[24px] md:text-[28px] leading-tight text-[#1A1C19] mb-5 group-hover:text-brand transition-colors duration-300">{item.title}</h3>
+              <p className="text-[14px] leading-relaxed text-[#1A1C19]/70 mb-8">{item.summary}</p>
+              <div className="mt-auto pt-8 flex items-center text-[10px] uppercase tracking-[0.2em] text-[#1A1C19]/70 group-hover:text-brand transition-colors">
+                Read Article
+                <ArrowRight className="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
           </motion.article>
         ))}
       </section>

@@ -24,18 +24,18 @@ const Services: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-24 pb-20 md:pb-32 selection:bg-[#1A1C19] selection:text-white">
       <SEO 
-        title="Interior Fit-out Contractor Indonesia & Custom Furniture Bekasi | KCR Furniture"
-        description="KCR Furniture adalah interior fit-out contractor Indonesia & produsen custom furniture Bekasi. Spesialis furniture kantor premium & mass production furniture dengan presisi CNC."
-        keywords="Interior Fit-out Contractor Indonesia, Custom Furniture Bekasi, Produsen Furnitur Kantor, Mass Production Furniture, Furniture Kantor, Office Furniture Solutions, Custom Hotel Furniture, Interior Fitout, CNC Woodworking, KCR Furniture Services"
+        title="Kontraktor Interior Fit-out & Produsen Furnitur Custom Indonesia | KCR Furniture"
+        description="KCR Furniture adalah kontraktor interior fit-out skala nasional & produsen furnitur custom di Indonesia. Spesialis pengadaan furnitur kantor premium & mass production."
+        keywords="Kontraktor Interior Fit-out Indonesia, Produsen Furnitur Custom Indonesia, Produsen Furnitur Kantor, Mass Production Furniture, Furniture Kantor Nasional, Custom Hotel Furniture, Interior Fitout Indonesia, KCR Furniture Services"
         canonicalUrl="/services"
       />
 
       <div className="relative overflow-hidden">
         <PageHeader 
           label="03 / LAYANAN INTERIOR"
-          title="Interior Fit-out"
-          subtitle={<>Contractor <span className="text-brand font-serif-italic">Indonesia.</span></>}
-          description="Menghadirkan keahlian manufaktur furnitur tingkat tinggi dan solusi interior fit-out untuk ruang kerja dan hospitality dengan standar kualitas internasional."
+          title="Kontraktor Interior"
+          subtitle={<>Fit-out <span className="text-brand font-serif-italic">Indonesia.</span></>}
+          description="Menghadirkan keahlian manufaktur furnitur tingkat tinggi dan solusi interior fit-out untuk proyek skala nasional dengan standar kualitas internasional."
         />
       </div>
 

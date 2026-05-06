@@ -39,9 +39,9 @@ const Home: React.FC = () => {
   return (
     <div className="bg-[#F5F5F0]">
       <SEO 
-        title="Produsen Furnitur Kantor & Custom Furniture Bekasi | KCR Furniture"
-        description="KCR Furniture (PT. Karya Cipta Raharja) adalah produsen furnitur kantor Bekasi & interior fit-out contractor Indonesia. Spesialis mass production furniture & custom furniture premium sejak 2006."
-        keywords="Produsen Furnitur Kantor, Custom Furniture Bekasi, Interior Fit-out Contractor Indonesia, Mass Production Furniture, Furniture Kantor, Office Furniture, Workstation, Meja Eksekutif, Hospitality Furniture, Furniture Hotel, CNC Furniture, KCR Furniture"
+        title="Produsen Furnitur Kantor & Kontraktor Interior Fit-out Indonesia | KCR Furniture"
+        description="KCR Furniture (PT. Karya Cipta Raharja) adalah produsen furnitur kantor & kontraktor interior fit-out skala nasional di Indonesia. Spesialis mass production furniture & custom furniture premium."
+        keywords="Produsen Furnitur Kantor Indonesia, Kontraktor Interior Fit-out Indonesia, Custom Furniture Indonesia, Jasa Interior Kantor, Pengadaan Furnitur Kantor, Furniture Kantor Premium, KCR Furniture"
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
         googleVerification="HHFyXUU6ZV_uI9fVMHgk6sJ3kfrd17TxqkjbfBJdAm8"
@@ -75,7 +75,7 @@ const Home: React.FC = () => {
                transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }} 
                className="block"
               >
-                Produsen Furnitur Kantor
+                Furnitur Kantor &
               </motion.span>
              <motion.span 
                initial={{ y: 60, opacity: 0 }} 
@@ -83,7 +83,7 @@ const Home: React.FC = () => {
                transition={{ duration: 1.2, delay: 0.9, ease: [0.16, 1, 0.3, 1] }} 
                className="block font-serif-italic text-brand"
               >
-                & Custom Furniture Bekasi.
+                Interior Fit-out Indonesia.
               </motion.span>
            </h1>
 
@@ -93,7 +93,7 @@ const Home: React.FC = () => {
             transition={{ duration: 1.5, delay: 1.2 }} 
             className="text-[#1A1C19]/60 text-[16px] md:text-[18px] mb-14 max-w-md font-light leading-relaxed"
            >
-             Mitra pengadaan furnitur sistem perkantoran dan hospitality premium. Merealisasikan desain dalam volume masif melalui presisi teknologi CNC standar Eropa.
+             Mitra strategis pengadaan furnitur sistem perkantoran dan hospitality premium untuk proyek skala nasional. Merealisasikan desain dalam volume masif melalui presisi teknologi CNC standar Eropa.
            </motion.p>
 
              <div className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto">

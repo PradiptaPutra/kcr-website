@@ -20,6 +20,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Professional = lazy(() => import('./pages/Professional'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const Insights = lazy(() => import('./pages/Insights'));
+const InsightDetail = lazy(() => import('./pages/InsightDetail'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const PageLoader = () => (
@@ -55,6 +56,7 @@ const AnimatedRoutes = () => {
           <Route path="/professional" element={<PageWrapper><Professional /></PageWrapper>} />
           <Route path="/case-studies" element={<PageWrapper><CaseStudies /></PageWrapper>} />
           <Route path="/insights" element={<PageWrapper><Insights /></PageWrapper>} />
+          <Route path="/insights/:id" element={<PageWrapper><InsightDetail /></PageWrapper>} />
           <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
         </Routes>
       </Suspense>

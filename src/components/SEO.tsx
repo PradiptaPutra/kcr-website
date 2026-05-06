@@ -62,6 +62,35 @@ const SEO: React.FC<SEOProps> = ({
       'query-input': 'required name=search_term_string',
     },
   };
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: kcrData.company.fullName,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: kcrData.contact.address,
+      addressLocality: 'Bekasi',
+      addressRegion: 'Jawa Barat',
+      postalCode: '17426',
+      addressCountry: 'ID',
+    },
+    telephone: kcrData.contact.phones[0],
+    email: 'info@kcrfurniture.com',
+    url: 'https://kcrfurniture.com',
+    areaServed: {
+      '@type': 'Country',
+      name: 'Indonesia',
+    },
+    priceRange: 'Rp',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '17:00',
+      },
+    ],
+  };
 
   return (
     <Helmet>
@@ -91,6 +120,7 @@ const SEO: React.FC<SEOProps> = ({
 
       <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
       <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
       
       {children}
     </Helmet>

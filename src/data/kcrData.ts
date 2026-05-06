@@ -10,6 +10,7 @@ export interface CatalogProduct {
   price: number;
   price_tax: number;
   img: string;
+  altText?: string;
   assets?: string[];
 }
 
@@ -294,49 +295,16 @@ export const kcrData = {
   },
 
   catalogProducts: [
-    { id: 1, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-1", specs: "1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9700000, price_tax: 10767000, img: "/assets/images/products/LAMINA_FST_1.jpg" },
-    { id: 2, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-2", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 14100000, price_tax: 15651000, img: "/assets/images/products/LAMINA_FST_2.png" },
-    { id: 3, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-3", specs: "1800 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13100000, price_tax: 14541000, img: "/assets/images/products/LAMINA_FST_2.png" },
-    { id: 4, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-4", specs: "2000 (P) x 860 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16500000, price_tax: 18315000, img: "/assets/images/products/LAMINA_FST_4.jpg" },
-    { id: 5, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-5", specs: "2000 (P) x 860 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 32625000, price_tax: 36213750, img: "/assets/images/products/LAMINA_FST_5.jpg" },
-    { id: 6, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-6", specs: "Meja: 2000 (P) x 860 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42700000, price_tax: 47397000, img: "/assets/images/products/LAMINA_FST_6.jpg" },
-    { id: 7, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Proxima", name: "PROXIMA-01", specs: "Meja: 1400 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10850000, price_tax: 12043500, img: "/assets/images/products/PROXIMA_01.jpg" },
-    { id: 8, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 25400000, price_tax: 28194000, img: "/assets/images/products/INCORE_IST_01.jpg" },
-    { id: 9, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-20", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 21100000, price_tax: 23421000, img: "/assets/images/products/INCORE_IST_01.jpg" },
-    { id: 10, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-16", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18000000, price_tax: 19980000, img: "/assets/images/products/INCORE_IST_01.jpg" },
-    { id: 11, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 22600000, price_tax: 25086000, img: "/assets/images/products/INCORE_IST_02.jpg" },
-    { id: 12, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-20", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18500000, price_tax: 20535000, img: "/assets/images/products/INCORE_IST_02.jpg" },
-    { id: 13, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-02-16", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15800000, price_tax: 17538000, img: "/assets/images/products/INCORE_IST_02.jpg" },
-    { id: 14, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-01-24", specs: "2600 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42400000, price_tax: 47064000, img: "/assets/images/products/PRIME_CP.jpg" },
-    { id: 15, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-02-22", specs: "2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 38000000, price_tax: 42180000, img: "/assets/images/products/PRIME_CP.jpg" },
-    { id: 16, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-03-20", specs: "2200 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 35800000, price_tax: 39738000, img: "/assets/images/products/PRIME_CP.jpg" },
-    { id: 17, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-01-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 51240000, price_tax: 56876400, img: "/assets/images/products/PRIME_EX.jpg" },
-    { id: 18, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-02-22", specs: "Meja: 2200 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 46970000, price_tax: 52136700, img: "/assets/images/products/PRIME_EX.jpg" },
-    { id: 19, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "EX-03-20", specs: "Meja: 2000 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42700000, price_tax: 47397000, img: "/assets/images/products/PRIME_EX.jpg" },
-    { id: 20, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-01", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 19700000, price_tax: 21867000, img: "/assets/images/products/LUNA_LST.jpg" },
-    { id: 21, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-02", specs: "Meja: 1800 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17700000, price_tax: 19647000, img: "/assets/images/products/LUNA_LST.jpg" },
-    { id: 22, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Luna", name: "LST-03", specs: "Meja: 1600 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15800000, price_tax: 17538000, img: "/assets/images/products/LUNA_LST.jpg" },
-    { id: 23, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-01", specs: "Meja: 2000 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 20000000, price_tax: 22200000, img: "/assets/images/products/NOVE_NST.jpg" },
-    { id: 24, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-02", specs: "Meja: 1800 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17900000, price_tax: 19869000, img: "/assets/images/products/NOVE_NST.jpg" },
-    { id: 25, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Nova", name: "NST-03", specs: "Meja: 1600 (P) x 800 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16000000, price_tax: 17760000, img: "/assets/images/products/NOVE_NST.jpg" },
-    { id: 26, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Moderna", name: "MST - 02", specs: "1800 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 14200000, price_tax: 15762000, img: "/assets/images/products/MST_02.jpg" },
-    { id: 27, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWA", specs: "1200 (P) x 600 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5400000, price_tax: 5994000, img: "/assets/images/products/FORMA_FWA.jpg" },
-    { id: 28, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-2px", specs: "1600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9800000, price_tax: 10878000, img: "/assets/images/products/FORMA_FWB.jpg" },
-    { id: 29, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-4px", specs: "2800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 17775000, price_tax: 19730250, img: "/assets/images/products/FORMA_FWB.jpg" },
-    { id: 30, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-6px", specs: "4400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 27220000, price_tax: 30214200, img: "/assets/images/products/FORMA_FWB_6PX.jpg" },
-    { id: 31, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWB-8px", specs: "6000 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 37500000, price_tax: 41625000, img: "/assets/images/products/FORMA_FWB_8PX.jpg" },
-    { id: 32, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-2px", specs: "1880 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 18700000, price_tax: 20757000, img: "/assets/images/products/FORMA_FWC_2PX.jpg" },
-    { id: 33, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-4px", specs: "3080 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 27650000, price_tax: 30691500, img: "/assets/images/products/FORMA_FWC_4PX.jpg" },
-    { id: 34, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-6px", specs: "4280 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 34250000, price_tax: 38017500, img: "/assets/images/products/FORMA_FWC_6PX.jpg" },
-    { id: 35, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWC-8px", specs: "5480 (P) x 1840 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42000000, price_tax: 46620000, img: "/assets/images/products/FORMA_FWC_8PX.jpg" },
-    { id: 36, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-2px", specs: "1200 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 8550000, price_tax: 9490500, img: "/assets/images/products/FORMA_FWD_2PX.jpg" },
-    { id: 37, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16500000, price_tax: 18315000, img: "/assets/images/products/FORMA_FWD_4PX.jpg" },
-    { id: 38, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 24375000, price_tax: 27056250, img: "/assets/images/products/FORMA_FWD_6PX.jpg" },
-    { id: 39, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWD-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 32250000, price_tax: 35797500, img: "/assets/images/products/FORMA_FWD_8PX.jpg" },
-    { id: 40, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13250000, price_tax: 14707500, img: "/assets/images/products/MODERNA_MSA_4PX.jpg" },
-    { id: 41, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 20625000, price_tax: 22893750, img: "/assets/images/products/MODERNA_MSA_6PX.jpg" },
-    { id: 42, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 27875000, price_tax: 30941250, img: "/assets/images/products/MODERNA_MSA_8PX.jpg" },
-    { id: 43, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15900000, price_tax: 17649000, img: "/assets/images/products/MODERNA_MSB_4PX.jpg" },
+    { id: 1, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-1", specs: "1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 9700000, price_tax: 10767000, img: "/assets/images/products/LAMINA_FST_1.jpg", altText: "Meja Kerja Staff Lamina FST-1 KCR Furniture Indonesia" },
+    { id: 2, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-2", specs: "Meja: 1600 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 14100000, price_tax: 15651000, img: "/assets/images/products/LAMINA_FST_2.png", altText: "Meja Kerja Kantor Lamina FST-2 dengan Laci KCR Furniture" },
+    { id: 3, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-3", specs: "1800 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13100000, price_tax: 14541000, img: "/assets/images/products/LAMINA_FST_2.png", altText: "Meja Kerja Supervisor Lamina FST-3 KCR Furniture Indonesia" },
+    { id: 4, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Lamina", name: "Lamina FST-4", specs: "2000 (P) x 860 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16500000, price_tax: 18315000, img: "/assets/images/products/LAMINA_FST_4.jpg", altText: "Meja Kerja Manager Lamina FST-4 KCR Furniture" },
+    { id: 7, industries: ['Office', 'Education'], category: "Meja Kerja", series: "Proxima", name: "PROXIMA-01", specs: "Meja: 1400 (P) x 700 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 10850000, price_tax: 12043500, img: "/assets/images/products/PROXIMA_01.jpg", altText: "Meja Kerja Personal Proxima-01 KCR Furniture Indonesia" },
+    { id: 8, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Incore", name: "IST-01-24", specs: "Meja: 2400 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 25400000, price_tax: 28194000, img: "/assets/images/products/INCORE_IST_01.jpg", altText: "Meja Kerja Executive Incore IST-01-24 KCR Furniture Indonesia" },
+    { id: 14, industries: ['Office', 'Government'], category: "Meja Kerja", series: "Prime", name: "CP-01-24", specs: "2600 (P) x 900 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 42400000, price_tax: 47064000, img: "/assets/images/products/PRIME_CP.jpg", altText: "Meja Eksekutif Prime CP-01-24 Luxury Veneer Finish KCR Furniture" },
+    { id: 27, industries: ['Office', 'Education'], category: "Workstation", series: "Forma", name: "Forma FWA", specs: "1200 (P) x 600 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 5400000, price_tax: 5994000, img: "/assets/images/products/FORMA_FWA.jpg", altText: "Workstation Single Forma FWA Modular Office KCR Furniture Indonesia" },
+    { id: 40, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSA-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 13250000, price_tax: 14707500, img: "/assets/images/products/MODERNA_MSA_4PX.jpg", altText: "Workstation 4 Person Moderna MSA-4px KCR Furniture Indonesia" },
+    { id: 43, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 15900000, price_tax: 17649000, img: "/assets/images/products/MODERNA_MSB_4PX.jpg", altText: "Workstation 4 Person Moderna MSB-4px U-Leg KCR Furniture" },
     { id: 44, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-6px", specs: "3600 (P) x 1200 (L) x 750 (T) mm,", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 24200000, price_tax: 26862000, img: "/assets/images/products/MODERNA_MSB_6PX.jpg" },
     { id: 45, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSB-8px", specs: "4800 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 32125000, price_tax: 35658750, img: "/assets/images/products/MODERNA_MSB_8PX.jpg" },
     { id: 46, industries: ['Office', 'Education'], category: "Workstation", series: "Moderna", name: "Moderna MSC-4px", specs: "2400 (P) x 1200 (L) x 750 (T) mm", brand: "KCR Furniture", manufacturer: "PT Afan Maju Sejahtera (AMS)", price: 16500000, price_tax: 18315000, img: "/assets/images/products/MODERNA_MSC_4PX.jpg" },
@@ -499,7 +467,7 @@ export const kcrData = {
 
   contact: {
     address: "Jl. Dirgantara Raya Blok A no.7, BDP, Jatisari, Jatiasih, Bekasi 17426",
-    phones: [],
+    phones: ["+6281329663040"],
     whatsapp: "6281916191968",
     emails: [],
     businessDevelopment: [
@@ -567,24 +535,111 @@ export const kcrData = {
   insights: [
     {
       id: "insight-layout-strategy",
-      title: "Workspace Layout Strategy for Hybrid Teams",
+      title: "Strategi Layout Ruang Kerja untuk Tim Hybrid di Indonesia",
       type: "Guide",
-      summary: "How to balance focus areas, collaboration points, and circulation flow in one floorplate.",
-      readTime: "6 min read"
+      summary: "Bagaimana menyeimbangkan area fokus, titik kolaborasi, dan alur sirkulasi dalam satu lantai kantor modern.",
+      readTime: "12 min read",
+      publishedAt: "May 6, 2026",
+      author: "Tim Editorial KCR",
+      content: `
+        <p class="lead">Pasca pandemi, definisi kantor di Indonesia telah bergeser secara fundamental. Kantor bukan lagi sekadar tempat untuk 'absen', melainkan sebuah hub kolaborasi yang harus mampu menarik karyawan untuk kembali bekerja secara tatap muka.</p>
+        
+        <h2>Transformasi Budaya Kerja di Indonesia</h2>
+        <p>Banyak perusahaan di Jakarta dan kota-kota besar lainnya kini menerapkan pola kerja hybrid. Tantangan terbesarnya adalah bagaimana menciptakan ruang yang cukup fleksibel untuk menampung seluruh tim di hari tertentu, namun tidak terasa kosong dan dingin di hari lainnya. Strategi layout yang tepat adalah kunci efisiensi operasional dan kepuasan karyawan.</p>
+
+        <h2>1. Prinsip Activity-Based Working (ABW)</h2>
+        <p>Dalam ekosistem hybrid, karyawan tidak lagi terikat pada satu meja (fixed desk). Sebagai gantinya, layout harus menyediakan berbagai zona berdasarkan jenis aktivitasnya:</p>
+        <ul>
+          <li><strong>Collaboration Hubs:</strong> Area terbuka dengan sofa modular atau meja tinggi untuk meeting spontan.</li>
+          <li><strong>Quiet Zones:</strong> Area dengan pembatas akustik tinggi untuk pekerjaan yang membutuhkan konsentrasi mendalam.</li>
+          <li><strong>Phone Booths:</strong> Bilik kecil untuk video call pribadi agar tidak mengganggu rekan kerja lainnya.</li>
+        </ul>
+
+        <h2>2. Rasio Ruang: Kolaborasi vs Konsentrasi</h2>
+        <p>Kami merekomendasikan pembagian zona 60:40. Sebanyak 60% luasan lantai dialokasikan untuk area publik dan kolaboratif, sementara 40% sisanya untuk area fokus. Penggunaan sistem workstation modular seperti <strong>Moderna Series</strong> sangat ideal karena kemudahannya untuk dikonfigurasi ulang (scalable) sesuai pertumbuhan tim.</p>
+
+        <blockquote>"Kantor masa depan harus berfungsi sebagai magnet sosial, menyediakan fasilitas dan interaksi yang tidak bisa didapatkan saat bekerja dari rumah."</blockquote>
+
+        <h2>3. Pentingnya Manajemen Kabel dan Power Access</h2>
+        <p>Kelemahan umum pada layout kantor di Indonesia adalah kabel yang berantakan di bawah meja. Dalam lingkungan hybrid yang mengutamakan hot-desking, setiap meja harus dilengkapi dengan <em>flip-up power socket</em> dan manajemen kabel terintegrasi. Hal ini memastikan proses perpindahan antar meja berlangsung mulus tanpa hambatan teknis.</p>
+
+        <h2>4. Aspek Psikologis: Biophilic Design</h2>
+        <p>Menambahkan unsur tanaman dalam ruangan (biophilic) terbukti meningkatkan produktivitas hingga 15%. Di KCR Furniture, kami sering mengintegrasikan 'planter box' langsung ke dalam sistem workstation atau kabinet penyimpanan untuk memberikan nuansa segar di tengah hiruk-pikuk industrial.</p>
+
+        <h2>Kesimpulan</h2>
+        <p>Strategi layout yang sukses adalah yang mampu beradaptasi. Investasi pada furnitur berkualitas dengan sistem modular bukan hanya soal estetika, tapi tentang masa depan keberlanjutan bisnis Anda. Konsultasikan kebutuhan interior kantor Anda dengan tim engineer kami untuk mendapatkan simulasi layout yang paling efisien.</p>
+      `
     },
     {
       id: "insight-material-spec",
-      title: "Material Specification Checklist for Office Fit-Out",
+      title: "Daftar Periksa Spesifikasi Material untuk Fit-Out Kantor",
       type: "Implementation Notes",
-      summary: "A practical spec checklist to reduce revision loops during procurement and installation.",
-      readTime: "8 min read"
+      summary: "Panduan praktis daftar periksa material untuk mengurangi pengulangan revisi selama proses pengadaan dan instalasi.",
+      readTime: "15 min read",
+      publishedAt: "May 6, 2026",
+      author: "Tim Editorial KCR",
+      content: `
+        <p class="lead">Salah satu penyebab utama pembengkakan anggaran (cost overrun) dan keterlambatan proyek interior di Indonesia adalah ketidakjelasan spesifikasi material (technical spec) di awal fase desain.</p>
+
+        <p>Sebagai manufaktur yang mengutamakan <em>cost engineering</em>, kami melihat banyak proyek terhambat karena pemilihan material yang tidak sinkron antara fungsi ruang dengan durabilitas yang diharapkan.</p>
+
+        <h2>1. Pemilihan Base Material (Struktur Furnitur)</h2>
+        <p>Tidak semua kayu olahan diciptakan sama. Berikut adalah panduan pemilihannya:</p>
+        <ul>
+          <li><strong>Plywood (Multiplex):</strong> Standar tertinggi untuk furnitur custom. Memiliki ketahanan sekrup yang sangat baik dan tahan terhadap kelembapan udara Indonesia yang tinggi.</li>
+          <li><strong>HMR (High Moisture Resistant):</strong> Pilihan ideal untuk area pantry atau toilet karena ketahanannya terhadap air, namun tetap lebih ekonomis dibandingkan Plywood.</li>
+          <li><strong>MFC (Melamine Faced Chipboard):</strong> Sangat efisien untuk produksi massal workstation kantor. Pastikan menggunakan grade E1 untuk memastikan emisi formaldehida yang rendah (aman bagi kesehatan).</li>
+        </ul>
+
+        <h2>2. Finishing: Estetika vs Durabilitas</h2>
+        <p>Finishing adalah lapisan pertahanan pertama furnitur Anda. Untuk area dengan lalu lintas tinggi (high traffic), pemilihan HPL (High Pressure Laminate) adalah yang terbaik karena tahan gores. Namun, untuk ruang direksi atau eksekutif, finishing <strong>Veneer</strong> dengan lapisan <strong>Polyurethane (PU)</strong> memberikan kesan mewah yang tak tertandingi oleh material sintetis.</p>
+
+        <h2>3. Komponen Hardware dan Aksesoris</h2>
+        <p>Seringkali diabaikan, namun hardware adalah 'jantung' dari furnitur. Pastikan spesifikasi mencantumkan:</p>
+        <ul>
+          <li><strong>Rel Laci:</strong> Gunakan tipe <em>under-mount slow motion</em> untuk ketahanan beban hingga 30kg.</li>
+          <li><strong>Engsel:</strong> Tipe <em>clip-on soft close</em> untuk mencegah benturan keras saat pintu kabinet ditutup.</li>
+          <li><strong>Edge Banding:</strong> Untuk material MFC, pastikan menggunakan mesin banding CNC agar pinggiran meja tidak tajam dan tidak mudah mengelupas.</li>
+        </ul>
+
+        <h2>4. Strategi Cost Engineering</h2>
+        <p>Kami sering menyarankan klien untuk menggunakan strategi 'hybrid material'. Gunakan Plywood pada area yang terlihat langsung dan sering disentuh, sementara untuk struktur internal kabinet yang tersembunyi, dapat menggunakan MFC berkualitas tinggi. Ini dapat menghemat anggaran hingga 20% tanpa mengurangi estetika luar.</p>
+        
+        <p>Jelajahi standar material kami melalui <a href="/catalog">Katalog Produk</a> atau diskusikan kebutuhan teknis Anda langsung dengan engineer pabrik kami.</p>
+      `
     },
     {
       id: "insight-hospitality-durability",
-      title: "Durability Planning for Hospitality Furniture",
+      title: "Perencanaan Durabilitas untuk Furnitur Hospitality dan Hotel",
       type: "Insights",
-      summary: "Selecting finishes and joinery standards that hold up under high-frequency operations.",
-      readTime: "5 min read"
+      summary: "Memilih finishing dan standar joinery yang mampu bertahan dalam penggunaan frekuensi tinggi di sektor hospitality.",
+      readTime: "10 min read",
+      publishedAt: "May 6, 2026",
+      author: "Tim Editorial KCR",
+      content: `
+        <p class="lead">Furnitur di sektor hospitality—terutama hotel dan resort—menghadapi siklus penyusutan yang jauh lebih cepat dibandingkan furnitur rumah tangga atau kantor biasa.</p>
+
+        <p>Setiap unit furnitur hotel akan digunakan oleh ratusan tamu berbeda setiap tahunnya, yang masing-masing memiliki tingkat kehati-hatian yang berbeda. Oleh karena itu, durabilitas bukan lagi sekadar fitur tambahan, melainkan keharusan bisnis.</p>
+
+        <h2>1. Standar Konstruksi Joinery</h2>
+        <p>Dalam manufaktur furniture hotel skala besar, kami tidak hanya mengandalkan sekrup atau paku. Kami menerapkan sistem <strong>Double Dowel & Glue</strong> serta <em>Mortise and Tenon</em> pada titik-titik tumpu beban. Konstruksi ini memastikan kursi atau meja tidak akan goyang (wobbly) meski telah digunakan selama bertahun-tahun.</p>
+
+        <h2>2. Material Tahan Iklim Tropis</h2>
+        <p>Proyek hospitality di Bali, Lombok, atau daerah pesisir lainnya membutuhkan perhatian khusus terhadap kelembapan dan salinitas udara. Kami merekomendasikan penggunaan kayu solid yang telah melalui proses <em>kiln-dry</em> (pengeringan oven) hingga mencapai kadar air 10-12% untuk mencegah melengkung atau retak (warping).</p>
+
+        <h2>3. Teknologi Finishing Anti-Noda</h2>
+        <p>Untuk top table di area publik atau restoran, penggunaan <strong>Lacquer Casting</strong> atau finishing PU berkualitas tinggi sangat krusial. Lapisan ini mampu menahan tumpahan kopi, wine, hingga cairan pembersih kimia keras tanpa meninggalkan noda permanen. Di pabrik AMS, kami menggunakan ruang <em>dust-free spray booth</em> untuk memastikan hasil finishing yang halus dan tanpa cacat mikro.</p>
+
+        <h2>4. Maintenance-Friendly Design</h2>
+        <p>Desain yang mewah harus tetap realistis untuk dirawat. Kami menyarankan:</p>
+        <ul>
+          <li>Sudut furnitur yang sedikit membulat (radius) untuk meminimalkan kerusakan akibat benturan koper tamu.</li>
+          <li>Penggunaan kain upholstery dengan nilai <em>Martindale</em> (uji gesek) minimal 30.000 cycles.</li>
+          <li>Sistem konstruksi knock-down yang presisi untuk memudahkan penggantian komponen jika terjadi kerusakan di satu bagian saja.</li>
+        </ul>
+
+        <p>Pelajari portofolio proyek hospitality kami dan lihat bagaimana kami merealisasikan standar ini dalam layanan <a href="/services">Produksi Massal</a> untuk berbagai brand hotel internasional.</p>
+      `
     }
     ],
 

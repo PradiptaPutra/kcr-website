@@ -56,8 +56,8 @@ const Navbar: React.FC = () => {
       ]
     },
     { n: 'Profil', p: '/about' },
-
     { n: 'Layanan', p: '/services' },
+    { n: 'Insights', p: '/insights' },
     { n: 'Kontak', p: '/contact' },
   ];
 

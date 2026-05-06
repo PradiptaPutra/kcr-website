@@ -14,6 +14,7 @@ interface ProductCardProps {
   price: number;
   price_tax: number;
   img: string;
+  altText?: string;
   assets?: string[];
   index?: number;
   activeIndustry?: string;
@@ -25,6 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   name, 
   specs,
   img, 
+  altText,
   assets = [],
   index = 0,
   activeIndustry = 'all'
@@ -316,11 +318,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
                  poster={posterImage}
                />
              ) : (
-               <img 
-                 src={allAssets[0]} 
-                 alt={name} 
-                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110" 
-                 loading="lazy"
+               <img
+                 src={allAssets[0]}
+                 alt={altText || name}
+                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[var(--ease-out)] group-hover:scale-110"                 loading="lazy"
                  decoding="async"
                  sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw"
                />
