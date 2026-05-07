@@ -160,8 +160,6 @@ const Catalog: React.FC = () => {
   const canonicalParams = new URLSearchParams();
   if (activeSection !== 'all') canonicalParams.set('category', activeSection);
   if (activeIndustry !== 'all') canonicalParams.set('industry', activeIndustry);
-  if (query.trim()) canonicalParams.set('q', query.trim());
-  if (sortBy !== 'default') canonicalParams.set('sort', sortBy);
   const canonicalQuery = canonicalParams.toString();
   const canonicalUrl = canonicalQuery ? `/catalog?${canonicalQuery}` : '/catalog';
 
@@ -221,9 +219,9 @@ const Catalog: React.FC = () => {
       <div className="relative overflow-hidden">
         <PageHeader 
           label="01 / KATALOG PRODUK"
-          title="Pengadaan Furnitur"
-          subtitle={<>Skala <span className="text-brand font-serif-italic">Nasional</span> Indonesia.</>}
-          description="Manufaktur furnitur presisi dengan teknologi CNC standar Eropa untuk kebutuhan pengadaan ruang kerja dan hospitality di seluruh Indonesia."
+          title={activeSection === 'all' ? "Pengadaan Furnitur" : selectedCategoryLabel}
+          subtitle={activeIndustry !== 'all' ? `Segmen ${selectedIndustryLabel}` : <>Skala <span className="text-brand font-serif-italic">Nasional</span> Indonesia.</>}
+          description={seoDescription}
         />
       </div>
 

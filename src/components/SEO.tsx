@@ -31,7 +31,9 @@ const SEO: React.FC<SEOProps> = ({
     : `${siteName} | ${kcrData.company.tagline}`;
   const defaultDescription = kcrData.company.description;
   const metaDescription = description || defaultDescription;
-  const url = canonicalUrl ? `https://kcrfurniture.com${canonicalUrl}` : 'https://kcrfurniture.com';
+  const url = canonicalUrl && canonicalUrl !== '/' 
+    ? `https://kcrfurniture.com${canonicalUrl}` 
+    : 'https://kcrfurniture.com';
   const image = ogImage || 'https://kcrfurniture.com/logo.png';
   const organizationSchema = {
     '@context': 'https://schema.org',

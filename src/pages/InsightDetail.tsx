@@ -1,25 +1,22 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, User, ShareNetwork } from '@phosphor-icons/react';
-import SEO from '../components/SEO';
+import InsightDetailSEO from '../components/SEO';
 import { kcrData } from '../data/kcrData';
+import NotFound from './NotFound';
 
 import DOMPurify from 'dompurify';
 
 const InsightDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const insight = kcrData.insights.find((item) => item.id === id);
 
   useEffect(() => {
-    if (!insight) {
-      navigate('/404', { replace: true });
-    }
     window.scrollTo(0, 0);
-  }, [insight, navigate]);
+  }, [insight]);
 
-  if (!insight) return null;
+  if (!insight) return <NotFound />;
 
   const fadeInUp = {
     initial: { y: 20, opacity: 0 },
@@ -29,7 +26,7 @@ const InsightDetail: React.FC = () => {
 
   return (
     <div className="bg-[#F5F5F0] min-h-screen pt-32 pb-24 md:pb-40 selection:bg-[#1A1C19] selection:text-white">
-      <SEO
+      <InsightDetailSEO
         title={`${insight.title} | KCR Furniture Insights`}
         description={insight.summary}
         keywords={`furniture insights, ${insight.type}, office design, ${id}`}
