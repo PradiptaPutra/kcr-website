@@ -30,6 +30,32 @@ const Home: React.FC = () => {
   const featuredProductIds = [14, 8, 91]; // Prime CP, Incore IST, Bara-01
   const featuredProducts = kcrData.catalogProducts.filter(p => featuredProductIds.includes(p.id));
 
+  const featuredSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'itemListElement': featuredProducts.map((product, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'item': {
+        '@type': 'Product',
+        'name': product.name,
+        'image': `https://kcrfurniture.com${product.img}`,
+        'description': product.specs,
+        'brand': {
+          '@type': 'Brand',
+          'name': 'KCR Furniture'
+        },
+        'offers': {
+          '@type': 'Offer',
+          'price': product.price,
+          'priceCurrency': 'IDR',
+          'availability': product.price > 0 ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
+          'url': `https://kcrfurniture.com/catalog?q=${encodeURIComponent(product.name)}`
+        }
+      }
+    }))
+  };
+
   const handleWhatsApp = (context: string) => {
     trackEvent('whatsapp_cta_click', { location: context });
     const message = encodeURIComponent(`Halo KCR Furniture, saya ingin konsultasi mengenai proyek furnitur.`);
@@ -45,7 +71,9 @@ const Home: React.FC = () => {
         canonicalUrl="/"
         ogImage={kcrData.images.hero[0]}
         googleVerification="HHFyXUU6ZV_uI9fVMHgk6sJ3kfrd17TxqkjbfBJdAm8"
-      />
+      >
+        <script type="application/ld+json">{JSON.stringify(featuredSchema)}</script>
+      </SEO>
 
       {/* 1. HERO - Asymmetrical Industrial Grid */}
       <section className="relative min-h-[100vh] w-full flex flex-col lg:flex-row bg-[#F5F5F0]">

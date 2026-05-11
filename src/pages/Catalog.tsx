@@ -171,7 +171,7 @@ const Catalog: React.FC = () => {
     url: `https://kcrfurniture.com${canonicalUrl}`,
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: filteredProducts.slice(0, 12).map((item, index) => ({
+      itemListElement: filteredProducts.slice(0, 100).map((item, index) => ({
         '@type': 'Product',
         position: index + 1,
         name: item.name,
@@ -181,6 +181,8 @@ const Catalog: React.FC = () => {
           '@type': 'Brand',
           name: 'KCR Furniture'
         },
+        sku: `KCR-${item.id}`,
+        mpn: item.id.toString(),
         manufacturer: {
           '@type': 'Organization',
           name: 'PT Afan Maju Sejahtera (AMS)',
@@ -192,9 +194,15 @@ const Catalog: React.FC = () => {
             postalCode: '17426',
             addressCountry: 'ID'
           }
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": item.price,
+          "priceCurrency": "IDR",
+          "availability": item.price > 0 ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+          "url": `https://kcrfurniture.com/catalog?q=${encodeURIComponent(item.name)}`
         }
-      })),
-    },
+      })),    },
   };
 
   const seoTitle = activeSection !== 'all' || activeIndustry !== 'all' 

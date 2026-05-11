@@ -35,12 +35,14 @@ const SchemaWrapper: React.FC<SchemaProps> = ({ type, data }) => {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": productData.name,
-    "image": `https://kcrfurniture.com${productData.img}`,
+    "image": productData.img.startsWith('http') ? productData.img : `https://kcrfurniture.com${productData.img}`,
     "description": productData.specs,
     "brand": {
       "@type": "Brand",
       "name": "KCR Furniture"
     },
+    "sku": `KCR-${productData.id}`,
+    "mpn": productData.id.toString(),
     "manufacturer": {
       "@type": "Organization",
       "name": "PT Afan Maju Sejahtera (AMS)",
@@ -57,7 +59,10 @@ const SchemaWrapper: React.FC<SchemaProps> = ({ type, data }) => {
       "@type": "Offer",
       "price": productData.price,
       "priceCurrency": "IDR",
-      "availability": "https://schema.org/InStock"
+      "availability": productData.price > 0 ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+      "url": `https://kcrfurniture.com/catalog?q=${encodeURIComponent(productData.name)}`,
+      "priceValidUntil": "2026-12-31",
+      "itemCondition": "https://schema.org/NewCondition"
     }
   });
 
